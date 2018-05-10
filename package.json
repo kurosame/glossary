@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "clean": "rimraf ./dist/**/*"
   },
   "dependencies": {
     "firebase": "^5.0.1",
