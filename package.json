@@ -3,9 +3,12 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode development",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
+    "firebase": "^5.0.1",
     "material-ui": "^0.20.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"

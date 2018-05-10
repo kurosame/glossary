@@ -1,10 +1,9 @@
 const path = require('path')
-const webpack = require('webpack')
 const Html = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: {
-    bundle: './src/index.jsx'
+    bundle: './src/index.js'
   },
   output: {
     filename: '[name]-[hash].js',
@@ -23,7 +22,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader?cacheDirectory'
@@ -37,14 +36,11 @@ module.exports = {
     new Html({
       filename: 'index.html',
       template: './src/index.html'
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: { '@': path.resolve(__dirname, 'src') }
   },
-  devtool: '#inline-source-map'
-}
+  devtool: argv.mode === 'development' ? '#inline-source-map' : false
+})

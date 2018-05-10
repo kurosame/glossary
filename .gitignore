@@ -1,6 +1,5 @@
-.DS_Store
-.vscode/
 dist/
 node_modules/
-test/unit/coverage/
-npm-debug.log
+src/firebase.js
+.DS_Store
+.firebaserc
