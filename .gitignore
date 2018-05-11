@@ -1,5 +1,5 @@
 dist/
 node_modules/
-src/firebase.js
+src/firebase.tsx
 .DS_Store
 .firebaserc
