@@ -8,5 +8,5 @@ export interface IActions {
 
 export interface IStates {
   counter: ICounterState
-  word: IWordState
+  words: IWordState[]
 }

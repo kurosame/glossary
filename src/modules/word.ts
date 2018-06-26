@@ -17,7 +17,7 @@ export interface IWordActions {
 
 export interface IWordState {
   id: string
-  title: string
+  titles: string[]
   description: string
 }
 
@@ -25,7 +25,7 @@ const initialState: IWordState[] = []
 
 export const { getWords, setWords } = createActions(GET_WORDS, SET_WORDS)
 
-export const word: Reducer = handleActions(
+export const words: Reducer = handleActions(
   {
     [SET_WORDS]: (
       state: IWordState[],
