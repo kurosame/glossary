@@ -1,5 +1,13 @@
 {
-  "presets": ["env"],
-  "plugins": ["transform-object-rest-spread"],
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "useBuiltIns": true
+      }
+    ]
+  ],
+  "plugins": ["transform-runtime", "transform-object-rest-spread"],
   "comments": false
 }

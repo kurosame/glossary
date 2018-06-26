@@ -1,0 +1,3 @@
+{
+  "extends": ["@kurosame/stylelint-config-react"]
+}

@@ -13,12 +13,17 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/unit/specs/**/*.spec.ts",
+    "test/unit/specs/**/*.spec.tsx"
+  ],
   "exclude": ["node_modules"]
 }
