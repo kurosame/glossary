@@ -10,12 +10,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <>
-        <Header />
-        <Router>
+      <Router>
+        <>
+          <Route path="/" component={Header} />
           <Route path="/" component={Parent} exact />
-        </Router>
-      </>
+        </>
+      </Router>
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('root') as HTMLElement

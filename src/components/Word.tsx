@@ -1,5 +1,5 @@
 import { IWordState } from '@/modules/word'
-import { Card, CardHeader, CardText } from 'material-ui/Card'
+import Card, { CardHeader, CardText } from 'material-ui/Card'
 import Chip from 'material-ui/Chip'
 import React from 'react'
 import styled from 'styled-components'
