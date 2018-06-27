@@ -1,4 +1,4 @@
-import Word from '@/components/Word'
+import Words from '@/components/Words'
 import { addCount, getSagaCount } from '@/modules/counter'
 import { IActions, IStates } from '@/modules/index'
 import { getWords } from '@/modules/word'
@@ -18,9 +18,7 @@ class Parent extends React.Component<IProps> {
   }
 
   public render() {
-    return (
-      <>{this.props.states.words.map(w => <Word key={w.id} state={w} />)}</>
-    )
+    return <Words words={this.props.states.words} />
   }
 }
 

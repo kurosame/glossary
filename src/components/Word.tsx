@@ -5,19 +5,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface IProps {
-  state: IWordState
+  word: IWordState
 }
 
 export default class Word extends React.Component<IProps> {
   public render() {
     return (
       <Card>
-        <CardHeader title={this.props.state.id} />
+        <CardHeader title={<b>{this.props.word.id}</b>} />
         <Titles>
-          {this.props.state.titles.map((t, i) => <Chip key={i}>{t}</Chip>)}
+          {this.props.word.titles.map((t, i) => <Chip key={i}>{t}</Chip>)}
         </Titles>
         <CardText>
-          {this.props.state.description
+          {this.props.word.description
             .split('\\n')
             .map((d, i) => <div key={i}>{d}</div>)}
         </CardText>
