@@ -1,7 +1,8 @@
 import Word from '@/components/Word'
 import { IWordState } from '@/modules/word'
-import GridList from 'material-ui/GridList'
+import { List, ListItem } from '@material-ui/core'
 import React from 'react'
+import styled from 'styled-components'
 
 interface IProps {
   words: IWordState[]
@@ -10,9 +11,19 @@ interface IProps {
 export default class Words extends React.Component<IProps> {
   public render() {
     return (
-      <GridList cols={1}>
-        {this.props.words.map(w => <Word key={w.id} word={w} />)}
-      </GridList>
+      <List>
+        {this.props.words.map(w => (
+          <ListItem key={w.id}>
+            <WordDiv>
+              <Word word={w} />
+            </WordDiv>
+          </ListItem>
+        ))}
+      </List>
     )
   }
 }
+
+const WordDiv = styled.div`
+  width: 100%;
+`
