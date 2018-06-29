@@ -1,4 +1,3 @@
-import { counter } from '@/modules/counter'
 import { IStates } from '@/modules/index'
 import { words } from '@/modules/word'
 import rootSaga from '@/sagas/index'
@@ -20,9 +19,6 @@ if (process.env.NODE_ENV === 'production') {
   enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 }
 
-export default createStore(
-  combineReducers<IStates>({ counter, words }),
-  enhancer
-)
+export default createStore(combineReducers<IStates>({ words }), enhancer)
 
 sagaMiddleware.run(rootSaga)

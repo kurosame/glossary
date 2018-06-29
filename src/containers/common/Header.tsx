@@ -18,7 +18,11 @@ export default class Header extends React.Component<{}, IState> {
   public render() {
     return (
       <AppBar position="static">
-        <Tabs value={this.state.tabValue} onChange={this.tabChange}>
+        <Tabs
+          className="tabs"
+          value={this.state.tabValue}
+          onChange={this.tabChange}
+        >
           <Tab label="List" component={(p: {}) => <Link to="/" {...p} />} />
         </Tabs>
       </AppBar>

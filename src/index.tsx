@@ -1,5 +1,5 @@
 import Header from '@/containers/common/Header'
-import Parent from '@/containers/Parent'
+import List from '@/containers/List'
 import store from '@/store'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
@@ -13,7 +13,7 @@ render(
       <Router>
         <>
           <Route path="/" component={Header} />
-          <Route path="/" component={Parent} exact />
+          <Route path="/" component={List} exact />
         </>
       </Router>
     </MuiThemeProvider>
