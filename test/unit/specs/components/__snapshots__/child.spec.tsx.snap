@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Match the snapshot 1`] = `"<div class=\\"sc-bdVaJa fQaGEY\\"><div><span class=\\"count\\">1</span><button class=\\"add-count\\">ADD</button></div><div><span class=\\"saga-count\\">2</span><button class=\\"add-saga-count\\">ADD</button>※redux-saga sample</div></div>"`;
