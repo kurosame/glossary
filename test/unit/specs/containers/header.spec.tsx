@@ -15,7 +15,7 @@ test('The state is initialized in the constructor', () => {
 })
 
 test('Change the tabs will set the state.tabValue', () => {
-  wrapper.find('.tabs').simulate('change', {}, 1)
+  wrapper.find('[data-test="tabs"]').simulate('change', {}, 1)
 
   expect(wrapper.state('tabValue')).toEqual(1)
 })
