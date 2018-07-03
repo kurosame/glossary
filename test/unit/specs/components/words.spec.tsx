@@ -6,7 +6,7 @@ const words = [
   {
     id: 'Vue.js',
     titles: ['Vue', 'Vue.js'],
-    description: 'It a Vue.js'
+    descriptions: ['It a ', 'Vue.js']
   }
 ]
 

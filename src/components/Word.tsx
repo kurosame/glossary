@@ -14,10 +14,8 @@ export default class Word extends React.Component<IProps> {
         <CardContent data-test="titles">
           {this.props.word.titles.map((t, i) => <Chip key={i} label={t} />)}
         </CardContent>
-        <CardContent data-test="description">
-          {this.props.word.description
-            .split('\\n')
-            .map((d, i) => <div key={i}>{d}</div>)}
+        <CardContent data-test="descriptions">
+          {this.props.word.descriptions.map((d, i) => <div key={i}>{d}</div>)}
         </CardContent>
       </Card>
     )

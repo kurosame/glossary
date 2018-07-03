@@ -5,7 +5,7 @@ import React from 'react'
 const word = {
   id: 'React',
   titles: ['React', 'React.js'],
-  description: 'It a \nReact'
+  descriptions: ['It a ', 'React']
 }
 
 const wrapper = mount(<Word word={word} />)
@@ -28,13 +28,13 @@ test('Data binding from the word.titles to CardContent', () => {
   ).toEqual('ReactReact.js')
 })
 
-test('Data binding from the word.description to CardContent', () => {
+test('Data binding from the word.descriptions to CardContent', () => {
   expect(
     wrapper
-      .find('[data-test="description"]')
+      .find('[data-test="descriptions"]')
       .first()
       .text()
-  ).toEqual('It a \nReact')
+  ).toEqual('It a React')
 })
 
 test('Match the snapshot', () => {

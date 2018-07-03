@@ -8,7 +8,7 @@ describe('Run when ActionType is SET_WORDS', () => {
           {
             id: 'JavaScript',
             titles: ['JavaScript', 'JS'],
-            description: 'It a JS'
+            descriptions: ['It a ', 'JS']
           }
         ],
         {
@@ -17,7 +17,7 @@ describe('Run when ActionType is SET_WORDS', () => {
             {
               id: 'TypeScript',
               titles: ['TypeScript', 'TS'],
-              description: 'It a TS'
+              descriptions: ['It a ', 'TS']
             }
           ]
         }
@@ -26,7 +26,7 @@ describe('Run when ActionType is SET_WORDS', () => {
       {
         id: 'TypeScript',
         titles: ['TypeScript', 'TS'],
-        description: 'It a TS'
+        descriptions: ['It a ', 'TS']
       }
     ])
   })
@@ -38,7 +38,7 @@ describe('Run when ActionType is SET_WORDS', () => {
           {
             id: 'JavaScript',
             titles: ['JavaScript', 'JS'],
-            description: 'It a JS'
+            descriptions: ['It a ', 'JS']
           }
         ],
         {
@@ -50,7 +50,7 @@ describe('Run when ActionType is SET_WORDS', () => {
       {
         id: 'JavaScript',
         titles: ['JavaScript', 'JS'],
-        description: 'It a JS'
+        descriptions: ['It a ', 'JS']
       }
     ])
   })

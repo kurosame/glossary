@@ -12,7 +12,7 @@ export function getFirestoreWords() {
         words.push({
           id: d.id,
           titles: d.data().titles,
-          description: d.data().description
+          descriptions: d.data().descriptions
         })
       )
       return { words }
