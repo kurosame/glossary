@@ -1,7 +1,7 @@
-import { env } from '@/firebase/env'
+import { config } from '@/firebase/config'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
-const firebaseApp = firebase.initializeApp(env)
+const firebaseApp = firebase.initializeApp(config)
 export const firestore = firebaseApp.firestore()
 firestore.settings({ timestampsInSnapshots: true })

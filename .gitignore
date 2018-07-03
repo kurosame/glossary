@@ -1,6 +1,5 @@
 dist
 node_modules
-src/firebase/env.ts
 test/e2e/specs/**/__screenshots__/*
 test/unit/coverage/**/*
 .firebaserc
