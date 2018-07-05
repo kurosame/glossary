@@ -13,7 +13,7 @@ render(
       <Router>
         <>
           <Route path="/" component={Header} />
-          <Route path="/" component={List} exact />
+          {/* <Route path="/" component={List} exact /> */}
         </>
       </Router>
     </MuiThemeProvider>

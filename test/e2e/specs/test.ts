@@ -22,9 +22,7 @@ afterAll(() => {
 })
 
 beforeEach(async () => {
-  console.log(page)
   await page.goto('http://localhost:9000')
-  console.log(page)
 })
 
 test('Initial display', async () => {
