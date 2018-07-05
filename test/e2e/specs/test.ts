@@ -22,13 +22,16 @@ afterAll(() => {
 })
 
 beforeEach(async () => {
-  // await page.goto('http://localhost:9000')
+  console.log(page)
+  await page.goto('http://localhost:9000')
+  console.log(page)
 })
 
 test('Initial display', async () => {
-  // await page.waitFor(1000)
-  // await page.screenshot({
-  //   path: path.join(__dirname, '__screenshots__', 'init.png'),
-  //   fullPage: true
-  // })
+  await page.waitFor(1000)
+
+  await page.screenshot({
+    path: path.join(__dirname, '__screenshots__', 'init.png'),
+    fullPage: true
+  })
 })
