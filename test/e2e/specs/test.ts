@@ -1,7 +1,7 @@
 import path from 'path'
 import puppeteer, { Browser, Page } from 'puppeteer'
 
-jest.setTimeout(30000)
+jest.setTimeout(60000)
 
 let browser: Browser
 let page: Page
