@@ -18,7 +18,7 @@ export interface IWordActions {
 export interface IWordState {
   id: string
   titles: string[]
-  descriptions: string[]
+  descriptions: Array<string | null>
 }
 
 const initialState: IWordState[] = []

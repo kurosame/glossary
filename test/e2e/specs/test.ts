@@ -1,7 +1,7 @@
 import path from 'path'
 import puppeteer, { Browser, Page } from 'puppeteer'
 
-jest.setTimeout(60000)
+jest.setTimeout(30000)
 
 let browser: Browser
 let page: Page
@@ -26,7 +26,7 @@ beforeEach(async () => {
 })
 
 test('Initial display', async () => {
-  await page.waitFor(1000)
+  // await page.waitFor(1000)
 
   await page.screenshot({
     path: path.join(__dirname, '__screenshots__', 'init.png'),

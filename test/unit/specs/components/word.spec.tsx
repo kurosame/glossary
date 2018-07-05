@@ -5,7 +5,7 @@ import React from 'react'
 const word = {
   id: 'React',
   titles: ['React', 'React.js'],
-  descriptions: ['It a ', 'React']
+  descriptions: ['It a ', null, 'React']
 }
 
 const wrapper = mount(<Word word={word} />)
