@@ -26,12 +26,9 @@ beforeEach(async () => {
 })
 
 test('Initial display', async () => {
-  await page.waitFor(1000)
-
-  await page.screenshot({
-    path: path.join(__dirname, '__screenshots__', 'init.png'),
-    fullPage: true
-  })
-
-  expect(true)
+  // await page.waitFor(1000)
+  // await page.screenshot({
+  //   path: path.join(__dirname, '__screenshots__', 'init.png'),
+  //   fullPage: true
+  // })
 })
