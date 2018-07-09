@@ -1,5 +1,6 @@
 dist
 node_modules
+raw-data
 test/e2e/specs/**/__screenshots__/*
 test/unit/coverage/**/*
 .firebaserc
