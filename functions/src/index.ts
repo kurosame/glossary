@@ -13,11 +13,12 @@ export const setWord = functions.storage.object().onFinalize(o => {
     .storage()
     .bucket()
     .file(o.name)
-  const fileName = file.name
+  const fileNameSplitPeriod = file.name
     .split('/')
     .pop()!
     .split('.')
-    .shift()
+  fileNameSplitPeriod.pop()
+  const fileName = fileNameSplitPeriod.join('.')
 
   file
     .download()
@@ -29,7 +30,7 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .split(/\n/)
       const descriptions: string[] = res[0]
         .toString()
-        .match(/## descriptions\n\n((.+\n)+)/)![1]
+        .match(/## descriptions\n\n((.+\n|\n)+)/)![1]
         .trim()
         .split(/\n/)
 
