@@ -23,6 +23,10 @@ export const setWord = functions.storage.object().onFinalize(o => {
   file
     .download()
     .then(res => {
+      const category: string = res[0]
+        .toString()
+        .match(/## category\n\n(.+)/)![1]
+        .trim()
       const titles: string[] = res[0]
         .toString()
         .match(/## titles\n\n((.+\n)+)/)![1]
@@ -38,12 +42,10 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .firestore()
         .collection('words')
         .doc(fileName)
-        .set({ titles, descriptions })
+        .set({ category, titles, descriptions })
     })
     .catch(err => {
       console.error(`File download error fileName=${fileName} err=${err}`)
       return null
     })
 })
-
-// export const deleteWord = functions.storage.object().onDelete(o => {}
