@@ -43,9 +43,15 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .collection('words')
         .doc(fileName)
         .set({ category, titles, descriptions })
+        .catch(err => {
+          console.error(`Document set error fileName=${fileName} err=${err}`)
+          return null
+        })
     })
     .catch(err => {
       console.error(`File download error fileName=${fileName} err=${err}`)
       return null
     })
+
+  return null
 })
