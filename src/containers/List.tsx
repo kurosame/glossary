@@ -8,6 +8,7 @@ import { bindActionCreators, Dispatch } from 'redux'
 interface IProps {
   states: IStates
   actions: IActions
+  match: { params: { category: string } }
 }
 
 class List extends React.Component<IProps> {
@@ -17,7 +18,15 @@ class List extends React.Component<IProps> {
   }
 
   public render() {
-    return <Words words={this.props.states.words} />
+    return (
+      <Words
+        words={this.props.states.words.filter(
+          w =>
+            !this.props.match.params.category ||
+            w.category === this.props.match.params.category
+        )}
+      />
+    )
   }
 }
 

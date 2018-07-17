@@ -17,6 +17,7 @@ export interface IWordActions {
 
 export interface IWordState {
   id: string
+  category: string
   titles: string[]
   descriptions: Array<string | null>
 }

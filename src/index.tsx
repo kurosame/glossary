@@ -14,6 +14,7 @@ render(
         <>
           <Route path="/" component={Header} />
           <Route path="/" component={List} exact />
+          <Route path="/:category" component={List} exact />
         </>
       </Router>
     </MuiThemeProvider>

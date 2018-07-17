@@ -4,6 +4,7 @@ import React from 'react'
 
 const word = {
   id: 'React',
+  category: 'react',
   titles: ['React', 'React.js'],
   descriptions: ['It a ', null, 'React']
 }

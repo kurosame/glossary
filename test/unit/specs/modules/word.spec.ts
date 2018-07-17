@@ -7,6 +7,7 @@ describe('Run when ActionType is SET_WORDS', () => {
         [
           {
             id: 'JavaScript',
+            category: 'JavaScript',
             titles: ['JavaScript', 'JS'],
             descriptions: ['It a ', 'JS']
           }
@@ -16,6 +17,7 @@ describe('Run when ActionType is SET_WORDS', () => {
           payload: [
             {
               id: 'TypeScript',
+              category: 'JavaScript',
               titles: ['TypeScript', 'TS'],
               descriptions: ['It a ', 'TS']
             }
@@ -25,6 +27,7 @@ describe('Run when ActionType is SET_WORDS', () => {
     ).toEqual([
       {
         id: 'TypeScript',
+        category: 'JavaScript',
         titles: ['TypeScript', 'TS'],
         descriptions: ['It a ', 'TS']
       }
@@ -37,6 +40,7 @@ describe('Run when ActionType is SET_WORDS', () => {
         [
           {
             id: 'JavaScript',
+            category: 'JavaScript',
             titles: ['JavaScript', 'JS'],
             descriptions: ['It a ', 'JS']
           }
@@ -49,6 +53,7 @@ describe('Run when ActionType is SET_WORDS', () => {
     ).toEqual([
       {
         id: 'JavaScript',
+        category: 'JavaScript',
         titles: ['JavaScript', 'JS'],
         descriptions: ['It a ', 'JS']
       }

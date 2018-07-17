@@ -11,6 +11,7 @@ export function getFirestoreWords() {
       res.forEach(d =>
         words.push({
           id: d.id,
+          category: d.data().category,
           titles: d.data().titles,
           descriptions: d.data().descriptions
         })
