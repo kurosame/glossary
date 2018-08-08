@@ -23,10 +23,18 @@ export default class Header extends React.Component<{}, IState> {
           onChange={this.tabChange}
           data-test="tabs"
         >
-          <Tab label="All" component={(p: {}) => <Link to="/" {...p} />} />
+          <Tab label="Summary" component={(p: {}) => <Link to="/" {...p} />} />
           <Tab
             label="Firebase"
             component={(p: {}) => <Link to="/firebase" {...p} />}
+          />
+          <Tab
+            label="Apache"
+            component={(p: {}) => <Link to="/apache" {...p} />}
+          />
+          <Tab
+            label="Other"
+            component={(p: {}) => <Link to="/other" {...p} />}
           />
         </Tabs>
       </AppBar>
