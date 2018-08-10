@@ -4,7 +4,7 @@ import React from 'react'
 import configureStore from 'redux-mock-store'
 
 const states = {
-  words: [{ category: 'firebase', titles: [], descriptions: [] }]
+  words: [{ category: 'firebase', titles: [], description: '' }]
 }
 
 test('Match the snapshot when category exists', () => {

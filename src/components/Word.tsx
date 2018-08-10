@@ -1,6 +1,7 @@
 import { IWordState } from '@/modules/word'
 import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
 interface IProps {
@@ -19,10 +20,8 @@ export default class Word extends React.Component<IProps> {
             </TitlesSpan>
           ))}
         </CardContent>
-        <CardContent data-test="descriptions">
-          {this.props.word.descriptions.map(
-            (d, i) => (d ? <div key={i}>{d}</div> : <br key={i} />)
-          )}
+        <CardContent data-test="description">
+          <ReactMarkdown source={this.props.word.description} />
         </CardContent>
       </Card>
     )

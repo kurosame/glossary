@@ -6,7 +6,7 @@ const word = {
   id: 'React',
   category: 'react',
   titles: ['React', 'React.js'],
-  descriptions: ['It a ', null, 'React']
+  description: 'It a React'
 }
 
 const wrapper = mount(<Word word={word} />)
@@ -29,10 +29,10 @@ test('Data binding from the word.titles to CardContent', () => {
   ).toEqual('ReactReact.js')
 })
 
-test('Data binding from the word.descriptions to CardContent', () => {
+test('Data binding from the word.description to CardContent', () => {
   expect(
     wrapper
-      .find('[data-test="descriptions"]')
+      .find('[data-test="description"]')
       .first()
       .text()
   ).toEqual('It a React')

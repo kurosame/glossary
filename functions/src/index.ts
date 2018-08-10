@@ -32,9 +32,13 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .match(/## titles\n\n((.+\n)+)/)![1]
         .trim()
         .split(/\n/)
-      const descriptions: string[] = res[0]
+      const description: string = res[0]
         .toString()
-        .match(/## descriptions\n\n((.+\n|\n)+)/)![1]
+        .match(/## description\n\n((.+\n|\n)+)/)![1]
+        .trim()
+      const descriptionByLine: string[] = res[0]
+        .toString()
+        .match(/## description\n\n((.+\n|\n)+)/)![1]
         .trim()
         .split(/\n/)
 
@@ -42,7 +46,7 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .firestore()
         .collection('words')
         .doc(fileName)
-        .set({ category, titles, descriptions })
+        .set({ category, titles, description, descriptionByLine })
         .catch(err => {
           console.error(`Document set error fileName=${fileName} err=${err}`)
           return null

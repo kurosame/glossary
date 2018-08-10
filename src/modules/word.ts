@@ -19,7 +19,7 @@ export interface IWordState {
   id: string
   category: string
   titles: string[]
-  descriptions: Array<string | null>
+  description: string
 }
 
 const initialState: IWordState[] = []

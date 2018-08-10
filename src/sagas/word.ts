@@ -13,7 +13,7 @@ export function getFirestoreWords() {
           id: d.id,
           category: d.data().category,
           titles: d.data().titles,
-          descriptions: d.data().descriptions
+          description: d.data().description
         })
       )
       return { words }

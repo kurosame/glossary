@@ -26,7 +26,7 @@ describe('Run the getFirestoreWords', () => {
               return {
                 category: 'JavaScript',
                 titles: ['JavaScript', 'JS'],
-                descriptions: ['It a ', 'JS']
+                description: 'It a JS'
               }
             }
           },
@@ -36,7 +36,7 @@ describe('Run the getFirestoreWords', () => {
               return {
                 category: 'JavaScript',
                 titles: ['TypeScript', 'TS'],
-                descriptions: ['It a ', 'TS']
+                description: 'It a TS'
               }
             }
           }
@@ -49,13 +49,13 @@ describe('Run the getFirestoreWords', () => {
           id: 'JavaScript',
           category: 'JavaScript',
           titles: ['JavaScript', 'JS'],
-          descriptions: ['It a ', 'JS']
+          description: 'It a JS'
         },
         {
           id: 'TypeScript',
           category: 'JavaScript',
           titles: ['TypeScript', 'TS'],
-          descriptions: ['It a ', 'TS']
+          description: 'It a TS'
         }
       ]
     })
@@ -87,7 +87,7 @@ describe('Run the getWords', () => {
           id: 'React',
           category: 'React',
           titles: ['React'],
-          descriptions: ['It a ', 'React']
+          description: 'It a React'
         }
       ],
       error: undefined
@@ -99,7 +99,7 @@ describe('Run the getWords', () => {
           id: 'React',
           category: 'React',
           titles: ['React'],
-          descriptions: ['It a ', 'React']
+          description: 'It a React'
         }
       ],
       error: undefined
