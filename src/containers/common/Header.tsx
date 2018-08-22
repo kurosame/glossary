@@ -35,6 +35,10 @@ export default class Header extends React.Component<{}, IState> {
           />
           <Tab label="CSS" component={(p: {}) => <Link to="/css" {...p} />} />
           <Tab
+            label="Package Manager"
+            component={(p: {}) => <Link to="/package-manager" {...p} />}
+          />
+          <Tab
             label="Firebase"
             component={(p: {}) => <Link to="/firebase" {...p} />}
           />
