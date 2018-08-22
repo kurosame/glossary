@@ -28,6 +28,11 @@ export default class Header extends React.Component<{}, IState> {
             label="Browser"
             component={(p: {}) => <Link to="/browser" {...p} />}
           />
+          <Tab label="JS" component={(p: {}) => <Link to="/js" {...p} />} />
+          <Tab
+            label="React"
+            component={(p: {}) => <Link to="/react" {...p} />}
+          />
           <Tab label="CSS" component={(p: {}) => <Link to="/css" {...p} />} />
           <Tab
             label="Firebase"
