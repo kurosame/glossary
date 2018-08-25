@@ -24,19 +24,31 @@ export default class Header extends React.Component<{}, IState> {
           data-test="tabs"
         >
           <Tab label="Summary" component={(p: {}) => <Link to="/" {...p} />} />
-          <Tab
-            label="Browser"
-            component={(p: {}) => <Link to="/browser" {...p} />}
-          />
           <Tab label="JS" component={(p: {}) => <Link to="/js" {...p} />} />
           <Tab
             label="React"
             component={(p: {}) => <Link to="/react" {...p} />}
           />
+          <Tab
+            label="Vue.js"
+            component={(p: {}) => <Link to="/vue.js" {...p} />}
+          />
           <Tab label="CSS" component={(p: {}) => <Link to="/css" {...p} />} />
+          <Tab
+            label="Swift"
+            component={(p: {}) => <Link to="/swift" {...p} />}
+          />
+          <Tab
+            label="Browser"
+            component={(p: {}) => <Link to="/browser" {...p} />}
+          />
           <Tab
             label="Package Manager"
             component={(p: {}) => <Link to="/package-manager" {...p} />}
+          />
+          <Tab
+            label="Module Bundler"
+            component={(p: {}) => <Link to="/module-bundler" {...p} />}
           />
           <Tab
             label="Firebase"
