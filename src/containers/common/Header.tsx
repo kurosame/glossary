@@ -59,6 +59,10 @@ export default class Header extends React.Component<{}, IState> {
             component={(p: {}) => <Link to="/apache" {...p} />}
           />
           <Tab
+            label="Server"
+            component={(p: {}) => <Link to="/server" {...p} />}
+          />
+          <Tab
             label="Other"
             component={(p: {}) => <Link to="/other" {...p} />}
           />
