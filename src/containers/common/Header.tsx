@@ -50,6 +50,7 @@ export default class Header extends React.Component<{}, IState> {
             label="Module Bundler"
             component={(p: {}) => <Link to="/module-bundler" {...p} />}
           />
+          <Tab label="AWS" component={(p: {}) => <Link to="/aws" {...p} />} />
           <Tab
             label="Firebase"
             component={(p: {}) => <Link to="/firebase" {...p} />}
