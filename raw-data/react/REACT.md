@@ -8,7 +8,7 @@ React
 
 ## description
 
-### Component, Element
+### Component と Element
 
 ```js
 // Component
@@ -24,8 +24,54 @@ const Hello = React.createClass({
 const element = React.createElement('div', { id: 'sample' }, 'hello')
 ```
 
-Element は仮想 DOM 構造体  
-Component とは複数もしくは単体の Element からなる集合体
+- Component  
+  props や state を持ち、複数もしくは単体の ReactElement をレンダリングする集合体
+
+- Element  
+  ReactComponent から createElement によって生成された仮想 DOM 構造体
+
+### ライフサイクル
+
+- componentDidMount  
+  Component が実 DOM としてマウント（実体化）された時に呼ばれる
+
+- componentDidUpdate(prevProps, prevState, snapshot)  
+  props と state が何らかの条件で変更し、実 DOM へ適用された後に呼ばれる
+
+- componentWillUnmount  
+  Component が実 DOM から削除される直前に呼ばれる
+
+### 仮想 DOM と実 DOM の更新について
+
+以下の流れで DOM を更新する
+
+1. 仮想 DOM_A から実 DOM_A を初期状態として構築
+1. 仮想 DOM_A は実 DOM_A で発生したイベントを受け取り、仮想 DOM_A 内の state の更新を発行
+1. 更新された props と state を用いて、仮想 DOM_B を構築
+1. 仮想 DOM_A と仮想 DOM_B を比較し、差分を抽出
+1. 実 DOM_A に対して、仮想 DOM_B との差分を適用して、実 DOM_B にする
+
+仮想 DOM は差分抽出を高速に行うために、軽量なオブジェクトとして実装されている  
+これが ReactElement であり、仮想 DOM 構造体の正体である
+
+仮想 DOM と実 DOM は一致していることが前提なので、実 DOM を直接更新する jQuery は非常に相性が悪い
+
+差分抽出の手がかりとして、Map の中の要素に付ける key 属性がある  
+key 属性が適切に付いていれば、key 属性を基に前後の関係を同定できる  
+key 属性は、仮想 DOM のみに存在し、実 DOM が生成される際には破棄される
+
+Flux で state を管理し、View は state を入力値とするが、この際に state が変われば、変わる度に View を全てルート要素から再作成している
+
+### Reconciler
+
+仮想 DOM が抽出した差分を実 DOM にどう適用するかの処理を考える  
+複数のプラットフォームに対応するため、Reconciler は React 特有の抽象層になっている  
+つまり、複数のプラットフォームでも Reconciler は 1 つしか存在しない
+
+### Renderer
+
+仮想 DOM が抽出した差分を実 DOM にどう適用するかの実装を担当する  
+複数のプラットフォームごとに実装は別となっている
 
 ### PureComponent
 
