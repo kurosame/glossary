@@ -32,6 +32,34 @@ const element = React.createElement('div', { id: 'sample' }, 'hello')
 
 ### ライフサイクル
 
+- Mounting
+
+  1. constructor
+  1. render
+  1. DOM の更新
+  1. componentDidMount
+
+- Updating
+
+  1. props もしくは state の更新がトリガー
+  1. render
+  1. DOM の更新
+  1. componentDidUpdate
+
+- Unmounting
+
+  1. componentWillUnmount
+
+- constructor  
+  state の初期化やイベントハンドラのバインドを行う  
+  これらの処理が不要であれば、実装する必要はない  
+  setState 関数は呼び出さず、this.state で初期値をセットする
+
+- render  
+  クラスコンポーネントで唯一必須の関数  
+  この関数は副作用のない純粋関数である必要がある  
+  副作用は後述するライフサイクル関数で行う
+
 - componentDidMount  
   Component が実 DOM としてマウント（実体化）された時に呼ばれる
 
