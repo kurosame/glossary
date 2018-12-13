@@ -20,6 +20,52 @@ webpack は CSS などの JS 以外のファイルも JS にバンドルする
 
 loader 以外の色々、最終的に JS に変換する必要がないもの
 
+### bundle.js の中身
+
+即時関数となっているので、ブラウザで bundle.js を読み込んだ時点で実行される
+
+```js
+(function(modules) { // webpackBootstrap
+...
+})
+```
+
+上記の即時関数内に`__webpack_require__`関数が定義されている
+
+```js
+function __webpack_require__(moduleId) {
+  // モジュールのキャッシュがあるか確認
+  // キャッシュがある場合は、そのキャッシュされているモジュールのexportsを返す
+  // moduleIdはモジュールごとの一意のID
+  if (installedModules[moduleId]) {
+    return installedModules[moduleId].exports
+  }
+
+  // モジュールを作成＆キャッシュに格納
+  var module = (installedModules[moduleId] = {
+    i: moduleId,
+    l: false,
+    exports: {}
+  })
+
+  // 関数を実行する
+  // modulesには全てのモジュールが入っている
+  modules[moduleId].call(
+    module.exports,
+    module,
+    module.exports,
+    __webpack_require__
+  )
+
+  // loadedフラグをtrue
+  module.l = true
+
+  return module.exports
+}
+```
+
+その後は、`__webpack_require__`関数を介して、モジュールを拡張していく
+
 ### Tree Shaking
 
 v2 から追加された機能  
