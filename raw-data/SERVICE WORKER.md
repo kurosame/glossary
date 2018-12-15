@@ -110,13 +110,33 @@ DOM の更新をひとまとめにして Service Worker で非同期に処理で
 
 - Service Worker
 
-  - バックグラウンドでネットワークをプロキシして処理できる
+  - メインスレッドからのネットワークリクエストをプロキシして処理できる
   - DOM にアクセス不可能
 
 - Web Worker
 
   - 画面のレンダリングを大幅にブロックするような処理をマルチスレッドでバックグラウンドのスレッドで実行することができる
   - DOM にアクセス不可能
+
+```js
+// Main thread
+const worker = new Worker('worker.js')
+
+// Workerにメッセージを送信
+worker.postMessage('Hello!')
+// Workerからメッセージを受信
+worker.onmessage = e => console.log(e.data)
+```
+
+```js
+// Web worker
+self.onmessage = e => {
+  // Main threadからメッセージを受信
+  console.log(e.data)
+  // Main threadにメッセージを送信
+  self.postMessage(workerResult)
+}
+```
 
 - WebSocket
 
