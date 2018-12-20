@@ -6,26 +6,6 @@ references:
 
 version: 2
 jobs:
-  build:
-    <<: *setup-docker
-    steps:
-      - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run:
-          name: Install
-          command: yarn install
-      - run:
-          name: Build for production
-          command: yarn build:production
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
   test:
     <<: *setup-docker
     steps:
@@ -70,6 +50,33 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - store_artifacts:
           path: ./test/e2e/specs/__screenshots__
+  outdated:
+    <<: *setup-docker
+    steps:
+      - checkout
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install
+          command: yarn install
+      - run:
+          name: Outdated
+          command: |
+            PAYLOAD=`cat << EOF
+            {
+              "attachments": [
+                {
+                  "pretext": "glossary's outdated",
+                  "text": '$(yarn outdated --json | $(yarn bin)/format-yarn-outdated)',
+                  "mrkdwn_in": ["text"]
+                }
+              ]
+            }
+            EOF`
+            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
 
 workflows:
   version: 2
@@ -77,3 +84,13 @@ workflows:
     jobs:
       - test
       - e2e
+  nightly:
+    triggers:
+      - schedule:
+          cron: '00 0 * * 1'
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - outdated
