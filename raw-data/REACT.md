@@ -210,6 +210,9 @@ const Sample = () => (
 SFC(Stateless Functional Component)を目指す  
 state を持たずに、props だけを持つコンポーネント
 
+UI のみの責務に特化した Presentational Component に SFC は適応しやすい  
+また、データ周りは Container Component に責任に委譲すれば良い
+
 ### パフォーマンスチューニング
 
 - shouldComponentUpdate  
