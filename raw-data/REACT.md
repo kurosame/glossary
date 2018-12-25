@@ -205,6 +205,66 @@ const Sample = () => (
 )
 ```
 
+### React.memo
+
+関数型コンポーネント用の PureComponent  
+関数型コンポーネントを React.memo でラップすることで、PureComponent と同等な機能を持たせることができる  
+ちなみに PureComponent は Class 型コンポーネント用
+
+```js
+const MyComponent = React.memo(function MyComponent(props) {})
+```
+
+### React.lazy
+
+動的にインポートされるコンポーネントを React.lazy でラップする  
+レンダリングツリーの上位に React.Suspense を使うことで React.lazy でラップしたコンポーネントを読み込んでいる間、fallback 内の処理を行うように指定できる
+
+```js
+const OtherComponent = React.lazy(() => import('./OtherComponent'))
+
+function MyComponent() {
+  return (
+    <React.Suspense fallback={<Spinner />}>
+      <div>
+        <OtherComponent />
+      </div>
+    </React.Suspense>
+  )
+}
+```
+
+### Error Boundaries
+
+子コンポーネントツリーで発生したエラーをキャッチして処理できるコンポーネントを定義できる  
+getDerivedStateFromError と componentDidCatch の 2 通りの方法がある  
+getDerivedStateFromError で状態の更新を行うと、再レンダリングが行われるので、それを利用してフォールバック UI を表示させる実装が良い  
+getDerivedStateFromError は副作用が許可されていないが、componentDidCatch は副作用が許可されているので componentDidCatch はエラーロギングなどの用途で使うべきである
+
+```js
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, info) {
+    logErrorToMyService(error, info)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>
+    }
+    return this.props.children
+  }
+}
+```
+
 ### 良い設計方針
 
 SFC(Stateless Functional Component)を目指す  
