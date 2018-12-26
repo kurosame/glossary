@@ -14,6 +14,10 @@ Web ページとライフサイクルも異なるし、DOM にアクセスする
 https 環境は必須  
 主要イベントは Fetch, Push, Sync
 
+メインスレッドからのネットワークリクエストをプロキシして処理できる  
+リクエストをプロキシして、キャッシュした HTML にリダイレクトし、オフラインアクセスを可能にする  
+DOM にはアクセス不可能
+
 例えば、以下のようなことが可能になる
 
 - プッシュ通知  
@@ -105,41 +109,3 @@ sw-precache と sw-toolbox の機能を含んだ発展系ライブラリ
 ### DOMChangeList
 
 DOM の更新をひとまとめにして Service Worker で非同期に処理できるようにする
-
-### Service Worker, Web Worker, WebSocket の違い
-
-- Service Worker
-
-  - メインスレッドからのネットワークリクエストをプロキシして処理できる
-  - リクエストをプロキシして、キャッシュした HTML にリダイレクトし、オフラインアクセスを可能にする
-  - DOM にアクセス不可能
-
-- Web Worker
-
-  - 画面のレンダリングを大幅にブロックするような処理をマルチスレッドでバックグラウンドのスレッドで実行することができる
-  - DOM にアクセス不可能
-
-```js
-// Main thread
-const worker = new Worker('worker.js')
-
-// Workerにメッセージを送信
-worker.postMessage('Hello!')
-// Workerからメッセージを受信
-worker.onmessage = e => console.log(e.data)
-```
-
-```js
-// Web worker
-self.onmessage = e => {
-  // Main threadからメッセージを受信
-  console.log(e.data)
-  // Main threadにメッセージを送信
-  self.postMessage(workerResult)
-}
-```
-
-- WebSocket
-
-  - クライアントとサーバ間に単一で永続的で双方向な通信を可能にする
-  - DOM にアクセス可能
