@@ -90,6 +90,97 @@ key 属性は、仮想 DOM のみに存在し、実 DOM が生成される際に
 
 Flux で state を管理し、View は state を入力値とするが、この際に state が変われば、変わる度に View を全てルート要素から再作成している
 
+### 仮想 DOM を作ってみる
+
+以下の HTML に`<span>test span</span>`を追加し、`<p>`のテキストを変更したいとする
+
+```html
+<div><p>test</p></div>
+```
+
+仮想 DOM は通常の JS オブジェクトなので、以下のように表現される
+
+```js
+const vdom = {
+  tagName: 'div',
+  children: [
+    {
+      tagName: 'p',
+      textContent: 'test'
+    }
+  ]
+}
+```
+
+変更したい箇所を含む、仮想 DOM のコピーを作成する
+
+```js
+const copy = {
+  tagName: 'div',
+  children: [
+    {
+      tagName: 'p',
+      textContent: 'test p'
+    },
+    {
+      tagName: 'span',
+      textContent: 'test span'
+    }
+  ]
+}
+```
+
+仮想 DOM のコピーを利用して、差分を作成する
+
+```js
+const diffs = [
+  {
+    newNode: {
+      /* 「test p」のHTML要素 */
+    },
+    oldNode: {
+      /* 「test」のHTML要素 */
+    },
+    index: {
+      /* 子の親ノード内でのインデックス */
+    }
+  },
+  {
+    newNode: {
+      /* 「test span」のHTML要素 */
+    },
+    index: {
+      /* 子の親ノード内でのインデックス */
+    }
+  }
+]
+```
+
+差分を基に必要な更新のみを行う
+
+```js
+diffs.forEach(diff => {
+  if (diff.oldNode) {
+    el.replaceChild(diff.newNode, diff.index)
+  } else {
+    el.appendChild(diff.newNode)
+  }
+})
+```
+
+普通は、仮想 DOM に直接アクセスせず、React や Vue.js などのフレームワークを利用してアクセスする  
+例えば、React を利用して先程の仮想 DOM 更新を実装すると以下のようになる
+
+```js
+const newNode = React.createElement(
+  'div',
+  null,
+  React.createElement('p', null, 'test p'),
+  React.createElement('span', null, 'test span')
+)
+ReactDOM.render(newNode, document.body)
+```
+
 ### Reconciler
 
 仮想 DOM が抽出した差分を実 DOM にどう適用するかの処理を考える  

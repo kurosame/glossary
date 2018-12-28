@@ -87,3 +87,12 @@ webpack.UglifyJS.pure_funcs や webpack4 から使える package.json の sideEf
 ### ESModules と WebAssembly のサポート
 
 webpack v4 からエントリーポイントに`.mjs`と`.wasm`を指定できるようになった
+
+### webpack-dev-server による HMR の流れ
+
+1. webpack がファイルの変更を監視
+1. ファイルの変更があった場合、webpack コンパイラーが変更のみを含む ChunkJS とメタ情報を持つ ManifestJSON を生成する
+1. webpack-dev-server で ChunkJS と ManifestJSON を配信する
+1. WebSocket 経由で webpack-dev-server から webpack-dev-server/client へコンパイル結果と HashID を送る
+1. webpack/hot/dev-server のランタイムで HashID を基に新しい ChunkJS と ManifestJSON を webpack-dev-server から取得する
+1. 既存コードと新規コードを差し替える

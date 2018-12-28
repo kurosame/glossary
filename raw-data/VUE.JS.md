@@ -19,6 +19,14 @@ setter 関数を書かなければ、外部から変更不可のプロパティ�
 変数や関数は data や methods よりも computed で定義した方が良い  
 computed はキャッシュも効く
 
+### computed が再評価される仕組み
+
+computed のプロパティは Vue インスタンスを作成する際に、Watcher を生成している  
+computed 内で data で定義した変数を使っていた場合、この変数の変更を Watcher に通知している  
+そして、computed のプロパティが再評価される
+
+data で定義した変数の変更の検知は、Object.defineProperty 内の setter で Watcher に通知する処理を書いている
+
 ### scoped
 
 CSS を現在のコンポーネントの要素にのみ適用できる  
@@ -32,18 +40,14 @@ scoped を付けないとグローバルスコープの CSS となる
 ```html
 <!-- parent.html -->
 <template>
-  <div class="sample">
-    <child></child>
-  </div>
+  <div class="sample"><child></child></div>
 </template>
 ```
 
 ```html
 <!-- child.html -->
 <template>
-  <div class="sample">
-  ...
-  </div>
+  <div class="sample">...</div>
 </template>
 ```
 
