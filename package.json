@@ -3,9 +3,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open --port 8000 --mode development",
-    "build": "webpack --mode development",
-    "build:production": "webpack --mode production",
+    "start": "webpack-dev-server --open --port 8000 --mode=development",
+    "build": "webpack --mode=development",
+    "build:production": "webpack --mode=production",
     "deploy": "yarn clean && yarn build:production && firebase deploy",
     "test": "jest --watchAll",
     "test:ci": "jest",
