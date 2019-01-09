@@ -38,9 +38,14 @@ module.exports = (_, argv) => ({
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'babel-loader',
             options: {
-              useBabel: true,
+              cacheDirectory: true
+            }
+          },
+          {
+            loader: 'ts-loader',
+            options: {
               transpileOnly: true
             }
           },
