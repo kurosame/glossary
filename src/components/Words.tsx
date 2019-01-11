@@ -1,24 +1,38 @@
 import Word from '@/components/Word'
-import { IWordState } from '@/modules/word'
+import { IStates } from '@/modules/states'
+import { getWords, IWordActions, IWordState } from '@/modules/word'
 import { List, ListItem } from '@material-ui/core'
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators, Dispatch } from 'redux'
 import styled from 'styled-components'
 
 interface IProps {
-  words: IWordState[]
+  state: { words: IWordState[] }
+  actions: IWordActions
+  category: string
 }
 
-export default class Words extends React.Component<IProps> {
+class Words extends React.PureComponent<IProps> {
+  constructor(props: IProps) {
+    super(props)
+    props.actions.getWords()
+  }
+
   public render() {
     return (
-      <List>
-        {this.props.words.map(w => (
-          <ListItem key={w.id}>
-            <WordDiv>
-              <Word word={w} />
-            </WordDiv>
-          </ListItem>
-        ))}
+      <List data-test="words">
+        {this.props.state.words
+          .filter(
+            w => !this.props.category || w.category === this.props.category
+          )
+          .map(w => (
+            <ListItem key={w.id}>
+              <WordDiv>
+                <Word word={w} />
+              </WordDiv>
+            </ListItem>
+          ))}
       </List>
     )
   }
@@ -27,3 +41,12 @@ export default class Words extends React.Component<IProps> {
 const WordDiv = styled.div`
   width: 100%;
 `
+
+export default connect(
+  (states: IStates) => ({ state: { words: states.words } }),
+  (dispatch: Dispatch) => ({
+    actions: {
+      getWords: bindActionCreators(getWords, dispatch)
+    }
+  })
+)(Words)

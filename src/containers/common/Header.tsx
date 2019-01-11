@@ -6,13 +6,13 @@ interface IState {
   tabValue: number
 }
 
-export default class Header extends React.Component<{}, IState> {
+export default class Header extends React.PureComponent<{}, IState> {
   constructor(props: {}) {
     super(props)
     this.state = { tabValue: 0 }
   }
 
-  public tabChange = (e: React.ChangeEvent<{}>, v: number) =>
+  public tabChange = (_: React.ChangeEvent<{}>, v: number) =>
     this.setState({ tabValue: v })
 
   public render() {

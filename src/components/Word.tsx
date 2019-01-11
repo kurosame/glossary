@@ -8,26 +8,24 @@ interface IProps {
   word: IWordState
 }
 
-export default class Word extends React.Component<IProps> {
-  public render() {
-    return (
-      <Card>
-        <CardHeader title={<b>{this.props.word.id}</b>} data-test="id" />
-        <CardContent data-test="titles">
-          {this.props.word.titles.map((t, i) => (
-            <TitlesSpan key={i}>
-              <Chip label={t} />
-            </TitlesSpan>
-          ))}
-        </CardContent>
-        <CardContent data-test="description">
-          <ReactMarkdown source={this.props.word.description} />
-        </CardContent>
-      </Card>
-    )
-  }
-}
+export const Word = (props: IProps) => (
+  <Card>
+    <CardHeader title={<b>{props.word.id}</b>} data-test="id" />
+    <CardContent data-test="titles">
+      {props.word.titles.map((t, i) => (
+        <TitlesSpan key={i}>
+          <Chip label={t} />
+        </TitlesSpan>
+      ))}
+    </CardContent>
+    <CardContent data-test="description">
+      <ReactMarkdown source={props.word.description} />
+    </CardContent>
+  </Card>
+)
 
 const TitlesSpan = styled.span`
   margin-right: 5px;
 `
+
+export default Word

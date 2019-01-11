@@ -1,4 +1,4 @@
-import { IStates } from '@/modules/index'
+import { IStates } from '@/modules/states'
 import { words } from '@/modules/word'
 import rootSaga from '@/sagas/index'
 import {
