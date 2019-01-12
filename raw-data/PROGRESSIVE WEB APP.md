@@ -15,7 +15,7 @@ AMP と違い特定のフレームワーク等はなく、Service Worker など�
 IE 以外で PWA 対応の動きがある
 
 以下の Google が策定したチェックリストに沿っていれば、そのページは PWA と言える  
-https://developers.google.com/web/progressive-web-apps/checklist
+<a href="https://developers.google.com/web/progressive-web-apps/checklist" target="_blank">Progressive Web App Checklist</a>
 
 ### メリット
 

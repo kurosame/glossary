@@ -35,7 +35,7 @@ Rust は Emscripten が対応する LLVM の中間表現（IR）を生成する�
 asm.js だけでなく、wasm を生成する機能を開発中
 
 Rust から wasm へのビルドが開発されたっぽい  
-https://github.com/rust-lang/rust/pull/42571
+<a href="https://github.com/rust-lang/rust/pull/42571" target="_blank">Enable wasm LLVM backend</a>
 
 ### LLVM
 

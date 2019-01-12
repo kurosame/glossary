@@ -8,6 +8,12 @@ Vue.js
 
 ## description
 
+<a href="https://qiita.com/kurosame/items/b3f5bee8ea73df025cb1" target="_blank">Vue2 のディレクトリ構成を考える</a>
+
+<a href="https://qiita.com/kurosame/items/183a93bcc39d4c8c27d5" target="_blank">Vue.js とその周辺技術を学ぶ勉強会</a>
+
+<a href="https://qiita.com/kurosame/items/1e8754fceeba9b9bfcd1" target="_blank">Vue.js を最速でビルドして、無料で公開するぞ！[ハンズオン形式]</a>
+
 ### data と methods と computed
 
 data はコンポーネントのローカル変数  
@@ -61,6 +67,14 @@ scoped を付けないとグローバルスコープの CSS となる
 
 CSS モジュールを使える
 
+### ライフサイクル
+
+<a href="https://qiita.com/kurosame/items/6ab7622fe30c299a693e" target="_blank">Vue.js のライフサイクルメモ</a>
+
+### Server Side Rendering
+
+<a href="https://qiita.com/kurosame/items/9815a28820e5e63d1a55" target="_blank">Vue.js でサーバサイドレンダリングしたい</a>
+
 ### 更新時に不要なコンポーネントのレンダリングを防ぐには
 
 React でいう PureComponent や shouldComponentUpdate 的なものは無いのか？  
@@ -76,6 +90,14 @@ React でいう PureComponent や shouldComponentUpdate 的なものは無いの
 
 - Vue.js v2.5 以降  
   TypeScript のサポートにより、オブジェクトリテラルベースでも this の推論ができるようになった
+
+### Higher-Order Components
+
+<a href="https://qiita.com/kurosame/items/ad02af3e15e608a1c724" target="_blank">Vue.js で HOC 的なことをやりたい</a>
+
+### ユニットテスト
+
+<a href="https://qiita.com/kurosame/items/8d82ef8d36c106c6e8bc" target="_blank">Vue.js のテストをモダンにする</a>
 
 ### React との比較
 

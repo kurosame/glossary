@@ -1,5 +1,7 @@
 {
   "name": "functions",
+  "private": true,
+  "main": "lib/index.js",
   "scripts": {
     "lint": "tslint -p tsconfig.json",
     "build": "tsc -p tsconfig.json",
@@ -9,15 +11,13 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
-  "main": "lib/index.js",
   "dependencies": {
-    "firebase-admin": "~5.12.1",
-    "firebase-functions": "^1.0.3"
+    "firebase-admin": "~6.5.0",
+    "firebase-functions": "^2.1.0"
   },
   "devDependencies": {
-    "@kurosame/tslint-config-react": "^1.1.0",
-    "tslint": "^5.8.0",
+    "@kurosame/tslint-config-react": "^1.2.0",
+    "tslint": "^5.12.1",
     "typescript": "^2.5.3"
-  },
-  "private": true
+  }
 }

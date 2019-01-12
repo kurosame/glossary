@@ -1,7 +1,7 @@
 import { IWordState } from '@/modules/word'
 import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown/with-html'
 import styled from 'styled-components'
 
 interface IProps {
@@ -19,7 +19,7 @@ export const Word = (props: IProps) => (
       ))}
     </CardContent>
     <CardContent data-test="description">
-      <ReactMarkdown source={props.word.description} />
+      <ReactMarkdown source={props.word.description} escapeHtml={false} />
     </CardContent>
   </Card>
 )

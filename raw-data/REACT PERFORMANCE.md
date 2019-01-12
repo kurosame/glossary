@@ -14,4 +14,4 @@ react-addons-perf は同期レンダリングが前提となっているため�
 
 今のパフォーマンスチューニングは、Chrome であれば Performance タブの Timeline パネルで計測する  
 URL に`?react_perf`を付与する必要があったが、v16 からは不要になる模様  
-https://github.com/reactjs/reactjs.org/pull/356
+<a href="https://github.com/reactjs/reactjs.org/pull/356" target="_blank">Update "optimizing performance" instructions for React 16</a>

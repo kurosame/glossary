@@ -12,7 +12,7 @@ Lerna
 複数の npm パッケージを単一の git リポジトリで管理すること
 
 例えば babel だと以下のように複数パッケージが 1 つのリポジトリで管理されている  
-https://github.com/babel/babel/tree/master/packages
+<a href="https://github.com/babel/babel/tree/master/packages" target="_blank">babel/packages</a>
 
 ### Lerna
 

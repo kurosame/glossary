@@ -266,35 +266,7 @@ State の管理を React で行えるもの
 State 管理を楽に行いたいけど、Redux を導入するまでも無い時とか良いかもしれない  
 また Redux と同様のフローをとるため、その後の移行も楽そう
 
-```react
-const { Provider, Consumer } = React.createContext()
-
-render() {
-  return (
-    <Provider
-      data={{
-        state: this.state,
-        actions: {
-          setSample: () => this.setState({ value: this.state.value })
-        }
-      }}
-    >
-      <Sample />
-    </Provider>
-  )
-}
-
-const Sample = () => (
-  <Consumer>
-    {({ state, actions }) => (
-      <div>
-        <span>{state.value}</span>
-        <button onClick={actions.setSample} />
-      </div>
-    )}
-  </Consumer>
-)
-```
+<a href="https://kurosame-th.hatenadiary.com/entry/2018/11/05/193908" target="_blank">React の Context API について</a>
 
 ### React.memo
 
@@ -355,6 +327,10 @@ class ErrorBoundary extends React.Component {
   }
 }
 ```
+
+### React Hooks
+
+<a href="https://kurosame-th.hatenadiary.com/entry/2018/11/07/193117" target="_blank">React Hooks について [ Basic Hooks 編 ]</a>
 
 ### 良い設計方針
 

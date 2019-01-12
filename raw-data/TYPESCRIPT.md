@@ -12,6 +12,8 @@ JavaScript のスーパーセット
 コンパイル時に静的型検査を行う  
 tsc コマンドでコンパイルすると JavaScript に変換できる
 
+<a href="https://qiita.com/kurosame/items/3c28f45c8b2e65f5c69d" target="_blank">JS から TS への移行で悩んだ点の対応メモ</a>
+
 ### 型定義
 
 - 型定義ファイル（`.d.ts`）を管理するツール

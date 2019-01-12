@@ -14,9 +14,8 @@ Service Worker の Foreign Fetch で取得することができるようにな�
 通常の Fetch は自分のサービス上からのリクエストを Service Worker で処理するのに対して、  
 Foreign Fetch は 3rd Party からのリクエストも Service Worker で処理できるようになる
 
-でも Service Worker から削除された  
-https://github.com/w3c/ServiceWorker/issues/1188  
-Double-Keying の影響を考えてとのこと
+でも Service Worker から削除された（Double-Keying の影響を考えてとのこと）  
+<a href="https://github.com/w3c/ServiceWorker/issues/1188" target="_blank">Remove foreign fetch</a>
 
 ### Double-Keying
 

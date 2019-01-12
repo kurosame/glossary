@@ -13,6 +13,8 @@ JS
 キューに登録された関数が順番に実行されていく  
 非同期処理はサポートされているので、キューに登録される順番は同期だったり、非同期だったりする
 
+<a href="https://qiita.com/kurosame/items/0434d81bdcd97eb0da19" target="_blank">1 年前に作ったフロントエンド環境を色々新しくした</a>
+
 ### var, let, const
 
 - var  
@@ -210,3 +212,11 @@ console.log(result)
 - ECMAScript  
   export と import  
   CommonJS や AMD の良い所取り（シンプルで分かりやすい構文と非同期読み込み）
+
+### コンパイラー
+
+<a href="https://qiita.com/kurosame/items/b8f9cb3657538ef703c0" target="_blank">JS の最適化ツール「Prepack」を使ってみる</a>
+
+### フレームワーク比較
+
+<a href="https://kurosame-th.hatenadiary.com/entry/2018/12/25/123302" target="_blank">React と Vue.js と Angular の比較</a>

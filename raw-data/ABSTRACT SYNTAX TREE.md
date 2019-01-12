@@ -20,7 +20,7 @@ Mozilla が提唱する ParserAPI による定義がデファクト
 ESLint もこの方式で静的解析を行っている
 
 以下でパースをオンライン上で試せる  
-http://esprima.org/demo/parse.html
+<a href="http://esprima.org/demo/parse.html" target="_blank">Esprima</a>
 
 ### 代表的なツール
 

@@ -13,6 +13,8 @@ ECS
 Docker コンテナを管理できるサービス  
 クラスター、サービス、タスクの 3 つの概念をもつ
 
+<a href="https://qiita.com/kurosame/items/fc2dabea69eee35473f8" target="_blank">Amazon ECS を使った簡単なコンテナアプリの構築</a>
+
 ### タスク（タスク定義）
 
 （複数の）Docker コンテナのリソースや起動方法を定義する  
