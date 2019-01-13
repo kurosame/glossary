@@ -10,7 +10,7 @@ interface IProps {
 
 export const Word = (props: IProps) => (
   <Card>
-    <CardHeader title={<b>{props.word.id}</b>} data-test="id" />
+    <CardHeader title={<h3>{props.word.id}</h3>} data-test="id" />
     <CardContent data-test="titles">
       {props.word.titles.map((t, i) => (
         <TitlesSpan key={i}>
