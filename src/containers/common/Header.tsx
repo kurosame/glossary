@@ -20,6 +20,8 @@ export default class Header extends React.PureComponent<{}, IState> {
       <AppBar position="static">
         <Tabs
           value={this.state.tabValue}
+          scrollable={true}
+          scrollButtons="off"
           onChange={this.tabChange}
           data-test="tabs"
         >
