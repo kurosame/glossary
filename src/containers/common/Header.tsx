@@ -64,6 +64,10 @@ export default class Header extends React.PureComponent<{}, IState> {
             component={(p: {}) => <Link to="/server" {...p} />}
           />
           <Tab
+            label="Words"
+            component={(p: {}) => <Link to="/words" {...p} />}
+          />
+          <Tab
             label="Other"
             component={(p: {}) => <Link to="/other" {...p} />}
           />
