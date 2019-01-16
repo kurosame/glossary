@@ -335,7 +335,8 @@ class ErrorBoundary extends React.Component {
 ### 良い設計方針
 
 SFC(Stateless Functional Component)を目指す  
-state を持たずに、props だけを持つコンポーネント
+これは state を持たずに、props だけを持つコンポーネント  
+また、クラスベースのコンポーネントよりパフォーマンスが良い
 
 UI のみの責務に特化した Presentational Component に SFC は適応しやすい  
 また、データ周りは Container Component に責任に委譲すれば良い
