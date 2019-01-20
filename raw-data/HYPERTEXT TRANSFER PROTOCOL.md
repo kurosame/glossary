@@ -7,6 +7,7 @@ other
 Hypertext Transfer Protocol
 HTTP
 HTTP/2
+HTTP/3
 
 ## description
 
@@ -49,3 +50,10 @@ Google が Web の表示を高速化するために開発したプロトコル�
 HTTP/2 におけるリクエスト・レスポンス・ヘッダー情報などはすべてフレームとして送受信される
 
 フレームのタイプは 10 種類定義されている（DATA, HEADERS など）
+
+### HTTP/3
+
+トランスポート層で TCP ではなく、UDP をベースとして開発された QUIC（Quick UDP Internet Connections）プロトコル上で HTTP を動かす仕様
+
+- UDP - User Datagram Protocol  
+  TCP の three-way handshaking のような接続の確立を行わないので、信頼性に欠けるが、シンプルで速いプロトコル
