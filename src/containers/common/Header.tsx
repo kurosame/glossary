@@ -30,7 +30,7 @@ const Header = (props: IProps) => (
       value={tabItems.findIndex(o => o.to === props.location.pathname)}
       scrollable={true}
       scrollButtons="off"
-      data-test="tabs"
+      data-test="category-tabs"
     >
       {tabItems.map(t => (
         <Tab
