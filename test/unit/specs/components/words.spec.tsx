@@ -1,4 +1,4 @@
-import Words from '@/components/Words'
+import ConnectToWords, { Words } from '@/components/Words'
 import { IStates } from '@/modules/states'
 import { IWordState } from '@/modules/word'
 import { mount, shallow } from 'enzyme'
@@ -22,9 +22,29 @@ const state: { words: IWordState[] } = {
   ]
 }
 const states: IStates = { words: state.words }
+const actions: any = {}
+
+beforeEach(() => {
+  actions.getWords = jest.fn()
+})
+afterEach(() => {
+  actions.getWords.mockReset()
+})
+
+test('Call the getWords when words is nothing', () => {
+  mount(<Words state={{ words: [] }} actions={actions} category={''} />)
+
+  expect(actions.getWords).toBeCalled()
+})
+
+test('Not call the getWords when words exists', () => {
+  mount(<Words state={state} actions={actions} category={''} />)
+
+  expect(actions.getWords).not.toBeCalled()
+})
 
 test('Elements of the Words when category is nothing', () => {
-  const wrapper = mount(<Words category={''} />, {
+  const wrapper = mount(<ConnectToWords category={''} />, {
     context: {
       store: configureStore()(states)
     }
@@ -39,7 +59,7 @@ test('Elements of the Words when category is nothing', () => {
 })
 
 test('Elements of the Words when category exists', () => {
-  const wrapper = mount(<Words category={'react'} />, {
+  const wrapper = mount(<ConnectToWords category={'react'} />, {
     context: {
       store: configureStore()(states)
     }
@@ -54,7 +74,7 @@ test('Elements of the Words when category exists', () => {
 })
 
 test('Elements of the Words when category not exists', () => {
-  const wrapper = mount(<Words category={'angular'} />, {
+  const wrapper = mount(<ConnectToWords category={'angular'} />, {
     context: {
       store: configureStore()(states)
     }
@@ -69,7 +89,7 @@ test('Elements of the Words when category not exists', () => {
 })
 
 test('Match the snapshot when category is nothing', () => {
-  const wrapper = shallow(<Words category={''} />, {
+  const wrapper = shallow(<ConnectToWords category={''} />, {
     context: {
       store: configureStore()(states)
     }
@@ -79,7 +99,7 @@ test('Match the snapshot when category is nothing', () => {
 })
 
 test('Match the snapshot when category exists', () => {
-  const wrapper = shallow(<Words category={'react'} />, {
+  const wrapper = shallow(<ConnectToWords category={'react'} />, {
     context: {
       store: configureStore()(states)
     }
@@ -89,7 +109,7 @@ test('Match the snapshot when category exists', () => {
 })
 
 test('Match the snapshot when category not exists', () => {
-  const wrapper = shallow(<Words category={'angular'} />, {
+  const wrapper = shallow(<ConnectToWords category={'angular'} />, {
     context: {
       store: configureStore()(states)
     }

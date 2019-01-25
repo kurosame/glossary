@@ -13,10 +13,12 @@ interface IProps {
   category: string
 }
 
-class Words extends React.PureComponent<IProps> {
+export class Words extends React.PureComponent<IProps> {
   constructor(props: IProps) {
     super(props)
-    props.actions.getWords()
+    if (!props.state.words.length) {
+      props.actions.getWords()
+    }
   }
 
   public render() {
