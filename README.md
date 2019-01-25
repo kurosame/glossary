@@ -1,9 +1,24 @@
-# React Boilerplate
+# Glossary App
 
-## Usage
+https://glossary-kurosame.firebaseapp.com
+
+Deploy to Firebase Hosting is done on CircleCI
+
+## Technology stack
+
+- React
+- Redux
+- Ducks(Design pattern)
+- TypeScript
+- styled-components
+- Material-UI
+- Firebase
+- CircleCI
+
+## Usage(Local environment)
 
 ```sh
-git clone https://github.com/kurosame/react-boilerplate.git
+git clone https://github.com/kurosame/glossary.git
 yarn install
 ```
 
@@ -19,19 +34,6 @@ yarn e2e              # E2E test (jest + puppeteer)
 yarn e2e:ci           # E2E test for CI
 yarn clean            # Clear the dist directory
 ```
-
-## Hot Module Replacement
-
-```sh
-yarn start --hot
-```
-
-## Mock
-
-Mock server is start at port 3000 when the `yarn start`\
-You can check the redux-saga sample\
-Also, you can edit mock.js\
-using https://github.com/jaywcjlove/webpack-api-mocker
 
 ## License
 

@@ -9,7 +9,7 @@ const state: { words: IWordState[] } = {
   words: [
     {
       id: 'Vue.js',
-      category: 'vue.js',
+      category: 'vue',
       titles: ['Vue', 'Vue.js'],
       description: 'It a Vue.js'
     },

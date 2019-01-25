@@ -1,5 +1,4 @@
 const path = require('path')
-const apiMocker = require('webpack-api-mocker')
 const Copy = require('copy-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
 const HardSource = require('hard-source-webpack-plugin')
@@ -22,15 +21,7 @@ module.exports = (_, argv) => ({
   },
   devServer: {
     contentBase: 'dist',
-    historyApiFallback: true,
-    before(app) {
-      apiMocker(app, path.join(__dirname, 'mock.js'), {
-        proxy: {
-          '/api/*': 'http://localhost:3000'
-        },
-        changeHost: true
-      })
-    }
+    historyApiFallback: true
   },
   module: {
     rules: [
