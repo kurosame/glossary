@@ -10,7 +10,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Summary', to: '/' },
   { label: 'JS', to: '/js' },
   { label: 'React', to: '/react' },
-  { label: 'Vue.js', to: '/vue.js' },
+  { label: 'Vue.js', to: '/vue' },
   { label: 'CSS', to: '/css' },
   { label: 'Swift', to: '/swift' },
   { label: 'Browser', to: '/browser' },

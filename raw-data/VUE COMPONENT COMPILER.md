@@ -1,6 +1,6 @@
 ## category
 
-vue.js
+vue
 
 ## titles
 
