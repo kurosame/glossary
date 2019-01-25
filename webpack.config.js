@@ -21,10 +21,7 @@ module.exports = (_, argv) => ({
   },
   devServer: {
     contentBase: 'dist',
-    historyApiFallback: true,
-    proxy: {
-      '/api/*': 'http://localhost:3000'
-    }
+    historyApiFallback: true
   },
   module: {
     rules: [
