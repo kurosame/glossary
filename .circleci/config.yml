@@ -6,7 +6,7 @@ references:
 
 version: 2
 jobs:
-  deploy:
+  build-deploy:
     <<: *setup-docker
     steps:
       - checkout
@@ -108,9 +108,9 @@ jobs:
 
 workflows:
   version: 2
-  deploy:
+  build-deploy:
     jobs:
-      - deploy
+      - build-deploy
           filters:
             branches:
               only:
