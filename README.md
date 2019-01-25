@@ -2,6 +2,8 @@
 
 https://glossary-kurosame.firebaseapp.com
 
+Deploy to Firebase Hosting is done on CircleCI
+
 ## Technology stack
 
 - React
@@ -26,7 +28,6 @@ yarn install
 yarn start            # webpack-dev-server localhost:8000
 yarn build            # Build for development
 yarn build:production # Build for production
-yarn deploy           # Deploy to Firebase Hosting
 yarn test             # Unit test (jest + enzyme)
 yarn test:ci          # Unit test for CI
 yarn e2e              # E2E test (jest + puppeteer)
