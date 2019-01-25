@@ -28,7 +28,7 @@ jobs:
           command: yarn build:production
       - run:
           name: Deploy
-          command: firebase deploy --project $FIREBASE_PROJECT --token $FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
   test:
     <<: *setup-docker
     steps:
