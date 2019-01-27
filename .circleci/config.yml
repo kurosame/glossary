@@ -135,7 +135,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "glossary's Lighthouse",
-                  "text": "https://${BUILD_ID}-${REPO_ID}-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
+                  "text": "https://{BUILD_ID}-{REPO_ID}-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
                 }
               ]
             }
