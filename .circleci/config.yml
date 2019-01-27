@@ -124,7 +124,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Lighthouse
-          command: lighthouse --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
+          command: ./node_modules/.bin/lighthouse --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
       - store_artifacts:
           path: ./lighthouse-results.html
       - run:
@@ -147,7 +147,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '05 * * * *'
+          cron: '15 * * * *'
           filters:
             branches:
               only:
