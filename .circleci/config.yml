@@ -135,7 +135,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "glossary's Lighthouse",
-                  "text": "https://$CIRCLE_BUILD_NUM-$CIRCLE_CI_PROJECT_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
+                  "text": "https://$CIRCLE_BUILD_NUM-$CIRCLE_CI_REPOSITORY_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
                 }
               ]
             }
@@ -158,7 +158,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '52 * * * *'
+          cron: '00 0 * * 1'
           filters:
             branches:
               only:
