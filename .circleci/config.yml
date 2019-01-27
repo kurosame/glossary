@@ -105,6 +105,31 @@ jobs:
             }
             EOF`
             curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
+  lighthouse:
+    <<: *setup-docker
+    steps:
+      - checkout
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install
+          command: yarn install
+      - save_cache:
+          name: Cache dependencies
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Lighthouse
+          command: lighthouse --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
+      - store_artifacts:
+          path: ./lighthouse-results.html
+      - run:
+          name: Send to Slack
+          command: curl -X POST -d "payload=https://$BUILD_ID-$REPO_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html" $SLACK_WEBHOOK_URL
 
 workflows:
   version: 2
@@ -122,10 +147,11 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '00 0 * * 1'
+          cron: '05 * * * *'
           filters:
             branches:
               only:
                 - master
     jobs:
       - outdated
+      - lighthouse
