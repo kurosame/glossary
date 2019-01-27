@@ -124,7 +124,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Lighthouse
-          command: ./node_modules/.bin/lighthouse --verbose --chrome-flags="--headless --user-agent --disable-device-emulation" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
+          command: ./node_modules/.bin/lighthouse --verbose --disable-device-emulation --chrome-flags="--headless --user-agent=lighthousebot" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
       - store_artifacts:
           path: ./lighthouse-results.html
       - run:
@@ -147,7 +147,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '25 * * * *'
+          cron: '28 * * * *'
           filters:
             branches:
               only:
