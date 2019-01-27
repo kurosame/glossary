@@ -97,7 +97,7 @@ jobs:
             {
               "attachments": [
                 {
-                  "pretext": "glossary's outdated",
+                  "pretext": "glossary's Outdated",
                   "text": '$(yarn outdated --json | $(yarn bin)/format-yarn-outdated)',
                   "mrkdwn_in": ["text"]
                 }
@@ -124,12 +124,23 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Lighthouse
-          command: ./node_modules/.bin/lighthouse --chrome-flags="--headless" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
+          command: ./node_modules/.bin/lighthouse --chrome-flags="--headless --no-sandbox" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
       - store_artifacts:
           path: ./lighthouse-results.html
       - run:
           name: Send to Slack
-          command: curl -X POST -d "payload=https://$BUILD_ID-$REPO_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html" $SLACK_WEBHOOK_URL
+          command: |
+            PAYLOAD=`cat << EOF
+            {
+              "attachments": [
+                {
+                  "pretext": "glossary's Lighthouse",
+                  "text": "https://$BUILD_ID-$REPO_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
+                }
+              ]
+            }
+            EOF`
+            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
 
 workflows:
   version: 2
@@ -147,7 +158,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '15 * * * *'
+          cron: '30 * * * *'
           filters:
             branches:
               only:
