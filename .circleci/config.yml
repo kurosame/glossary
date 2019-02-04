@@ -38,7 +38,11 @@ jobs:
       - checkout
       - run:
           name: Deploy to raw-data
-          command: gsutil -m rsync -d -r ./raw-data gs://glossary-kurosame.appspot.com/raw-data
+          command: |
+            echo $GCLOUD_SERVICE_KEY | sudo gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project $GOOGLE_PROJECT_ID
+            gcloud --quiet config set compute/zone $GOOGLE_COMPUTE_ZONE
+            gsutil -m rsync -d -r ./raw-data gs://glossary-kurosame.appspot.com/raw-data
   test:
     <<: *setup-docker-base
     steps:
@@ -145,7 +149,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "glossary's Lighthouse",
-                  "text": "https://$CIRCLE_BUILD_NUM-$CIRCLE_CI_REPOSITORY_ID-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
+                  "text": "https://${CIRCLE_BUILD_NUM}-${CIRCLE_CI_REPOSITORY_ID}-gh.circle-artifacts.com/0/root/project/lighthouse-results.html",
                 }
               ]
             }
