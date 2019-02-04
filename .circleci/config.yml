@@ -1,13 +1,16 @@
 references:
   commands:
-    setup-docker: &setup-docker
+    setup-docker-base: &setup-docker-base
       docker:
         - image: kurosame/circleci-node
+    setup-docker-gcloud: &setup-docker-gcloud
+      docker:
+        - image: google/cloud-sdk
 
 version: 2
 jobs:
   build-deploy:
-    <<: *setup-docker
+    <<: *setup-docker-base
     steps:
       - checkout
       - restore_cache:
@@ -29,8 +32,15 @@ jobs:
       - run:
           name: Deploy
           command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT --token $FIREBASE_TOKEN
+  deploy-raw-data:
+    <<: *setup-docker-gcloud
+    steps:
+      - checkout
+      - run:
+          name: Deploy to raw-data
+          command: gsutil -m rsync -d -r ./raw-data gs://glossary-kurosame.appspot.com/raw-data
   test:
-    <<: *setup-docker
+    <<: *setup-docker-base
     steps:
       - checkout
       - restore_cache:
@@ -52,7 +62,7 @@ jobs:
       - store_artifacts:
           path: ./test/unit/coverage
   e2e:
-    <<: *setup-docker
+    <<: *setup-docker-base
     steps:
       - checkout
       - restore_cache:
@@ -74,7 +84,7 @@ jobs:
       - store_artifacts:
           path: ./test/e2e/specs/__screenshots__
   outdated:
-    <<: *setup-docker
+    <<: *setup-docker-base
     steps:
       - checkout
       - restore_cache:
@@ -106,7 +116,7 @@ jobs:
             EOF`
             curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
   lighthouse:
-    <<: *setup-docker
+    <<: *setup-docker-base
     steps:
       - checkout
       - restore_cache:
@@ -147,6 +157,7 @@ workflows:
   build-deploy:
     jobs:
       - build-deploy:
+      - deploy-raw-data:
           filters:
             branches:
               only:
