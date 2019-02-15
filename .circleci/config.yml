@@ -41,7 +41,7 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            gsutil -m rsync -d -r ./raw-data gs://glossary-kurosame.appspot.com/raw-data
+            gsutil -m rsync -d -r -u ./raw-data gs://glossary-kurosame.appspot.com/raw-data
   test:
     <<: *setup-docker-base
     steps:
