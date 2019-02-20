@@ -41,7 +41,7 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            AAA=$(git diff)
+            AAA=$(git diff HEAD^)
             # for BBB in $AAA
             # do
               echo $AAA
