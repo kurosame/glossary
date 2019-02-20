@@ -41,8 +41,12 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            tar zcvf raw-data.tar.gz ./raw-data
-            gsutil cp ./raw-data.tar.gz gs://glossary-kurosame.appspot.com
+            AAA=find ./raw-data/ -type f -mmin -10000
+            for BBB in $AAA
+            do
+              echo $BBB
+            done
+            # gsutil cp ./raw-data.tar.gz gs://glossary-kurosame.appspot.com
   test:
     <<: *setup-docker-base
     steps:
