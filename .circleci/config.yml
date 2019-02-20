@@ -44,8 +44,7 @@ jobs:
             UP_FILES=$(git diff HEAD^ | grep -e 'raw-data' | sed -e 's/.*raw-data\///' | uniq -u)
             for FILE in $UP_FILES
             do
-              echo $FILE
-              gsutil cp ./raw-data/${FILE} gs://glossary-kurosame.appspot.com/raw-data
+              gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
             done
   test:
     <<: *setup-docker-base
