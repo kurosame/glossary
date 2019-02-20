@@ -41,12 +41,11 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            AAA=$(git diff HEAD^)
-            # for BBB in $AAA
-            # do
-              echo $AAA
-            # done
-            # gsutil cp ./raw-data.tar.gz gs://glossary-kurosame.appspot.com
+            UP_FILES=$(git diff HEAD^ | grep -e 'raw-data' | sed -e 's/.*raw-data\///' | uniq -u)
+            for FILE in $UP_FILES
+            do
+              gsutil cp ./raw-data/${FILE} gs://glossary-kurosame.appspot.com/raw-data
+            done
   test:
     <<: *setup-docker-base
     steps:
