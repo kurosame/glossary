@@ -41,7 +41,7 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            AAA=$(find ./raw-data -type f -mmin -10000)
+            AAA=$(find ./raw-data -type f -mmin -100)
             for BBB in $AAA
             do
               echo $BBB
