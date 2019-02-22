@@ -8,6 +8,8 @@ CircleCI
 
 ## description
 
+<a href="https://qiita.com/kurosame/items/767e1bac76e78267cf5d" target="_blank">CircleCI から Firebase にデプロイしたり、ファイルアップしたりする</a>
+
 ### node_modules のキャッシュ
 
 package.json の checksum をキーにして node_modules のキャッシュを保存
