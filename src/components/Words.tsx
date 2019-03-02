@@ -1,3 +1,4 @@
+import SearchBar from '@/components/SearchBar'
 import Word from '@/components/Word'
 import { IStates } from '@/modules/states'
 import { getWords, IWordActions, IWordState } from '@/modules/word'
@@ -24,6 +25,9 @@ export class Words extends React.PureComponent<IProps> {
   public render() {
     return (
       <List data-test="words">
+        <ListItem>
+          <SearchBar />
+        </ListItem>
         {this.props.state.words
           .filter(
             w => !this.props.category || w.category === this.props.category
