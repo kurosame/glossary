@@ -47,7 +47,9 @@ jobs:
             if [ -z "$UP_FILES" ]; then
               exit 0
             fi
-            echo $UP_FILES | gsutil -m cp -I gs://glossary-kurosame.appspot.com/raw-data
+            for FILE in $UP_FILES; do
+              gsutil cp "$FILE" gs://glossary-kurosame.appspot.com/raw-data
+            done
             IFS=$IFS_BEFORE
   test:
     <<: *setup-docker-base
