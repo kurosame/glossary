@@ -43,16 +43,11 @@ jobs:
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
             IFS_BEFORE=$IFS
             IFS=$'\n'
-            UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data\///' || true)
+            UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data/\.raw-data/' || true)
             if [ -z "$UP_FILES" ]; then
               exit 0
             fi
-            for FILE in $UP_FILES; do
-              TRIM_FILE=$(echo $FILE | xargs)
-              A=$(ls -la ./raw-data)
-              echo $A
-              gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
-            done
+            $UP_FILES | gsutil -m cp -I gs://glossary-kurosame.appspot.com/raw-data
             IFS=$IFS_BEFORE
   test:
     <<: *setup-docker-base
