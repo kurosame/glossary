@@ -46,7 +46,7 @@ jobs:
               exit 0
             fi
             for FILE in "$UP_FILES"; do
-              gsutil cp ""./raw-data/${FILE}"" gs://glossary-kurosame.appspot.com/raw-data
+              gsutil cp \""./raw-data/${FILE}"\" gs://glossary-kurosame.appspot.com/raw-data
             done
   test:
     <<: *setup-docker-base
