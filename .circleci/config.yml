@@ -41,7 +41,7 @@ jobs:
           command: |
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
-            UP_FILES=$(git diff HEAD^ | grep raw-data | grep .md | sed -e 's/.*raw-data\///' | uniq -u)
+            UP_FILES=$(git diff HEAD^ | grep raw-data | grep .md | sed -e 's/.*raw-data\///' | uniq)
             for FILE in "$UP_FILES"
             do
               gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
