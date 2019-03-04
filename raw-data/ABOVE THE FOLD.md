@@ -4,7 +4,7 @@ words
 
 ## titles
 
-Above the foldd
+Above the fold
 ATF
 First View
 ファーストビュー
