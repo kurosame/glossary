@@ -49,7 +49,7 @@ jobs:
             fi
             for FILE in $UP_FILES; do
               TRIM_FILE=$(echo $FILE | xargs)
-              A=$(ls -la)
+              A=$(ls -la ./raw-data)
               echo $A
               gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
             done
