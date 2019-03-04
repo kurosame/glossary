@@ -43,7 +43,7 @@ jobs:
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
             IFS_BEFORE=$IFS
             IFS=$'\n'
-            UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data/\.raw-data/' || true)
+            UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data/\.\/raw-data/' || true)
             if [ -z "$UP_FILES" ]; then
               exit 0
             fi
