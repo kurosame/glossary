@@ -44,6 +44,9 @@ jobs:
             IFS_BEFORE=$IFS
             IFS=$'\n'
             UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data/\.\/raw-data/' || true)
+            if [ -z "$UP_FILES" ]; then
+              exit 0
+            fi
             echo $UP_FILES | gsutil -m cp -I gs://glossary-kurosame.appspot.com/raw-data
             IFS=$IFS_BEFORE
   test:
