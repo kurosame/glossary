@@ -4,7 +4,7 @@ other
 
 ## titles
 
-Abstract Syntax Treee
+Abstract Syntax Tree
 AST
 抽象構文木
 

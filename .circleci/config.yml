@@ -49,7 +49,7 @@ jobs:
             fi
             for FILE in $UP_FILES; do
               TRIM_FILE=$(echo $FILE | xargs)
-              gsutil cp \""./raw-data/${TRIM_FILE}"\" gs://glossary-kurosame.appspot.com/raw-data
+              gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
             done
             IFS=$IFS_BEFORE
   test:
