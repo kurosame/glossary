@@ -42,6 +42,8 @@ jobs:
             echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
             UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data\///')
+            echo "aaaaaa"
+            echo $UP_FILES
             if [ -z $UP_FILES ]; then
               echo "aaaaaa"
               exit 0
