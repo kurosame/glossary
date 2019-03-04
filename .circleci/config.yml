@@ -43,11 +43,11 @@ jobs:
             gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
             IFS=$'\n'
             UP_FILES=$(git diff HEAD^ | grep -E '^\+\+\+.+raw-data/.+\.md' | sed -e 's/.*raw-data\///' || true)
-            if [ -z $UP_FILES ]; then
+            if [ -z "$UP_FILES" ]; then
               exit 0
             fi
             for FILE in $UP_FILES; do
-              gsutil cp "./raw-data/${FILE}" gs://glossary-kurosame.appspot.com/raw-data
+              gsutil cp '"./raw-data/${FILE}"' gs://glossary-kurosame.appspot.com/raw-data
             done
   test:
     <<: *setup-docker-base
