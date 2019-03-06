@@ -1,7 +1,7 @@
 .firebase
 dist
 node_modules
-test/e2e/specs/**/__screenshots__/*
+test/e2e/cypress/screenshots/**/*
 test/unit/coverage/**/*
 .firebaserc
 

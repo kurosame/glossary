@@ -3,6 +3,9 @@ references:
     setup-docker-base: &setup-docker-base
       docker:
         - image: kurosame/circleci-node
+    setup-docker-cypress: &setup-docker-cypress
+      docker:
+        - image: cypress/browsers:chrome69
     setup-docker-gcloud: &setup-docker-gcloud
       docker:
         - image: google/cloud-sdk
@@ -74,7 +77,7 @@ jobs:
       - store_artifacts:
           path: ./test/unit/coverage
   e2e:
-    <<: *setup-docker-base
+    <<: *setup-docker-cypress
     steps:
       - checkout
       - restore_cache:
@@ -94,7 +97,7 @@ jobs:
           name: E2E Test for CI
           command: yarn e2e:ci
       - store_artifacts:
-          path: ./test/e2e/specs/__screenshots__
+          path: ./test/e2e/cypress/screenshots
   outdated:
     <<: *setup-docker-base
     steps:
