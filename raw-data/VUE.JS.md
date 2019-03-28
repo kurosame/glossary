@@ -16,22 +16,7 @@ Vue.js
 
 ### data と methods と computed
 
-data はコンポーネントのローカル変数  
-methods は関数  
-computed はプロパティ（値に変数も関数も定義できる）
-
-computed はデフォルトでは getter 関数のみだが、setter 関数も定義できる  
-setter 関数を書かなければ、外部から変更不可のプロパティを定義できる  
-変数や関数は data や methods よりも computed で定義した方が良い  
-computed はキャッシュも効く
-
-### computed が再評価される仕組み
-
-computed のプロパティは Vue インスタンスを作成する際に、Watcher を生成している  
-computed 内で data で定義した変数を使っていた場合、この変数の変更を Watcher に通知している  
-そして、computed のプロパティが再評価される
-
-data で定義した変数の変更の検知は、Object.defineProperty 内の setter で Watcher に通知する処理を書いている
+<a href="https://kurosame-th.hatenadiary.com/entry/2019/03/28/153813" target="_blank">Vue.js の data と methods と computed の使い分けについて</a>
 
 ### scoped
 
