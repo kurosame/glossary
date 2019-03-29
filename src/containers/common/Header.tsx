@@ -9,10 +9,11 @@ interface IProps {
 const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Summary', to: '/' },
   { label: 'Design', to: '/design' },
+  { label: 'HTML', to: '/html' },
+  { label: 'CSS', to: '/css' },
   { label: 'JS', to: '/js' },
   { label: 'React', to: '/react' },
   { label: 'Vue.js', to: '/vue' },
-  { label: 'CSS', to: '/css' },
   { label: 'Browser', to: '/browser' },
   { label: 'Package Manager', to: '/package-manager' },
   { label: 'Module Bundler', to: '/module-bundler' },
