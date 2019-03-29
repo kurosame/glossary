@@ -8,19 +8,20 @@ interface IProps {
 
 const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Summary', to: '/' },
+  { label: 'Design', to: '/design' },
   { label: 'JS', to: '/js' },
   { label: 'React', to: '/react' },
   { label: 'Vue.js', to: '/vue' },
   { label: 'CSS', to: '/css' },
-  { label: 'Swift', to: '/swift' },
-  { label: 'ML', to: '/ml' },
   { label: 'Browser', to: '/browser' },
   { label: 'Package Manager', to: '/package-manager' },
   { label: 'Module Bundler', to: '/module-bundler' },
-  { label: 'AWS', to: '/aws' },
-  { label: 'Firebase', to: '/firebase' },
+  { label: 'Swift', to: '/swift' },
+  { label: 'ML', to: '/ml' },
   { label: 'Apache', to: '/apache' },
   { label: 'Server', to: '/server' },
+  { label: 'AWS', to: '/aws' },
+  { label: 'Firebase', to: '/firebase' },
   { label: 'Words', to: '/words' },
   { label: 'Other', to: '/other' }
 ]
