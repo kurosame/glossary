@@ -17,6 +17,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Package Manager', to: '/package-manager' },
   { label: 'Module Bundler', to: '/module-bundler' },
   { label: 'Swift', to: '/swift' },
+  { label: 'Python', to: '/python' },
   { label: 'ML', to: '/ml' },
   { label: 'Apache', to: '/apache' },
   { label: 'Server', to: '/server' },
