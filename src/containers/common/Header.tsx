@@ -13,6 +13,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Vue.js', to: '/vue' },
   { label: 'CSS', to: '/css' },
   { label: 'Swift', to: '/swift' },
+  { label: 'ML', to: '/ml' },
   { label: 'Browser', to: '/browser' },
   { label: 'Package Manager', to: '/package-manager' },
   { label: 'Module Bundler', to: '/module-bundler' },
