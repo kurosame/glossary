@@ -67,6 +67,6 @@ SVM はカーネルトリックをサポートしている
 
 ### 非線形 SVM 回帰
 
-ロト 6 予測モデルは非線形 SVM 回帰を使える SVR クラスを使って実装した
+ロト 6 当選番号予測モデルを非線形 SVM 回帰を使える SVR クラスを使って実装した
 
-<a href="" target="_blank">サンプル</a>
+<a href="https://kurosame-th.hatenadiary.com/entry/2019/03/30/204921" target="_blank">ロト 6 の当選番号を機械学習を使って予測する</a>
