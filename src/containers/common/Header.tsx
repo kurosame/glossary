@@ -22,8 +22,10 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'ML', to: '/ml' },
   { label: 'Apache', to: '/apache' },
   { label: 'Server', to: '/server' },
+  { label: 'Network', to: '/network' },
   { label: 'AWS', to: '/aws' },
   { label: 'Firebase', to: '/firebase' },
+  { label: 'Hardware', to: '/hardware' },
   { label: 'Words', to: '/words' },
   { label: 'Other', to: '/other' }
 ]
