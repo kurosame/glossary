@@ -1,6 +1,6 @@
 ## category
 
-words
+js
 
 ## titles
 
