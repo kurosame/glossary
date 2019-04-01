@@ -1,6 +1,6 @@
 ## category
 
-words
+compiler
 
 ## titles
 
