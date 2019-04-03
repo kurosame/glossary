@@ -16,6 +16,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Compiler', to: '/compiler' },
   { label: 'CSS', to: '/css' },
   { label: 'Design', to: '/design' },
+  { label: 'Docker', to: '/docker' },
   { label: 'Firebase', to: '/firebase' },
   { label: 'Hardware', to: '/hardware' },
   { label: 'HTML', to: '/html' },
@@ -32,6 +33,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Swift', to: '/swift' },
   { label: 'Vue.js', to: '/vue' },
   { label: 'Words', to: '/words' },
+  { label: 'Workflow Engine', to: '/workflow-engine' },
   { label: 'Other', to: '/other' }
 ]
 
