@@ -1,6 +1,6 @@
 ## category
 
-other
+mobile
 
 ## titles
 
