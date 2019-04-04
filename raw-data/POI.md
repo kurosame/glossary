@@ -1,6 +1,6 @@
 ## category
 
-other
+module-bundler
 
 ## titles
 

@@ -30,6 +30,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Programming', to: '/programming' },
   { label: 'Python', to: '/python' },
   { label: 'React', to: '/react' },
+  { label: 'Scala', to: '/scala' },
   { label: 'Server', to: '/server' },
   { label: 'Swift', to: '/swift' },
   { label: 'Vue.js', to: '/vue' },
