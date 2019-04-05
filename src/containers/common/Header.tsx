@@ -35,8 +35,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Swift', to: '/swift' },
   { label: 'Vue.js', to: '/vue' },
   { label: 'Words', to: '/words' },
-  { label: 'Workflow Engine', to: '/workflow-engine' },
-  { label: 'Other', to: '/other' }
+  { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
 const Header = (props: IProps) => (
