@@ -28,29 +28,28 @@ JS
 
 ### this
 
-グローバルスコープで呼び出された場合は、グローバルオブジェクトを指す  
-オブジェクトの関数の中で this を使うと、その this はそのオブジェクトを指す  
+関数呼び出し時にレシーバが存在すれば、this はそのレシーバを指す  
+関数呼び出し時にレシーバが存在しなければ、this はグローバルオブジェクト（window オブジェクト）を指す  
 アロー関数の場合、宣言された時点で this を確定する  
-正確には定義しているスコープの this を引き継ぐ  
-（this を受け取らず、必ず外側の this になる）
+正確には定義しているスコープの this を引き継ぐ
 
 ```js
-param = 'global param'
+this.param = 'global'
 
-function printParam() {
+function param1() {
   console.log(this.param)
 }
 
-const printParam2 = () => console.log(this.param)
+const param2 = () => console.log(this.param)
 
-const printParam3 = {
-  param: 'printParam3 param',
-  func: printParam,
-  arrow: printParam2
+const param3 = {
+  param: 'local',
+  func: param1,
+  arrow: param2
 }
 
-const printParam4 = {
-  param: 'printParam4 param',
+const param4 = {
+  param: 'local',
   func: function() {
     ;(function() {
       console.log(this.param)
@@ -63,10 +62,27 @@ const printParam4 = {
   }
 }
 
-printParam3.func() // this -> printParam3
-printParam3.arrow() // this -> global
-printParam4.func() // this -> global
-printParam4.arrow() // this -> printParam4
+param3.func() // local - thisはparam3になる
+param3.arrow() // global - 定義しているスコープ（グローバルオブジェクト）のthisを引き継ぐ
+param4.func() // global - funcの中のconsole.logを実行している関数はレシーバが無いので、thisはグローバルオブジェクトを指す
+param4.arrow() // local - 定義しているスコープ（param4）のthisを引き継ぐ
+```
+
+### bind
+
+bind でオブジェクトを紐づけておけば、レシーバが存在しなくても紐づけたオブジェクトを参照する
+
+```js
+this.param = 'global'
+const param1 = {
+  param: 'local'
+}
+
+function param2() {
+  console.log(this.param)
+}
+param2() // global
+param2.bind(param1)() // local
 ```
 
 ### reduce
