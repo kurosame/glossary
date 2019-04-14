@@ -75,14 +75,16 @@ bind でオブジェクトを紐づけておけば、レシーバが存在しな
 ```js
 this.param = 'global'
 const param1 = {
-  param: 'local'
+  param: 'local',
+  get: function() {
+    return this.param
+  }
 }
+const func = param1.get
 
-function param2() {
-  console.log(this.param)
-}
-param2() // global
-param2.bind(param1)() // local
+console.log(param1.get()) // local
+console.log(func()) // global
+console.log(func.bind(param1)()) // local
 ```
 
 ### reduce
