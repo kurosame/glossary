@@ -14,19 +14,30 @@ interface IProps {
   category: string
 }
 
-export class Words extends React.PureComponent<IProps> {
+interface IState {
+  filterWords: IWordState[]
+}
+
+export class Words extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     if (!props.state.words.length) {
       props.actions.getWords()
     }
+    this.state = {
+      filterWords: []
+    }
+  }
+
+  public setFilterWords(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ filterWords: e.target.value ? [] : this.props.state.words })
   }
 
   public render() {
     return (
       <List data-test="words">
         <ListItem>
-          <SearchBar />
+          <SearchBar onSearch={e => this.setFilterWords(e)} />
         </ListItem>
         {this.props.state.words
           .filter(
