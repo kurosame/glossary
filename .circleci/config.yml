@@ -94,6 +94,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Cypress install
+          command: ./node_modules/.bin/cypress install
+      - run:
           name: E2E Test for CI
           command: yarn e2e:ci
       - store_artifacts:
