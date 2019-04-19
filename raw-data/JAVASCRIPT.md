@@ -30,6 +30,7 @@ JS
 
 関数呼び出し時にレシーバが存在すれば、this はそのレシーバを指す  
 関数呼び出し時にレシーバが存在しなければ、this はグローバルオブジェクト（window オブジェクト）を指す  
+ただし、Strict モード（`use strict`）の時は undefined になる  
 アロー関数の場合、宣言された時点で this を確定する  
 正確には定義しているスコープの this を引き継ぐ
 
@@ -66,6 +67,22 @@ param3.func() // local - thisはparam3になる
 param3.arrow() // global - 定義しているスコープ（グローバルオブジェクト）のthisを引き継ぐ
 param4.func() // global - funcの中のconsole.logを実行している関数はレシーバが無いので、thisはグローバルオブジェクトを指す
 param4.arrow() // local - 定義しているスコープ（param4）のthisを引き継ぐ
+```
+
+```js
+'use strict'
+this.param = 'global'
+
+const param4 = {
+  param: 'local',
+  func: function() {
+    ;(function() {
+      console.log(this.param)
+    })()
+  }
+}
+
+param4.func() // error - Strictモードでthisがundefinedになっているので、undefined.paramとなりエラー
 ```
 
 ### bind
