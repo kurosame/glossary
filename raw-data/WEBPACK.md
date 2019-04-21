@@ -97,3 +97,9 @@ webpack v4 からエントリーポイントに`.mjs`と`.wasm`を指定でき�
 1. WebSocket 経由で webpack-dev-server から webpack-dev-server/client へコンパイル結果と HashID を送る
 1. webpack/hot/dev-server のランタイムで HashID を基に新しい ChunkJS と ManifestJSON を webpack-dev-server から取得する
 1. 既存コードと新規コードを差し替える
+
+### パフォーマンス改善
+
+<a href="https://qiita.com/kurosame/items/81a23987048860097e60" target="_blank">Vue.js, TypeScript, webpack 環境でバンドル速度を上げる</a>
+
+<a href="https://kurosame-th.hatenadiary.com/entry/2019/04/21/190549" target="_blank">webpack + TypeScript 環境でのバンドル速度改善</a>
