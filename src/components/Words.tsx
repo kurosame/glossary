@@ -22,7 +22,14 @@ class Words extends React.PureComponent<IProps, IState> {
   }
 
   public setFilterWords(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ filterWords: e.target.value ? [] : undefined })
+    const searchString = e.target.value.toLowerCase()
+    const filterWords = this.props.words.filter(
+      w =>
+        w.id.toLowerCase().includes(searchString) ||
+        w.titles.some(t => t.toLowerCase().includes(searchString)) ||
+        w.description.toLowerCase().includes(searchString)
+    )
+    this.setState({ filterWords })
   }
 
   public render() {
@@ -31,14 +38,13 @@ class Words extends React.PureComponent<IProps, IState> {
         <ListItem>
           <SearchBar onSearch={e => this.setFilterWords(e)} />
         </ListItem>
-        {this.state.filterWords ||
-          this.props.words.map(w => (
-            <ListItem key={w.id}>
-              <WordDiv>
-                <Word word={w} />
-              </WordDiv>
-            </ListItem>
-          ))}
+        {(this.state.filterWords || this.props.words).map(w => (
+          <ListItem key={w.id}>
+            <WordDiv>
+              <Word word={w} />
+            </WordDiv>
+          </ListItem>
+        ))}
       </List>
     )
   }
