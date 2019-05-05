@@ -1,53 +1,46 @@
-import ConnectToWords, { Words } from '@/components/Words'
-import { IStates } from '@/modules/states'
+import Words from '@/components/Words'
 import { IWordState } from '@/modules/word'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
-import configureStore from 'redux-mock-store'
 
-const state: { words: IWordState[] } = {
-  words: [
-    {
-      id: 'Vue.js',
-      category: 'vue',
-      titles: ['Vue', 'Vue.js'],
-      description: 'It a Vue.js'
-    },
-    {
-      id: 'React',
-      category: 'react',
-      titles: ['React'],
-      description: 'It a React'
-    }
-  ]
-}
-const states: IStates = { words: state.words }
-const actions: any = {}
+const words: IWordState[] = [
+  {
+    id: 'Vue.js',
+    category: 'vue',
+    titles: ['Vue', 'Vuex'],
+    description: 'It a Vue.js'
+  },
+  {
+    id: 'React',
+    category: 'react',
+    titles: ['React'],
+    description: 'It a React'
+  }
+]
 
-beforeEach(() => {
-  actions.getWords = jest.fn()
-})
-afterEach(() => {
-  actions.getWords.mockReset()
-})
+const wrapper = mount(<Words words={words} />)
 
-test('Call the getWords when words is nothing', () => {
-  mount(<Words state={{ words: [] }} actions={actions} category={''} />)
+test('Used props.words when filterWords is undefined', () => {
+  wrapper.setState({ filterWords: undefined })
 
-  expect(actions.getWords).toBeCalled()
+  expect(
+    wrapper
+      .find('[data-test="words"]')
+      .first()
+      .text()
+  ).toEqual('Vue.jsVueVuexIt a Vue.jsReactReactIt a React')
 })
 
-test('Not call the getWords when words exists', () => {
-  mount(<Words state={state} actions={actions} category={''} />)
-
-  expect(actions.getWords).not.toBeCalled()
-})
-
-test('Elements of the Words when category is nothing', () => {
-  const wrapper = mount(<ConnectToWords category={''} />, {
-    context: {
-      store: configureStore()(states)
-    }
+test('Used filterWords when filterWords exists', () => {
+  wrapper.setState({
+    filterWords: [
+      {
+        id: 'JS',
+        category: 'js',
+        titles: ['JS'],
+        description: 'It a JS'
+      }
+    ]
   })
 
   expect(
@@ -55,65 +48,78 @@ test('Elements of the Words when category is nothing', () => {
       .find('[data-test="words"]')
       .first()
       .text()
-  ).toEqual('Vue.jsVueVue.jsIt a Vue.jsReactReactIt a React')
+  ).toEqual('JSJSIt a JS')
 })
 
-test('Elements of the Words when category exists', () => {
-  const wrapper = mount(<ConnectToWords category={'react'} />, {
-    context: {
-      store: configureStore()(states)
-    }
+describe('Run setFilterWords', () => {
+  const instance = wrapper.instance() as Words
+
+  test('Search string matches words.id', () => {
+    instance.setFilterWords({
+      target: { value: 'Vue.js' }
+    } as React.ChangeEvent<HTMLInputElement>)
+
+    expect(wrapper.state()).toEqual({
+      filterWords: [
+        {
+          id: 'Vue.js',
+          category: 'vue',
+          titles: ['Vue', 'Vuex'],
+          description: 'It a Vue.js'
+        }
+      ]
+    })
   })
 
-  expect(
-    wrapper
-      .find('[data-test="words"]')
-      .first()
-      .text()
-  ).toEqual('ReactReactIt a React')
+  test('Search string matches words.titles', () => {
+    instance.setFilterWords({
+      target: { value: 'uex' }
+    } as React.ChangeEvent<HTMLInputElement>)
+
+    expect(wrapper.state()).toEqual({
+      filterWords: [
+        {
+          id: 'Vue.js',
+          category: 'vue',
+          titles: ['Vue', 'Vuex'],
+          description: 'It a Vue.js'
+        }
+      ]
+    })
+  })
+
+  test('Search string matches words.description', () => {
+    instance.setFilterWords({
+      target: { value: 'It ' }
+    } as React.ChangeEvent<HTMLInputElement>)
+
+    expect(wrapper.state()).toEqual({
+      filterWords: [
+        {
+          id: 'Vue.js',
+          category: 'vue',
+          titles: ['Vue', 'Vuex'],
+          description: 'It a Vue.js'
+        },
+        {
+          id: 'React',
+          category: 'react',
+          titles: ['React'],
+          description: 'It a React'
+        }
+      ]
+    })
+  })
+
+  test('Search string not match', () => {
+    instance.setFilterWords({
+      target: { value: 'not match' }
+    } as React.ChangeEvent<HTMLInputElement>)
+
+    expect(wrapper.state()).toEqual({ filterWords: [] })
+  })
 })
 
-test('Elements of the Words when category not exists', () => {
-  const wrapper = mount(<ConnectToWords category={'angular'} />, {
-    context: {
-      store: configureStore()(states)
-    }
-  })
-
-  expect(
-    wrapper
-      .find('[data-test="words"]')
-      .first()
-      .text()
-  ).toEqual('')
-})
-
-test('Match the snapshot when category is nothing', () => {
-  const wrapper = shallow(<ConnectToWords category={''} />, {
-    context: {
-      store: configureStore()(states)
-    }
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-})
-
-test('Match the snapshot when category exists', () => {
-  const wrapper = shallow(<ConnectToWords category={'react'} />, {
-    context: {
-      store: configureStore()(states)
-    }
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-})
-
-test('Match the snapshot when category not exists', () => {
-  const wrapper = shallow(<ConnectToWords category={'angular'} />, {
-    context: {
-      store: configureStore()(states)
-    }
-  })
-
+test('Match the snapshot', () => {
   expect(wrapper.html()).toMatchSnapshot()
 })

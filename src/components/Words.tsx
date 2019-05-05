@@ -19,6 +19,7 @@ class Words extends React.PureComponent<IProps, IState> {
     this.state = {
       filterWords: undefined
     }
+    this.setFilterWords = this.setFilterWords.bind(this)
   }
 
   public setFilterWords(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,7 +37,7 @@ class Words extends React.PureComponent<IProps, IState> {
     return (
       <List data-test="words">
         <ListItem>
-          <SearchBar onSearch={e => this.setFilterWords(e)} />
+          <SearchBar onSearch={this.setFilterWords} />
         </ListItem>
         {(this.state.filterWords || this.props.words).map(w => (
           <ListItem key={w.id}>

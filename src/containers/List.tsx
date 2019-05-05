@@ -11,7 +11,7 @@ interface IProps {
   match: { params: { category: string } }
 }
 
-class List extends React.PureComponent<IProps> {
+export class List extends React.PureComponent<IProps> {
   constructor(props: IProps) {
     super(props)
     if (!props.state.words.length) {

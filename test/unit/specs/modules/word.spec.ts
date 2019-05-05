@@ -1,7 +1,7 @@
 import { SET_WORDS, words } from '@/modules/word'
 
 describe('Run when ActionType is SET_WORDS', () => {
-  test('Set the state when payload exists', () => {
+  test('Set state when payload exists', () => {
     expect(
       words(
         [
@@ -34,7 +34,7 @@ describe('Run when ActionType is SET_WORDS', () => {
     ])
   })
 
-  test('Set the state when payload is nothing', () => {
+  test('Set state when payload is nothing', () => {
     expect(
       words(
         [

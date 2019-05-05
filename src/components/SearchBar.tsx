@@ -9,7 +9,11 @@ interface IProps {
 
 const SearchBar = (props: IProps) => (
   <StyledPaper>
-    <StyledInput placeholder="Search..." onChange={props.onSearch} />
+    <StyledInput
+      placeholder="Search..."
+      onChange={props.onSearch}
+      data-test="search-bar-input"
+    />
     <StyledIcon>
       <Search />
     </StyledIcon>

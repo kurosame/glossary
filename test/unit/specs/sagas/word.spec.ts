@@ -15,8 +15,8 @@ afterEach(() => {
   spyErr.mockReset()
 })
 
-describe('Run the getFirestoreWords', () => {
-  test('Return the words', async () => {
+describe('Run getFirestoreWords', () => {
+  test('Return words', async () => {
     spyFirestore.mockReturnValue({
       get: () =>
         Promise.resolve([
@@ -61,7 +61,7 @@ describe('Run the getFirestoreWords', () => {
     })
   })
 
-  test('Return the err', async () => {
+  test('Return err', async () => {
     spyFirestore.mockReturnValue({
       get: () => Promise.reject(new Error('error'))
     })
@@ -71,8 +71,8 @@ describe('Run the getFirestoreWords', () => {
   })
 })
 
-describe('Run the getWords', () => {
-  test('Call the put when resolved', () => {
+describe('Run getWords', () => {
+  test('Call put when resolved', () => {
     const saga = getWords()
 
     let res = saga.next()
@@ -112,7 +112,7 @@ describe('Run the getWords', () => {
     expect(console.error).not.toBeCalled()
   })
 
-  test('Output the console.error when rejected', () => {
+  test('Output console.error when rejected', () => {
     const saga = getWords()
 
     let res = saga.next()

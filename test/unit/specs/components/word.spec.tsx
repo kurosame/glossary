@@ -1,8 +1,9 @@
 import Word from '@/components/Word'
+import { IWordState } from '@/modules/word'
 import { mount } from 'enzyme'
 import React from 'react'
 
-const word = {
+const word: IWordState = {
   id: 'React',
   category: 'react',
   titles: ['React', 'React.js'],
@@ -11,7 +12,7 @@ const word = {
 
 const wrapper = mount(<Word word={word} />)
 
-test('Data binding from the word.id to CardHeader.title', () => {
+test('Data binding from word.id to CardHeader.title', () => {
   expect(
     wrapper
       .find('[data-test="id"]')
@@ -20,7 +21,7 @@ test('Data binding from the word.id to CardHeader.title', () => {
   ).toEqual('React')
 })
 
-test('Data binding from the word.titles to CardContent', () => {
+test('Data binding from word.titles to CardContent', () => {
   expect(
     wrapper
       .find('[data-test="titles"]')
@@ -29,7 +30,7 @@ test('Data binding from the word.titles to CardContent', () => {
   ).toEqual('ReactReact.js')
 })
 
-test('Data binding from the word.description to CardContent', () => {
+test('Data binding from word.description to CardContent', () => {
   expect(
     wrapper
       .find('[data-test="description"]')
