@@ -11,25 +11,7 @@ Web Worker
 画面のレンダリングを大幅にブロックするような処理をマルチスレッドでバックグラウンドのスレッドで実行することができる  
 DOM にはアクセス不可能
 
-```js
-// Main thread
-const worker = new Worker('worker.js')
-
-// Workerにメッセージを送信
-worker.postMessage('Hello!')
-// Workerからメッセージを受信
-worker.onmessage = e => console.log(e.data)
-```
-
-```js
-// Web worker
-self.onmessage = e => {
-  // Main threadからメッセージを受信
-  console.log(e.data)
-  // Main threadにメッセージを送信
-  self.postMessage(workerResult)
-}
-```
+<a href="https://qiita.com/kurosame/items/7a03b2a45e9cbe6ac9c6" target="_blank">Vuex のアクションの処理を Web Worker にやらせる</a>
 
 ### WorkerDOM
 
