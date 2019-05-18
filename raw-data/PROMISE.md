@@ -19,7 +19,7 @@ Promise の状態は以下のいずれかとなる
   コールバック関数内で reject された時に rejected になる  
   catch 関数を呼ぶ
 
-並列処理は Promise.all 関数を使う  
+並行処理は Promise.all 関数を使う  
 直列処理は then 関数を繋いでいく
 
 状態が pending から 1 回変化すると、その後もう 2 度と状態は変化しない
