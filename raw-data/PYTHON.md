@@ -8,6 +8,8 @@ Python
 
 ## description
 
+<a href="https://kurosame-th.hatenadiary.com/entry/2019/05/23/145431" target="_blank">Python と VSCode の快適な開発環境を考える</a>
+
 ### `coding: UTF-8`
 
 プログラムの先頭行で書く  
