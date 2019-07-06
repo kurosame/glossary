@@ -30,9 +30,9 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 ### オブジェクト型
 
-Object 型と`{}`型は同じ型
-object 型は上記 2 つと違いプリミティブ型を許可しない
-例えば`Object.create`の型定義は`create(o: object | null): any;`となっている
+Object 型と`{}`型は同じ型  
+object 型は上記 2 つと違いプリミティブ型を許可しない  
+例えば`Object.create`の型定義は`create(o: object | null): any;`となっている  
 これは`Object.create(123)`や`Object.create(true)`などのプリミティブ型を許可しないことを表現している
 
 ### never 型
