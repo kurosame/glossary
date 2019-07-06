@@ -18,6 +18,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Design', to: '/design' },
   { label: 'Docker', to: '/docker' },
   { label: 'Firebase', to: '/firebase' },
+  { label: 'Go', to: '/go' },
   { label: 'Hardware', to: '/hardware' },
   { label: 'HTML', to: '/html' },
   { label: 'JS', to: '/js' },
