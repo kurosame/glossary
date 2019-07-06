@@ -250,7 +250,7 @@ console.log(result)
   export と import  
   CommonJS や AMD の良い所取り（シンプルで分かりやすい構文と非同期読み込み）
 
-### コンパイラー
+### コンパイラ
 
 <a href="https://qiita.com/kurosame/items/b8f9cb3657538ef703c0" target="_blank">JS の最適化ツール「Prepack」を使ってみる</a>
 
