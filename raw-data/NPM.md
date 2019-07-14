@@ -11,6 +11,8 @@ npm
 Node.js 上で動く  
 npm はデフォルトで Node.js に含まれている
 
+### npm install
+
 1. package.json もしくは lock ファイルを読み込む
 1. node_modules に存在しないパッケージのメタデータを fetch する
 1. 依存ツリーを計算し、トップレベルの node_modules に flat される
