@@ -11,6 +11,15 @@ npm
 Node.js 上で動く  
 npm はデフォルトで Node.js に含まれている
 
+1. package.json もしくは lock ファイルを読み込む
+1. node_modules に存在しないパッケージのメタデータを fetch する
+1. 依存ツリーを計算し、トップレベルの node_modules に flat される
+   - バージョンが衝突しない場合、トップレベルの node_modules に flat される
+     - サイズを軽減できる
+     - npm v3 からこの仕組みが採用されている
+   - バージョンが衝突した場合、そのモジュールの子の node_modules に展開し、衝突を回避している
+1. 存在しないパッケージを node_modules にダウンロードする
+
 ### npm のレジストリ
 
 公開（`npm publish`）・非公開（`npm deprecate`）と設定できる  
