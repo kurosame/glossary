@@ -70,10 +70,18 @@ function __webpack_require__(moduleId) {
 ### Tree Shaking
 
 v2 から追加された機能  
-export されているが、どこからも import されていない関数や変数を静的解析にて削除する
+export されているが、どこからも import されていない関数や変数を静的解析にて削除する  
+production モードで実行することで Tree Shaking の機能が有効化する  
+webpack の display-used-exports オプションを使えば、Tree Shaking されているか確認できる
 
 CommonJS の require/exports は動的に実装できる  
-静的な import/export と違い静的解析ができないため Tree Shaking できない
+静的な import/export と違い静的解析ができないため、Tree Shaking できない
+
+lodash の場合
+
+- CommonJS でバンドルされているため、Tree Shaking できない
+- ただし、ESM でバンドルされている lodash-es を使えば、Tree Shaking される
+- もしくは、`import map from 'lodash/map'`のように必要なものだけインポートするのも手である（ただし使う関数の分だけ import 文が必要になる）
 
 使用するには、Babel による import 文の CommonJS への変換を防ぐ必要がある為、以下の指定が必要
 
