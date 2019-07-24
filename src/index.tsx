@@ -1,5 +1,6 @@
 import Header from '@/containers/common/Header'
 import List from '@/containers/List'
+import '@/modules/states'
 import store from '@/store'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
