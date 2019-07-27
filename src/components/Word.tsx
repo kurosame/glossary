@@ -1,3 +1,4 @@
+import CodeHighlighter from '@/components/CodeHighlighter'
 import { IWordState } from '@/modules/word'
 import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
@@ -19,7 +20,11 @@ export const Word = (props: IProps) => (
       ))}
     </CardContent>
     <CardContent data-test="description">
-      <ReactMarkdown source={props.word.description} escapeHtml={false} />
+      <ReactMarkdown
+        source={props.word.description}
+        renderers={{ code: CodeHighlighter }}
+        escapeHtml={false}
+      />
     </CardContent>
   </Card>
 )

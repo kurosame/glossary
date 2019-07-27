@@ -26,13 +26,13 @@ const initialState: IWordState[] = []
 
 export const { getWords, setWords } = createActions(GET_WORDS, SET_WORDS)
 
-export const words: Reducer = handleActions(
+export const words: Reducer<IWordState[], Action<IWordState[]>> = handleActions(
   {
     [SET_WORDS]: (
       state: IWordState[],
       action: Action<IWordState[]>
     ): IWordState[] => {
-      return action.payload ? action.payload : state
+      return !!action.payload.length ? action.payload : state
     }
   },
   initialState

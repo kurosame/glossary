@@ -47,7 +47,7 @@ describe('Run when ActionType is SET_WORDS', () => {
         ],
         {
           type: SET_WORDS,
-          payload: undefined
+          payload: []
         }
       )
     ).toEqual([
