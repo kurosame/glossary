@@ -13,9 +13,9 @@
     "e2e:ci": "server-test start:e2e http-get://localhost:9000 e2e:run:ci",
     "e2e:run": "cypress open",
     "e2e:run:ci": "cypress run -b chrome",
-    "clean:cache": "rimraf ./node_modules/.cache",
-    "clean:dist": "rimraf ./dist/**/*",
-    "clean:screenshots": "rimraf ./test/e2e/cypress/screenshots/**/*"
+    "clean:cache": "rimraf ./node_modules/.cache/*",
+    "clean:dist": "rimraf ./dist/*",
+    "clean:screenshots": "rimraf ./test/e2e/cypress/screenshots/*"
   },
   "dependencies": {
     "@material-ui/core": "^1.3.0",
