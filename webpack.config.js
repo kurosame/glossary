@@ -48,7 +48,7 @@ module.exports = (_, argv) => ({
               happyPackMode: true
             }
           },
-          'tslint-loader',
+          'eslint-loader',
           'stylelint-custom-processor-loader'
         ],
         exclude: /node_modules/
