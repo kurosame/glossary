@@ -1,4 +1,4 @@
-export const config = {
+const config = {
   apiKey: 'AIzaSyDfVCQgJmI5rQJMKy3RFOkWE6XTIZWEz5I',
   authDomain: 'glossary-kurosame.firebaseapp.com',
   databaseURL: 'https://glossary-kurosame.firebaseio.com',
@@ -6,3 +6,5 @@ export const config = {
   storageBucket: 'glossary-kurosame.appspot.com',
   messagingSenderId: '167100381499'
 }
+
+export default config

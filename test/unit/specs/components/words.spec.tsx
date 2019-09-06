@@ -1,9 +1,9 @@
 import Words from '@/components/Words'
-import { IWordState } from '@/modules/word'
+import { WordState } from '@/modules/word'
 import { mount } from 'enzyme'
 import React from 'react'
 
-const words: IWordState[] = [
+const words: WordState[] = [
   {
     id: 'Vue.js',
     category: 'vue',

@@ -1,20 +1,20 @@
-import SearchBar from '@/components/SearchBar'
-import Word from '@/components/Word'
-import { IWordState } from '@/modules/word'
-import { List, ListItem } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
+import { List, ListItem } from '@material-ui/core'
+import SearchBar from '@/components/SearchBar'
+import Word from '@/components/Word'
+import { WordState } from '@/modules/word'
 
-interface IProps {
-  words: IWordState[]
+interface Props {
+  words: WordState[]
 }
 
-interface IState {
-  filterWords: IWordState[] | undefined
+interface State {
+  filterWords: WordState[] | undefined
 }
 
-class Words extends React.PureComponent<IProps, IState> {
-  constructor(props: IProps) {
+class Words extends React.PureComponent<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       filterWords: undefined
@@ -22,7 +22,7 @@ class Words extends React.PureComponent<IProps, IState> {
     this.setFilterWords = this.setFilterWords.bind(this)
   }
 
-  public setFilterWords(e: React.ChangeEvent<HTMLInputElement>) {
+  public setFilterWords(e: React.ChangeEvent<HTMLInputElement>): void {
     const searchString = e.target.value.toLowerCase()
     const filterWords = this.props.words.filter(
       w =>
@@ -33,7 +33,7 @@ class Words extends React.PureComponent<IProps, IState> {
     this.setState({ filterWords })
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <List data-test="words">
         <ListItem>

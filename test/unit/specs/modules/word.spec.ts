@@ -1,7 +1,7 @@
 import { SET_WORDS, words } from '@/modules/word'
 
 describe('Run when ActionType is SET_WORDS', () => {
-  test('Set state when payload exists', () => {
+  test('Set state when words exists', () => {
     expect(
       words(
         [
@@ -14,14 +14,16 @@ describe('Run when ActionType is SET_WORDS', () => {
         ],
         {
           type: SET_WORDS,
-          payload: [
-            {
-              id: 'TypeScript',
-              category: 'JavaScript',
-              titles: ['TypeScript', 'TS'],
-              description: 'It a TS'
-            }
-          ]
+          payload: {
+            words: [
+              {
+                id: 'TypeScript',
+                category: 'JavaScript',
+                titles: ['TypeScript', 'TS'],
+                description: 'It a TS'
+              }
+            ]
+          }
         }
       )
     ).toEqual([
@@ -34,7 +36,7 @@ describe('Run when ActionType is SET_WORDS', () => {
     ])
   })
 
-  test('Set state when payload is nothing', () => {
+  test('Set state when words is nothing', () => {
     expect(
       words(
         [
@@ -47,16 +49,9 @@ describe('Run when ActionType is SET_WORDS', () => {
         ],
         {
           type: SET_WORDS,
-          payload: []
+          payload: { words: [] }
         }
       )
-    ).toEqual([
-      {
-        id: 'JavaScript',
-        category: 'JavaScript',
-        titles: ['JavaScript', 'JS'],
-        description: 'It a JS'
-      }
-    ])
+    ).toEqual([])
   })
 })

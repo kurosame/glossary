@@ -1,12 +1,12 @@
-import Header from '@/containers/common/Header'
-import List from '@/containers/List'
-import '@/modules/states'
-import store from '@/store'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import Header from '@/containers/common/Header'
+import List from '@/containers/List'
+import '@/modules/states'
+import store from '@/store'
 
 render(
   <Provider store={store}>

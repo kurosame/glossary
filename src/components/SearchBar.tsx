@@ -3,11 +3,11 @@ import { Search } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps {
+interface Props {
   onSearch: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const SearchBar = (props: IProps) => (
+const SearchBar = (props: Props): JSX.Element => (
   <StyledPaper>
     <StyledInput
       placeholder="Search..."

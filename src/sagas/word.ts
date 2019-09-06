@@ -1,39 +1,40 @@
-import { firestore } from '@/firebase/index'
-import { GET_WORDS, IWordState, setWords } from '@/modules/word'
-import { call, put, take } from 'redux-saga/effects'
+import { Action } from 'redux-actions'
+import {
+  call,
+  put,
+  take,
+  TakeEffect,
+  CallEffect,
+  PutEffect
+} from 'redux-saga/effects'
+import firestore from '@/firebase/index'
+import { GET_WORDS, WordState, setWords } from '@/modules/word'
 
-export function getFirestoreWords() {
+export function getFirestoreWords(): Promise<WordState[]> {
   return firestore
     .collection('words')
     .get()
-    .then(res => {
-      const words: IWordState[] = []
-      res.forEach(d =>
-        words.push({
+    .then(res =>
+      res.docs.map(
+        (d): WordState => ({
           id: d.id,
           category: d.data().category,
           titles: d.data().titles,
           description: d.data().description
         })
       )
-      return { words }
-    })
-    .catch(err => {
-      return { err }
+    )
+    .catch(() => {
+      console.error('GET_WORDS Firestore response error')
+      return []
     })
 }
 
-export function* getWords() {
+export function* getWords(): IterableIterator<
+  TakeEffect | CallEffect | PutEffect<Action<{ words: WordState[] }>>
+> {
   while (true) {
     yield take(GET_WORDS)
-    const { words, err }: { words: IWordState[]; err: Error } = yield call(
-      getFirestoreWords
-    )
-
-    if (words && err === undefined) {
-      yield put(setWords(words))
-    } else {
-      console.error('GET_WORDS Firestore response error')
-    }
+    yield put(setWords({ words: yield call(getFirestoreWords) }))
   }
 }

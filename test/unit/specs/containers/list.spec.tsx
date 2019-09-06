@@ -1,12 +1,12 @@
 import Words from '@/components/Words'
 import ConnectToList, { List } from '@/containers/List'
-import { IStates } from '@/modules/states'
-import { IWordState } from '@/modules/word'
+import { States } from '@/modules/states'
+import { WordState } from '@/modules/word'
 import { mount, shallow } from 'enzyme'
 import React from 'react'
 import configureStore from 'redux-mock-store'
 
-const state: { words: IWordState[] } = {
+const state: { words: WordState[] } = {
   words: [
     {
       id: 'Vue.js',
@@ -22,7 +22,7 @@ const state: { words: IWordState[] } = {
     }
   ]
 }
-const states: IStates = { words: state.words }
+const states: States = { words: state.words }
 const actions: any = {}
 
 beforeEach(() => {

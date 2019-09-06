@@ -1,15 +1,15 @@
-import CodeHighlighter from '@/components/CodeHighlighter'
-import { IWordState } from '@/modules/word'
-import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown/with-html'
 import styled from 'styled-components'
+import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
+import CodeHighlighter from '@/components/CodeHighlighter'
+import { WordState } from '@/modules/word'
 
-interface IProps {
-  word: IWordState
+interface Props {
+  word: WordState
 }
 
-export const Word = (props: IProps) => (
+export const Word = (props: Props): JSX.Element => (
   <Card>
     <CardHeader title={<h3>{props.word.id}</h3>} data-test="id" />
     <CardContent data-test="titles">

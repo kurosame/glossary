@@ -2,7 +2,7 @@ import { AppBar, Tab, Tabs } from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-interface IProps {
+interface Props {
   location: { pathname: string }
 }
 
@@ -39,7 +39,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Header = (props: IProps) => (
+const Header = (props: Props): JSX.Element => (
   <AppBar position="static">
     <Tabs
       value={tabItems.findIndex(o => o.to === props.location.pathname)}
@@ -51,7 +51,7 @@ const Header = (props: IProps) => (
         <Tab
           key={t.label}
           label={t.label}
-          component={(p: {}) => <Link to={t.to} {...p} />}
+          component={(p: {}): JSX.Element => <Link to={t.to} {...p} />}
         />
       ))}
     </Tabs>

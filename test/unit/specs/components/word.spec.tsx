@@ -1,9 +1,9 @@
 import Word from '@/components/Word'
-import { IWordState } from '@/modules/word'
+import { WordState } from '@/modules/word'
 import { mount } from 'enzyme'
 import React from 'react'
 
-const word: IWordState = {
+const word: WordState = {
   id: 'React',
   category: 'react',
   titles: ['React', 'React.js'],

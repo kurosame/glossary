@@ -1,6 +1,6 @@
+import { fork, ForkEffect } from 'redux-saga/effects'
 import { getWords } from '@/sagas/word'
-import { fork } from 'redux-saga/effects'
 
-export default function* rootSaga() {
+export default function* rootSaga(): IterableIterator<ForkEffect> {
   yield fork(getWords)
 }

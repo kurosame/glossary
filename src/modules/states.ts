@@ -1,5 +1,5 @@
-import { IWordState } from '@/modules/word'
+import { WordState } from '@/modules/word'
 
-export interface IStates {
-  words: IWordState[]
+export interface States {
+  words: WordState[]
 }

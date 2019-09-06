@@ -10,29 +10,35 @@ import {
 export const GET_WORDS = 'GET_WORDS'
 export const SET_WORDS = 'SET_WORDS'
 
-export interface IWordActions {
-  getWords: ActionFunctionAny<Action<{}>>
-  setWords: ActionFunctionAny<Action<{ words: IWordState[] }>>
+export interface WordActions {
+  getWords: ActionFunctionAny<Action<{ words: WordState[] }>>
+  setWords: ActionFunctionAny<Action<{ words: WordState[] }>>
 }
 
-export interface IWordState {
+export interface WordState {
   id: string
   category: string
   titles: string[]
   description: string
 }
 
-const initialState: IWordState[] = []
+const initialState: WordState[] = []
 
-export const { getWords, setWords } = createActions(GET_WORDS, SET_WORDS)
+export const { getWords, setWords } = createActions<{ words: WordState[] }>(
+  GET_WORDS,
+  SET_WORDS
+)
 
-export const words: Reducer<IWordState[], Action<IWordState[]>> = handleActions(
+export const words: Reducer<
+  WordState[],
+  Action<{ words: WordState[] }>
+> = handleActions(
   {
     [SET_WORDS]: (
-      state: IWordState[],
-      action: Action<IWordState[]>
-    ): IWordState[] => {
-      return !!action.payload.length ? action.payload : state
+      _state: WordState[],
+      action: Action<{ words: WordState[] }>
+    ): WordState[] => {
+      return action.payload.words
     }
   },
   initialState
