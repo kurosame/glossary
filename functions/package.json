@@ -5,9 +5,9 @@
   "scripts": {
     "lint": "tslint -p tsconfig.json",
     "build": "tsc -p tsconfig.json",
-    "serve": "yarn build && firebase serve --only functions",
-    "shell": "yarn build && firebase functions:shell",
-    "start": "yarn shell",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
