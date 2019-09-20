@@ -7,7 +7,7 @@ import {
   CallEffect,
   PutEffect
 } from 'redux-saga/effects'
-import firestore from '@/firebase/index'
+import { firestore } from '@/firebase/index'
 import { GET_WORDS, WordState, setWords } from '@/modules/word'
 
 export function getFirestoreWords(): Promise<WordState[]> {

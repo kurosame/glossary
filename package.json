@@ -24,6 +24,7 @@
     "firebase": "^5.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-firebaseui": "^4.0.0",
     "react-markdown": "^4.0.6",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

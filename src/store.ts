@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import saga from 'redux-saga'
 import { States } from '@/modules/states'
+import { login } from '@/modules/login'
 import { words } from '@/modules/word'
 import rootSaga from '@/sagas/index'
 
@@ -19,6 +20,6 @@ if (process.env.NODE_ENV === 'production') {
   enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 }
 
-export default createStore(combineReducers<States>({ words }), enhancer)
+export default createStore(combineReducers<States>({ login, words }), enhancer)
 
 sagaMiddleware.run(rootSaga)

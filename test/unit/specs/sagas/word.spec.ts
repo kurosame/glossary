@@ -1,4 +1,4 @@
-import firestore from '@/firebase/index'
+import { firestore } from '@/firebase/index'
 import { GET_WORDS, SET_WORDS } from '@/modules/word'
 import { getFirestoreWords, getWords } from '@/sagas/word'
 import { call, put, take } from 'redux-saga/effects'
