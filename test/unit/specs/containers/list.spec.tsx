@@ -22,7 +22,7 @@ const state: { words: WordState[] } = {
     }
   ]
 }
-const states: States = { words: state.words }
+const states: States = { login: { isLogin: false }, words: state.words }
 const actions: any = {}
 
 beforeEach(() => {
@@ -35,7 +35,7 @@ afterEach(() => {
 test('Call the getWords when words is nothing', () => {
   shallow(
     <List
-      state={{ words: [] }}
+      state={{ login: { isLogin: false }, words: [] }}
       actions={actions}
       match={{ params: { category: '' } }}
     />
@@ -47,7 +47,7 @@ test('Call the getWords when words is nothing', () => {
 test('Not call the getWords when words exists', () => {
   shallow(
     <List
-      state={state}
+      state={{ login: { isLogin: false }, ...state }}
       actions={actions}
       match={{ params: { category: '' } }}
     />
