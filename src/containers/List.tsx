@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import Words from '@/components/Words'
 import { States } from '@/modules/states'
+import { LoginState } from '@/modules/login'
 import { getWords, WordActions, WordState } from '@/modules/word'
 
 interface Props {
-  state: { words: WordState[] }
+  state: { login: LoginState; words: WordState[] }
   actions: WordActions
   match: { params: { category: string } }
 }
@@ -19,7 +20,8 @@ export class List extends React.PureComponent<Props> {
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
+    if (!this.props.state.login.isLogin) return null
     return (
       <Words
         words={this.props.state.words.filter(
@@ -33,7 +35,7 @@ export class List extends React.PureComponent<Props> {
 }
 
 export default connect(
-  (states: States) => ({ state: { words: states.words } }),
+  (states: States) => ({ state: { login: states.login, words: states.words } }),
   (dispatch: Dispatch) => ({
     actions: {
       getWords: bindActionCreators(getWords, dispatch)

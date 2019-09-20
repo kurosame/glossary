@@ -1,8 +1,12 @@
 import { AppBar, Tab, Tabs } from '@material-ui/core'
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { States } from '@/modules/states'
+import { LoginState } from '@/modules/login'
 
 interface Props {
+  state: { login: LoginState }
   location: { pathname: string }
 }
 
@@ -39,23 +43,26 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Header = (props: Props): JSX.Element => (
-  <AppBar position="static">
-    <Tabs
-      value={tabItems.findIndex(o => o.to === props.location.pathname)}
-      scrollable={true}
-      scrollButtons="off"
-      data-test="category-tabs"
-    >
-      {tabItems.map(t => (
-        <Tab
-          key={t.label}
-          label={t.label}
-          component={(p: {}): JSX.Element => <Link to={t.to} {...p} />}
-        />
-      ))}
-    </Tabs>
-  </AppBar>
-)
+const Header = (props: Props): JSX.Element | null =>
+  props.state.login.isLogin ? (
+    <AppBar position="static">
+      <Tabs
+        value={tabItems.findIndex(o => o.to === props.location.pathname)}
+        scrollable={true}
+        scrollButtons="off"
+        data-test="category-tabs"
+      >
+        {tabItems.map(t => (
+          <Tab
+            key={t.label}
+            label={t.label}
+            component={(p: {}): JSX.Element => <Link to={t.to} {...p} />}
+          />
+        ))}
+      </Tabs>
+    </AppBar>
+  ) : null
 
-export default Header
+export default connect((states: States) => ({
+  state: { login: states.login }
+}))(Header)
