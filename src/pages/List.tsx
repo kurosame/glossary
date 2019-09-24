@@ -8,8 +8,9 @@ import { getWords, WordActions, WordState } from '@/modules/word'
 
 interface Props {
   state: { login: LoginState; words: WordState[] }
-  actions: WordActions
+  actions: Pick<WordActions, 'getWords'>
   match: { params: { category: string } }
+  store?: unknown
 }
 
 export class List extends React.PureComponent<Props> {
