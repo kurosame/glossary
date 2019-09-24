@@ -8,6 +8,7 @@ import { LoginState } from '@/modules/login'
 interface Props {
   state: { login: LoginState }
   location: { pathname: string }
+  store?: unknown
 }
 
 const tabItems: Array<{ label: string; to: string }> = [

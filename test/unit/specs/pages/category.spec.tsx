@@ -1,14 +1,40 @@
+import { States } from '@/modules/states'
 import Category from '@/pages/Category'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { MemoryRouter as Router } from 'react-router-dom'
+import configureStore from 'redux-mock-store'
 
-const wrapper = shallow(
-  <Router initialEntries={['/']}>
-    <Category location={{ pathname: '/react' }} />
-  </Router>
-)
+describe('Match the snapshot', () => {
+  test('The isLogin is true', () => {
+    const wrapper = shallow(
+      <Router initialEntries={['/']}>
+        <Category
+          location={{ pathname: '/react' }}
+          store={configureStore<Pick<States, 'login'>>()({
+            login: { isLogin: true }
+          })}
+        />
+      </Router>
+    )
 
-test('Match the snapshot', () => {
-  expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.html()).not.toEqual('')
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  test('The isLogin is false', () => {
+    const wrapper = shallow(
+      <Router initialEntries={['/']}>
+        <Category
+          location={{ pathname: '/react' }}
+          store={configureStore<Pick<States, 'login'>>()({
+            login: { isLogin: false }
+          })}
+        />
+      </Router>
+    )
+
+    expect(wrapper.html()).toEqual('')
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
