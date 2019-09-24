@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import Login from '@/containers/Login'
-import Header from '@/containers/common/Header'
-import List from '@/containers/List'
+import Login from '@/pages/Login'
+import Category from '@/pages/Category'
+import List from '@/pages/List'
 import '@/modules/states'
 import store from '@/store'
 
@@ -15,7 +15,7 @@ render(
       <Router>
         <>
           <Route path="/" component={Login} />
-          <Route path="/" component={Header} />
+          <Route path="/" component={Category} />
           <Route path="/" component={List} exact />
           <Route path="/:category" component={List} exact />
         </>

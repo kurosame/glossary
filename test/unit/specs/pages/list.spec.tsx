@@ -1,5 +1,5 @@
 import Words from '@/components/Words'
-import ConnectToList, { List } from '@/containers/List'
+import ConnectToList, { List } from '@/pages/List'
 import { States } from '@/modules/states'
 import { WordState } from '@/modules/word'
 import { mount, shallow } from 'enzyme'

@@ -43,7 +43,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Header = (props: Props): JSX.Element | null =>
+const Category = (props: Props): JSX.Element | null =>
   props.state.login.isLogin ? (
     <AppBar position="static">
       <Tabs
@@ -65,4 +65,4 @@ const Header = (props: Props): JSX.Element | null =>
 
 export default connect((states: States) => ({
   state: { login: states.login }
-}))(Header)
+}))(Category)
