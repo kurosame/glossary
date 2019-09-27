@@ -6,6 +6,6 @@ context('Test', () => {
   })
 
   it('Initial display', () => {
-    cy.get('#root').screenshot('initial-display')
+    // cy.get('#root').screenshot('initial-display')
   })
 })
