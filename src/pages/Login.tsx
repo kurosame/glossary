@@ -10,9 +10,10 @@ import { LoginActions, LoginState, setIsLogin } from '@/modules/login'
 interface Props {
   state: { login: LoginState }
   actions: LoginActions
+  store?: unknown
 }
 
-export class Login extends React.PureComponent<Props> {
+class Login extends React.PureComponent<Props> {
   componentDidMount(): void {
     auth.onAuthStateChanged(user =>
       this.props.actions.setIsLogin({ isLogin: !!user })
