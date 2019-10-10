@@ -55,12 +55,26 @@ unknown 型に入れた値を使うには、typeof 演算子などによる型�
 any 型と違い、型を特定せずにそのまま使おうとするとコンパイルエラーになる  
 つまり、タイプセーフな any 型
 
-```js
+```ts
 const a: unknown = 1
 a.indexOf('1') // コンパイルエラー
 
 if (typeof a === 'string') {
   // 使えるようになる
   a.indexOf('1')
+}
+```
+
+### タイプガード
+
+`instanceof`や`typeof`などを使い、型を特定できれば、そのスコープ内ではその型だとみなしてキャストが不要になる  
+特定スコープにおける型の保証をタイプガードと呼ぶ
+
+```ts
+function fn(x: Sample | string) {
+  if (x instanceof Sample) {
+    // このifスコープ内ではxをキャストせずに利用可能
+    x.name
+  }
 }
 ```
