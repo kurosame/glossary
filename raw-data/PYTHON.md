@@ -10,6 +10,8 @@ Python
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2019/05/23/145431" target="_blank">Python と VSCode の快適な開発環境を考える</a>
 
+<a href="https://qiita.com/kurosame/items/b6dbc5a7d900e6dc2b6f" target="_blank">毎朝 LINE に天気を通知するアプリを作成</a>
+
 ### `coding: UTF-8`
 
 プログラムの先頭行で書く  
