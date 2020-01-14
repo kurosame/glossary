@@ -4,6 +4,7 @@ const Copy = require('copy-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
 const HardSource = require('hard-source-webpack-plugin')
 const Html = require('html-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = (_, argv) => ({
   entry: {
@@ -67,7 +68,8 @@ module.exports = (_, argv) => ({
     new HardSource(),
     new Html({
       template: path.join(__dirname, 'src', 'index.html')
-    })
+    }),
+    new WorkboxPlugin.GenerateSW({ swDest: 'messaging-sw.js' })
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
