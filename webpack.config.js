@@ -69,7 +69,10 @@ module.exports = (_, argv) => ({
     new Html({
       template: path.join(__dirname, 'src', 'index.html')
     }),
-    new WorkboxPlugin.GenerateSW({ swDest: 'messaging-sw.js' })
+    new WorkboxPlugin.InjectManifest({
+      swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
+      swDest: 'messaging-sw.js'
+    })
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],

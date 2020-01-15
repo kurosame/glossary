@@ -1,3 +1,4 @@
 {
-  "extends": ["@kurosame/eslint-config-react"]
+  "extends": ["@kurosame/eslint-config-react"],
+  "env": { "serviceworker": true }
 }
