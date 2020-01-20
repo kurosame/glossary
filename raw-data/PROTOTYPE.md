@@ -21,7 +21,7 @@ function Car(make, model, year) {
 ```
 
 Car コンストラクター関数は`prototype`というオブジェクトを持つ  
-`prototype`はコンストラクター関数が持つプロパティ（constructor や toString など）を持つ  
+`prototype`はコンストラクター関数が持つプロパティ（`constructor`や`make`や`run()`など）を持つ  
 `mycar = new Car("Eagle", "Talon TSi", 1993)`でインスタンスを作成した時に`prototype`をインスタンス（mycar）の`__proto__`に代入する  
 よって、`__proto__`は`Car.prototype`への参照（`prototype`のアドレスを持つ）である  
 これをプロトタイプ継承と呼ぶ  
@@ -56,9 +56,9 @@ class には constructor 関数があり、これは基本的にコンストラ�
 ```js
 class Car() {
   constructor(make, model, year){
-  this.make = make
-  this.model = model
-  this.year = year
+    this.make = make
+    this.model = model
+    this.year = year
   }
   run() {...}
 }
