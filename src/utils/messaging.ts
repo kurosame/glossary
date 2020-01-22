@@ -18,11 +18,18 @@ export default async function initialize(): Promise<void> {
   })
 
   messaging.onMessage(
-    (payload: { notification: { title: string; body: string } }) =>
+    (payload: {
+      notification: {
+        title: string
+        body: string
+        click_action: string
+      }
+    }) =>
       navigator.serviceWorker.ready
         .then(reg =>
           reg.showNotification(`${payload.notification.title}(foreground)`, {
-            body: payload.notification.body
+            body: payload.notification.body,
+            data: payload.notification.click_action
           })
         )
         .catch(err => console.error(err))
