@@ -16,7 +16,8 @@ module.exports = {
     '<rootDir>/src/components/**/*.tsx',
     '<rootDir>/src/pages/**/*.tsx',
     '<rootDir>/src/modules/**/*.ts',
-    '<rootDir>/src/sagas/**/*.ts'
+    '<rootDir>/src/sagas/**/*.ts',
+    '<rootDir>/src/utils/**/*.ts'
   ],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   coverageReporters: ['html', 'text-summary'],

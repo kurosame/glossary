@@ -8,6 +8,9 @@ import Category from '@/pages/Category'
 import List from '@/pages/List'
 import '@/modules/states'
 import store from '@/store'
+import initializeMessaging from '@/utils/messaging'
+
+initializeMessaging()
 
 render(
   <Provider store={store}>

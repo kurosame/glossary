@@ -1,4 +1,4 @@
-import { firestore } from '@/firebase/index'
+import firebase from '@/firebase/index'
 import { GET_WORDS, SET_WORDS } from '@/modules/word'
 import { getFirestoreWords, getWords } from '@/sagas/word'
 import { call, put, take } from 'redux-saga/effects'
@@ -7,7 +7,7 @@ let spyFirestore: jest.SpyInstance
 let spyErr: jest.SpyInstance
 
 beforeEach(() => {
-  spyFirestore = jest.spyOn(firestore, 'collection')
+  spyFirestore = jest.spyOn(firebase.firestore(), 'collection')
   spyErr = jest.spyOn(console, 'error')
 })
 afterEach(() => {
