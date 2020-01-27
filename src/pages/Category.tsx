@@ -49,17 +49,23 @@ const Category = (props: Props): JSX.Element | null =>
     <AppBar position="static">
       <Tabs
         value={tabItems.findIndex(o => o.to === props.location.pathname)}
-        scrollable={true}
+        variant="scrollable"
         scrollButtons="off"
         data-test="category-tabs"
       >
-        {tabItems.map(t => (
-          <Tab
-            key={t.label}
-            label={t.label}
-            component={(p: {}): JSX.Element => <Link to={t.to} {...p} />}
-          />
-        ))}
+        {tabItems.map(t => {
+          const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => (
+            <Link ref={ref} to={t.to} {...p} />
+          ))
+          StaticLink.displayName = 'StaticLink'
+          return (
+            <Tab
+              key={t.label}
+              label={t.label}
+              component={React.useMemo(() => StaticLink, [t.to])}
+            />
+          )
+        })}
       </Tabs>
     </AppBar>
   ) : null
