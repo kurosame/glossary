@@ -51,8 +51,8 @@ const element = React.createElement('div', { id: 'sample' }, 'hello')
   1. componentWillUnmount
 
 - constructor  
-  state の初期化やイベントハンドラのバインドを行う  
-  これらの処理が不要であれば、実装する必要はない  
+  state の初期化やイベントハンドラーのバインドを行う  
+  これらの処理が不要であれば、実装不要  
   setState 関数は呼び出さず、this.state で初期値をセットする
 
 - render  
@@ -79,16 +79,16 @@ const element = React.createElement('div', { id: 'sample' }, 'hello')
 1. 仮想 DOM_A と仮想 DOM_B を比較し、差分を抽出
 1. 実 DOM_A に対して、仮想 DOM_B との差分を適用して、実 DOM_B にする
 
-仮想 DOM は差分抽出を高速に行うために、軽量なオブジェクトとして実装されている  
+仮想 DOM は差分抽出を高速に行うため、軽量なオブジェクトとして実装されている  
 これが ReactElement であり、仮想 DOM 構造体の正体である
 
 仮想 DOM と実 DOM は一致していることが前提なので、実 DOM を直接更新する jQuery は非常に相性が悪い
 
 差分抽出の手がかりとして、Map の中の要素に付ける key 属性がある  
-key 属性が適切に付いていれば、key 属性を基に前後の関係を同定できる  
-key 属性は、仮想 DOM のみに存在し、実 DOM が生成される際には破棄される
+key 属性を適切に付けていれば、key 属性を基に前後の関係を同定できる  
+key 属性は仮想 DOM のみに存在し、実 DOM が生成される際には破棄される
 
-Flux で state を管理し、View は state を入力値とするが、この際に state が変われば、変わる度に View を全てルート要素から再作成している
+Flux で state を管理し、View は state を入力値とするが、この際に state が変われば、変わる度に View をすべてルート要素から再作成している
 
 ### 仮想 DOM を作ってみる
 
@@ -169,7 +169,7 @@ diffs.forEach(diff => {
 ```
 
 普通は、仮想 DOM に直接アクセスせず、React や Vue.js などのフレームワークを利用してアクセスする  
-例えば、React を利用して先程の仮想 DOM 更新を実装すると以下のようになる
+たとえば、React を利用してさきほどの仮想 DOM 更新を実装すると以下のようになる
 
 ```js
 const newNode = React.createElement(
@@ -205,12 +205,12 @@ React のパフォーマンスをチューニングする際は shouldComponentU
 PureComponent を使うと shouldComponentUpdate のデフォルトの挙動を  
 現在の props と新 props を shallow な比較をして true か false を返すように変更できる
 
-v15 時点の React はコンポーネントの更新が発生した場合、そのコンポーネントをルートとするサブツリー上の全てのコンポーネントを再レンダリングする  
+v15 時点の React はコンポーネントの更新が発生した場合、そのコンポーネントをルートとするサブツリー上のすべてのコンポーネントを再レンダリングする  
 このコンポーネントの中には更新の必要がないコンポーネントもいるので、それを制御するため shouldComponentUpdate を使う
 
 ### Fragment
 
-React v15 まではルート要素を１つにする必要があった
+React v15 まではルート要素を 1 つにする必要があった
 
 ```js
 // React-v15
@@ -263,7 +263,7 @@ SPA のみならば、今まで通り ReactDOM.render を使う
 
 v16.3 から追加された機能  
 State の管理を React で行えるもの  
-State 管理を楽に行いたいけど、Redux を導入するまでも無い時とか良いかもしれない  
+State 管理を楽に行いたいけど、Redux を導入するまでもない時とか良いかもしれない  
 また Redux と同様のフローをとるため、その後の移行も楽そう
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2018/11/05/193908" target="_blank">React の Context API について</a>
@@ -330,22 +330,42 @@ class ErrorBoundary extends React.Component {
 
 ### React Hooks
 
-<a href="https://kurosame-th.hatenadiary.com/entry/2018/11/07/193117" target="_blank">React Hooks について [ Basic Hooks 編 ]</a>
+<a href="https://kurosame-th.hatenadiary.com/entry/2018/11/07/193117" target="_blank">React Hooks について[Basic Hooks 編]</a>
 
 ### 良い設計方針
 
-SFC(Stateless Functional Component)を目指す  
-これは state を持たずに、props だけを持つコンポーネント  
-また、クラスベースのコンポーネントよりパフォーマンスが良い
+- components
 
-UI のみの責務に特化した Presentational Component に SFC は適応しやすい  
-また、データ周りは Container Component に責任に委譲すれば良い
+  - Presentational components
+  - 見た目への関心を持つ
+  - 独自の DOM マークアップとスタイルを持つ
+  - 基本的にステートレスだが、稀に独自の状態とその状態に対してのロジックを持つ
+  - Flux のアクションやストアに依存しない
+  - 独自以外の状態とロジックを持たない
+  - props 経由で独自以外の状態とロジック（コールバック）を受け取る
+
+- containers
+
+  - Container Components
+  - ロジック（振る舞い）への関心を持つ
+  - DOM マークアップとスタイルは持たない
+  - ステートフルで状態とロジックを持ち、それを Presentational components に渡す
+  - React Redux の connect 関数などの上位コンポーネントから生成される
+
+- メリット
+
+  - 見た目のロジックの分離ができる
+  - Presentational components の再利用性が高い
+  - Presentational components で Storybook が導入しやすい
+
+- デメリット
+  - レンダリングされるコンポーネントが増えるので、memo 化が必須
 
 ### パフォーマンスチューニング
 
 - shouldComponentUpdate  
-  prevProps と prevState を受け取り、現在の props と state と比較して、更新する必要があれば true を返す  
-  デフォルトは true なので、props と state が変更されて更新する必要がなくても再レンダリングされる  
+  prevProps と prevState を受け取り、現在の props と state を比較して、更新する必要があれば true を返す  
+  デフォルトは true なので props と state が変更されて更新する必要がなくても再レンダリングされる  
   props と state の値が同じでもオブジェクトが異なる場合も、再レンダリングが走る
 
 - ループ内の要素に key 属性を付ける  
