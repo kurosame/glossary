@@ -31,20 +31,21 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 ### オブジェクト型
 
 Object 型と`{}`型は同じ型  
-object 型は上記 2 つと違いプリミティブ型を許可しない  
-例えば`Object.create`の型定義は`create(o: object | null): any;`となっている  
+object 型については上記 2 つと違いプリミティブ型を許可しない  
+たとえば`Object.create`の型定義は`create(o: object | null): any;`となっている  
 これは`Object.create(123)`や`Object.create(true)`などのプリミティブ型を許可しないことを表現している
 
 ### never 型
 
+値を持たない型  
 どのような値も never 型に代入することは不可能  
 また、never 型の値はどのような型にも代入可能  
 よって never 型の値を実際作ることは不可能
 
 どのような時に never 型が発生するか
 
-- Switch 文で Case 文で全てが網羅でき、default ケースに入る可能性が無い場合に default ケースの戻り値は never 型になる
-- 関数でエラーを Throw している場合で、関数の戻り値で値を返す可能性が無い場合にその関数の戻り値は never 型となる
+- Switch 文の Case 文ですべてが網羅でき、default ケースに入る可能性がない場合に default ケースの戻り値は never 型になる
+- 関数でエラーを Throw している場合で、関数の戻り値で値を返す可能性がない場合にその関数の戻り値は never 型となる
 
 ### unknown 型
 
