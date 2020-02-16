@@ -297,6 +297,24 @@ function MyComponent() {
 }
 ```
 
+### React.forwardRef
+
+- ref  
+  props を使わずに子要素を変更できる  
+  子要素を命令型のコードを使って操作する
+
+- forwardRef  
+  コンポーネントが受け取った ref をそのコンポーネント内の別の DOM へフォワーディングするときに使う
+
+```ts
+const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => (
+  <Link ref={ref} to={t.to} {...p} />
+))
+```
+
+Glossary 内のコードでは React Router の Link は Material-UI の Tab でラップされている  
+React から Link を操作したいので、Tab を使って ref をフォワーディングさせているのだと思う
+
 ### Error Boundaries
 
 子コンポーネントツリーで発生したエラーをキャッチして処理できるコンポーネントを定義できる  
