@@ -10,6 +10,19 @@ Cookie
 
 ステートレスなプロトコルである HTTP でステートフルなやり取りを実現するために、ブラウザとサーバ間で情報を送受信する仕組み
 
+### 各ブラウザの動向
+
+- Safari  
+  3rd Party Cookie を保存しない
+- Firefox  
+  ブラックリストにマッチすると 3rd Party Cookie を保存しない
+- Chrome  
+  3rd Party Cookie を基本的に廃止するが、Cookie の SameSite 属性を導入する
+
+3rd Party Cookie  
+閲覧中のドメイン以外から発行されている Cookie  
+Chrome DevTool で Cookie を見ると発行先のドメインを確認できる
+
 ### Chrome の SameSite 属性の仕様変更について
 
 - Chrome v79 以下  
