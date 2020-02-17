@@ -37,7 +37,7 @@ ECMAScript を策定してるグループ
 
 1. stage-4 Finished  
    次のリリースで ECMAScript に取り込まれる  
-   2 つ以上のブラウザに実装が組み込まれる必要がある
+   2 つ以上のブラウザに実装を組み込む必要がある
 
 ### ES Modules, .mjs
 
@@ -59,8 +59,7 @@ ES Modules の構文は決めたが、どう動かすかはホスト側（ブラ
 
   - Node.js  
     制限付きで互換  
-    CJS の require, module, exports は ESM では削除されているので、CJS を ESM から import すると CJS が ESM に変換された時に  
-    module.exports のオブジェクトがそのまま default export となる  
+    CJS の require, module, exports は ESM では削除されているので、CJS を ESM から import すると CJS が ESM へ変換された時に module.exports のオブジェクトがそのまま default export となる  
     つまり以下のような書き方はエラー
 
     ```js
@@ -72,3 +71,23 @@ ES Modules の構文は決めたが、どう動かすかはホスト側（ブラ
     ```js
     import foo from './cjs'
     ```
+
+### Top-level await
+
+async 関数の外でも await 式が書ける
+
+良い点は、以下のように非同期処理を export できるようになる  
+export は Top-level の機能なので、Top-level await を使わないとこのような実装はできない
+
+```js
+export const get = await axios.get()
+```
+
+注意点は、以下のように Top-level await を実装したモジュールに依存しているモジュールがあった場合、get の処理が完了した後に処理を開始するため、それまでブロックされた状態となる
+
+```js
+import { get } from './get.mjs' // 上記のexportしたget
+```
+
+Top-level で await を使うということはモジュール全体の実行が止まることを意味する  
+（モジュール全体が暗黙の async 関数にラップされたようなもの）
