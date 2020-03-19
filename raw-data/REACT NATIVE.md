@@ -10,8 +10,9 @@ React Native
 
 Android と iOS を動かすために Safari の JS エンジンである JavaScriptCore(JSC)を採用  
 Android に関しては`facebook/android-jsc`という Android 用の JSC にポーティングすることで動作させている  
-React Native に DOM API や window.document は無い  
-JSC はバックグラウンドのシングルスレッドで動く  
+JSC はバックグラウンドのシングルスレッドで動く
+
+React Native に DOM API や window.document はない  
 ネイティブの View は UI スレッドからしか更新できないので、バックグラウンドで動いている react-reconciler の更新命令をネイティブの View へ伝える必要がある  
 この解決に、React Native 側で DOM ツリーの代わりになる ShadowView ツリーをもつことにした
 
