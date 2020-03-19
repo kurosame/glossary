@@ -58,13 +58,7 @@ const Category = (props: Props): JSX.Element | null =>
             <Link ref={ref} to={t.to} {...p} />
           ))
           StaticLink.displayName = 'StaticLink'
-          return (
-            <Tab
-              key={t.label}
-              label={t.label}
-              component={React.useMemo(() => StaticLink, [t.to])}
-            />
-          )
+          return <Tab key={t.label} label={t.label} component={StaticLink} />
         })}
       </Tabs>
     </AppBar>
