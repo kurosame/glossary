@@ -8,6 +8,11 @@ React
 
 ## description
 
+当初は Web 向けライブラリとして開発された  
+その後 React Native などが開発され、React≠Web と考えられるようになった  
+そこで、Web 向けの機能は react-dom へ移行された  
+現状、React はコンポーネントのツリー管理や Reconciler などがメイン機能でプラットフォームに依存していない
+
 ### Component と Element
 
 ```js
