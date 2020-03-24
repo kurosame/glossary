@@ -19,16 +19,16 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - run:
           name: Install
-          command: npm install
+          command: npm ci
       - save_cache:
           name: Cache dependencies
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Build
           command: npm run build:production
@@ -61,16 +61,16 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - run:
           name: Install
-          command: npm install
+          command: npm ci
       - save_cache:
           name: Cache dependencies
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Test for CI
           command: npm run test:ci
@@ -83,16 +83,17 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - run:
           name: Install
-          command: npm install
+          command: npm ci
       - save_cache:
           name: Cache dependencies
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+            - ~/.cache # Cache Cypress binary
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Cypress install
           command: ./node_modules/.bin/cypress install
@@ -108,16 +109,16 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - run:
           name: Install
-          command: npm install
+          command: npm ci
       - save_cache:
           name: Cache dependencies
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Outdated
           command: |
@@ -140,16 +141,16 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - run:
           name: Install
-          command: npm install
+          command: npm ci
       - save_cache:
           name: Cache dependencies
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Lighthouse
           command: ./node_modules/.bin/lighthouse --chrome-flags="--headless --no-sandbox" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
