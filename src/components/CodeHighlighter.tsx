@@ -7,9 +7,9 @@ interface Props {
   language: string
 }
 
-const CodeHighlighter = (props: Props): JSX.Element => (
-  <SyntaxHighlighter language={props.language} style={atomDark} showLineNumbers>
-    {props.value}
+const CodeHighlighter: React.FC<Props> = p => (
+  <SyntaxHighlighter language={p.language} style={atomDark} showLineNumbers>
+    {p.value}
   </SyntaxHighlighter>
 )
 

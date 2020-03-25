@@ -1,5 +1,5 @@
 import { States } from '@/modules/states'
-import Category from '@/pages/Category'
+import Category from '@/containers/Category'
 import { shallow } from 'enzyme'
 import React from 'react'
 import { MemoryRouter as Router } from 'react-router-dom'

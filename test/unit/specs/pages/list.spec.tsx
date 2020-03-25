@@ -1,5 +1,5 @@
 import Words from '@/components/Words'
-import ConnectToList, { List } from '@/pages/List'
+import ConnectToList, { List } from '@/containers/List'
 import { States } from '@/modules/states'
 import { LoginState } from '@/modules/login'
 import { WordState } from '@/modules/word'

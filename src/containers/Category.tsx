@@ -1,14 +1,11 @@
 import { AppBar, Tab, Tabs } from '@material-ui/core'
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { States } from '@/modules/states'
-import { LoginState } from '@/modules/login'
 
 interface Props {
-  state: { login: LoginState }
   location: { pathname: string }
-  store?: unknown
 }
 
 const tabItems: Array<{ label: string; to: string }> = [
@@ -44,26 +41,28 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Category = (props: Props): JSX.Element | null =>
-  props.state.login.isLogin ? (
+const Category: React.FC<Props> = p => {
+  const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
+
+  if (!isLogin) return null
+  return (
     <AppBar position="static">
       <Tabs
-        value={tabItems.findIndex(o => o.to === props.location.pathname)}
+        value={tabItems.findIndex(o => o.to === p.location.pathname)}
         variant="scrollable"
         scrollButtons="off"
         data-test="category-tabs"
       >
         {tabItems.map(t => {
-          const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => (
-            <Link ref={ref} to={t.to} {...p} />
+          const StaticLink = React.forwardRef((pp, ref: React.Ref<Link>) => (
+            <Link ref={ref} to={t.to} {...pp} />
           ))
           StaticLink.displayName = 'StaticLink'
           return <Tab key={t.label} label={t.label} component={StaticLink} />
         })}
       </Tabs>
     </AppBar>
-  ) : null
+  )
+}
 
-export default connect((states: States) => ({
-  state: { login: states.login }
-}))(Category)
+export default Category

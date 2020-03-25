@@ -1,4 +1,4 @@
-import Login from '@/pages/Login'
+import Login from '@/containers/Login'
 import { States } from '@/modules/states'
 import { mount } from 'enzyme'
 import React from 'react'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import { List, ListItem } from '@material-ui/core'
 import SearchBar from '@/components/SearchBar'
@@ -9,46 +9,39 @@ interface Props {
   words: WordState[]
 }
 
-interface State {
-  filterWords: WordState[] | undefined
-}
+const Words: React.FC<Props> = p => {
+  const [filterWords, setFilterWords] = useState<WordState[] | undefined>(
+    undefined
+  )
 
-class Words extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      filterWords: undefined
-    }
-    this.setFilterWords = this.setFilterWords.bind(this)
-  }
+  const onSearchWords = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const str = e.target.value.toLowerCase()
+      const fWords = p.words.filter(
+        w =>
+          w.id.toLowerCase().includes(str) ||
+          w.titles.some(t => t.toLowerCase().includes(str)) ||
+          w.description.toLowerCase().includes(str)
+      )
+      setFilterWords(fWords)
+    },
+    [p.words]
+  )
 
-  public setFilterWords(e: React.ChangeEvent<HTMLInputElement>): void {
-    const searchString = e.target.value.toLowerCase()
-    const filterWords = this.props.words.filter(
-      w =>
-        w.id.toLowerCase().includes(searchString) ||
-        w.titles.some(t => t.toLowerCase().includes(searchString)) ||
-        w.description.toLowerCase().includes(searchString)
-    )
-    this.setState({ filterWords })
-  }
-
-  public render(): JSX.Element {
-    return (
-      <List data-test="words">
-        <ListItem>
-          <SearchBar onSearch={this.setFilterWords} />
+  return (
+    <List data-test="words">
+      <ListItem>
+        <SearchBar onSearch={onSearchWords} />
+      </ListItem>
+      {(filterWords || p.words).map(w => (
+        <ListItem key={w.id}>
+          <WordDiv>
+            <Word word={w} />
+          </WordDiv>
         </ListItem>
-        {(this.state.filterWords || this.props.words).map(w => (
-          <ListItem key={w.id}>
-            <WordDiv>
-              <Word word={w} />
-            </WordDiv>
-          </ListItem>
-        ))}
-      </List>
-    )
-  }
+      ))}
+    </List>
+  )
 }
 
 const WordDiv = styled.div`

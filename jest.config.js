@@ -14,7 +14,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.tsx',
-    '<rootDir>/src/pages/**/*.tsx',
+    '<rootDir>/src/containers/**/*.tsx',
     '<rootDir>/src/modules/**/*.ts',
     '<rootDir>/src/sagas/**/*.ts',
     '<rootDir>/src/utils/**/*.ts'

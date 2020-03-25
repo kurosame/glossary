@@ -9,19 +9,19 @@ interface Props {
   word: WordState
 }
 
-export const Word = (props: Props): JSX.Element => (
+const Word: React.FC<Props> = p => (
   <Card>
-    <CardHeader title={<h3>{props.word.id}</h3>} data-test="id" />
+    <CardHeader title={<h3>{p.word.id}</h3>} data-test="id" />
     <CardContent data-test="titles">
-      {props.word.titles.map((t, i) => (
-        <TitlesSpan key={i}>
+      {p.word.titles.map(t => (
+        <TitlesSpan key={t}>
           <Chip label={t} />
         </TitlesSpan>
       ))}
     </CardContent>
     <CardContent data-test="description">
       <ReactMarkdown
-        source={props.word.description}
+        source={p.word.description}
         renderers={{ code: CodeHighlighter }}
         escapeHtml={false}
       />

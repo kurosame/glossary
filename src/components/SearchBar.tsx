@@ -7,11 +7,11 @@ interface Props {
   onSearch: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const SearchBar = (props: Props): JSX.Element => (
+const SearchBar: React.FC<Props> = p => (
   <StyledPaper>
     <StyledInput
       placeholder="Search..."
-      onChange={props.onSearch}
+      onChange={p.onSearch}
       data-test="search-bar-input"
     />
     <StyledIcon>
