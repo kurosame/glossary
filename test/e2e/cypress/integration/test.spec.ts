@@ -1,4 +1,6 @@
+/* eslint-disable spaced-comment */
 /// <reference types="Cypress" />
+/* eslint-enable spaced-comment */
 
 context('Test', () => {
   beforeEach(() => {
