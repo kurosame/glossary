@@ -12,7 +12,7 @@ const SearchBar: React.FC<Props> = p => (
     <StyledInput
       placeholder="Search..."
       onChange={p.onSearch}
-      data-test="search-bar-input"
+      inputProps={{ 'data-testid': 'search-bar-input' }}
     />
     <StyledIcon>
       <Search />

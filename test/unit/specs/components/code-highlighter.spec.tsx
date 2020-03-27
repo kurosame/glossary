@@ -1,11 +1,13 @@
-import CodeHighlighter from '@/components/CodeHighlighter'
-import { mount } from 'enzyme'
 import React from 'react'
+import CodeHighlighter from '@/components/CodeHighlighter'
+import { render, cleanup, RenderResult } from '@testing-library/react'
 
-const wrapper = mount(
-  <CodeHighlighter value={'test'} language={'javascript'} />
-)
+let wrapper: RenderResult
+beforeEach(() => {
+  wrapper = render(<CodeHighlighter value={'test'} language={'javascript'} />)
+})
+afterEach(cleanup)
 
 test('Match the snapshot', () => {
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.asFragment()).toMatchSnapshot()
 })

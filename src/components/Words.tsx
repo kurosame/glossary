@@ -29,7 +29,7 @@ const Words: React.FC<Props> = p => {
   )
 
   return (
-    <List data-test="words">
+    <List data-testid="words">
       <ListItem>
         <SearchBar onSearch={onSearchWords} />
       </ListItem>

@@ -1,6 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Match the snapshot 1`] = `
-"<pre style=\\"color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: .5em 0px; overflow: auto; border-radius: 0.3em; background: rgb(29, 31, 33);\\"><code style=\\"color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none; float: left; padding-right: 10px;\\"><span class=\\"react-syntax-highlighter-line-number\\">1
-</span></code><code style=\\"color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none;\\">test</code></pre>"
+<DocumentFragment>
+  <pre
+    style="color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: .5em 0px; overflow: auto; border-radius: 0.3em; background: rgb(29, 31, 33);"
+  >
+    <code
+      style="color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none; float: left; padding-right: 10px;"
+    >
+      <span
+        class="react-syntax-highlighter-line-number"
+      >
+        1
+
+      </span>
+    </code>
+    <code
+      style="color: rgb(197, 200, 198); text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; tab-size: 4; hyphens: none;"
+    >
+      test
+    </code>
+  </pre>
+</DocumentFragment>
 `;

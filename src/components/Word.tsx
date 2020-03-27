@@ -11,15 +11,15 @@ interface Props {
 
 const Word: React.FC<Props> = p => (
   <Card>
-    <CardHeader title={<h3>{p.word.id}</h3>} data-test="id" />
-    <CardContent data-test="titles">
+    <CardHeader title={<h3>{p.word.id}</h3>} data-testid="card-id" />
+    <CardContent data-testid="card-titles">
       {p.word.titles.map(t => (
         <TitlesSpan key={t}>
           <Chip label={t} />
         </TitlesSpan>
       ))}
     </CardContent>
-    <CardContent data-test="description">
+    <CardContent data-testid="card-description">
       <ReactMarkdown
         source={p.word.description}
         renderers={{ code: CodeHighlighter }}

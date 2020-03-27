@@ -1,20 +1,31 @@
-import SearchBar from '@/components/SearchBar'
-import { mount } from 'enzyme'
 import React from 'react'
+import SearchBar from '@/components/SearchBar'
+import {
+  render,
+  fireEvent,
+  cleanup,
+  RenderResult
+} from '@testing-library/react'
 
-const onSearch: jest.Mock = jest.fn()
+let onSearch: jest.Mock
+let wrapper: RenderResult
+beforeEach(() => {
+  onSearch = jest.fn()
+  wrapper = render(<SearchBar onSearch={onSearch} />)
+})
+afterEach(() => {
+  cleanup()
+  jest.restoreAllMocks()
+})
 
-const wrapper = mount(<SearchBar onSearch={onSearch} />)
-
-test('Run onChange', () => {
-  wrapper
-    .find('[data-test="search-bar-input"]')
-    .first()
-    .prop('onChange')!({} as React.ChangeEvent<HTMLInputElement>)
+test('Run `onChange`', () => {
+  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+    target: { value: 'test' }
+  })
 
   expect(onSearch).toBeCalled()
 })
 
 test('Match the snapshot', () => {
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.asFragment()).toMatchSnapshot()
 })

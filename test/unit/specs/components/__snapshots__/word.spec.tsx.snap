@@ -1,3 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Match the snapshot 1`] = `"<div class=\\"MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded\\"><div class=\\"MuiCardHeader-root\\" data-test=\\"id\\"><div class=\\"MuiCardHeader-content\\"><span class=\\"MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock\\"><h3>React</h3></span></div></div><div class=\\"MuiCardContent-root\\" data-test=\\"titles\\"><span class=\\"sc-AxjAm fppVTe\\"><div class=\\"MuiChip-root\\"><span class=\\"MuiChip-label\\">React</span></div></span><span class=\\"sc-AxjAm fppVTe\\"><div class=\\"MuiChip-root\\"><span class=\\"MuiChip-label\\">React.js</span></div></span></div><div class=\\"MuiCardContent-root\\" data-test=\\"description\\"><p>It a React</p></div></div>"`;
+exports[`Match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiCardHeader-root"
+      data-testid="card-id"
+    >
+      <div
+        class="MuiCardHeader-content"
+      >
+        <span
+          class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          <h3>
+            React
+          </h3>
+        </span>
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root"
+      data-testid="card-titles"
+    >
+      <span
+        class="sc-AxjAm fppVTe"
+      >
+        <div
+          class="MuiChip-root"
+        >
+          <span
+            class="MuiChip-label"
+          >
+            React
+          </span>
+        </div>
+      </span>
+      <span
+        class="sc-AxjAm fppVTe"
+      >
+        <div
+          class="MuiChip-root"
+        >
+          <span
+            class="MuiChip-label"
+          >
+            React.js
+          </span>
+        </div>
+      </span>
+    </div>
+    <div
+      class="MuiCardContent-root"
+      data-testid="card-description"
+    >
+      <p>
+        It a React
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

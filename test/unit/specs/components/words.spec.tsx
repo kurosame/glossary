@@ -1,125 +1,78 @@
+import React from 'react'
 import Words from '@/components/Words'
 import { WordState } from '@/modules/word'
-import { mount } from 'enzyme'
-import React from 'react'
+import {
+  render,
+  fireEvent,
+  cleanup,
+  RenderResult
+} from '@testing-library/react'
+import '@testing-library/jest-dom'
 
-const words: WordState[] = [
-  {
-    id: 'Vue.js',
-    category: 'vue',
-    titles: ['Vue', 'Vuex'],
-    description: 'It a Vue.js'
-  },
-  {
-    id: 'React',
-    category: 'react',
-    titles: ['React'],
-    description: 'It a React'
-  }
-]
+let wrapper: RenderResult
+beforeEach(() => {
+  const words: WordState[] = [
+    {
+      id: 'Vue.js',
+      category: 'vue',
+      titles: ['Vue', 'Vuex'],
+      description: 'It a Vue'
+    },
+    {
+      id: 'React',
+      category: 'react',
+      titles: ['React'],
+      description: 'It a React'
+    }
+  ]
+  wrapper = render(<Words words={words} />)
+})
+afterEach(cleanup)
 
-const wrapper = mount(<Words words={words} />)
-
-test('Used props.words when filterWords is undefined', () => {
-  wrapper.setState({ filterWords: undefined })
-
-  expect(
-    wrapper
-      .find('[data-test="words"]')
-      .first()
-      .text()
-  ).toEqual('Vue.jsVueVuexIt a Vue.jsReactReactIt a React')
+test('Output `props.words` when `filterWords` is undefined', () => {
+  expect(wrapper.getByTestId('words')).toHaveTextContent(
+    'Vue.jsVueVuexIt a VueReactReactIt a React'
+  )
 })
 
-test('Used filterWords when filterWords exists', () => {
-  wrapper.setState({
-    filterWords: [
-      {
-        id: 'JS',
-        category: 'js',
-        titles: ['JS'],
-        description: 'It a JS'
-      }
-    ]
+test('Filter and output `props.words` when `filterWords` matches `words.id`', () => {
+  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+    target: { value: 'Vue.js' }
   })
 
-  expect(
-    wrapper
-      .find('[data-test="words"]')
-      .first()
-      .text()
-  ).toEqual('JSJSIt a JS')
+  expect(wrapper.getByTestId('words')).toHaveTextContent(
+    'Vue.jsVueVuexIt a Vue'
+  )
 })
 
-describe('Run setFilterWords', () => {
-  const instance = wrapper.instance() as Words
-
-  test('Search string matches words.id', () => {
-    instance.setFilterWords({
-      target: { value: 'Vue.js' }
-    } as React.ChangeEvent<HTMLInputElement>)
-
-    expect(wrapper.state()).toEqual({
-      filterWords: [
-        {
-          id: 'Vue.js',
-          category: 'vue',
-          titles: ['Vue', 'Vuex'],
-          description: 'It a Vue.js'
-        }
-      ]
-    })
+test('Filter and output `props.words` when `filterWords` matches `words.titles`', () => {
+  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+    target: { value: 'uex' }
   })
 
-  test('Search string matches words.titles', () => {
-    instance.setFilterWords({
-      target: { value: 'uex' }
-    } as React.ChangeEvent<HTMLInputElement>)
+  expect(wrapper.getByTestId('words')).toHaveTextContent(
+    'Vue.jsVueVuexIt a Vue'
+  )
+})
 
-    expect(wrapper.state()).toEqual({
-      filterWords: [
-        {
-          id: 'Vue.js',
-          category: 'vue',
-          titles: ['Vue', 'Vuex'],
-          description: 'It a Vue.js'
-        }
-      ]
-    })
+test('Filter and output `props.words` when `filterWords` matches `words.description`', () => {
+  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+    target: { value: 'It ' }
   })
 
-  test('Search string matches words.description', () => {
-    instance.setFilterWords({
-      target: { value: 'It ' }
-    } as React.ChangeEvent<HTMLInputElement>)
+  expect(wrapper.getByTestId('words')).toHaveTextContent(
+    'Vue.jsVueVuexIt a VueReactReactIt a React'
+  )
+})
 
-    expect(wrapper.state()).toEqual({
-      filterWords: [
-        {
-          id: 'Vue.js',
-          category: 'vue',
-          titles: ['Vue', 'Vuex'],
-          description: 'It a Vue.js'
-        },
-        {
-          id: 'React',
-          category: 'react',
-          titles: ['React'],
-          description: 'It a React'
-        }
-      ]
-    })
+test('Output empty when `filterWords` not match', () => {
+  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+    target: { value: 'angular' }
   })
 
-  test('Search string not match', () => {
-    instance.setFilterWords({
-      target: { value: 'not match' }
-    } as React.ChangeEvent<HTMLInputElement>)
-
-    expect(wrapper.state()).toEqual({ filterWords: [] })
-  })
+  expect(wrapper.getByTestId('words')).toHaveTextContent('')
 })
 
 test('Match the snapshot', () => {
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.asFragment()).toMatchSnapshot()
 })

@@ -51,7 +51,6 @@ const Category: React.FC<Props> = p => {
         value={tabItems.findIndex(o => o.to === p.location.pathname)}
         variant="scrollable"
         scrollButtons="off"
-        data-test="category-tabs"
       >
         {tabItems.map(t => {
           const StaticLink = React.forwardRef((pp, ref: React.Ref<Link>) => (

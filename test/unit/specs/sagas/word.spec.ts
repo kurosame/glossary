@@ -15,15 +15,15 @@ afterEach(() => {
   spyErr.mockReset()
 })
 
-describe('Run getFirestoreWords', () => {
-  test('Return words when resolved', async () => {
+describe('Run `getFirestoreWords`', () => {
+  test('Return `words` when resolved', async () => {
     spyFirestore.mockReturnValue({
       get: () =>
         Promise.resolve({
           docs: [
             {
               id: 'JavaScript',
-              data: () => ({
+              data: (): {} => ({
                 category: 'JavaScript',
                 titles: ['JavaScript', 'JS'],
                 description: 'It a JS'
@@ -31,7 +31,7 @@ describe('Run getFirestoreWords', () => {
             },
             {
               id: 'TypeScript',
-              data: () => ({
+              data: (): {} => ({
                 category: 'JavaScript',
                 titles: ['TypeScript', 'TS'],
                 description: 'It a TS'
@@ -71,8 +71,8 @@ describe('Run getFirestoreWords', () => {
   })
 })
 
-describe('Run getWords', () => {
-  test('Call put', () => {
+describe('Run `getWords`', () => {
+  test('Call `put`', () => {
     const saga = getWords()
 
     let res = saga.next()

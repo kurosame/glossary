@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    id="firebaseui_container"
+  />
+</DocumentFragment>
+`;
+
 exports[`Match the snapshot The isLogin is false 1`] = `"<div id=\\"firebaseui_container\\"></div>"`;
 
 exports[`Match the snapshot The isLogin is true 1`] = `""`;
