@@ -34,9 +34,6 @@ test('Call `useSetUser`', () => {
   wrapper(true)
 
   expect(spyFirebaseAuth).toBeCalled()
-  // TODO
-  // expect(spyFirebaseAuth.mock.calls[0][0]).toEqual('')
-  // expect(spyFirebaseAuth.mock.calls[1]).toBeUndefined()
 })
 
 test('Call `useSetIsLogin`', () => {
@@ -45,7 +42,7 @@ test('Call `useSetIsLogin`', () => {
   expect(mockDispatch).toBeCalled()
   expect(mockDispatch.mock.calls[0][0]).toEqual({
     type: SET_IS_LOGIN,
-    payload: { isLogin: false /* true */ }
+    payload: { isLogin: false }
   })
   expect(mockDispatch.mock.calls[1]).toBeUndefined()
 })
