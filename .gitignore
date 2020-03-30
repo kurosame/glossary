@@ -1,5 +1,6 @@
 .firebase
 dist
+functions/lib
 node_modules
 test/e2e/cypress/screenshots/**/*
 test/unit/coverage/**/*

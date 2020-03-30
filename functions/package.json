@@ -1,9 +1,11 @@
 {
-  "name": "functions",
+  "name": "glossary-functions",
   "private": true,
   "main": "lib/index.js",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
-    "lint": "tslint -p tsconfig.json",
     "build": "tsc -p tsconfig.json",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
@@ -12,12 +14,11 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "firebase-admin": "~6.5.0",
-    "firebase-functions": "^2.1.0"
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.5.0"
   },
   "devDependencies": {
-    "@kurosame/tslint-config-react": "^1.2.0",
-    "tslint": "^5.12.1",
-    "typescript": "^2.5.3"
+    "firebase-tools": "^7.16.1",
+    "typescript": "^3.8.3"
   }
 }

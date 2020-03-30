@@ -4,6 +4,7 @@ import * as functions from 'firebase-functions'
 admin.initializeApp(functions.config().firebase)
 admin.firestore().settings({ timestampsInSnapshots: true })
 
+/* eslint-disable import/prefer-default-export */
 export const setWord = functions.storage.object().onFinalize(o => {
   if (!o.name) {
     console.error('File not found')
@@ -14,32 +15,35 @@ export const setWord = functions.storage.object().onFinalize(o => {
     .storage()
     .bucket()
     .file(o.name)
+
+  if (!file.name) {
+    console.error('File.name not found')
+    return null
+  }
+
   const fileNameSplitPeriod = file.name
     .split('/')
-    .pop()!
+    .slice(-1)[0]
     .split('.')
-  fileNameSplitPeriod.pop()
-  const fileName = fileNameSplitPeriod.join('.')
+  const fileName = fileNameSplitPeriod.slice(0, -1).join('.')
 
   file
     .download()
     .then(res => {
-      const category: string = res[0]
+      const category: string = (res[0]
         .toString()
-        .match(/## category\n\n(.+)/)![1]
-        .trim()
-      const titles: string[] = res[0]
+        .match(/## category\n\n(.+)/) || ['', ''])[1].trim()
+      const titles: string[] = (res[0]
         .toString()
-        .match(/## titles\n\n((.+\n)+)/)![1]
+        .match(/## titles\n\n((.+\n)+)/) || ['', ''])[1]
         .trim()
         .split(/\n/)
-      const description: string = res[0]
+      const description: string = (res[0]
         .toString()
-        .match(/## description\n\n((.+\n|\n)+)/)![1]
-        .trim()
-      const descriptionByLine: string[] = res[0]
+        .match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1].trim()
+      const descriptionByLine: string[] = (res[0]
         .toString()
-        .match(/## description\n\n((.+\n|\n)+)/)![1]
+        .match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
         .trim()
         .split(/\n/)
 
@@ -60,3 +64,4 @@ export const setWord = functions.storage.object().onFinalize(o => {
 
   return null
 })
+/* eslint-enable import/prefer-default-export */
