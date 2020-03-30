@@ -8,7 +8,7 @@
     "build": "webpack --mode=development",
     "build:production": "webpack --mode=production",
     "test": "jest --watchAll",
-    "test:ci": "jest",
+    "test:ci": "jest --maxWorkers=2",
     "e2e": "server-test start:e2e http-get://localhost:9000 e2e:run",
     "e2e:ci": "server-test start:e2e http-get://localhost:9000 e2e:run:ci",
     "e2e:run": "cypress open",
