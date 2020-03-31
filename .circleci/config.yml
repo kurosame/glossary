@@ -131,6 +131,40 @@ jobs:
             }
             EOF`
             curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
+  outdated-functions:
+    <<: *setup-docker-base
+    steps:
+      - checkout
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install
+          working_directory: ./functions
+          command: npm ci
+      - save_cache:
+          name: Cache dependencies
+          paths:
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+      - run:
+          name: Outdated for functions
+          working_directory: ./functions
+          command: |
+            PAYLOAD=`cat << EOF
+            {
+              "attachments": [
+                {
+                  "pretext": "glossary-functions's Outdated",
+                  "text": '$(npm outdated)',
+                  "mrkdwn_in": ["text"]
+                }
+              ]
+            }
+            EOF`
+            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
   lighthouse:
     <<: *setup-docker-base
     steps:
@@ -196,4 +230,5 @@ workflows:
                 - master
     jobs:
       - outdated
+      - outdated-functions
       - lighthouse
