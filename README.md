@@ -7,6 +7,7 @@ Deploy to Firebase Hosting is done on CircleCI
 ## Technology stack
 
 - React
+- React Hooks
 - Redux
 - Ducks(Design pattern)
 - TypeScript
