@@ -19,6 +19,9 @@ module.exports = {
     '<rootDir>/src/utils/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
+    // FirebaseUI for React is not supported by Jest(jsdom)
+    // https://github.com/firebase/firebaseui-web/issues/636
+    '<rootDir>/src/containers/Login.tsx',
     // Messaging is not supported by Jest(jsdom)
     // https://github.com/tmobile/jest-jsdom-browser-compatibility/tree/master/testcases-src/tc4-notification-api-missing
     '<rootDir>/src/utils/messaging.ts'
