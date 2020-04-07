@@ -47,7 +47,7 @@ test('Call `useSetIsLogin`', () => {
   expect(mockDispatch.mock.calls[1]).toBeUndefined()
 })
 
-test('Render DOM if `isLogin` is false', async () => {
+test('Render DOM if `isLogin` is false', () => {
   // FirebaseUI for React is not supported by Jest(jsdom)
   // https://github.com/firebase/firebaseui-web/issues/636
   // expect(wrapper(false).container.querySelector('div')).not.toBeNull()
