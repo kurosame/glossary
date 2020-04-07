@@ -5,15 +5,12 @@ import { call, put, take } from 'redux-saga/effects'
 
 let spyFirestore: jest.SpyInstance
 let spyErr: jest.SpyInstance
-
 beforeEach(() => {
   spyFirestore = jest.spyOn(firebase.firestore(), 'collection')
   spyErr = jest.spyOn(console, 'error')
+  spyErr.mockImplementation(x => x)
 })
-afterEach(() => {
-  spyFirestore.mockReset()
-  spyErr.mockReset()
-})
+afterEach(jest.restoreAllMocks)
 
 describe('Run `getFirestoreWords`', () => {
   test('Return `words` when resolved', async () => {
@@ -55,7 +52,7 @@ describe('Run `getFirestoreWords`', () => {
         description: 'It a TS'
       }
     ])
-    expect(console.error).not.toBeCalled()
+    expect(spyErr).not.toBeCalled()
   })
 
   test('Output the console.error when rejected', async () => {
@@ -64,9 +61,9 @@ describe('Run `getFirestoreWords`', () => {
     })
 
     expect(await getFirestoreWords()).toEqual([])
-    expect(console.error).toBeCalled()
+    expect(spyErr).toBeCalled()
     expect(spyErr.mock.calls[0][0]).toEqual(
-      'GET_WORDS Firestore response error'
+      'GET_WORDS Firestore response error: error'
     )
   })
 })

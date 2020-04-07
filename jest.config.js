@@ -18,6 +18,11 @@ module.exports = {
     '<rootDir>/src/sagas/**/*.ts',
     '<rootDir>/src/utils/**/*.ts'
   ],
+  coveragePathIgnorePatterns: [
+    // Messaging is not supported by Jest(jsdom)
+    // https://github.com/tmobile/jest-jsdom-browser-compatibility/tree/master/testcases-src/tc4-notification-api-missing
+    '<rootDir>/src/utils/messaging.ts'
+  ],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   coverageReporters: ['html', 'text-summary'],
   verbose: true

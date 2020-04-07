@@ -48,8 +48,8 @@ test('Call `useSetIsLogin`', () => {
 })
 
 test('Render DOM if `isLogin` is false', () => {
-  // FirebaseUI does not support jsdom
-  // expect(wrapper(false).container.querySelector('div')).not.toBeNull()
+  // FirebaseUI is not supported by Jest(jsdom)
+  expect(wrapper(false).container.querySelector('div')).not.toBeNull()
 })
 
 test('Not render DOM if `isLogin` is true', () => {
@@ -57,6 +57,6 @@ test('Not render DOM if `isLogin` is true', () => {
 })
 
 test('Match the snapshot', () => {
-  // FirebaseUI does not support jsdom
+  // FirebaseUI is not supported by Jest(jsdom)
   // expect(wrapper(false).asFragment()).toMatchSnapshot()
 })

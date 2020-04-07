@@ -25,8 +25,8 @@ export function getFirestoreWords(): Promise<WordState[]> {
         })
       )
     )
-    .catch(() => {
-      console.error('GET_WORDS Firestore response error')
+    .catch((err: Error) => {
+      console.error(`GET_WORDS Firestore response error: ${err.message}`)
       return []
     })
 }

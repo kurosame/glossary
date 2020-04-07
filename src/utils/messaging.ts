@@ -1,7 +1,7 @@
 import firebase from '@/firebase/index'
 
 /* eslint-disable camelcase */
-interface Notification {
+interface NotificationTypes {
   title: string
   body: string
   click_action: string
@@ -13,7 +13,7 @@ export default async function initialize(): Promise<void> {
     await navigator.serviceWorker
       .register('/messaging-sw.js')
       .then(reg => firebase.messaging().useServiceWorker(reg))
-      .catch(err => console.error(err))
+      .catch((err: Error) => console.error(`SW register error: ${err.message}`))
   }
 
   Notification.requestPermission().then(p => {
@@ -22,18 +22,24 @@ export default async function initialize(): Promise<void> {
         .messaging()
         .getToken()
         .then(t => console.info(t))
-        .catch(err => console.error(err))
+        .catch((err: Error) =>
+          console.error(`FCM getToken error: ${err.message}`)
+        )
     }
   })
 
-  firebase.messaging().onMessage((payload: { notification: Notification }) =>
-    navigator.serviceWorker.ready
-      .then(reg =>
-        reg.showNotification(`${payload.notification.title}(foreground)`, {
-          body: payload.notification.body,
-          data: payload.notification.click_action
-        })
-      )
-      .catch(err => console.error(err))
-  )
+  firebase
+    .messaging()
+    .onMessage((payload: { notification: NotificationTypes }) =>
+      navigator.serviceWorker.ready
+        .then(reg =>
+          reg.showNotification(`${payload.notification.title}(foreground)`, {
+            body: payload.notification.body,
+            data: payload.notification.click_action
+          })
+        )
+        .catch((err: Error) =>
+          console.error(`SW activate error: ${err.message}`)
+        )
+    )
 }
