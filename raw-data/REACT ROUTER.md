@@ -24,3 +24,15 @@ const props = { match, location, history, staticContext } // propsにhistoryを�
 // Routeを作成し、propsを渡す
 React.createElement(component, props)
 ```
+
+### hash モードと history モードについて
+
+- hash モード
+
+  - URL に`#`が含まれる
+
+- history モード
+
+  - 古いブラウザでは対応していない
+  - サーバーが`index.html`を返すように設定する必要がある
+  - パラメーター付きの URL などで URL 先にリソースが存在しない場合、`index.html`に Rewrite する必要がある
