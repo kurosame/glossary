@@ -53,7 +53,7 @@ const Category: React.FC<Props> = p => {
         scrollButtons="off"
       >
         {tabItems.map(t => {
-          const StaticLink = React.forwardRef((pp, ref: React.Ref<Link>) => (
+          const StaticLink = React.forwardRef<HTMLAnchorElement>((pp, ref) => (
             <Link ref={ref} to={t.to} {...pp} />
           ))
           StaticLink.displayName = 'StaticLink'
