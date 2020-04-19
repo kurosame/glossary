@@ -1,4 +1,10 @@
 {
   "extends": ["@kurosame/eslint-config-react"],
-  "env": { "serviceworker": true }
+  "env": { "serviceworker": true },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["functions/test/**", "stories/**", "test/**"] }
+    ]
+  }
 }

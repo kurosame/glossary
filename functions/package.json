@@ -10,6 +10,7 @@
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
+    "test": "jest --watchAll",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
@@ -18,7 +19,10 @@
     "firebase-functions": "^3.6.0"
   },
   "devDependencies": {
+    "firebase-functions-test": "^0.2.1",
     "firebase-tools": "^8.0.2",
+    "jest": "^25.3.0",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   }
 }

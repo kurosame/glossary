@@ -4,12 +4,8 @@ module.exports = {
     '<rootDir>/test/unit/specs/**/*.ts',
     '<rootDir>/test/unit/specs/**/*.tsx'
   ],
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest'
-  },
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
-  },
+  transform: { '^.+\\.tsx?$': 'ts-jest' },
+  moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.tsx',

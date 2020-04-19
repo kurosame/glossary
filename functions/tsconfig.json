@@ -16,6 +16,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "test/unit/specs/**/*.spec.ts"],
   "exclude": ["node_modules"]
 }

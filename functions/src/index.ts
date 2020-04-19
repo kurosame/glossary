@@ -11,14 +11,20 @@ export const setWord = functions.storage.object().onFinalize(o => {
     return null
   }
 
-  const file = admin.storage().bucket().file(o.name)
+  const file = admin
+    .storage()
+    .bucket()
+    .file(o.name)
 
   if (!file.name) {
     console.error('File.name not found')
     return null
   }
 
-  const fileNameSplitPeriod = file.name.split('/').slice(-1)[0].split('.')
+  const fileNameSplitPeriod = file.name
+    .split('/')
+    .slice(-1)[0]
+    .split('.')
   const fileName = fileNameSplitPeriod.slice(0, -1).join('.')
 
   file
