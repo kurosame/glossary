@@ -13,7 +13,7 @@ let wrapper: (isLogin: boolean) => RenderResult
 beforeEach(() => {
   mockDispatch = jest.fn()
   spyFirebaseAuth = jest.spyOn(firebaseApp.auth(), 'onAuthStateChanged')
-  wrapper = (isLogin: boolean): RenderResult => {
+  wrapper = (isLogin): RenderResult => {
     const store = configureStore<Pick<States, 'login'>>()({
       login: { isLogin }
     })

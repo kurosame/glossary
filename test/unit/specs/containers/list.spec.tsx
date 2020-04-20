@@ -15,11 +15,7 @@ let wrapper: (
 ) => RenderResult
 beforeEach(() => {
   mockDispatch = jest.fn()
-  wrapper = (
-    isLogin: boolean,
-    words: WordState[],
-    match: { params: { category: string } }
-  ): RenderResult => {
+  wrapper = (isLogin, words, match): RenderResult => {
     const store = configureStore<States>()({
       login: { isLogin },
       words

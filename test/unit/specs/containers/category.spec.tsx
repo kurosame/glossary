@@ -8,7 +8,7 @@ import { render, cleanup, RenderResult } from '@testing-library/react'
 
 let wrapper: (isLogin: boolean) => RenderResult
 beforeEach(() => {
-  wrapper = (isLogin: boolean): RenderResult => {
+  wrapper = (isLogin): RenderResult => {
     const store = configureStore<Pick<States, 'login'>>()({
       login: { isLogin }
     })
