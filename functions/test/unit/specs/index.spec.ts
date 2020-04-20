@@ -1,8 +1,11 @@
-// import { storage } from 'firebase-functions'
+import { storage } from 'firebase-functions'
 import fTest from 'firebase-functions-test'
+/* eslint-disable import/no-unresolved */
+// ESLint error only when VSCode
 import { setWord } from '@/index'
+/* eslint-enable import/no-unresolved */
 
-let wrapper: (o: any) => any
+let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => void
 let spyErr: jest.SpyInstance
 beforeEach(() => {
   jest.mock('firebase-admin', () => ({
@@ -21,7 +24,10 @@ beforeEach(() => {
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
 })
-afterEach(jest.restoreAllMocks)
+afterEach(() => {
+  wrapper = (): undefined => undefined
+  jest.restoreAllMocks()
+})
 
 test('Output the console.error when file not found', () => {
   const res = wrapper({ name: undefined })
