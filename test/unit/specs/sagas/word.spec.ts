@@ -55,7 +55,7 @@ describe('Run `getFirestoreWords`', () => {
     expect(spyErr).not.toBeCalled()
   })
 
-  test('Output the console.error when rejected', async () => {
+  test('Output console.error when rejected', async () => {
     spyFirestore.mockReturnValue({
       get: () => Promise.reject(new Error('error'))
     })

@@ -29,7 +29,7 @@ afterEach(() => {
   jest.restoreAllMocks()
 })
 
-test('Output the console.error when file not found', () => {
+test('Output console.error when file not found', () => {
   const res = wrapper({ name: undefined })
 
   expect(res).toBeNull()
