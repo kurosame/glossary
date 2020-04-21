@@ -1,12 +1,16 @@
+import { firestore } from 'firebase'
+import { call, put, take } from 'redux-saga/effects'
 import firebase from '@/firebase/index'
 import { GET_WORDS, SET_WORDS } from '@/modules/word'
 import { getFirestoreWords, getWords } from '@/sagas/word'
-import { call, put, take } from 'redux-saga/effects'
 
-let spyFirestore: jest.SpyInstance
+let spyFirestore: (docs: Promise<firestore.QuerySnapshot>) => jest.SpyInstance
 let spyErr: jest.SpyInstance
 beforeEach(() => {
-  spyFirestore = jest.spyOn(firebase.firestore(), 'collection')
+  spyFirestore = (docs): jest.SpyInstance =>
+    (jest.spyOn(firebase.firestore(), 'collection') as jest.SpyInstance<
+      Pick<firestore.CollectionReference, 'get'>
+    >).mockReturnValue({ get: () => docs })
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
 })
@@ -14,29 +18,28 @@ afterEach(jest.restoreAllMocks)
 
 describe('Run `getFirestoreWords`', () => {
   test('Return `words` when resolved', async () => {
-    spyFirestore.mockReturnValue({
-      get: () =>
-        Promise.resolve({
-          docs: [
-            {
-              id: 'JavaScript',
-              data: (): {} => ({
-                category: 'JavaScript',
-                titles: ['JavaScript', 'JS'],
-                description: 'It a JS'
-              })
-            },
-            {
-              id: 'TypeScript',
-              data: (): {} => ({
-                category: 'JavaScript',
-                titles: ['TypeScript', 'TS'],
-                description: 'It a TS'
-              })
-            }
-          ]
-        })
-    })
+    spyFirestore(
+      Promise.resolve({
+        docs: [
+          {
+            id: 'JavaScript',
+            data: (): {} => ({
+              category: 'JavaScript',
+              titles: ['JavaScript', 'JS'],
+              description: 'It a JS'
+            })
+          },
+          {
+            id: 'TypeScript',
+            data: (): {} => ({
+              category: 'JavaScript',
+              titles: ['TypeScript', 'TS'],
+              description: 'It a TS'
+            })
+          }
+        ]
+      } as firestore.QuerySnapshot)
+    )
 
     expect(await getFirestoreWords()).toEqual([
       {
@@ -56,9 +59,7 @@ describe('Run `getFirestoreWords`', () => {
   })
 
   test('Output console.error when rejected', async () => {
-    spyFirestore.mockReturnValue({
-      get: () => Promise.reject(new Error('error'))
-    })
+    spyFirestore(Promise.reject(new Error('error')))
 
     expect(await getFirestoreWords()).toEqual([])
     expect(spyErr).toBeCalled()
