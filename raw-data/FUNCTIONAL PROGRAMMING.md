@@ -31,7 +31,7 @@ return を省略しても最後の式が評価され返却される
 
 ### JS で関数型プログラミング
 
-[Ramda](https://github.com/ramda/ramda)がよい  
+<a href="https://github.com/ramda/ramda" target="_blank">Ramda</a>がよい  
 Lodash は破壊的で副作用をもつ関数が多く存在する  
 Ramda は副作用がなく純粋関数型に近いスタイルで書ける  
 また、ほぼすべての関数がカリー化に対応している
