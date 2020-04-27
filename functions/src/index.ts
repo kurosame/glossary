@@ -21,11 +21,12 @@ export const setWord = functions.storage.object().onFinalize(o => {
     return null
   }
 
-  const fileNameSplitPeriod = file.name
+  const fileName = file.name
     .split('/')
     .slice(-1)[0]
     .split('.')
-  const fileName = fileNameSplitPeriod.slice(0, -1).join('.')
+    .slice(0, -1) // Have names that include periods (NODE.JS, VUE.JS, etc..)
+    .join('.')
 
   file
     .download()
@@ -52,20 +53,17 @@ export const setWord = functions.storage.object().onFinalize(o => {
         .collection('words')
         .doc(fileName)
         .set({ category, titles, description, descriptionByLine })
-        .catch((err: Error) => {
+        .catch((err: Error) =>
           console.error(
             `Document set error fileName=${fileName} err=${err.message}`
           )
-          return null
-        })
+        )
     })
-    .catch((err: Error) => {
+    .catch((err: Error) =>
       console.error(
         `File download error fileName=${fileName} err=${err.message}`
       )
-      return null
-    })
-
+    )
   return null
 })
 /* eslint-enable import/prefer-default-export */
