@@ -76,6 +76,30 @@ jobs:
           command: npm run test:ci
       - store_artifacts:
           path: ./test/unit/coverage
+  test-functions:
+    <<: *setup-docker-base
+    steps:
+      - checkout
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install
+          working_directory: ./functions
+          command: npm ci
+      - save_cache:
+          name: Cache dependencies
+          paths:
+            - ~/.npm
+          key: v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+      - run:
+          name: Test for CI
+          working_directory: ./functions
+          command: npm run test:ci
+      - store_artifacts:
+          path: ./functions/test/unit/coverage
   e2e:
     <<: *setup-docker-cypress
     steps:
@@ -150,7 +174,7 @@ jobs:
             - ~/.npm
           key: v1-dependencies-{{ checksum "./functions/package-lock.json" }}
       - run:
-          name: Outdated for functions
+          name: Outdated
           working_directory: ./functions
           command: |
             PAYLOAD=`cat << EOF
@@ -219,6 +243,7 @@ workflows:
   test:
     jobs:
       - test
+      - test-functions
       - e2e
   nightly:
     triggers:

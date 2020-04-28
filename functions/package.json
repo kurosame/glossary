@@ -11,6 +11,7 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "test": "jest --watchAll",
+    "test:ci": "jest",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
