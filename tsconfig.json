@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["dom", "es2015"],
+    // Basic
+    "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "lib": ["dom", "es2015"],
+    "jsx": "react",
+    "sourceMap": true,
+    // Strict Type Checks
+    "strict": true,
+    // Additional Checks
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    // Module Resolution
+    "moduleResolution": "node",
+    "baseUrl": "./",
     "paths": { "@/*": ["src/*"] },
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "esnext"
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // Advanced
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",
