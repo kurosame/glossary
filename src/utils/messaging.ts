@@ -56,3 +56,7 @@ export function requestPermission(): void {
     }
   })
 }
+
+export function isPermission(): string {
+  return Notification.permission
+}

@@ -3,10 +3,10 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
-import { requestPermission } from '@/utils/messaging'
+import { requestPermission, isPermission } from '@/utils/messaging'
 
 const AllowPush: React.FC = () => {
-  const [open, setOpen] = React.useState(Notification.permission === 'default')
+  const [open, setOpen] = React.useState(isPermission() === 'default')
   const handleRequestPermission = (): void => requestPermission()
   const handleClose = (): void => setOpen(false)
 
@@ -19,6 +19,7 @@ const AllowPush: React.FC = () => {
         <>
           <Button
             color="primary"
+            data-testid="allow-push-ok"
             onClick={(): void => {
               handleRequestPermission()
               handleClose()
@@ -26,7 +27,11 @@ const AllowPush: React.FC = () => {
           >
             OK
           </Button>
-          <IconButton color="inherit" onClick={handleClose}>
+          <IconButton
+            color="inherit"
+            data-testid="allow-push-close"
+            onClick={handleClose}
+          >
             <CloseIcon />
           </IconButton>
         </>
