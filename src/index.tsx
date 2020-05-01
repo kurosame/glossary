@@ -4,13 +4,14 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import Login from '@/containers/Login'
+import AllowPush from '@/containers/AllowPush'
 import Category from '@/containers/Category'
 import List from '@/containers/List'
 import '@/modules/states'
 import store from '@/store'
-import initializeMessaging from '@/utils/messaging'
+import { initialize } from '@/utils/messaging'
 
-initializeMessaging()
+initialize()
 
 render(
   <Provider store={store}>
@@ -18,6 +19,7 @@ render(
       <Router>
         <>
           <Route path="/" component={Login} />
+          <Route path="/" component={AllowPush} />
           <Route path="/" component={Category} />
           <Route path="/" component={List} exact />
           <Route path="/:category" component={List} exact />
