@@ -16,7 +16,7 @@ export async function initialize(): Promise<void> {
   firebase.messaging().onMessage((payload: { data: Message }) =>
     navigator.serviceWorker.ready
       .then(reg =>
-        reg.showNotification(`[Foreground]${payload.data.title}`, {
+        reg.showNotification(`[Foreground] ${payload.data.title}`, {
           body: payload.data.body,
           data: window.location.origin
         })

@@ -18,7 +18,7 @@ self.addEventListener('notificationclick', e => {
 })
 
 messaging.setBackgroundMessageHandler(payload =>
-  self.registration.showNotification(`[Background]${payload.data.title}`, {
+  self.registration.showNotification(`[Background] ${payload.data.title}`, {
     body: payload.data.message,
     data: location.origin
   })
