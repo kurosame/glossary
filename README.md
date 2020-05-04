@@ -24,6 +24,25 @@ git clone https://github.com/kurosame/glossary.git
 npm install
 ```
 
+## Testing to push notification
+
+After allowing push notifications, request like the following
+
+```sh
+curl -i -X POST \
+  -H "Authorization:key=YOUR_FIREBASE_SERVER_KEY" \
+  -H "Content-Type:application/json" \
+  -d \
+    '{
+      "data": {
+        "title":"test",
+        "body":"testtest"
+      },
+      "to": "YOUR_DEVICE_TOKEN"
+    }' \
+'https://fcm.googleapis.com/fcm/send'
+```
+
 ## Tasks
 
 ```sh

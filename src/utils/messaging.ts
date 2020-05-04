@@ -1,12 +1,9 @@
 import firebase from '@/firebase/index'
 
-/* eslint-disable camelcase */
-interface NotificationTypes {
+interface Message {
   title: string
   body: string
-  click_action: string
 }
-/* eslint-enable camelcase */
 
 export async function initialize(): Promise<void> {
   if ('serviceWorker' in navigator) {
@@ -16,20 +13,16 @@ export async function initialize(): Promise<void> {
       .catch((err: Error) => console.error(`SW register error: ${err.message}`))
   }
 
-  firebase
-    .messaging()
-    .onMessage((payload: { notification: NotificationTypes }) =>
-      navigator.serviceWorker.ready
-        .then(reg =>
-          reg.showNotification(`${payload.notification.title}(foreground)`, {
-            body: payload.notification.body,
-            data: payload.notification.click_action
-          })
-        )
-        .catch((err: Error) =>
-          console.error(`SW activate error: ${err.message}`)
-        )
-    )
+  firebase.messaging().onMessage((payload: { data: Message }) =>
+    navigator.serviceWorker.ready
+      .then(reg =>
+        reg.showNotification(`[Foreground]${payload.data.title}`, {
+          body: payload.data.body,
+          data: window.location.origin
+        })
+      )
+      .catch((err: Error) => console.error(`SW activate error: ${err.message}`))
+  )
 
   firebase.messaging().onTokenRefresh((): void => {
     console.info('FCM token refreshed')
