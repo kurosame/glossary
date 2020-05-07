@@ -148,8 +148,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "glossary's Outdated",
-                  "text": '$(npm outdated)',
-                  "mrkdwn_in": ["text"]
+                  "text": '$(npm outdated)'
                 }
               ]
             }
@@ -182,8 +181,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "glossary-functions's Outdated",
-                  "text": '$(npm outdated)',
-                  "mrkdwn_in": ["text"]
+                  "text": '$(npm outdated)'
                 }
               ]
             }
