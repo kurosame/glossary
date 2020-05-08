@@ -21,6 +21,6 @@
     // Advanced
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "test/unit/specs/**/*.spec.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
