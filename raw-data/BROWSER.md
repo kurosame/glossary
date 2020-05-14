@@ -19,7 +19,7 @@ Browser
 ### レンダリングの流れ
 
 1. Loading  
-   HTML,JavaScript,CSS,画像などのサブリソースをサーバからダウンロードする  
+   HTML、JavaScript、CSS、画像などのサブリソースをサーバからダウンロードする  
    ブラウザのレンダリングエンジンの内部表現にパースして変換（HTML を DOM に変換、CSS を CSSOM に変換）
 
 1. Scripting  
@@ -29,7 +29,7 @@ Browser
 
 1. Rendering
 
-   1. 全ての DOM に適切な CSSOM を紐づけ、レンダリングツリーを作成する
+   1. すべての DOM に適切な CSSOM を紐づけ、レンダリングツリーを作成する
    1. リフローと呼ばれる各要素の位置、サイズを計算する（height, width, padding, margin など）
 
 1. Painting  
