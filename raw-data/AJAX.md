@@ -5,7 +5,7 @@ js
 ## titles
 
 Ajax
-Asynchronous Javascript XML
+Asynchronous JavaScript XML
 
 ## description
 
