@@ -40,4 +40,4 @@ API サーバがドメインロジックを担当するのに対し、BFF は UI
 
 - Universal Application  
   サーバーサイドでもクライアントと同じ仕組みでレンダリングすること  
-  Next.js や Nuxt.js を使えば、クライアント・サーバ両方で React もしくは Vue.js を使ってレンダリングできる
+  Next.js や Nuxt.js を使えば、クライアントとサーバ両方で React もしくは Vue.js を使ってレンダリングできる
