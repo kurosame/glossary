@@ -50,20 +50,18 @@ export const setWord = functions
           .match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
           .trim()
           .split(/\n/)
+        if (!category || !titles[0] || !description)
+          return Promise.reject(Error('Document format error'))
 
         const doSet = async (): Promise<void> => {
-          admin
+          await admin
             .firestore()
             .collection('words')
             .doc(fileName)
             .set({ category, titles, description, descriptionByLine })
-            .catch((err: Error) =>
-              console.error(
-                `Document set error fileName=${fileName} err=${err.message}`
-              )
-            )
+            .catch(() => Promise.reject())
           console.info(`Run document set fileName=${fileName}`)
-          await new Promise(resolve => setTimeout(resolve, 120000)) // Sleep for 2 minutes
+          await new Promise(r => setTimeout(r, 120000)) // Sleep for 2 minutes
           return admin
             .firestore()
             .collection('words')

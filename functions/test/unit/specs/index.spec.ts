@@ -9,6 +9,10 @@ const download = jest
   .fn()
   .mockRejectedValueOnce(Error('download error'))
   .mockResolvedValueOnce(['not match case'])
+  .mockResolvedValueOnce(['## category\n\njs\n\nnot match case'])
+  .mockResolvedValueOnce([
+    '## category\n\njs\n\n## titles\n\nNode.js\nNode\n\nnot match case'
+  ])
   .mockResolvedValue([
     '## category\n\njs\n\n## titles\n\nNode.js\nNode\n\n## description\n\nNode.js は言語としての機能だけでなく、...\nNode.js も Nginx と同様に...\n'
   ])
@@ -20,27 +24,57 @@ const set = jest
   .fn()
   .mockRejectedValueOnce(Error('set error'))
   .mockResolvedValue(Promise.resolve())
+const get = jest
+  .fn()
+  .mockResolvedValueOnce({ exists: false })
+  .mockResolvedValueOnce({ exists: true, data: () => undefined })
+  .mockResolvedValueOnce({
+    exists: true,
+    data: (): {} => ({ category: 'not match' })
+  })
+  .mockResolvedValueOnce({
+    exists: true,
+    data: (): {} => ({ category: 'js', titles: ['not match'] })
+  })
+  .mockResolvedValueOnce({
+    exists: true,
+    data: (): {} => ({
+      category: 'js',
+      titles: ['Node.js', 'Node'],
+      description: 'not match'
+    })
+  })
+  .mockResolvedValue({
+    exists: true,
+    data: (): {} => ({
+      category: 'js',
+      titles: ['Node.js', 'Node'],
+      description:
+        'Node.js は言語としての機能だけでなく、...\nNode.js も Nginx と同様に...'
+    })
+  })
 
 // jest.mock runs at top level
 jest.mock('firebase-admin', () => ({
   initializeApp: jest.fn(),
   firestore: (): {} => ({
     settings: jest.fn,
-    collection: (): {} => ({ doc: (): {} => ({ set }) })
+    collection: (): {} => ({ doc: (): {} => ({ set, get }) })
   }),
   storage: (): {} => ({ bucket: (): {} => ({ file }) })
 }))
 
-let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => void
+let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => Promise<void>
 let spyErr: jest.SpyInstance
 beforeEach(() => {
   // offline mode
   wrapper = async (o): Promise<void> => fTest().wrap(setWord)({ name: o.name })
+  jest.spyOn(console, 'info').mockImplementation(x => x)
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
 })
 afterEach(() => {
-  wrapper = (): undefined => undefined
+  wrapper = (): Promise<void> => Promise.resolve()
   fTest().cleanup()
   jest.restoreAllMocks()
 })
@@ -72,33 +106,75 @@ describe('Output console.error', () => {
     )
   })
 
-  test('Document set error', async () => {
+  test('Document format error with category not found', async () => {
     const res = await wrapper({ name: 'test' })
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
     expect(spyErr.mock.calls[0][0]).toEqual(
-      'Document set error fileName=NODE.JS err=set error'
+      'File download error fileName=NODE.JS err=Document format error'
+    )
+  })
+
+  test('Document format error with titles not found', async () => {
+    const res = await wrapper({ name: 'test' })
+
+    expect(res).toBeNull()
+    expect(spyErr).toBeCalled()
+    expect(spyErr.mock.calls[0][0]).toEqual(
+      'File download error fileName=NODE.JS err=Document format error'
+    )
+  })
+
+  test('Document format error with description not found', async () => {
+    const res = await wrapper({ name: 'test' })
+
+    expect(res).toBeNull()
+    expect(spyErr).toBeCalled()
+    expect(spyErr.mock.calls[0][0]).toEqual(
+      'File download error fileName=NODE.JS err=Document format error'
     )
   })
 })
 
 describe('Set document', () => {
-  test('Not to match RegExp', async () => {
+  // Disable setTimeout
+  global.setTimeout = (fn: () => void): NodeJS.Timer =>
+    (fn() as unknown) as NodeJS.Timer
+
+  test('Not updates document (1)', async () => {
+    /* 
+      # This test case includes:
+      - set() to error
+      - doc.exists is false
+      - doc.data is undefined
+    */
     const res = await wrapper({ name: 'test' })
 
     expect(res).toBeNull()
-    expect(set).toBeCalled()
-    expect(set.mock.calls[0][0]).toEqual({
-      category: '',
-      titles: [''],
-      description: '',
-      descriptionByLine: ['']
-    })
-    expect(spyErr).not.toBeCalled()
+    expect(spyErr).toBeCalled()
+    expect(spyErr.mock.calls[0][0]).toEqual(
+      'Document not updates fileName=NODE.JS'
+    )
   })
 
-  test('To match RegExp', async () => {
+  test('Not updates document (2)', async () => {
+    /*
+      # This test case includes:
+      - category and data.category are not equal
+      - titles and data.titles are not equal
+      - description and data.description are not equal
+    */
+    const res = await wrapper({ name: 'test' })
+
+    expect(res).toBeNull()
+    expect(spyErr).toBeCalled()
+    expect(spyErr.mock.calls[0][0]).toEqual(
+      'Document not updates fileName=NODE.JS'
+    )
+  })
+
+  test('Set document to resolved', async () => {
     const res = await wrapper({ name: 'test' })
 
     expect(res).toBeNull()
