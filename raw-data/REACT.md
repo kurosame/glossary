@@ -394,13 +394,13 @@ class ErrorBoundary extends React.Component {
       子コンポーネント全体を React.memo で囲む  
       PureComponent とやっていることは同じ
 
-- まとめ  
-  React.memo, PureComponent, shouldComponentUpdate の目的は一緒  
-  子コンポーネント自体をメモ化するので、子コンポーネントの props と state の更新がなければ再レンダリングしない  
-  useCallback はコールバック関数自体をメモ化する  
-  親コンポーネントが再レンダリングされた際はコールバック関数も再生成されるため、コールバック関数を子コンポーネントに渡していた場合、React.memo だけだと毎回 props が変更されているとみなされ、再レンダリングが行われてしまう  
-  React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる  
-  useMemo は useCallback と同様に props が値の場合に React.memo と組み合わせて使うのがよい
+  - まとめ  
+    React.memo, PureComponent, shouldComponentUpdate の目的は一緒  
+    子コンポーネント自体をメモ化するので、子コンポーネントの props と state の更新がなければ再レンダリングしない  
+    useCallback はコールバック関数自体をメモ化する  
+    親コンポーネントが再レンダリングされた際はコールバック関数も再生成されるため、コールバック関数を子コンポーネントに渡していた場合、React.memo だけだと毎回 props が変更されているとみなされ、再レンダリングが行われてしまう  
+    React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる  
+    useMemo は useCallback と同様に props が値の場合に React.memo と組み合わせて使うのがよい
 
 - ループ内の要素に key 属性を付ける  
   静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
