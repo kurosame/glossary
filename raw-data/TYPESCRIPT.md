@@ -39,7 +39,7 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 - esModuleInterop  
   true にすると CommonJS Modules を ES Modules に準拠した形で import できる  
-  TS をトランスパイル際に Babel との互換性をサポートするための`__importDefault`と`__importStar`のヘルパー関数をバンドルファイルに追加する
+  TS をトランスパイルする際に Babel との互換性をサポートするための`__importDefault`と`__importStar`のヘルパー関数をバンドルファイルに追加する
 
   Babel と webpack は CommonJS Modules の`default import`を許可しているが、TS は許可していない  
   esModuleInterop を true にすることで TS でも`default import`が許可される（allowSyntheticDefaultImports を true にした場合と一緒）
