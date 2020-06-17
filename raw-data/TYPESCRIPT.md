@@ -28,6 +28,33 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
   型定義ファイルの管理をしている団体  
   非営利組織
 
+### `tsconfig.json`
+
+- allowSyntheticDefaultImports  
+  true にすると CommonJS Modules のような`export default`がないモジュールからの`default import`を許可する  
+  `export default`がないモジュール`example`に対して`import example from 'example'`が許可されるかどうか
+
+  allowSyntheticDefaultImports は型チェックのみをサポートしている  
+  よって、バンドルファイルの中身がこのオプションの設定によって変わることはない
+
+- esModuleInterop  
+  true にすると CommonJS Modules を ES Modules に準拠した形で import できる  
+  TS をトランスパイル際に Babel との互換性をサポートするための`__importDefault`と`__importStar`のヘルパー関数をバンドルファイルに追加する
+
+  Babel と webpack は CommonJS Modules の`default import`を許可しているが、TS は許可していない  
+  esModuleInterop を true にすることで TS でも`default import`が許可される（allowSyntheticDefaultImports を true にした場合と一緒）
+
+  allowSyntheticDefaultImports との違いとして、esModuleInterop はトランスパイル後のバンドルファイルにヘルパー関数が追加される
+
+  また、esModuleInterop や allowSyntheticDefaultImports のオプションが false の場合、TS では CommonJS Modules を以下の書き方で import できる  
+  `const example = require('example')`  
+  `import * as example from 'example'`
+
+  ただし、`require`を使った書き方は推奨されていない  
+  そして、`import * as`を使った書き方もコンパイルエラーになることがある
+
+  esModuleInterop を true にすると、allowSyntheticDefaultImports も自動的に true となる
+
 ### オブジェクト型
 
 Object 型と`{}`型は同じ型  
