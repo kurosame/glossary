@@ -12,7 +12,7 @@ Go 言語で書かれた JS および TS のビルドツール
 TS から JS へのトランスパイル、バンドル、ミニファイ、JSX/TSX をサポート
 
 かなり速い  
-ベンチマークによると webpack、Parcel、Rollup よりはるかに速い
+ベンチマークによると webpack、Parcel、Rollup と比べてもだいぶ速い
 
 速い理由としては
 
