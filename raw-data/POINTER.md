@@ -5,11 +5,11 @@ programming
 ## titles
 
 Pointer
-ポインタ
+ポインター
 
 ## description
 
-ポインタ変数とは、メモリアドレスを格納している変数のことである
+ポインター変数とは、メモリアドレスを格納している変数のことである
 
 ```go
 package main
