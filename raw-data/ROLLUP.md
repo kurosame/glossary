@@ -1,6 +1,6 @@
 ## category
 
-module-bundler
+build
 
 ## titles
 
@@ -12,7 +12,7 @@ Rollup
 React、Vue.js、Ember.js などに Rollup が使われている
 
 webpack や Browserify などの他のバンドラーは ES5 に変換しているが、  
-Rollup は一旦 ES6 に変換し、必要に応じて babel 等で ES5 に変換する
+Rollup はいったん ES6 に変換し、必要に応じて babel 等で ES5 に変換する
 
 npm レジストリに公開されている ES5 モジュール（CommonJS）は Rollup で読み込めない為、  
 プラグインで ES6 に変換して読み込ませる必要がある  
@@ -27,9 +27,7 @@ export されてるが import されていない関数・クラス・変数を�
 ※webpack2 でも Tree Shaking が実装された  
 babel-preset-es2015 を使っている場合、{"modules": false}を書いておき、バンドル前に ES を CommonJS に変換するのを防ぐ
 
-アプリケーションは webpack  
-ライブラリは Rollup  
-という使い方が良いみたい
+アプリケーションは webpack、ライブラリは Rollup という使い方が良いみたい
 
 Rollup は HMR に対応していない  
 また、複数バンドルを作成する際にコード分割をサポートしていない

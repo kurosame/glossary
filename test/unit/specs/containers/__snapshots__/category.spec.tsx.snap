@@ -109,6 +109,23 @@ exports[`Match the snapshot 1`] = `
             aria-disabled="false"
             aria-selected="false"
             class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            href="/build"
+            role="tab"
+            tabindex="0"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              Build
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </a>
+          <a
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
             href="/ci"
             role="tab"
             tabindex="0"
@@ -321,23 +338,6 @@ exports[`Match the snapshot 1`] = `
               class="MuiTab-wrapper"
             >
               Mobile
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </a>
-          <a
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
-            href="/module-bundler"
-            role="tab"
-            tabindex="0"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Module Bundler
             </span>
             <span
               class="MuiTouchRipple-root"

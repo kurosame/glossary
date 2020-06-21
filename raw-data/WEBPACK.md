@@ -1,6 +1,6 @@
 ## category
 
-module-bundler
+build
 
 ## titles
 
@@ -14,7 +14,7 @@ webpack は CSS などの JS 以外のファイルも JS にバンドルする
 ### loader
 
 対象のモジュールを JS で使える形にする  
-エントリーポイントから input されたモジュール全てを正規表現で検索できる  
+エントリーポイントから input されたモジュールすべてを正規表現で検索できる  
 use オプションに複数の loader を指定した場合は、配列内の右から左の順に処理される
 
 ### plugin
