@@ -14,6 +14,15 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 <a href="https://qiita.com/kurosame/items/3c28f45c8b2e65f5c69d" target="_blank">JS から TS への移行で悩んだ点の対応メモ</a>
 
+### 型アノテーション
+
+`: 型名`で指定する
+
+例
+
+- `const num: number = 123`
+- `function sum(num: number): number {}`
+
 ### 型定義
 
 - 型定義ファイル（`.d.ts`）を管理するツール
@@ -54,6 +63,22 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
   そして、`import * as`を使った書き方もコンパイルエラーになることがある
 
   esModuleInterop を true にすると、allowSyntheticDefaultImports も自動的に true となる
+
+### 型チェック
+
+型が正しいかチェックすること  
+`tsconfig.json`の strict オプションを有効にすると型チェック関連のオプションをすべて有効にすることができる
+
+Babel は TS を JS にトランスパイルする機能はある（バージョン 7 から）が、型チェックはサポートしていない  
+また、Jest で型チェックしたい場合も`ts-jest`が必要になってくる
+
+TS の型チェックは重く、webpack で型チェックを行うときなどは速度面で悩みのタネとなる  
+よって、webpack での型チェックは廃止し、代わりに以下を用意するとよいだろう
+
+- VS Code で型チェック
+  - VS Code はインクリメンタルビルド（変更された部分だけをコンパイル）をサポートしているので、すぐに型チェックのエラーを出してくれる
+- CI で型チェック
+  - tsc の noEmit オプションはコンパイル結果を出力しないので、これを利用することで型チェックのみを行うことができる
 
 ### オブジェクト型
 
