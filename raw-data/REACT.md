@@ -280,7 +280,8 @@ class ErrorBoundary extends React.Component {
         props と state の値が同じでもオブジェクトが異なる場合、再レンダリングが走る
     - 関数型コンポーネントの場合は React.memo  
       子コンポーネント全体を React.memo で囲む  
-      PureComponent とやっていることは同じ
+      PureComponent とやっていることは同じ  
+      なお、React.memo はクラス型コンポーネントにも使用できる
 
   - まとめ  
     React.memo, PureComponent, shouldComponentUpdate の目的は一緒  
