@@ -20,3 +20,13 @@ Nuxt.js
   ここに置かれたファイルは公開ディレクトリにそのまま置かれる  
   プロジェクトのルート URL からアクセス可能  
   webpack などで処理する必要のないファイルを置く
+
+### `nuxt.config.js`
+
+- modules  
+  Nuxt のモジュールを定義  
+  dependencies でインストールする
+
+- buildModules  
+  Nuxt の開発用のモジュールを定義  
+  devDependencies でインストールする
