@@ -1,24 +1,19 @@
 {
   "compilerOptions": {
-    // Basic
     "target": "esnext",
     "module": "commonjs",
     "lib": ["dom", "es2015"],
     "jsx": "react",
     "sourceMap": true,
     "outDir": "lib",
-    // Strict Type Checks
     "strict": true,
-    // Additional Checks
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    // Module Resolution
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": { "@/*": ["src/*"] },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // Advanced
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "test/unit/specs/**/*.spec.ts"],
