@@ -1,6 +1,6 @@
 # Glossary App
 
-https://glossary-kurosame.firebaseapp.com
+[Glossary](https://glossary-kurosame.firebaseapp.com)
 
 Deploy to Firebase Hosting is done on CircleCI
 
