@@ -20,18 +20,18 @@ JS
 ### var, let, const
 
 - var  
-  関数スコープ, 再代入可
+  関数スコープ、再代入可
 
 - let  
-  ブロックスコープ, 再代入可
+  ブロックスコープ、再代入可
 
 - const  
-  ブロックスコープ, 再代入不可
+  ブロックスコープ、再代入不可
 
 ### this
 
-関数呼び出し時にレシーバが存在すれば、this はそのレシーバを指す  
-関数呼び出し時にレシーバが存在しなければ、this はグローバルオブジェクト（window オブジェクト）を指す  
+関数呼び出し時にレシーバーが存在すれば、this はそのレシーバーを指す  
+関数呼び出し時にレシーバーが存在しなければ、this はグローバルオブジェクト（window オブジェクト）を指す  
 ただし、Strict モード（`use strict`）の時は undefined になる  
 アロー関数の場合、宣言された時点で this を確定する  
 正確には定義しているスコープの this を引き継ぐ
@@ -89,7 +89,7 @@ param4.func() // error - Strictモードでthisがundefinedになっているの
 
 ### bind
 
-bind でオブジェクトを紐づけておけば、レシーバが存在しなくても紐づけたオブジェクトを参照する
+bind でオブジェクトを紐づけておけば、レシーバーが存在しなくても紐づけたオブジェクトを参照する
 
 ```js
 this.param = 'global'
@@ -209,6 +209,22 @@ console.log(result)
 26
 ```
 
+### Shallow Equal と Deep Equal と`===`
+
+オブジェクトに関しての話
+
+- Shallow Equal  
+  オブジェクトのプロパティの 1 段目のみを比較する  
+  React のメモ化などで新旧の props を比較するといった処理は全部 Shallow 比較を行っている
+
+- Deep Equal  
+  JSON.stringify を使ってオブジェクト全部を比較する  
+  Shallow Equal と比べてパフォーマンスは悪い
+
+- `===`  
+  オブジェクトに関しての`===`は同一インスタンスの場合のみ`true`  
+  そのため、オブジェクトのプロパティが完全一致していても、インスタンスが異なれば`false`になる
+
 ### Polyfill
 
 - babel-polyfill  
@@ -220,7 +236,8 @@ console.log(result)
   CDN 経由等の script タグでの読み込みの場合、以下の問題点がある
 
   - 名前衝突（グローバル領域での名前汚染）
-  - 読み込むモジュールに依存関係を事前に知っておく必要がある（読み込み順を間違えると先に script タグで読み込んだモジュールでエラーになる）
+  - 読み込むモジュールに依存関係を事前に知っておく必要がある
+    - 読み込み順を間違えると先に script タグで読み込んだモジュールがエラーになる
 
 - CommonJS  
   module.exports で export したモジュールを require で読み込む  
@@ -256,4 +273,4 @@ console.log(result)
 
 ### フレームワーク比較
 
-<a href="https://kurosame-th.hatenadiary.com/entry/2018/12/25/123302" target="_blank">React と Vue.js と Angular の比較</a>
+<a href="https://kurosame-th.hatenadiary.com/entry/2018/12/25/123302" target="_blank">React、Vue.js、Angular の比較</a>
