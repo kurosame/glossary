@@ -78,7 +78,7 @@ module.exports = (_, argv) => ({
     extensions: ['.js', '.ts', '.tsx'],
     alias: { '@': path.join(__dirname, 'src') }
   },
-  devtool: argv.mode === 'development' ? '#inline-source-map' : false,
+  devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   performance: {
     assetFilter: function(filename) {
       return !/^vendor-\w+\.js$/.test(filename)
