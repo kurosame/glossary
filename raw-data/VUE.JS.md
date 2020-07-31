@@ -16,7 +16,7 @@ Vue.js
 
 ### data と methods と computed
 
-<a href="https://kurosame-th.hatenadiary.com/entry/2019/03/28/153813" target="_blank">Vue.js の data と methods と computed の使い分けについて</a>
+<a href="https://kurosame-th.hatenadiary.com/entry/2019/03/28/153813" target="_blank">Vue.js の data、methods、computed の使い分けについて</a>
 
 ### scoped
 
@@ -62,8 +62,9 @@ CSS モジュールを使える
 
 ### 更新時に不要なコンポーネントのレンダリングを防ぐには
 
-React でいう PureComponent や shouldComponentUpdate 的なものは無いのか？  
-⇒ 無いというか不要  
+React でいう PureComponent や shouldComponentUpdate 的なものはないのか？
+
+ないというか不要  
 ライブラリ内部で再レンダリングが必要なコンポーネントを自動的に判断しているらしい  
 また、ディレクティブの条件でレンダリングを制御すれば良いという考え
 
