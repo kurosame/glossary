@@ -9,6 +9,7 @@ Node.js
 ## description
 
 Node.js は言語としての機能だけでなく、Web サーバーとしての機能も備えている  
+シングルスレッドで動作する  
 Node.js も Nginx と同様にイベント駆動とノンブロッキング I/O を採用している
 
 ### Node.js API

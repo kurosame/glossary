@@ -14,6 +14,8 @@ Vue.js
 
 <a href="https://qiita.com/kurosame/items/1e8754fceeba9b9bfcd1" target="_blank">Vue.js を最速でビルドして、無料で公開するぞ！[ハンズオン形式]</a>
 
+<a href="https://kurosame-th.hatenadiary.com/entry/2020/07/28/125041" target="_blank">Vue3 の事前調査まとめ</a>
+
 ### data と methods と computed
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2019/03/28/153813" target="_blank">Vue.js の data、methods、computed の使い分けについて</a>
