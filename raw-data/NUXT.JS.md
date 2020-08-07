@@ -12,6 +12,8 @@ Nuxt.js
 
 <a href="https://qiita.com/kurosame/items/255480a37548d5c04c7d" target="_blank">Nuxt で IT イベント検索アプリを作成した</a>
 
+<a href="https://qiita.com/kurosame/items/bc7bb26ecfd36e8d1048" target="_blank">Nuxt.js + Jamstack 構成において、動的コンテンツを処理する方法</a>
+
 ### assets と static の違い
 
 - assets  
