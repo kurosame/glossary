@@ -1,9 +1,8 @@
 import { storage } from 'firebase-functions'
 import fTest from 'firebase-functions-test'
-/* eslint-disable import/no-unresolved */
 // ESLint error only when VSCode
+/* eslint-disable-next-line import/no-unresolved */
 import { setWord } from '@/index'
-/* eslint-enable import/no-unresolved */
 
 const download = jest
   .fn()

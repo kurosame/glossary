@@ -4,7 +4,7 @@ import * as functions from 'firebase-functions'
 admin.initializeApp(functions.config().firebase)
 admin.firestore().settings({ timestampsInSnapshots: true })
 
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable-next-line import/prefer-default-export */
 export const setWord = functions
   .runWith({ timeoutSeconds: 540 })
   .storage.object()
@@ -89,6 +89,7 @@ export const setWord = functions
           .catch(() =>
             console.error(`Document not updates fileName=${fileName}`)
           )
+        return null
       })
       .catch((err: Error) =>
         console.error(
@@ -97,4 +98,3 @@ export const setWord = functions
       )
     return null
   })
-/* eslint-enable import/prefer-default-export */
