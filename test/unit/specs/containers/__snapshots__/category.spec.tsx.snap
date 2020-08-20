@@ -177,6 +177,23 @@ exports[`Match the snapshot 1`] = `
             aria-disabled="false"
             aria-selected="false"
             class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            href="/db"
+            role="tab"
+            tabindex="0"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              DB
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </a>
+          <a
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
             href="/design"
             role="tab"
             tabindex="0"
