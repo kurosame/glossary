@@ -8,6 +8,8 @@ Jest
 
 ## description
 
+<a href="https://kurosame-th.hatenadiary.com/entry/2020/08/26/170050" target="_blank">moxios を廃止して Jest.Mock に移行する</a>
+
 ### jest.fn jest.mock jest.spyOn
 
 - jest.fn  

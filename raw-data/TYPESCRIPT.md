@@ -132,3 +132,29 @@ function fn(x: Sample | string) {
   }
 }
 ```
+
+### keyof
+
+```ts
+interface Example {
+  name: string
+  value: number
+}
+
+type K1 = keyof Example // "name" | "value"
+type K2 = keyof Example[] // "length" | "push" | "pop" | "concat" | ...
+```
+
+### in
+
+たとえば、keyof の結果に対して、要素 1 つずつに readonly を付けたい時などに使える
+
+```ts
+interface Example {
+  name: string
+  value: number
+}
+
+type K1 = keyof Example // "name" | "value"
+type K2 = readonly [P in keyof T]: T[P] // readonly "name" | readonly "value"
+```
