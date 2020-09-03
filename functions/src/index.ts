@@ -14,10 +14,7 @@ export const setWord = functions
       return null
     }
 
-    const file = admin
-      .storage()
-      .bucket()
-      .file(o.name)
+    const file = admin.storage().bucket().file(o.name)
 
     if (!file.name) {
       console.error('File.name not found')
