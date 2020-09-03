@@ -2,7 +2,7 @@ references:
   commands:
     setup-docker-base: &setup-docker-base
       docker:
-        - image: kurosame/circleci-node
+        - image: circleci/node:10.17.0
     setup-docker-cypress: &setup-docker-cypress
       docker:
         - image: cypress/browsers:chrome69
@@ -19,8 +19,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
@@ -28,7 +28,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Build
           command: npm run build:production
@@ -61,8 +61,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
@@ -70,7 +70,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Test for CI
           command: npm run test:ci
@@ -83,8 +83,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "./functions/package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           working_directory: ./functions
@@ -93,7 +93,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
       - run:
           name: Test for CI
           working_directory: ./functions
@@ -130,8 +130,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
@@ -139,7 +139,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Outdated
           command: |
@@ -161,8 +161,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "./functions/package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           working_directory: ./functions
@@ -171,7 +171,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "./functions/package-lock.json" }}
+          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
       - run:
           name: Outdated
           working_directory: ./functions
@@ -194,8 +194,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
@@ -203,7 +203,7 @@ jobs:
           name: Cache dependencies
           paths:
             - ~/.npm
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Lighthouse
           command: ./node_modules/.bin/lighthouse --chrome-flags="--headless --no-sandbox" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
