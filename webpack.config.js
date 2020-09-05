@@ -67,7 +67,8 @@ module.exports = (_, argv) => ({
     new ForkTsChecker({ checkSyntacticErrors: true }),
     new HardSource(),
     new Html({
-      template: path.join(__dirname, 'src', 'index.html')
+      template: path.join(__dirname, 'src', 'index.html'),
+      scriptLoading: 'defer'
     }),
     new WorkboxPlugin.InjectManifest({
       swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
@@ -80,7 +81,7 @@ module.exports = (_, argv) => ({
   },
   devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   performance: {
-    assetFilter: function(filename) {
+    assetFilter: function (filename) {
       return !/^vendor-\w+\.js$/.test(filename)
     }
   }
