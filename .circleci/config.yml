@@ -3,6 +3,9 @@ references:
     setup-docker-base: &setup-docker-base
       docker:
         - image: circleci/node:10.17.0
+    setup-docker-lighthouse: &setup-docker-lighthouse
+      docker:
+        - image: circleci/node:10.17.0-browsers
     setup-docker-cypress: &setup-docker-cypress
       docker:
         - image: cypress/browsers:chrome69
@@ -188,7 +191,7 @@ jobs:
             EOF`
             curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
   lighthouse:
-    <<: *setup-docker-base
+    <<: *setup-docker-lighthouse
     steps:
       - checkout
       - restore_cache:
