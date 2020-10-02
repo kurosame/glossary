@@ -29,6 +29,7 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Language', to: '/language' },
   { label: 'ML', to: '/ml' },
   { label: 'Mobile', to: '/mobile' },
+  { label: 'Monitoring', to: '/monitoring' },
   { label: 'Network', to: '/network' },
   { label: 'Package Manager', to: '/package-manager' },
   { label: 'Programming', to: '/programming' },
