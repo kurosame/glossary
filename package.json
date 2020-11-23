@@ -4,18 +4,12 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open --port 8000 --mode=development",
-    "start:e2e": "webpack-dev-server --port 9000 --mode=development",
     "build": "webpack --mode=development",
     "build:production": "webpack --mode=production",
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2",
-    "e2e": "server-test start:e2e http-get://localhost:9000 e2e:run",
-    "e2e:ci": "server-test start:e2e http-get://localhost:9000 e2e:run:ci",
-    "e2e:run": "cypress open",
-    "e2e:run:ci": "cypress run -b chrome",
     "clean:cache": "rimraf ./node_modules/.cache/*",
-    "clean:dist": "rimraf ./dist/*",
-    "clean:screenshots": "rimraf ./test/e2e/cypress/screenshots/*"
+    "clean:dist": "rimraf ./dist/*"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",
@@ -63,7 +57,6 @@
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.5",
-    "cypress": "^4.5.0",
     "eslint": "^6.8.0",
     "eslint-loader": "^4.0.2",
     "firebase-tools": "^8.2.0",
@@ -75,7 +68,6 @@
     "lighthouse": "^5.6.0",
     "lint-staged": "^10.2.11",
     "redux-mock-store": "^1.5.4",
-    "start-server-and-test": "^1.11.0",
     "stylelint": "^13.3.3",
     "stylelint-custom-processor-loader": "^0.6.0",
     "thread-loader": "^2.1.3",

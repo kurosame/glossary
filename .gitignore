@@ -4,7 +4,6 @@ dist
 functions/lib
 functions/test/unit/coverage/**/*
 node_modules
-test/e2e/cypress/screenshots/**/*
 test/unit/coverage/**/*
 .firebaserc
 
