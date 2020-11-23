@@ -14,7 +14,7 @@ Spark
 ### パフォーマンスチューニング
 
 Spark アプリケーションのチューニングは難しい  
-以下はチューニングの失敗例である
+以下にチューニングの失敗例を挙げる
 
 - Executor のインスタンス数、CPU コア数、メモリが適切に設定されていない
 - Executor インスタンスのメモリとオーバーヘッドの合計が YARN によって割り当てられるメモリを超過する（アプリケーション全体のメモリ量が少ない）
@@ -35,7 +35,7 @@ Spark アプリケーションのチューニングは難しい
   各 Executor のコア数  
   コア数が多数であれば、Executor が少数になり、低並列性に繋がる  
   コア数が少数であれば、Executor が多数になり、多量の I/O が発生する  
-  AWS ブログでは一旦コア数 5 に設定することを提案している
+  AWS ブログではいったんコア数 5 に設定することを提案している
 
 - spark.executor.memory  
   各 Executor のメモリサイズ  
@@ -64,11 +64,11 @@ Spark アプリケーションのチューニングは難しい
   Driver 用に 1 インスタンス減算しておく
 
 - spark.default.parallelism  
-  YARN コンテナで使用可能な コア数
+  YARN コンテナーで使用可能なコア数
 
   設定値は以下のように計算して導き出せる  
   `spark.default.parallelism = spark.executor.instances * spark.executors.cores * 2`  
-  プログラミングで coalesce や repartition を使っている場合、この結果に対して更に調整した方が良い
+  プログラミングで coalesce や repartition を使っている場合、この結果に対してさらに調整した方が良い
 
 - GC の頻度や実行時間を確認する  
   GC が適切に行われていないとメモリを見直す必要がある  
@@ -76,11 +76,11 @@ Spark アプリケーションのチューニングは難しい
   `--conf "spark.executor.extraJavaOptions=-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps"`
 
 - yarn.nodemanager.vmem-check-enabled  
-  コンテナの仮想メモリ制限を超えるメモリを使用するとタスクが kill される  
+  コンテナーの仮想メモリ制限を超えるメモリを使用するとタスクが kill される  
   false を設定しておくのが良い
 
 - yarn.nodemanager.pmem-check-enabled  
-  コンテナの物理メモリ制限を超えるメモリを使用するとタスクが kill される  
+  コンテナーの物理メモリ制限を超えるメモリを使用するとタスクが kill される  
   false を設定しておくのが良い
 
 - デバッグやモニタリングを行う  
