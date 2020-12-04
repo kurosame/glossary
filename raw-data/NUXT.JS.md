@@ -14,6 +14,8 @@ Nuxt.js
 
 <a href="https://qiita.com/kurosame/items/bc7bb26ecfd36e8d1048" target="_blank">Nuxt.js + Jamstack 構成において、動的コンテンツを処理する方法</a>
 
+<a href="https://kurosame-th.hatenadiary.com/entry/2020/12/01/175041" target="_blank">Nuxt.js で Vuex を使わない場合に考えること</a>
+
 ### assets と static の違い
 
 - assets  
