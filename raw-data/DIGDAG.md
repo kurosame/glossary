@@ -17,6 +17,8 @@ Digdag
 
 <a href="https://qiita.com/kurosame/items/5684825023ef75913a5c" target="_blank">AutoScalingGroup を使って Digdag を冗長構成にした</a>
 
+<a href="https://zenn.dev/kurosame/articles/9167a0dcff3d98" target="_blank">Digdag で環境ごとのパラメーターを設定</a>
+
 ### タスクの実行環境について
 
 Digdag では、`+task_name:`という記述でタスクを記述していく
