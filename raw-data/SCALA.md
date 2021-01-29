@@ -12,7 +12,7 @@ Scala
 
 <a href="https://gist.github.com/kurosame/997d22544dea0427094f23e515fb78ac" target="_blank">Scala 関数型デザイン&プログラミング - Scalaz コントリビューターによる関数型徹底ガイド</a>
 
-## val と def
+### val と def
 
 - val
   - 定義時に評価される
