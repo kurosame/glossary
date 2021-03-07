@@ -1,5 +1,5 @@
 module.exports = {
-  env: { browser: true },
+  env: { browser: true, serviceworker: true },
   extends: [
     'airbnb',
     'airbnb/hooks',
