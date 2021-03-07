@@ -56,7 +56,7 @@ const Category: React.FC<Props> = p => {
       >
         {tabItems.map(t => {
           const StaticLink = React.forwardRef<HTMLAnchorElement>((pp, ref) => (
-            <Link ref={ref} to={t.to} {...pp} />
+            <Link ref={ref} to={t.to} {...pp} /> // eslint-disable-line react/jsx-props-no-spreading
           ))
           StaticLink.displayName = 'StaticLink'
           return <Tab key={t.label} label={t.label} component={StaticLink} />

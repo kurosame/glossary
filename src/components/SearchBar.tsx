@@ -7,19 +7,6 @@ interface Props {
   onSearch: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const SearchBar: React.FC<Props> = p => (
-  <StyledPaper>
-    <StyledInput
-      placeholder="Search..."
-      onChange={p.onSearch}
-      inputProps={{ 'data-testid': 'search-bar-input' }}
-    />
-    <StyledIcon>
-      <Search />
-    </StyledIcon>
-  </StyledPaper>
-)
-
 const StyledPaper = styled(Paper)`
   display: flex;
   align-items: center;
@@ -32,5 +19,18 @@ const StyledInput = styled(Input)`
 const StyledIcon = styled(Icon)`
   margin: 10px;
 `
+
+const SearchBar: React.FC<Props> = p => (
+  <StyledPaper>
+    <StyledInput
+      placeholder="Search..."
+      onChange={p.onSearch}
+      inputProps={{ 'data-testid': 'search-bar-input' }}
+    />
+    <StyledIcon>
+      <Search />
+    </StyledIcon>
+  </StyledPaper>
+)
 
 export default SearchBar

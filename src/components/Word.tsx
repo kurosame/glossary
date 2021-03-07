@@ -9,6 +9,10 @@ interface Props {
   word: WordState
 }
 
+const TitlesSpan = styled.span`
+  margin-right: 5px;
+`
+
 const Word: React.FC<Props> = p => (
   <Card>
     <CardHeader title={<h3>{p.word.id}</h3>} data-testid="card-id" />
@@ -28,9 +32,5 @@ const Word: React.FC<Props> = p => (
     </CardContent>
   </Card>
 )
-
-const TitlesSpan = styled.span`
-  margin-right: 5px;
-`
 
 export default Word

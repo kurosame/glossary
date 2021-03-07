@@ -9,6 +9,10 @@ interface Props {
   words: WordState[]
 }
 
+const WordDiv = styled.div`
+  width: 100%;
+`
+
 const Words: React.FC<Props> = p => {
   const [filterWords, setFilterWords] = useState<WordState[] | undefined>(
     undefined
@@ -44,7 +48,4 @@ const Words: React.FC<Props> = p => {
   )
 }
 
-const WordDiv = styled.div`
-  width: 100%;
-`
 export default Words

@@ -1,10 +1,30 @@
 module.exports = {
-  extends: ['@kurosame/eslint-config-react'],
-  env: { serviceworker: true },
+  env: { browser: true },
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'prettier'
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaFeatures: { jsx: true } },
+  settings: { react: { version: 'detect' }, 'import/resolver': 'webpack' },
   rules: {
-    'import/no-extraneous-dependencies': [
+    'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'prettier/prettier': [
       'error',
-      { devDependencies: ['functions/test/**', 'stories/**', 'test/**'] }
-    ]
+      {
+        arrowParens: 'avoid',
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }
+    ],
+    // Rule conflict
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error']
   }
 }
