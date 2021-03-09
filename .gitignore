@@ -1,10 +1,11 @@
 .DS_Store
-.firebase
+.metals
 dist
 functions/lib
 functions/test/unit/coverage/**/*
 node_modules
 test/unit/coverage/**/*
+.firebase
 .firebaserc
 
 !.gitkeep
