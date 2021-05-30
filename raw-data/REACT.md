@@ -213,10 +213,6 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-### React Hooks
-
-<a href="https://kurosame-th.hatenadiary.com/entry/2018/11/07/193117" target="_blank">React Hooks について[Basic Hooks 編]</a>
-
 ### 良い設計方針
 
 - components
