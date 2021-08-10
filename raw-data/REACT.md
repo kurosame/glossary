@@ -174,9 +174,7 @@ function MyComponent() {
   コンポーネントが受け取った ref をそのコンポーネント内の別の DOM へフォワーディングするときに使う
 
 ```ts
-const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => (
-  <Link ref={ref} to={t.to} {...p} />
-))
+const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => <Link ref={ref} to={t.to} {...p} />)
 ```
 
 Glossary 内のコードでは React Router の Link は Material-UI の Tab でラップされている  
@@ -289,3 +287,24 @@ class ErrorBoundary extends React.Component {
 
 - ループ内の要素に key 属性を付ける  
   静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
+
+### 状態管理ライブラリ比較
+
+- useState + props
+  - 親から孫に props 伝達している場合、親がレンダリングされると孫と props を孫に渡しているだけの子もレンダリングされるため、パフォーマンス的に不利
+- useContext
+  - コンテキストを利用しているコンポーネントのみレンダリングされるため、パフォーマンス的に有利
+  - パフォーマンス改善を目的に props 経由からコンテキスト経由に移行すると、コンテキストが肥大化し、設計が難しくなる
+- Redux
+  - 外部に 1 つだけの Store という State の集約を持つ
+  - useSelector を使って、必要な State を Store から持ってくる
+  - Store が更新されても useSelector で取得している部分以外であれば、そのコンポーネントのレンダリングは行われない
+  - useSelector の型に Store 全体の State を設定するため、利用しない State であっても意識させられる
+- Recoil
+  - State を Atom という単位で分割して持てる
+  - 各コンポーネントは Atom から State を取得する
+  - 参照している Atom が更新された場合のみそのコンポーネントをレンダリングする
+- useSWR
+  - 目的が data fetching からの State 保持が主であれば、キャッシュもできるので強力なライブラリ
+  - State 管理のアーキテクチャとしては、Recoil に思想が近い
+  - useSWR 単体で状態管理が自己完結しているので、Redux や Recoil などの他の状態管理ライブラリとの併用は考えづらい
