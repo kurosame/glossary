@@ -12,6 +12,8 @@ Scala
 
 <a href="https://gist.github.com/kurosame/997d22544dea0427094f23e515fb78ac" target="_blank">Scala 関数型デザイン&プログラミング - Scalaz コントリビューターによる関数型徹底ガイド</a>
 
+<a href="https://github.com/kurosame/read-scala-with-cats" target="_blank">Scala with Cats</a>
+
 ### val と def
 
 - val
