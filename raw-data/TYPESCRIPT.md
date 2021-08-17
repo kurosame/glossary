@@ -44,7 +44,7 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
   モジュール構文（export や import）以外の設定になる（モジュール構文は module で指定する）  
   サポートするブラウザのバージョンに合わせて、設定する  
   ただし、webpack などのバンドルツールを利用し、Babel などのトランスパイラを挟んでいる場合は、適当に esnext とかにして、Babel 側の設定でブラウザに合わせてトランスパイルするで良いと思う  
-  ブラウザのサポート状況は、[ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6)を参考  
+  ブラウザのサポート状況は、<a href="https://kangax.github.io/compat-table/es6" target="_blank">ECMAScript 6 compatibility table</a>を参考  
   Next.js などの環境構築ツールを使っている場合、この設定値は変えない方がいいかも
 
 - module  
