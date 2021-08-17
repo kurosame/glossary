@@ -39,6 +39,28 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 ### `tsconfig.json`
 
+- target  
+  TS を JS にトランスパイルする際のどの ECMAScript のバージョンに変換させるかを指定する  
+  モジュール構文（export や import）以外の設定になる（モジュール構文は module で指定する）  
+  サポートするブラウザのバージョンに合わせて、設定する  
+  ただし、webpack などのバンドルツールを利用し、Babel などのトランスパイラを挟んでいる場合は、適当に esnext とかにして、Babel 側の設定でブラウザに合わせてトランスパイルするで良いと思う  
+  ブラウザのサポート状況は、[ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6)を参考  
+  Next.js などの環境構築ツールを使っている場合、この設定値は変えない方がいいかも
+
+- module  
+  デフォルト値は、`target === "es3" or "es5" ? "commonjs" : "es6"`なので、target オプションに依存している  
+  ただし、module はモジュール構文（export や import）のみに関係する設定になる（target はトランスパイル後のコード全体の設定になる）  
+  es2015 以上として、export や import 文をトランスパイル後もコードに残しておくことで、webpack などのバンドルツールで Tree Shaking を利用できる  
+  また、動的 import を使っている場合、es2020 以上にしないとエラーになる  
+  ブラウザが es2020 をサポートしていないが、動的 import を使いたい場合は、commonjs にする（Tree Shaking は使えないが）  
+  Next.js などの環境構築ツールを使っている場合、この設定値は変えない方がいいかも
+
+- lib  
+  target に含まれない機能を追加で入れたい時に指定する  
+  lib を指定しない場合、target に指定したバージョンの機能はデフォルトですべて含まれている  
+  ただし、lib を指定すると lib の配列で設定を上書きするので、target のバージョンも lib に含める必要がある  
+  たとえば、`"lib": ["dom"]`だと`dom`のみになるので、`"lib": ["es2020", "dom"]`にして、target の`es2020`も含めておく
+
 - allowSyntheticDefaultImports  
   true にすると CommonJS Modules のような`export default`がないモジュールからの`default import`を許可する  
   `export default`がないモジュール`example`に対して`import example from 'example'`が許可されるかどうか
