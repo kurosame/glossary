@@ -45,7 +45,7 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
   サポートするブラウザのバージョンに合わせて、設定する  
   ただし、webpack などのバンドルツールを利用し、Babel などのトランスパイラを挟んでいる場合は、適当に esnext とかにして、Babel 側の設定でブラウザに合わせてトランスパイルするで良いと思う  
   ブラウザのサポート状況は、<a href="https://kangax.github.io/compat-table/es6" target="_blank">ECMAScript 6 compatibility table</a>を参考  
-  Next.js などの環境構築ツールを使っている場合、この設定値は変えない方がいいかも
+  環境を自動でセットアップするツールを使っている場合、この設定値は変えない方がいいかも
 
 - module  
   デフォルト値は、`target === "es3" or "es5" ? "commonjs" : "es6"`なので、target オプションに依存している  
@@ -53,7 +53,7 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
   es2015 以上として、export や import 文をトランスパイル後もコードに残しておくことで、webpack などのバンドルツールで Tree Shaking を利用できる  
   また、動的 import を使っている場合、es2020 以上にしないとエラーになる  
   ブラウザが es2020 をサポートしていないが、動的 import を使いたい場合は、commonjs にする（Tree Shaking は使えないが）  
-  Next.js などの環境構築ツールを使っている場合、この設定値は変えない方がいいかも
+  環境を自動でセットアップするツールを使っている場合、この設定値は変えない方がいいかも
 
 - lib  
   target に含まれない機能を追加で入れたい時に指定する  
