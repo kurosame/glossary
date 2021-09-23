@@ -11,7 +11,7 @@ npm ci
 
 npm 5.7 で追加されたコマンド  
 package-lock.json のみからインストールする  
-実行後、node_modules の中身を一旦全て削除してから、依存パッケージのダウンロードを行う  
+実行後、node_modules の中身をいったんすべて削除してから、依存パッケージのダウンロードを行う  
 package.json とのバージョンに差異があった場合（package.json だけバージョンを上げるなど）はエラーにする
 
 `npm install`の場合は package.json と package-lock.json の両方から依存関係を解決しインストールする  
