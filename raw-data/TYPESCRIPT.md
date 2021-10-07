@@ -50,7 +50,8 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 - module  
   デフォルト値は、`target === "es3" or "es5" ? "commonjs" : "es6"`なので、target オプションに依存している  
   ただし、module はモジュール構文（export や import）のみに関係する設定になる（target はトランスパイル後のコード全体の設定になる）  
-  es2015 以上として、export や import 文をトランスパイル後もコードに残しておくことで、webpack などのバンドルツールで Tree Shaking を利用できる  
+  ブラウザがモジュール構文に対応していれば es2015 以上にして、export や import 文をトランスパイル後もコードに残しておくことで、webpack などのバンドルツールで Tree Shaking を利用できる  
+  Node.js で扱うモジュールに関しては CJS 互換のものが多く、モジュール構文は使えないため commonjs にしておいた方が良い（ESM 化は段々進んでいるが）  
   また、動的 import を使っている場合、es2020 以上にしないとエラーになる  
   ブラウザが es2020 をサポートしていないが、動的 import を使いたい場合は、commonjs にする（Tree Shaking は使えないが）  
   環境を自動でセットアップするツールを使っている場合、この設定値は変えない方がいいかも
