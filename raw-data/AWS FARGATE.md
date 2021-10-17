@@ -20,3 +20,5 @@ Fargate は、Amazon ECS とシームレスに統合されている
 また、Amazon EKS でのサポートは 2018 年に開始される予定
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2021/05/06/173256" target="_blank">ECS Fargate に exec する</a>
+
+<a href="https://zenn.dev/kurosame/articles/e0ddb38645ee43" target="_blank">ECS+Fargate の Public IP を固定 IP にしたい</a>
