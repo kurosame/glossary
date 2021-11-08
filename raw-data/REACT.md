@@ -308,3 +308,147 @@ class ErrorBoundary extends React.Component {
   - 目的が data fetching からの State 保持が主であれば、キャッシュもできるので強力なライブラリ
   - State 管理のアーキテクチャとしては、Recoil に思想が近い
   - useSWR 単体で状態管理が自己完結しているので、Redux や Recoil などの他の状態管理ライブラリとの併用は考えづらい
+
+### React を書くときに考えること
+
+以下の日本語訳  
+https://github.com/mithi/react-philosophies
+
+1. 必要最低限
+
+   1. コンピューターはあなたより賢いと理解する
+
+      1. eslint-plugin-react-hooks のルールを入れる
+         - https://www.npmjs.com/package/eslint-plugin-react-hooks
+      1. `'use strict';`の有効化
+      1. eslint-plugin-react-hooks/exhaustive-deps の警告/エラーを有効化
+      1. コンポーネントを map でループする時は key を指定する
+         - eslint-plugin-react/jsx-key
+      1. hook はトップレベルで呼ぶ（ループ、条件、ネストされた関数で hook を呼ばない）
+         - eslint-plugin-react-hooks/rules-of-hooks
+      1. `Can't perform state update on unmounted component`という警告の理解
+
+         - https://github.com/facebook/react/pull/22114
+
+           - マージされているから、現在、この警告は出ていない
+           - 要約すると、アンマウントされたコンポーネントに setState などのアクセスをすると上記の警告を出していたが、以下のような誤検知の回避が難しいので警告を出ないようにしたいという提案
+
+             ```js
+             // 以下のコードはunsubscribeし忘れるとメモリリークとなる
+             // （アンマウントされてもsubscribeしているから）
+             useEffect(() => {
+               function handleChange() {
+                 setState(store.getState())
+               }
+               store.subscribe(handleChange)
+               return () => store.unsubscribe(handleChange)
+             }, [])
+
+             // 以下のコードはメモリリークは起きていない
+             // にもかかわらず、POST中にアンマウントされると警告が出てしまう
+             async function handleSubmit() {
+               setPending(true)
+               await post('/someapi') // POST中にアンマウントされることがある
+               setPending(false)
+             }
+             ```
+
+      1. アプリケーションに Error Boundaries を設定し、必要に応じて Sentry や Datadog などにエラー内容を蓄積する
+         - componentDidCatch を実装した ErrorBoundary コンポーネント的な
+      1. コンソールのエラーや警告はちゃんと確認する
+      1. Tree Shaking を意識する
+      1. Prettier を使う
+      1. TypeScript を使う
+      1. Code Climate などのコードの静的解析ツールを検討する
+      1. Next.js は良い
+
+   1. コードは必要悪である
+
+      1. たとえば以下のライブラリが本当に必要か考えてみる
+         - Redux
+           - React 単体でも状態管理できる
+         - Apollo Client
+           - バンドルサイズが大幅に増える
+           - React Query や SWR などの軽量ライブラリも検討するとよい
+         - Axios
+           - Axios は機能がリッチなので、使いこなせていない場合は Redaxios などの軽量な fetch のラッパーを検討する
+         - decimal.js
+           - big.js などの他の軽量なライブラリを検討する
+         - Lodash / Underscore.js
+           - ほとんどの機能は自分で実装できる
+             - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore
+         - Moment.js
+           - 使う必要ないかも
+             - https://github.com/you-dont-need/You-Dont-Need-Momentjs
+         - React Context によるテーマ（ライトモード、ダークモード）の設定
+           - ThemeProvider ではなく、テーマは CSS 変数を使っても実装できる
+             - https://epicreact.dev/css-variables
+         - JavaScript
+           - CSS で代替できるかも
+             - https://github.com/you-dont-need/You-Dont-Need-JavaScript
+      1. コードの削減（React 関係なく JS を使って）
+         - 複雑な条件をシンプルに書く方法を覚える
+           - https://github.com/sapegin/washingcode-book/blob/master/manuscript/Avoid_conditions.md
+         - map、filter、find、findIndex、some などの高階関数を利用する
+      1. YAGNI
+         - You ain't gonna need it（機能は必要になるまで実装しない）
+
+   1. コードを見つけた時より良いものにする
+      - 悪いコードはその場で修正し、無理なら TODO にして見える化しておく
+   1. もっとうまくできる
+      - useEffect や useCallback などの第 2 引数の依存関係の配列に setState（useState からの）や dispatch（useReducer からの）は不要
+      - useMemo や useCallback に依存関係の配列がない場合、間違って使用している可能性がある
+      - useContext をカスタムフックでラップして、それを使うようにすると、各コンポーネントで useContext を import する処理が省ける
+      - コーディングする前にコンポーネントがどのように使用されるかを考える
+        - README Driven Development（README 駆動開発）というものがあるらしい
+
+1. 幸せのための設計
+   1. 冗長な状態を削除し、状態管理の複雑さを回避する
+   1. バナナとジャングル全体を掌握しているゴリラではなく、バナナだけを渡します
+      - props で渡すのはプリミティブ型データを好むということ
+      - これを行うと 2 つのコンポーネント間の依存度が低くなる
+   1. コンポーネントは小さく・シンプルに保つ
+      - 単一責任の原則（Single responsibility principle）
+      - コンポーネントが単一責任かどうかを確認するには、そのコンポーネントの役割を完結に一言で説明できるかどうかで判断できる
+   1. 重複は間違った抽象化よりもはるかにコストが低い
+      - 早すぎる・不適切な一般化は避ける
+      - 一般化が難しそうであれば、重複で良いということ
+   1. Context はすべての状態を共有するためのものではない
+   1. useEffect は小さく独立したものに分割する
+   1. hook とヘルパー関数にロジックを抽出する
+   1. 大きなコンポーネントを避けるため、logical コンポーネントと presentational コンポーネントに責務を分けた方が良い
+   1. useCallback、useMemo、useEffect の依存関係はプリミティブ型データが良い
+   1. useCallback、useMemo、useEffect に多くの依存関係を配置しない
+   1. useState が多い場合、useReducer の使用を検討する
+   1. Context はアプリ全体でグローバルである必要はない
+      - 境界づけられたコンテキスト
+1. パフォーマンスのヒント
+   1. 遅い可能性があるなら推測せずにベンチマークで証明する
+      - Chrome 拡張の React Developer Tools のプロファイラー利用する
+   1. useMemo はコストが高い計算のみに使用する
+   1. React.memo、useMemo、useCallback を使用し、再レンダリングを減らす
+      - これらの関数の依存関係は少なく、プリミティブ型データが良い
+   1. React.memo、useMemo、useCallback を使用した場合、ちゃんと機能しているか確認する（再レンダリングが防げているか）
+   1. 再レンダリングを修正する前に遅いレンダリングを修正する
+   1. 状態の定義を使用している場所に近づけるとコードの可読性が上がり、アプリが高速になる
+      - 関連する状態とロジックをできるだけ同じ場所に実装する
+   1. Context は論理的に分離する必要があり、1 つの Context で多くの値を配置しない
+      - Context の値が変更されると、その変更された値を使用していなくても再レンダリングされる（Context の別の値を参照している場合）
+   1. state と dispatch 関数を分離することで、Context を最適化できる
+   1. React.lazy を使った動的 import とバンドルコード分割を理解する
+   1. 大きなリストは react-virtual などを使ってレンダリングコストを減らす
+   1. バンドルサイズが小さければ、アプリは高速になる
+      - source-map-explorer や@next/bundle-analyzer などで計測できる
+   1. フォームを開発する場合は、react-hook-form が良い
+1. テストの原則
+   1. テストは常にソフトウェアの使用方法に似ている必要がある
+   1. 実装の詳細をテストしていないことを確認する
+      - ユーザーの振る舞いをテストする
+      - ユーザーがアプリケーションを使えるかどうかをテストする
+   1. 自分のテストで修正したコードがアプリを壊していないことを確認できなかったのであれば、テストは（唯一の）仕事をしていない
+   1. 同じユーザーの行動のコードをリファクタリングする時にテストをほとんど変更しなければ、良いテストを実装している
+      - ユーザーの振る舞いのテストがちゃんとできている
+   1. 100%のコードカバレッジは不要
+      - テストは生産性を上げるために存在する
+      - テストの維持に執着すると、開発速度が遅くなる
+   1. Jest、React Testing Library、Cypress、Mock Service Worker(MSW)を使うのが良い
