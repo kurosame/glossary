@@ -1,0 +1,7 @@
+#!/bin/sh
+# Run `npx husky-init` to create husky.sh
+. "$(dirname "$0")/_/husky.sh"
+
+./node_modules/.bin/tsc -p ./ --noEmit
+./functions/node_modules/.bin/tsc -p ./functions --noEmit
+./node_modules/.bin/lint-staged
