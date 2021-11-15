@@ -100,70 +100,6 @@ jobs:
           command: npm run test:ci
       - store_artifacts:
           path: ./functions/test/unit/coverage
-  outdated:
-    <<: *setup-docker-base
-    steps:
-      - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
-      - run:
-          name: Outdated
-          command: |
-            PAYLOAD=`cat << EOF
-            {
-              "attachments": [
-                {
-                  "pretext": "glossary's Outdated",
-                  "text": '$(npm outdated)'
-                }
-              ]
-            }
-            EOF`
-            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
-  outdated-functions:
-    <<: *setup-docker-base
-    steps:
-      - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          working_directory: ./functions
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
-      - run:
-          name: Outdated
-          working_directory: ./functions
-          command: |
-            PAYLOAD=`cat << EOF
-            {
-              "attachments": [
-                {
-                  "pretext": "glossary-functions's Outdated",
-                  "text": '$(npm outdated)'
-                }
-              ]
-            }
-            EOF`
-            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
   lighthouse:
     <<: *setup-docker-lighthouse
     steps:
@@ -228,6 +164,4 @@ workflows:
               only:
                 - master
     jobs:
-      - outdated
-      - outdated-functions
       - lighthouse
