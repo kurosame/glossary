@@ -1,0 +1,12 @@
+{
+  "extends": ["config:base", ":timezone(Asia/Tokyo)", "schedule:daily", ":prHourlyLimitNone", ":automergePatch"],
+  "prConcurrentLimit": 3,
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patch"
+    }
+  ]
+}
