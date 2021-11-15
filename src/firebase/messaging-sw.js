@@ -9,11 +9,7 @@ self.addEventListener('notificationclick', e => {
   e.waitUntil(
     clients
       .matchAll({ includeUncontrolled: true })
-      .then(wc =>
-        wc.length === 0
-          ? clients.openWindow(e.notification.data)
-          : wc[0].focus()
-      )
+      .then(wc => (wc.length === 0 ? clients.openWindow(e.notification.data) : wc[0].focus()))
   )
 })
 

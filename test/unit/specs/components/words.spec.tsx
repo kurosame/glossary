@@ -1,12 +1,7 @@
 import React from 'react'
 import Words from '@/components/Words'
 import { WordState } from '@/modules/word'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  RenderResult
-} from '@testing-library/react'
+import { render, fireEvent, cleanup, RenderResult } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 let wrapper: RenderResult
@@ -30,9 +25,7 @@ beforeEach(() => {
 afterEach(cleanup)
 
 test('Output `props.words` when `filterWords` is undefined', () => {
-  expect(wrapper.getByTestId('words')).toHaveTextContent(
-    'Vue.jsVueVuexIt a VueReactReactIt a React'
-  )
+  expect(wrapper.getByTestId('words')).toHaveTextContent('Vue.jsVueVuexIt a VueReactReactIt a React')
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.id`', () => {
@@ -40,9 +33,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.id`', ()
     target: { value: 'Vue.js' }
   })
 
-  expect(wrapper.getByTestId('words')).toHaveTextContent(
-    'Vue.jsVueVuexIt a Vue'
-  )
+  expect(wrapper.getByTestId('words')).toHaveTextContent('Vue.jsVueVuexIt a Vue')
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.titles`', () => {
@@ -50,9 +41,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.titles`'
     target: { value: 'uex' }
   })
 
-  expect(wrapper.getByTestId('words')).toHaveTextContent(
-    'Vue.jsVueVuexIt a Vue'
-  )
+  expect(wrapper.getByTestId('words')).toHaveTextContent('Vue.jsVueVuexIt a Vue')
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.description`', () => {
@@ -60,9 +49,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.descript
     target: { value: 'It ' }
   })
 
-  expect(wrapper.getByTestId('words')).toHaveTextContent(
-    'Vue.jsVueVuexIt a VueReactReactIt a React'
-  )
+  expect(wrapper.getByTestId('words')).toHaveTextContent('Vue.jsVueVuexIt a VueReactReactIt a React')
 })
 
 test('Output empty when `filterWords` not match', () => {

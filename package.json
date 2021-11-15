@@ -79,8 +79,8 @@
   },
   "license": "MIT",
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint",
-    "*.{css,tsx}": "stylelint"
+    "*.{ts,tsx}": "npm run lint:js",
+    "*.{css,tsx}": "npm run lint:style"
   },
   "private": true,
   "scripts": {
@@ -89,6 +89,8 @@
     "clean:cache": "rimraf ./node_modules/.cache/*",
     "clean:dist": "rimraf ./dist/*",
     "start": "webpack-dev-server --open --port 8000 --mode=development",
+    "lint:js": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
+    "lint:style": "stylelint **/*.{css,tsx} --ignore-path .gitignore",
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2"
   }

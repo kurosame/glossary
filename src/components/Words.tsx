@@ -14,9 +14,7 @@ const WordDiv = styled.div`
 `
 
 const Words: React.FC<Props> = p => {
-  const [filterWords, setFilterWords] = useState<WordState[] | undefined>(
-    undefined
-  )
+  const [filterWords, setFilterWords] = useState<WordState[] | undefined>(undefined)
 
   const onSearchWords = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

@@ -49,11 +49,7 @@ const Category: React.FC<Props> = p => {
   if (!isLogin) return null
   return (
     <AppBar position="static">
-      <Tabs
-        value={tabItems.findIndex(o => o.to === p.location.pathname)}
-        variant="scrollable"
-        scrollButtons="off"
-      >
+      <Tabs value={tabItems.findIndex(o => o.to === p.location.pathname)} variant="scrollable" scrollButtons="off">
         {tabItems.map(t => {
           const StaticLink = React.forwardRef<HTMLAnchorElement>((pp, ref) => (
             <Link ref={ref} to={t.to} {...pp} /> // eslint-disable-line react/jsx-props-no-spreading

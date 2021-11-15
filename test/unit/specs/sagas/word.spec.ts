@@ -23,7 +23,7 @@ describe('Run `getFirestoreWords`', () => {
         docs: [
           {
             id: 'JavaScript',
-            data: (): {} => ({
+            data: (): unknown => ({
               category: 'JavaScript',
               titles: ['JavaScript', 'JS'],
               description: 'It a JS'
@@ -31,7 +31,7 @@ describe('Run `getFirestoreWords`', () => {
           },
           {
             id: 'TypeScript',
-            data: (): {} => ({
+            data: (): unknown => ({
               category: 'JavaScript',
               titles: ['TypeScript', 'TS'],
               description: 'It a TS'
@@ -63,9 +63,7 @@ describe('Run `getFirestoreWords`', () => {
 
     expect(await getFirestoreWords()).toEqual([])
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual(
-      'GET_WORDS Firestore response error: error'
-    )
+    expect(spyErr.mock.calls[0][0]).toEqual('GET_WORDS Firestore response error: error')
   })
 })
 

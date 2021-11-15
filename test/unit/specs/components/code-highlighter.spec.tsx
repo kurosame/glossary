@@ -4,7 +4,7 @@ import { render, cleanup, RenderResult } from '@testing-library/react'
 
 let wrapper: RenderResult
 beforeEach(() => {
-  wrapper = render(<CodeHighlighter value={'test'} language={'javascript'} />)
+  wrapper = render(<CodeHighlighter value="test" language="javascript" />)
 })
 afterEach(cleanup)
 

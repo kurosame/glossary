@@ -1,11 +1,6 @@
 import React from 'react'
 import SearchBar from '@/components/SearchBar'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  RenderResult
-} from '@testing-library/react'
+import { render, fireEvent, cleanup, RenderResult } from '@testing-library/react'
 
 let onSearch: jest.Mock
 let wrapper: RenderResult

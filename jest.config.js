@@ -1,9 +1,6 @@
 module.exports = {
   moduleFileExtensions: ['js', 'ts', 'tsx'],
-  testMatch: [
-    '<rootDir>/test/unit/specs/**/*.ts',
-    '<rootDir>/test/unit/specs/**/*.tsx'
-  ],
+  testMatch: ['<rootDir>/test/unit/specs/**/*.ts', '<rootDir>/test/unit/specs/**/*.tsx'],
   transform: { '^.+\\.tsx?$': 'ts-jest' },
   moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   collectCoverage: true,

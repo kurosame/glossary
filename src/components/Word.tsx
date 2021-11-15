@@ -24,11 +24,7 @@ const Word: React.FC<Props> = p => (
       ))}
     </CardContent>
     <CardContent data-testid="card-description">
-      <ReactMarkdown
-        source={p.word.description}
-        renderers={{ code: CodeHighlighter }}
-        escapeHtml={false}
-      />
+      <ReactMarkdown source={p.word.description} renderers={{ code: CodeHighlighter }} escapeHtml={false} />
     </CardContent>
   </Card>
 )

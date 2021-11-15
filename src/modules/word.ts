@@ -1,10 +1,5 @@
 import { Reducer } from 'redux'
-import {
-  Action,
-  ActionFunctionAny,
-  createActions,
-  handleActions
-} from 'redux-actions'
+import { Action, ActionFunctionAny, createActions, handleActions } from 'redux-actions'
 
 // Action types
 export const GET_WORDS = 'GET_WORDS'
@@ -24,20 +19,11 @@ export interface WordState {
 
 const initialState: WordState[] = []
 
-export const { getWords, setWords } = createActions<{ words: WordState[] }>(
-  GET_WORDS,
-  SET_WORDS
-)
+export const { getWords, setWords } = createActions<{ words: WordState[] }>(GET_WORDS, SET_WORDS)
 
-export const words: Reducer<
-  WordState[],
-  Action<{ words: WordState[] }>
-> = handleActions(
+export const words: Reducer<WordState[], Action<{ words: WordState[] }>> = handleActions(
   {
-    [SET_WORDS]: (
-      _state: WordState[],
-      action: Action<{ words: WordState[] }>
-    ): WordState[] => {
+    [SET_WORDS]: (_state: WordState[], action: Action<{ words: WordState[] }>): WordState[] => {
       return action.payload.words
     }
   },

@@ -31,24 +31,13 @@ export const setWord = functions
     await file
       .download()
       .then(async res => {
-        const category: string = (res[0]
-          .toString()
-          .match(/## category\n\n(.+)/) || ['', ''])[1].trim()
-        const titles: string[] = (res[0]
-          .toString()
-          .match(/## titles\n\n((.+\n)+)/) || ['', ''])[1]
+        const category: string = (res[0].toString().match(/## category\n\n(.+)/) || ['', ''])[1].trim()
+        const titles: string[] = (res[0].toString().match(/## titles\n\n((.+\n)+)/) || ['', ''])[1].trim().split(/\n/)
+        const description: string = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1].trim()
+        const descriptionByLine: string[] = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
           .trim()
           .split(/\n/)
-        const description: string = (res[0]
-          .toString()
-          .match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1].trim()
-        const descriptionByLine: string[] = (res[0]
-          .toString()
-          .match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
-          .trim()
-          .split(/\n/)
-        if (!category || !titles[0] || !description)
-          return Promise.reject(Error('Document format error'))
+        if (!category || !titles[0] || !description) return Promise.reject(Error('Document format error'))
 
         const doSet = async (): Promise<void> => {
           await admin
@@ -83,15 +72,9 @@ export const setWord = functions
         await doSet()
           .catch(doSet)
           .catch(doSet)
-          .catch(() =>
-            console.error(`Document not updates fileName=${fileName}`)
-          )
+          .catch(() => console.error(`Document not updates fileName=${fileName}`))
         return null
       })
-      .catch((err: Error) =>
-        console.error(
-          `File download error fileName=${fileName} err=${err.message}`
-        )
-      )
+      .catch((err: Error) => console.error(`File download error fileName=${fileName} err=${err.message}`))
     return null
   })

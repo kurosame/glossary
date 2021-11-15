@@ -30,9 +30,7 @@ export async function initialize(): Promise<void> {
       .messaging()
       .getToken()
       .then(t => console.info(t))
-      .catch((err: Error) =>
-        console.error(`FCM token refresh error: ${err.message}`)
-      )
+      .catch((err: Error) => console.error(`FCM token refresh error: ${err.message}`))
   })
 }
 
@@ -43,9 +41,7 @@ export function requestPermission(): void {
         .messaging()
         .getToken()
         .then(t => console.info(t))
-        .catch((err: Error) =>
-          console.error(`FCM get token error: ${err.message}`)
-        )
+        .catch((err: Error) => console.error(`FCM get token error: ${err.message}`))
     }
   })
 }

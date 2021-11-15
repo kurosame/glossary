@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  RenderResult
-} from '@testing-library/react'
+import { render, fireEvent, cleanup, RenderResult } from '@testing-library/react'
 import AllowPush from '@/containers/AllowPush'
 
 const requestPermission = jest.fn()

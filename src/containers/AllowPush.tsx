@@ -27,11 +27,7 @@ const AllowPush: React.FC = () => {
           >
             OK
           </Button>
-          <IconButton
-            color="inherit"
-            data-testid="allow-push-close"
-            onClick={handleClose}
-          >
+          <IconButton color="inherit" data-testid="allow-push-close" onClick={handleClose}>
             <CloseIcon />
           </IconButton>
         </>

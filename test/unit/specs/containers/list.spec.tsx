@@ -8,11 +8,7 @@ import { render, cleanup, RenderResult } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 let mockDispatch: jest.Mock
-let wrapper: (
-  isLogin: boolean,
-  words: WordState[],
-  match: { params: { category: string } }
-) => RenderResult
+let wrapper: (isLogin: boolean, words: WordState[], match: { params: { category: string } }) => RenderResult
 beforeEach(() => {
   mockDispatch = jest.fn()
   wrapper = (isLogin, words, match): RenderResult => {
@@ -59,19 +55,11 @@ test('Not Call `getWords` when `words` exists', () => {
 })
 
 test('Render DOM if `isLogin` is true', () => {
-  expect(
-    wrapper(true, [], { params: { category: '' } }).container.querySelector(
-      'div'
-    )
-  ).not.toBeNull()
+  expect(wrapper(true, [], { params: { category: '' } }).container.querySelector('div')).not.toBeNull()
 })
 
 test('Not render DOM if `isLogin` is false', () => {
-  expect(
-    wrapper(false, [], { params: { category: '' } }).container.querySelector(
-      'div'
-    )
-  ).toBeNull()
+  expect(wrapper(false, [], { params: { category: '' } }).container.querySelector('div')).toBeNull()
 })
 
 test('Output all `words` when `category` is empty', () => {

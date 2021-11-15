@@ -23,13 +23,7 @@ const List: React.FC<Props> = p => {
   useGetWords(words)
 
   if (!isLogin) return null
-  return (
-    <Words
-      words={words.filter(
-        w => !p.match.params.category || w.category === p.match.params.category
-      )}
-    />
-  )
+  return <Words words={words.filter(w => !p.match.params.category || w.category === p.match.params.category)} />
 }
 
 export default List

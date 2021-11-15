@@ -1,9 +1,4 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  createStore,
-  StoreEnhancer
-} from 'redux'
+import { applyMiddleware, combineReducers, createStore, StoreEnhancer } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import saga from 'redux-saga'

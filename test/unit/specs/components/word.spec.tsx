@@ -28,9 +28,7 @@ test('Data binding from `word.titles` to `CardContent`', () => {
 })
 
 test('Data binding from `word.description` to `CardContent`', () => {
-  expect(wrapper.getByTestId('card-description')).toHaveTextContent(
-    'It a React'
-  )
+  expect(wrapper.getByTestId('card-description')).toHaveTextContent('It a React')
 })
 
 test('Match the snapshot', () => {

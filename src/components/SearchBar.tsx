@@ -22,11 +22,7 @@ const StyledIcon = styled(Icon)`
 
 const SearchBar: React.FC<Props> = p => (
   <StyledPaper>
-    <StyledInput
-      placeholder="Search..."
-      onChange={p.onSearch}
-      inputProps={{ 'data-testid': 'search-bar-input' }}
-    />
+    <StyledInput placeholder="Search..." onChange={p.onSearch} inputProps={{ 'data-testid': 'search-bar-input' }} />
     <StyledIcon>
       <Search />
     </StyledIcon>

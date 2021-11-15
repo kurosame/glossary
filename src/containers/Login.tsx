@@ -8,9 +8,8 @@ import firebaseApp from '@/firebase/index'
 import { States } from '@/modules/states'
 import { SET_IS_LOGIN } from '@/modules/login'
 
-const useSetUser = (
-  su: React.Dispatch<SetStateAction<firebase.User | null>>
-): void => useEffect(() => firebaseApp.auth().onAuthStateChanged(u => su(u)))
+const useSetUser = (su: React.Dispatch<SetStateAction<firebase.User | null>>): void =>
+  useEffect(() => firebaseApp.auth().onAuthStateChanged(u => su(u)))
 
 const useSetIsLogin = (u: firebase.User | null): void => {
   const dispatch = useDispatch<Dispatch>()
@@ -27,9 +26,7 @@ const Login: React.FC = () => {
   useSetIsLogin(user)
 
   if (isLogin) return null
-  return (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()} />
-  )
+  return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()} />
 }
 
 export default Login
