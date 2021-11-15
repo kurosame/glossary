@@ -1,23 +1,5 @@
 {
   "name": "glossary-functions",
-  "private": true,
-  "main": "lib/src/index.js",
-  "engines": {
-    "node": "10"
-  },
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "serve": "npm run build && firebase serve --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "test": "jest --watchAll",
-    "test:ci": "jest",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "lint-staged": {
-    "*.{js,ts}": "eslint"
-  },
   "dependencies": {
     "firebase-admin": "8.10.0",
     "firebase-functions": "3.6.0"
@@ -32,5 +14,23 @@
     "lint-staged": "10.2.11",
     "ts-jest": "25.4.0",
     "typescript": "3.8.3"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint"
+  },
+  "main": "lib/src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "test": "jest --watchAll",
+    "test:ci": "jest",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   }
 }
