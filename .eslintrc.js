@@ -13,15 +13,6 @@ module.exports = {
   rules: {
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-    'prettier/prettier': [
-      'error',
-      {
-        arrowParens: 'avoid',
-        semi: false,
-        singleQuote: true,
-        trailingComma: 'none'
-      }
-    ],
     // Rule conflict
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
     'no-use-before-define': 'off',
