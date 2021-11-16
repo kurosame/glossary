@@ -12,7 +12,7 @@ references:
 
 version: 2
 jobs:
-  build-deploy:
+  deploy:
     <<: *setup-docker-base
     steps:
       - checkout
@@ -35,6 +35,32 @@ jobs:
       - run:
           name: Deploy
           command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT --token $FIREBASE_TOKEN
+  deploy-functions:
+    <<: *setup-docker-base
+    steps:
+      - checkout
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+            - v2-dependencies-
+      - run:
+          name: Install dependencies
+          working_directory: ./functions
+          command: npm ci
+      - save_cache:
+          name: Cache dependencies
+          paths:
+            - ~/.npm
+          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+      - run:
+          name: Build
+          working_directory: ./functions
+          command: npm run build
+      - run:
+          name: Deploy
+          working_directory: ./functions
+          command: npm run deploy
   deploy-raw-data:
     <<: *setup-docker-gcloud
     steps:
@@ -139,13 +165,19 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  deploy:
     jobs:
-      - build-deploy:
+      - deploy:
           filters:
             branches:
               only:
                 - master
+      - deploy-functions:
+          filters:
+            branches:
+              only:
+                - master
+                - fix_ci
       - deploy-raw-data:
           filters:
             branches:
