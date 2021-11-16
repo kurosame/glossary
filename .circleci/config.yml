@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Deploy
           working_directory: ./functions
-          command: npm run deploy
+          command: ./node_modules/.bin/firebase deploy --only functions --project $FIREBASE_PROJECT
   deploy-raw-data:
     <<: *setup-docker-gcloud
     steps:
