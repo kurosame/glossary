@@ -5,11 +5,11 @@
     "firebase-functions": "3.6.0"
   },
   "devDependencies": {
-    "@types/jest": "25.2.1",
-    "firebase-functions-test": "0.2.1",
+    "@types/jest": "27.0.2",
+    "firebase-functions-test": "0.3.3",
     "firebase-tools": "9.22.0",
-    "jest": "25.5.4",
-    "ts-jest": "25.4.0",
+    "jest": "27.3.1",
+    "ts-jest": "27.0.7",
     "typescript": "3.8.3"
   },
   "engines": {
