@@ -34,7 +34,7 @@ jobs:
           command: npm run build:production
       - run:
           name: Deploy
-          command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT --token $FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT
   deploy-functions:
     <<: *setup-docker-base
     steps:
