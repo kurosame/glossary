@@ -125,7 +125,7 @@ describe('Output console.error', () => {
 
 describe('Set document', () => {
   // Disable setTimeout
-  global.setTimeout = (fn: () => void): NodeJS.Timer => (fn() as unknown) as NodeJS.Timer
+  ;(global.setTimeout as unknown) = (fn: () => void): NodeJS.Timer => (fn() as unknown) as NodeJS.Timer
 
   test('Not updates document (1)', async () => {
     /* 
