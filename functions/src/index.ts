@@ -4,7 +4,6 @@ import * as functions from 'firebase-functions'
 admin.initializeApp(functions.config().firebase)
 admin.firestore().settings({ timestampsInSnapshots: true })
 
-/* eslint-disable-next-line import/prefer-default-export */
 export const setWord = functions
   .runWith({ timeoutSeconds: 540 })
   .storage.object()
