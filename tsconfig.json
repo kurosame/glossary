@@ -9,6 +9,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitReturns": true,
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": { "@/*": ["src/*"] },
