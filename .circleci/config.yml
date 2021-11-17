@@ -34,6 +34,7 @@ jobs:
           command: npm run build:production
       - run:
           name: Deploy
+          # Firebase will automatically use the environment variable FIREBASE_TOKEN
           command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT
   deploy-functions:
     <<: *setup-docker-base
@@ -60,6 +61,7 @@ jobs:
       - run:
           name: Deploy
           working_directory: ./functions
+          # Firebase will automatically use the environment variable FIREBASE_TOKEN
           command: ./node_modules/.bin/firebase deploy --only functions --project $FIREBASE_PROJECT
   deploy-raw-data:
     <<: *setup-docker-gcloud
