@@ -1,12 +1,6 @@
 module.exports = {
   env: { browser: true, serviceworker: true },
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:@typescript-eslint/recommended',
-    // 'plugin:prettier/recommended',
-    'prettier'
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'plugin:@typescript-eslint/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaFeatures: { jsx: true } },
   settings: { react: { version: 'detect' }, 'import/resolver': 'webpack' },

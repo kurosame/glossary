@@ -15,9 +15,6 @@ if (process.env.NODE_ENV === 'production') {
   enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 }
 
-export default createStore(
-  combineReducers<States>({ login, words }),
-  enhancer
-)
+export default createStore(combineReducers<States>({ login, words }), enhancer)
 
 sagaMiddleware.run(rootSaga)
