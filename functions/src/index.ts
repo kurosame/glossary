@@ -14,29 +14,28 @@ export const setWord = functions
     }
 
     const file = admin.storage().bucket().file(o.name)
+    const fileName = file.name
+      .split('/')
+      .slice(-1)[0]
+      ?.split('.')
+      .slice(0, -1) // Have names that include periods (NODE.JS, VUE.JS, etc..)
+      .join('.')
 
-    if (!file.name) {
+    if (!fileName) {
       console.error('File.name not found')
       return null
     }
 
-    const fileName = file.name
-      .split('/')
-      .slice(-1)[0]
-      .split('.')
-      .slice(0, -1) // Have names that include periods (NODE.JS, VUE.JS, etc..)
-      .join('.')
-
     await file
       .download()
       .then(async res => {
-        const category: string = (res[0].toString().match(/## category\n\n(.+)/) || ['', ''])[1].trim()
-        const titles: string[] = (res[0].toString().match(/## titles\n\n((.+\n)+)/) || ['', ''])[1].trim().split(/\n/)
-        const description: string = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1].trim()
-        const descriptionByLine: string[] = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
-          .trim()
+        const category = (res[0].toString().match(/## category\n\n(.+)/) || ['', ''])[1]?.trim()
+        const titles = (res[0].toString().match(/## titles\n\n((.+\n)+)/) || ['', ''])[1]?.trim().split(/\n/)
+        const description = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]?.trim()
+        const descriptionByLine = (res[0].toString().match(/## description\n\n((.+\n|\n)+)/) || ['', ''])[1]
+          ?.trim()
           .split(/\n/)
-        if (!category || !titles[0] || !description) return Promise.reject(Error('Document format error'))
+        if (!category || !titles || !description) return Promise.reject(Error('Document format error'))
 
         const doSet = async (): Promise<void> => {
           await admin

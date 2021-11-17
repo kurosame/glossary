@@ -1,7 +1,9 @@
 import firebase from '@/firebase/index'
-import { GET_WORDS, setWords, WordState } from '@/modules/word'
+import type { WordState } from '@/modules/word'
+import { GET_WORDS, setWords } from '@/modules/word'
 import type { Action } from 'redux-actions'
-import { call, CallEffect, put, PutEffect, take, TakeEffect } from 'redux-saga/effects'
+import type { CallEffect, PutEffect, TakeEffect } from 'redux-saga/effects'
+import { call, put, take } from 'redux-saga/effects'
 
 export function getFirestoreWords(): Promise<WordState[]> {
   return firebase
@@ -27,6 +29,6 @@ export function getFirestoreWords(): Promise<WordState[]> {
 export function* getWords(): IterableIterator<TakeEffect | CallEffect | PutEffect<Action<{ words: WordState[] }>>> {
   while (true) {
     yield take(GET_WORDS)
-    yield put(setWords({ words: yield call(getFirestoreWords) }))
+    if (setWords) yield put(setWords({ words: yield call(getFirestoreWords) }))
   }
 }
