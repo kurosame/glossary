@@ -14,7 +14,8 @@
     "baseUrl": "./",
     "paths": { "@/*": ["src/*"] },
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "test/unit/specs/**/*.spec.ts"],
   "exclude": ["node_modules"]
