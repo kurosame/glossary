@@ -1,8 +1,8 @@
-import React from 'react'
 import Word from '@/components/Word'
-import { WordState } from '@/modules/word'
-import { render, cleanup, RenderResult } from '@testing-library/react'
+import type { WordState } from '@/modules/word'
 import '@testing-library/jest-dom'
+import { cleanup, render, RenderResult } from '@testing-library/react'
+import React from 'react'
 
 let wrapper: RenderResult
 beforeEach(() => {

@@ -1,9 +1,9 @@
-import { storage } from 'firebase-functions'
-/* eslint-disable-next-line import/no-extraneous-dependencies */
-import fTest from 'firebase-functions-test'
 // ESLint error only when VSCode
 /* eslint-disable-next-line import/no-unresolved */
 import { setWord } from '@/index'
+import type { storage } from 'firebase-functions'
+/* eslint-disable-next-line import/no-extraneous-dependencies */
+import fTest from 'firebase-functions-test'
 
 const download = jest
   .fn()
@@ -125,7 +125,7 @@ describe('Output console.error', () => {
 
 describe('Set document', () => {
   // Disable setTimeout
-  ;(global.setTimeout as unknown) = (fn: () => void): NodeJS.Timer => (fn() as unknown) as NodeJS.Timer
+  ;(global.setTimeout as unknown) = (fn: () => void): NodeJS.Timer => fn() as unknown as NodeJS.Timer
 
   test('Not updates document (1)', async () => {
     /* 

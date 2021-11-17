@@ -1,9 +1,9 @@
+import CodeHighlighter from '@/components/CodeHighlighter'
+import type { WordState } from '@/modules/word'
+import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown/with-html'
 import styled from 'styled-components'
-import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
-import CodeHighlighter from '@/components/CodeHighlighter'
-import { WordState } from '@/modules/word'
 
 interface Props {
   word: WordState

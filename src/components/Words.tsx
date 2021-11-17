@@ -1,9 +1,9 @@
-import React, { useState, useCallback, ChangeEvent } from 'react'
-import styled from 'styled-components'
-import { List, ListItem } from '@material-ui/core'
 import SearchBar from '@/components/SearchBar'
 import Word from '@/components/Word'
-import { WordState } from '@/modules/word'
+import type { WordState } from '@/modules/word'
+import { List, ListItem } from '@material-ui/core'
+import React, { ChangeEvent, useCallback, useState } from 'react'
+import styled from 'styled-components'
 
 interface Props {
   words: WordState[]

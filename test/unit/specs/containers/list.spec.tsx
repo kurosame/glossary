@@ -1,11 +1,11 @@
+import List from '@/containers/List'
+import type { States } from '@/modules/states'
+import { GET_WORDS, WordState } from '@/modules/word'
+import '@testing-library/jest-dom'
+import { cleanup, render, RenderResult } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import List from '@/containers/List'
-import { WordState, GET_WORDS } from '@/modules/word'
-import { States } from '@/modules/states'
-import { render, cleanup, RenderResult } from '@testing-library/react'
-import '@testing-library/jest-dom'
 
 let mockDispatch: jest.Mock
 let wrapper: (isLogin: boolean, words: WordState[], match: { params: { category: string } }) => RenderResult

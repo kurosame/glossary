@@ -1,12 +1,12 @@
-import firebase from 'firebase'
-import React, { useState, useEffect, SetStateAction } from 'react'
+import firebaseApp from '@/firebase/index'
+import uiConfig from '@/firebase/ui-config'
+import { SET_IS_LOGIN } from '@/modules/login'
+import type { States } from '@/modules/states'
+import type firebase from 'firebase'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import { useDispatch, useSelector } from 'react-redux'
-import { Dispatch } from 'redux'
-import uiConfig from '@/firebase/ui-config'
-import firebaseApp from '@/firebase/index'
-import { States } from '@/modules/states'
-import { SET_IS_LOGIN } from '@/modules/login'
+import type { Dispatch } from 'redux'
 
 const useSetUser = (su: React.Dispatch<SetStateAction<firebase.User | null>>): void =>
   useEffect(() => firebaseApp.auth().onAuthStateChanged(u => su(u)))

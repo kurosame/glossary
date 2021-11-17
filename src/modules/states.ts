@@ -1,5 +1,5 @@
-import { LoginState } from '@/modules/login'
-import { WordState } from '@/modules/word'
+import type { LoginState } from '@/modules/login'
+import type { WordState } from '@/modules/word'
 
 export interface States {
   login: LoginState

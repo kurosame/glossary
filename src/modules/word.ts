@@ -1,4 +1,4 @@
-import { Reducer } from 'redux'
+import type { Reducer } from 'redux'
 import { Action, ActionFunctionAny, createActions, handleActions } from 'redux-actions'
 
 // Action types

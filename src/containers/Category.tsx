@@ -1,8 +1,8 @@
+import type { States } from '@/modules/states'
 import { AppBar, Tab, Tabs } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { States } from '@/modules/states'
 
 interface Props {
   location: { pathname: string }
