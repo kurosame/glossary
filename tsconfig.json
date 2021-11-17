@@ -11,15 +11,9 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": { "@/*": ["src/*"] },
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "test/unit/specs/**/*.spec.ts",
-    "test/unit/specs/**/*.spec.tsx"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "test/unit/specs/**/*.spec.ts", "test/unit/specs/**/*.spec.tsx"],
   "exclude": ["node_modules"]
 }

@@ -90,7 +90,7 @@
     "clean:dist": "rimraf ./dist/*",
     "start": "webpack-dev-server --open --port 8000 --mode=development",
     "lint:js": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
-    "lint:style": "stylelint **/*.{css,tsx} --ignore-path .gitignore",
+    "lint:style": "stylelint --ignore-path .gitignore **/*.{css,tsx}",
     "fmt": "prettier --write --ignore-path .gitignore **/*.{ts,tsx,css}",
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2"
