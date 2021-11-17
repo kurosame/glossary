@@ -23,9 +23,7 @@ export const { getWords, setWords } = createActions<{ words: WordState[] }>(GET_
 
 export const words: Reducer<WordState[], Action<{ words: WordState[] }>> = handleActions(
   {
-    [SET_WORDS]: (_state: WordState[], action: Action<{ words: WordState[] }>): WordState[] => {
-      return action.payload.words
-    }
+    [SET_WORDS]: (_state: WordState[], action: Action<{ words: WordState[] }>): WordState[] => action.payload.words
   },
   initialState
 )

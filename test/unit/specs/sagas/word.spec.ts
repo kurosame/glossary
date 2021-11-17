@@ -1,15 +1,15 @@
-import { firestore } from 'firebase'
-import { call, put, take } from 'redux-saga/effects'
-import firebase from '@/firebase/index'
+import firebaseApp from '@/firebase/index'
 import { GET_WORDS, SET_WORDS } from '@/modules/word'
 import { getFirestoreWords, getWords } from '@/sagas/word'
+import firebase from 'firebase'
+import { call, put, take } from 'redux-saga/effects'
 
-let spyFirestore: (docs: Promise<firestore.QuerySnapshot>) => jest.SpyInstance
+let spyFirestore: (docs: Promise<firebase.firestore.QuerySnapshot>) => jest.SpyInstance
 let spyErr: jest.SpyInstance
 beforeEach(() => {
   spyFirestore = (docs): jest.SpyInstance =>
-    (jest.spyOn(firebase.firestore(), 'collection') as jest.SpyInstance<
-      Pick<firestore.CollectionReference, 'get'>
+    (jest.spyOn(firebaseApp.firestore(), 'collection') as jest.SpyInstance<
+      Pick<firebase.firestore.CollectionReference, 'get'>
     >).mockReturnValue({ get: () => docs })
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
@@ -38,7 +38,7 @@ describe('Run `getFirestoreWords`', () => {
             })
           }
         ]
-      } as firestore.QuerySnapshot)
+      } as firebase.firestore.QuerySnapshot)
     )
 
     expect(await getFirestoreWords()).toEqual([

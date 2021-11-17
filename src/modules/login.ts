@@ -18,9 +18,9 @@ export const { setIsLogin } = createActions<{ isLogin: boolean }>(SET_IS_LOGIN)
 
 export const login: Reducer<LoginState, Action<{ isLogin: boolean }>> = handleActions(
   {
-    [SET_IS_LOGIN]: (_state: LoginState, action: Action<{ isLogin: boolean }>): LoginState => {
-      return { isLogin: action.payload.isLogin }
-    }
+    [SET_IS_LOGIN]: (_state: LoginState, action: Action<{ isLogin: boolean }>): LoginState => ({
+      isLogin: action.payload.isLogin
+    })
   },
   initialState
 )
