@@ -77,9 +77,6 @@
     "webpack-dev-server": "3.10.3",
     "workbox-webpack-plugin": "4.3.1"
   },
-  "engines": {
-    "node": "10.22.1"
-  },
   "license": "MIT",
   "lint-staged": {
     "*.{ts,tsx}": "npm run lint:js",
@@ -96,5 +93,8 @@
     "lint:style": "stylelint **/*.{css,tsx} --ignore-path .gitignore",
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2"
+  },
+  "volta": {
+    "node": "10.22.1"
   }
 }
