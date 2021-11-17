@@ -12,7 +12,7 @@ Isomorphic JavaScript
 
 ### Isomorphic JavaScript
 
-SSR(+SPA)構成でクライアントとサーバで同じコードで共有すること  
+SSR(+SPA)構成でクライアントとサーバで同じコードを共有すること  
 SSR -> 初期表示速い / ページ遷移遅い  
 SPA -> 初期表示遅い / ページ遷移速い
 
