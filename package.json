@@ -95,6 +95,6 @@
     "test:ci": "jest --maxWorkers=2"
   },
   "volta": {
-    "node": "10.22.1"
+    "node": "16.13.0"
   }
 }
