@@ -42,18 +42,6 @@ curl -i -X POST \
 'https://fcm.googleapis.com/fcm/send'
 ```
 
-## Tasks
-
-```sh
-npm start                 # Run webpack-dev-server
-npm run build             # Build for development
-npm run build:production  # Build for production
-npm test                  # Unit test (Jest + vue-test-utils)
-npm run test:ci           # Unit test for CI
-npm run clean:cache       # Clear cache of webpack
-npm run clean:dist        # Clear dist directory
-```
-
 ## License
 
 MIT

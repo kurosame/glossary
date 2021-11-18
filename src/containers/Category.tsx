@@ -1,8 +1,8 @@
-import type { States } from '@/modules/states'
-import { AppBar, Tab, Tabs } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { AppBar, Tab, Tabs } from '@material-ui/core'
+import type { States } from '@/modules/states'
 
 interface Props {
   location: { pathname: string }
@@ -45,11 +45,12 @@ const tabItems: Array<{ label: string; to: string }> = [
 
 const Category: React.FC<Props> = p => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
+  const { location } = p
 
   if (!isLogin) return null
   return (
     <AppBar position="static">
-      <Tabs value={tabItems.findIndex(o => o.to === p.location.pathname)} variant="scrollable" scrollButtons="off">
+      <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable" scrollButtons="off">
         {tabItems.map(t => {
           const StaticLink = React.forwardRef<HTMLAnchorElement>((pp, ref) => (
             <Link ref={ref} to={t.to} {...pp} /> // eslint-disable-line react/jsx-props-no-spreading

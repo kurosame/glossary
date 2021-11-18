@@ -1,9 +1,9 @@
+import React, { ChangeEvent, useCallback, useState } from 'react'
+import styled from 'styled-components'
+import { List, ListItem } from '@material-ui/core'
 import SearchBar from '@/components/SearchBar'
 import Word from '@/components/Word'
 import type { WordState } from '@/modules/word'
-import { List, ListItem } from '@material-ui/core'
-import React, { ChangeEvent, useCallback, useState } from 'react'
-import styled from 'styled-components'
 
 interface Props {
   words: WordState[]
@@ -15,11 +15,12 @@ const WordDiv = styled.div`
 
 const Words: React.FC<Props> = p => {
   const [filterWords, setFilterWords] = useState<WordState[] | undefined>(undefined)
+  const { words } = p
 
   const onSearchWords = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const str = e.target.value.toLowerCase()
-      const fWords = p.words.filter(
+      const fWords = words.filter(
         w =>
           w.id.toLowerCase().includes(str) ||
           w.titles.some(t => t.toLowerCase().includes(str)) ||
@@ -27,7 +28,7 @@ const Words: React.FC<Props> = p => {
       )
       setFilterWords(fWords)
     },
-    [p.words]
+    [words]
   )
 
   return (
@@ -35,7 +36,7 @@ const Words: React.FC<Props> = p => {
       <ListItem>
         <SearchBar onSearch={onSearchWords} />
       </ListItem>
-      {(filterWords || p.words).map(w => (
+      {(filterWords || words).map(w => (
         <ListItem key={w.id}>
           <WordDiv>
             <Word word={w} />

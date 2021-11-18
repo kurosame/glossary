@@ -45,7 +45,7 @@ export const setWord = functions
             .set({ category, titles, description, descriptionByLine })
             .catch(() => Promise.reject())
           console.info(`Run document set fileName=${fileName}`)
-          await new Promise(r => setTimeout(r, 120000)) // Sleep for 2 minutes
+          await new Promise(r => setTimeout(r, 120000)) /* eslint-disable-line no-promise-executor-return */
           return admin
             .firestore()
             .collection('words')

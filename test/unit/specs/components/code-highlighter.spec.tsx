@@ -1,6 +1,6 @@
 import React from 'react'
-import CodeHighlighter from '@/components/CodeHighlighter'
 import { render, cleanup, RenderResult } from '@testing-library/react'
+import CodeHighlighter from '@/components/CodeHighlighter'
 
 let wrapper: RenderResult
 beforeEach(() => {

@@ -7,10 +7,13 @@ interface Props {
   language: string
 }
 
-const CodeHighlighter: React.FC<Props> = p => (
-  <SyntaxHighlighter language={p.language} style={atomDark} showLineNumbers>
-    {p.value}
-  </SyntaxHighlighter>
-)
+const CodeHighlighter: React.FC<Props> = p => {
+  const { value, language } = p
+  return (
+    <SyntaxHighlighter language={language} style={atomDark} showLineNumbers>
+      {value}
+    </SyntaxHighlighter>
+  )
+}
 
 export default CodeHighlighter
