@@ -1,4 +1,3 @@
-const os = require('os')
 const path = require('path')
 const Copy = require('copy-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
@@ -31,13 +30,6 @@ module.exports = (_, argv) => ({
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'thread-loader',
-            options: {
-              // workers: require('os').cpus().length - 1
-              workers: 1
-            }
-          },
-          {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true
@@ -48,9 +40,7 @@ module.exports = (_, argv) => ({
             options: {
               happyPackMode: true
             }
-          },
-          'eslint-loader',
-          'stylelint-custom-processor-loader'
+          }
         ],
         exclude: /node_modules/
       }
