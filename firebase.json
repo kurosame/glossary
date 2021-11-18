@@ -10,6 +10,6 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "functions": {
-    "runtime": "nodejs10"
+    "runtime": "nodejs14"
   }
 }

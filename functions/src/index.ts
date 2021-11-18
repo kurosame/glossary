@@ -14,8 +14,12 @@ export const setWord = functions
     }
 
     const file = admin.storage().bucket().file(o.name)
-    // Consider patterns that include periods (NODE.JS, VUE.JS, etc..)
-    const fileName = file.name.split('/').slice(-1)[0]?.split('.').slice(0, -1).join('.')
+    const fileName = file.name
+      .split('/')
+      .slice(-1)[0]
+      ?.split('.')
+      .slice(0, -1) // Consider patterns that include periods (NODE.JS, VUE.JS, etc..)
+      .join('.')
 
     if (!fileName) {
       console.error('File.name not found')
