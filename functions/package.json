@@ -12,14 +12,14 @@
     "ts-jest": "27.0.7",
     "typescript": "4.4.4"
   },
-  "engines": {
-    "node": "10"
-  },
   "main": "lib/src/index.js",
   "private": true,
   "scripts": {
     "build": "tsc",
     "test": "jest --watchAll",
     "test:ci": "jest"
+  },
+  "volta": {
+    "node": "16.13.0"
   }
 }
