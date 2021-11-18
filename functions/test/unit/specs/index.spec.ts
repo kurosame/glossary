@@ -16,7 +16,7 @@ const download = jest
   ])
 const file = jest
   .fn()
-  .mockReturnValueOnce({ name: undefined })
+  .mockReturnValueOnce({ name: 'not slash' })
   .mockReturnValue({ name: 'path/to/NODE.JS.md', download })
 const set = jest.fn().mockRejectedValueOnce(Error('set error')).mockResolvedValue(Promise.resolve())
 const get = jest
