@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
 import { render, cleanup, RenderResult } from '@testing-library/react'
 import CodeHighlighter from '@/components/CodeHighlighter'

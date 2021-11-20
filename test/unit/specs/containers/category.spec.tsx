@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
 import { Provider } from 'react-redux'
 import { MemoryRouter as Router } from 'react-router-dom'
