@@ -29,6 +29,6 @@ export function getFirestoreWords(): Promise<WordState[]> {
 export function* getWords(): IterableIterator<TakeEffect | CallEffect | PutEffect<Action<{ words: WordState[] }>>> {
   while (true) {
     yield take(GET_WORDS)
-    if (setWords) yield put(setWords({ words: yield call(getFirestoreWords) }))
+    yield put(setWords!({ words: yield call(getFirestoreWords) }))
   }
 }

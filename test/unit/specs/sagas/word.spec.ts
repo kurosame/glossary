@@ -13,8 +13,7 @@ beforeEach(() => {
         Pick<firebase.firestore.CollectionReference, 'get'>
       >
     ).mockReturnValue({ get: () => docs })
-  spyErr = jest.spyOn(console, 'error')
-  spyErr.mockImplementation(x => x)
+  spyErr = jest.spyOn(console, 'error').mockImplementation(x => x)
 })
 afterEach(jest.restoreAllMocks)
 
