@@ -566,7 +566,7 @@ exports[`Match the snapshot 1`] = `
           </a>
         </div>
         <span
-          class="PrivateTabIndicator-root-141 PrivateTabIndicator-colorSecondary-143 MuiTabs-indicator"
+          class="PrivateTabIndicator-root-5 PrivateTabIndicator-colorSecondary-7 MuiTabs-indicator"
           style="left: 0px; width: 0px;"
         />
       </div>
