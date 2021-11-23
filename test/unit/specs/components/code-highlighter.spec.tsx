@@ -3,12 +3,12 @@
  */
 
 import React from 'react'
-import { render, cleanup, RenderResult } from '@testing-library/react'
+import { cleanup, render, RenderResult } from '@testing-library/react'
 import CodeHighlighter from '@/components/CodeHighlighter'
 
 let wrapper: RenderResult
 beforeEach(() => {
-  wrapper = render(<CodeHighlighter value="test" language="javascript" />)
+  wrapper = render(<CodeHighlighter language="js">{['']}</CodeHighlighter>)
 })
 afterEach(cleanup)
 

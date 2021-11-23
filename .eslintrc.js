@@ -8,6 +8,7 @@ module.exports = {
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': [
       'error',
       {

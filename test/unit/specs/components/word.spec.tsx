@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import React from 'react'
 import { cleanup, render, RenderResult } from '@testing-library/react'
+import React from 'react'
 import Word from '@/components/Word'
 import type { WordState } from '@/modules/word'
 import '@testing-library/jest-dom'
@@ -18,10 +18,7 @@ beforeEach(() => {
   }
   wrapper = render(<Word word={word} />)
 })
-afterEach(() => {
-  cleanup()
-  jest.restoreAllMocks()
-})
+afterEach(cleanup)
 
 test('Data binding from `word.id` to `CardHeader.title`', () => {
   expect(wrapper.getByTestId('card-id')).toHaveTextContent('React')

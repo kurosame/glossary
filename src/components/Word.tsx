@@ -1,8 +1,9 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown/with-html'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import styled from 'styled-components'
 import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
-import CodeHighlighter from '@/components/CodeHighlighter'
+import CodeBlock from '@/components/CodeBlock'
 import type { WordState } from '@/modules/word'
 
 interface Props {
@@ -13,7 +14,7 @@ const TitlesSpan = styled.span`
   margin-right: 5px;
 `
 
-const Word: React.FC<Props> = p => {
+const Word: React.VFC<Props> = p => {
   const { word } = p
   return (
     <Card>
@@ -26,7 +27,9 @@ const Word: React.FC<Props> = p => {
         ))}
       </CardContent>
       <CardContent data-testid="card-description">
-        <ReactMarkdown source={word.description} renderers={{ code: CodeHighlighter }} escapeHtml={false} />
+        <ReactMarkdown components={{ code: CodeBlock }} rehypePlugins={[rehypeRaw]}>
+          {word.description}
+        </ReactMarkdown>
       </CardContent>
     </Card>
   )

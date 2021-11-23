@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Match the snapshot 1`] = `
+exports[`Render to \`<code></code>\` Match the snapshot 1`] = `
+<DocumentFragment>
+  <code />
+</DocumentFragment>
+`;
+
+exports[`Render to \`CodeHighlighter\` Match the snapshot 1`] = `
 <DocumentFragment>
   <pre
     data-testid="code-highlighter"
