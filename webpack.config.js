@@ -1,8 +1,8 @@
 const path = require('path')
-const Copy = require('copy-webpack-plugin')
-const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
-const Html = require('html-webpack-plugin')
-const WorkboxPlugin = require('workbox-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = (_, argv) => ({
   entry: {
@@ -39,7 +39,7 @@ module.exports = (_, argv) => ({
           {
             loader: 'ts-loader',
             options: {
-              happyPackMode: true
+              transpileOnly: true
             }
           }
         ],
@@ -48,19 +48,19 @@ module.exports = (_, argv) => ({
     ]
   },
   plugins: [
-    new Copy([
+    new CopyWebpackPlugin([
       {
         from: path.join(__dirname, 'assets'),
         to: path.join(__dirname, 'dist', 'assets'),
         ignore: ['.gitkeep']
       }
     ]),
-    new ForkTsChecker({ checkSyntacticErrors: true }),
-    new Html({
+    new ForkTsCheckerWebpackPlugin(),
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
       scriptLoading: 'defer'
     }),
-    new WorkboxPlugin.InjectManifest({
+    new WorkboxWebpackPlugin.InjectManifest({
       swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
       swDest: 'messaging-sw.js'
     })
