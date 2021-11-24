@@ -1,7 +1,6 @@
 const path = require('path')
 const Copy = require('copy-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
-const HardSource = require('hard-source-webpack-plugin')
 const Html = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
@@ -21,7 +20,9 @@ module.exports = (_, argv) => ({
     }
   },
   devServer: {
-    contentBase: 'dist',
+    static: {
+      directory: path.join(__dirname, 'dist')
+    },
     historyApiFallback: true
   },
   module: {
@@ -55,7 +56,6 @@ module.exports = (_, argv) => ({
       }
     ]),
     new ForkTsChecker({ checkSyntacticErrors: true }),
-    new HardSource(),
     new Html({
       template: path.join(__dirname, 'src', 'index.html'),
       scriptLoading: 'defer'
@@ -69,10 +69,5 @@ module.exports = (_, argv) => ({
     extensions: ['.js', '.ts', '.tsx'],
     alias: { '@': path.join(__dirname, 'src') }
   },
-  devtool: argv.mode === 'development' ? 'inline-source-map' : false,
-  performance: {
-    assetFilter: function (filename) {
-      return !/^vendor-\w+\.js$/.test(filename)
-    }
-  }
+  devtool: argv.mode === 'development' ? 'inline-source-map' : false
 })
