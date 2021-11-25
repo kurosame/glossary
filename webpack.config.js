@@ -48,13 +48,14 @@ module.exports = (_, argv) => ({
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, 'assets'),
-        to: path.join(__dirname, 'dist', 'assets'),
-        ignore: ['.gitkeep']
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, 'assets'),
+          to: path.join(__dirname, 'dist', 'assets')
+        }
+      ]
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
