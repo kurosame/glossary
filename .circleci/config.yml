@@ -5,7 +5,7 @@ references:
         - image: circleci/node:16.13.0
     setup-docker-lighthouse: &setup-docker-lighthouse
       docker:
-        - image: circleci/node:10.17.0-browsers
+        - image: circleci/node:16.13.0-browsers
     setup-docker-gcloud: &setup-docker-gcloud
       docker:
         - image: google/cloud-sdk
