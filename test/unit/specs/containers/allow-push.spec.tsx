@@ -9,7 +9,7 @@ import AllowPush from '@/containers/AllowPush'
 const requestPermission = jest.fn()
 
 // jest.mock runs at top level
-jest.mock('@/utils/messaging', () => ({
+jest.mock('@/sw/fcm', () => ({
   requestPermission: (): jest.Mock => requestPermission,
   isPermission: (): string => 'default'
 }))

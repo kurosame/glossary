@@ -9,7 +9,7 @@ import Category from '@/containers/Category'
 import List from '@/containers/List'
 import '@/modules/states'
 import store from '@/store'
-import { initialize } from '@/utils/messaging'
+import { initialize } from '@/sw/fcm'
 
 initialize()
 

@@ -9,7 +9,7 @@ module.exports = {
     '<rootDir>/src/containers/**/*.tsx',
     '<rootDir>/src/modules/**/*.ts',
     '<rootDir>/src/sagas/**/*.ts',
-    '<rootDir>/src/utils/**/*.ts'
+    '<rootDir>/src/sw/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
     // FirebaseUI for React is not supported by Jest(jsdom)
@@ -17,7 +17,7 @@ module.exports = {
     '<rootDir>/src/containers/Login.tsx',
     // Messaging is not supported by Jest(jsdom)
     // https://github.com/tmobile/jest-jsdom-browser-compatibility/tree/master/testcases-src/tc4-notification-api-missing
-    '<rootDir>/src/utils/messaging.ts'
+    '<rootDir>/src/sw/fcm.ts'
   ],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   coverageReporters: ['html', 'text-summary'],
