@@ -28,6 +28,44 @@ JS
 - const  
   ブロックスコープ、再代入不可
 
+### Hoisting
+
+宣言の巻き上げ  
+関数や変数の定義をコード実行前にメモリへ保存すること
+
+よって、以下のコードは関数が Hoisting されるため、成立する
+
+```js
+// 関数の定義の前に実行しても動く
+a()
+function a() {
+  ...
+}
+```
+
+以下のコードは変数の Hoisting
+
+```js
+var a = 'a'
+
+function f() {
+  console.log(a) // undefined（aではない）
+  var a = 'b'
+  console.log(a) // b
+}
+f()
+
+// 上記の1つ目のconsole.logがundefinedになるのは、関数内の`var a = 'b'`の宣言がHoistingされ、以下のように関数の先頭で`var a`と宣言されるから
+function f() {
+  var a
+  console.log(a) // undefined（aではない）
+  a = 'b'
+  console.log(a) // b
+}
+```
+
+var を使わず、let か const を使えば、上記はコンパイル時にエラーで防げる
+
 ### this
 
 関数呼び出し時にレシーバーが存在すれば、this はそのレシーバーを指す  
@@ -53,12 +91,12 @@ const param3 = {
 
 const param4 = {
   param: 'local',
-  func: function() {
-    ;(function() {
+  func: function () {
+    ;(function () {
       console.log(this.param)
     })()
   },
-  arrow: function() {
+  arrow: function () {
     ;(() => {
       console.log(this.param)
     })()
@@ -77,8 +115,8 @@ this.param = 'global'
 
 const param4 = {
   param: 'local',
-  func: function() {
-    ;(function() {
+  func: function () {
+    ;(function () {
       console.log(this.param)
     })()
   }
@@ -95,7 +133,7 @@ bind でオブジェクトを紐づけておけば、レシーバーが存在し
 this.param = 'global'
 const param1 = {
   param: 'local',
-  get: function() {
+  get: function () {
     return this.param
   }
 }
@@ -128,17 +166,15 @@ console.log(func.bind(param1)()) // local
 
 ```js
 // 第2引数指定無し
-const result = [1, 3, 5, 7].reduce(
-  (accumulator, currentValue, currentIndex, array) => {
-    console.log('#################')
-    console.log(accumulator)
-    console.log(currentValue)
-    console.log(currentIndex)
-    console.log(array)
-    console.log('#################')
-    return accumulator + currentValue
-  }
-)
+const result = [1, 3, 5, 7].reduce((accumulator, currentValue, currentIndex, array) => {
+  console.log('#################')
+  console.log(accumulator)
+  console.log(currentValue)
+  console.log(currentIndex)
+  console.log(array)
+  console.log('#################')
+  return accumulator + currentValue
+})
 console.log(result)
 ```
 
@@ -166,18 +202,15 @@ console.log(result)
 
 ```js
 // 第2引数指定有り
-const result = [1, 3, 5, 7].reduce(
-  (accumulator, currentValue, currentIndex, array) => {
-    console.log('#################')
-    console.log(accumulator)
-    console.log(currentValue)
-    console.log(currentIndex)
-    console.log(array)
-    console.log('#################')
-    return accumulator + currentValue
-  },
-  10
-)
+const result = [1, 3, 5, 7].reduce((accumulator, currentValue, currentIndex, array) => {
+  console.log('#################')
+  console.log(accumulator)
+  console.log(currentValue)
+  console.log(currentIndex)
+  console.log(array)
+  console.log('#################')
+  return accumulator + currentValue
+}, 10)
 console.log(result)
 ```
 

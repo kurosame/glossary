@@ -41,36 +41,66 @@ ECMAScript を策定してるグループ
 
 ### ES Modules, .mjs
 
-ES Modules の構文は決めたが、どう動かすかはホスト側（ブラウザや Node.js）に委ねられていた
+言語定義
 
-- ES Modules かどうかの判別
+- CJS
+  - CommonJS
+- ESM
+  - ES Modules
+  - Node.js の v12 以降は Native ESM をサポートしている
+- Native ESM
+  - ESM 形式で実装されたファイルをブラウザや Node.js で直接 ESM として実行する方式
+- 擬似 ESM
+  - ESM 形式で実装されたファイルを TypeScript や Babel で CJS に変換して、ブラウザや Node.js で実行する方式
+- Pure ESM
 
-  - ブラウザ  
-    `<script type="module" src="main.js" />`のように type="module"
+  - Native ESM のみで構成された NPM パッケージ
+  - CJS の require で読み込み不可能
 
-  - Node.js  
-    .mjs という拡張子  
-    .js は従来の CommonJS 扱いなので、import 構文などはシンタックスエラーになる
+Native ESM
 
-- CommonJS Modules との相互互換性について
+- ビルド時にバンドルしない
 
-  - ブラウザ  
-    N/A
+  - ブラウザが各ファイルの import と export をそのまま読み込む
+  - 従来のやり方である webpack などはバンドルし、1 つの JS にする（設定でファイル分割も可能だが）
+  - Native ESM をサポートし、ノーバンドルのビルドツールとして、Snowpack や Vite などがある
 
-  - Node.js  
-    制限付きで互換  
-    CJS の require, module, exports は ESM では削除されているので、CJS を ESM から import すると CJS が ESM へ変換された時に module.exports のオブジェクトがそのまま default export となる  
-    つまり以下のような書き方はエラー
+ランタイムの対応
 
-    ```js
-    import { foo } from './cjs'
-    ```
+- ブラウザ
+  - モダンブラウザは ESM をサポート済み
+  - `<script type="module" src="main.js" />`のように`type="module"`を付与して、読み込む
+- Node.js
 
-    なので以下のようにする
+  - v12 から ESM をサポート
+  - .mjs という拡張子
+    - .js は従来の CommonJS 扱いなので、import 構文などはシンタックスエラーになる
 
-    ```js
-    import foo from './cjs'
-    ```
+トランスパイラーの対応
+
+- TypeScript
+
+  - v4.5 で ESM 対応を Nightly リリースした
+  - tsconfig.json で`module:node12`や`module:nodenext`を指定すると、CJS に変換せず、ESM のまま（Native ESM）出力できるようになった
+
+CommonJS Modules との相互互換性について
+
+- ブラウザ
+  - N/A
+- Node.js
+
+  - 制限付きで互換
+  - CJS の require, module, exports は ESM では削除されているので、CJS を ESM から import すると CJS が ESM へ変換された時に module.exports のオブジェクトがそのまま default export となる
+
+    - つまり以下のような書き方はエラー
+
+      ```js
+      // 以下のような書き方はエラー
+      import { foo } from './cjs'
+
+      // 以下はオッケー
+      import foo from './cjs'
+      ```
 
 ### Top-level await
 
