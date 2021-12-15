@@ -41,14 +41,14 @@ const element = React.createElement('div', { id: 'sample' }, 'hello')
 
   1. constructor
   1. render
-  1. DOM の更新
+  1. DOM の更新
   1. componentDidMount
 
 - Updating
 
   1. props もしくは state の更新がトリガー
   1. render
-  1. DOM の更新
+  1. DOM の更新
   1. componentDidUpdate
 
 - Unmounting
@@ -173,12 +173,13 @@ function MyComponent() {
 - forwardRef  
   コンポーネントが受け取った ref をそのコンポーネント内の別の DOM へフォワーディングするときに使う
 
-```ts
-const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => <Link ref={ref} to={t.to} {...p} />)
-```
+  ```ts
+  const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => <Link ref={ref} to={t.to} {...p} />)
+  return <Tab key={t.label} label={t.label} component={StaticLink} />
+  ```
 
-Glossary 内のコードでは React Router の Link は Material-UI の Tab でラップされている  
-React から Link を操作したいので、Tab を使って ref をフォワーディングさせているのだと思う
+  Glossary 内のコードでは React Router の Link は Material-UI の Tab でラップされている  
+  React から Link を操作したいので、Tab を使って ref をフォワーディングさせているのだと思う
 
 ### Error Boundaries
 
@@ -250,7 +251,7 @@ class ErrorBoundary extends React.Component {
 
     - props の更新
       - useCallback, useMemo で抑制できる
-    - state の更新
+    - state の更新
       - これは再レンダリングされてよい
     - 親コンポーネントの再レンダリング
       - React.memo で抑制できる
@@ -269,7 +270,7 @@ class ErrorBoundary extends React.Component {
     - クラス型コンポーネントの場合は PureComponent  
       shouldComponentUpdate のデフォルトの挙動を現在の props と新 props を shallow な比較をして true か false を返すように変更できる
       - shouldComponentUpdate  
-        prevProps と prevState を受け取り、現在の props と state を比較して、更新する必要があれば true を返す（比較ロジックは自分で実装する）  
+        prevProps と prevState を受け取り、現在の props と state を比較して、更新する必要があれば true を返す（比較ロジックは自分で実装する）  
         デフォルトは true なので props と state が変更されて更新する必要がなくても再レンダリングされる  
         props と state の値が同じでもオブジェクトが異なる場合、再レンダリングが走る
     - 関数型コンポーネントの場合は React.memo  
@@ -285,8 +286,10 @@ class ErrorBoundary extends React.Component {
     React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる  
     useMemo は useCallback と同様に props が値の場合に React.memo と組み合わせて使うのがよい
 
-- ループ内の要素に key 属性を付ける  
-  静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
+- ループ内の要素に key 属性を付ける
+  - 静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
+  - ループの index を key に使うのは NG
+    - ループ内の要素を削除する機能があった場合、key を index にしてキャッシュしてしまうと、要素削除後の index と差異が生まれ、間違ってキャッシュされた要素を表示する可能性がある
 
 ### 状態管理ライブラリ比較
 
