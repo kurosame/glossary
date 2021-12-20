@@ -142,6 +142,10 @@ if (typeof a === 'string') {
 }
 ```
 
+### ユニオン型とインターセクション型
+
+<a href="https://kurosame-th.hatenadiary.com/entry/2021/12/20/185937" target="_blank">TypeScript のユニオン型とインターセクション型について</a>
+
 ### タイプガード
 
 `instanceof`や`typeof`などを使い、型を特定できれば、そのスコープ内ではその型だとみなしてキャストが不要になる  
