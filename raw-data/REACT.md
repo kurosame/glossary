@@ -164,22 +164,53 @@ function MyComponent() {
 }
 ```
 
-### React.forwardRef
+### ref と React.forwardRef
 
-- ref  
-  props を使わずに子要素を変更できる  
-  子要素を命令型のコードを使って操作する
+- ref
 
-- forwardRef  
-  コンポーネントが受け取った ref をそのコンポーネント内の別の DOM へフォワーディングするときに使う
+  - オブジェクト、DOM 要素、インスタンスを持つコンポーネントに ref が使用できる
+    - インスタンスを持たないオブジェクト（関数コンポーネントなど）は ref が使えない（エラーになる）
+  - オブジェクトの ref は、`useRef(1)`のようにコンポーネント内で定義し、その ref をどこにも付与せずに変数のように扱うもの
+    - マウントされてからアンマウントされるまでに利用できる変更可能なオブジェクトとなる
+  - DOM 要素の ref は、HTML 要素に ref 属性を付与する
+    - Ref.current はその DOM 要素を保持している
+    - マウントされるまでは`useRef(null)`のように null 等で明示的に初期値を設定可能
+  - クラスコンポーネントの ref は、クラスコンポーネントに ref 属性を付与する
+    - Ref.current はそのクラスのインスタンスを保持しているので、そのコンポーネントの関数やプロパティにアクセスできる
+  - useState は state が変わるたびに再レンダリングされるが、useRef は値が変わっても再レンダリングされない
 
-  ```ts
-  const StaticLink = React.forwardRef((p, ref: React.Ref<Link>) => <Link ref={ref} to={t.to} {...p} />)
-  return <Tab key={t.label} label={t.label} component={StaticLink} />
-  ```
+- forwardRef
 
-  Glossary 内のコードでは React Router の Link は Material-UI の Tab でラップされている  
-  React から Link を操作したいので、Tab を使って ref をフォワーディングさせているのだと思う
+  - コンポーネントが受け取った ref をそのコンポーネント内の別の DOM へフォワーディングするときに使う
+  - 関数コンポーネントでは ref が使えない
+    ```ts
+    const ref = useRef(null)
+    // 以下はエラー
+    return <FC ref={ref} />
+    ```
+  - ref を props で渡して、子要素に ref を適用することは可能
+    - ただし、ref 以外の命名にする必要がある
+    ```ts
+    const FC2 = ({ _ref }) => {
+      console.info({ FC2: _ref.current }) // div要素を保持
+      return <div ref={_ref}>test2</div>
+    }
+    const ref = useRef(null)
+    return <FC2 _ref={ref} />
+    ```
+  - forwardRef を使えば、`_ref`のような名前避けを回避できる
+    ```ts
+    const FC3 = React.forwardRef((p, ref) => {
+      console.info({ FC3: ref.current }) // div要素を保持
+      return (
+        <div ref={ref} {...p}>
+          test3
+        </div>
+      )
+    })
+    const ref = useRef(null)
+    return <FC3 ref={ref} />
+    ```
 
 ### Error Boundaries
 
