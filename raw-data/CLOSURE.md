@@ -37,3 +37,45 @@ f() // 10
 f() // 11
 f() // 12
 ```
+
+### Stale Closures 問題
+
+外部のコンテキストの値を束縛することによる弊害がある
+
+```ts
+let number = 0
+
+const increment = () => {
+  number += 1
+  const message = `Incremented to ${number}`
+
+  return () => {
+    console.log(message)
+    console.log(`Number: ${number}`)
+  }
+}
+
+// Closureは外側のmessageを束縛し続けるため、値が更新されない
+const log = increment()
+increment()
+increment()
+log() // Incremented to 1; Number: 3
+increment()
+log() // Incremented to 1; Number: 4
+```
+
+たとえば、React の state でも同じことが起きる
+
+```ts
+const [number, setNumber] = useState(0)
+
+const increment = () => {
+  // Closure内でStateのnumberを参照しているため、1秒ごとに「0 + 1」をずっと繰り返す
+  return setInterval(() => {
+    setNumber(number + 1)
+  }, 1000)
+}
+```
+
+state がプリミティブ型データだとこの問題は解決不可能  
+（オブジェクト型データの場合は、中身を更新すれば、回避できそうな気がする）
