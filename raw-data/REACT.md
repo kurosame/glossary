@@ -13,6 +13,8 @@ React
 そこで、Web 向けの機能は react-dom へ移行された  
 現状、React はコンポーネントのツリー管理や Reconciler などがメイン機能でプラットフォームには依存していない
 
+<a href="https://kurosame-th.hatenadiary.com/entry/2022/01/19/174253" target="_blank">React DnD v11（古いバージョン）の実装</a>
+
 ### Component と Element
 
 ```js
