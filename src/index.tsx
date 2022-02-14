@@ -15,19 +15,28 @@ import { initialize } from '@/sw/fcm'
 
 initialize()
 
-render(
-  <Provider store={store}>
-    <MuiThemeProvider theme={createMuiTheme()}>
-      <Router>
-        <>
-          <Route path="/" component={Login} />
-          <Route path="/" component={AllowPush} />
-          <Route path="/" component={Category} />
-          <Route path="/" component={List} exact />
-          <Route path="/:category" component={List} exact />
-        </>
-      </Router>
-    </MuiThemeProvider>
-  </Provider>,
-  document.getElementById('root') as HTMLElement
-)
+class RootComponent extends React.Component {
+  public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error({ 'error-boundary-error': error, errorInfo })
+  }
+
+  public render() {
+    return (
+      <Provider store={store}>
+        <MuiThemeProvider theme={createMuiTheme()}>
+          <Router>
+            <>
+              <Route path="/" component={Login} />
+              <Route path="/" component={AllowPush} />
+              <Route path="/" component={Category} />
+              <Route path="/" component={List} exact />
+              <Route path="/:category" component={List} exact />
+            </>
+          </Router>
+        </MuiThemeProvider>
+      </Provider>
+    )
+  }
+}
+
+render(<RootComponent />, document.getElementById('root'))
