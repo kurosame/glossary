@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { Provider } from 'react-redux'
-import { MemoryRouter as Router } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 
 import { cleanup, render, RenderResult } from '@testing-library/react'
@@ -20,9 +20,9 @@ beforeEach(() => {
     })
     return render(
       <Provider store={store}>
-        <Router initialEntries={['/']}>
-          <Category location={{ pathname: '/react' }} />
-        </Router>
+        <MemoryRouter initialEntries={['/react']}>
+          <Category />
+        </MemoryRouter>
       </Provider>
     )
   }

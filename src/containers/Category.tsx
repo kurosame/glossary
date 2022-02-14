@@ -1,14 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { AppBar, Tab, Tabs } from '@material-ui/core'
 
 import type { States } from '@/modules/states'
-
-interface Props {
-  location: { pathname: string }
-}
 
 const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Summary', to: '/' },
@@ -45,17 +41,16 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Category: React.VFC<Props> = ({ location }) => {
+const Category: React.VFC = () => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
+  const location = useLocation()
 
   if (!isLogin) return null
   return (
     <AppBar position="static">
       <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable" scrollButtons="off">
         {tabItems.map(t => {
-          const StaticLink = React.forwardRef<HTMLAnchorElement>((pp, ref) => (
-            <Link ref={ref} to={t.to} {...pp} /> // eslint-disable-line react/jsx-props-no-spreading
-          ))
+          const StaticLink = React.forwardRef<HTMLAnchorElement>((p, ref) => <Link ref={ref} to={t.to} {...p} />)
           StaticLink.displayName = 'StaticLink'
           return <Tab key={t.label} label={t.label} component={StaticLink} />
         })}
