@@ -1,6 +1,7 @@
+import { createActions, handleActions } from 'redux-actions'
+
 import type { Reducer } from 'redux'
 import type { Action, ActionFunctionAny } from 'redux-actions'
-import { createActions, handleActions } from 'redux-actions'
 
 // Action types
 export const GET_WORDS = 'GET_WORDS'

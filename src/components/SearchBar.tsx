@@ -1,7 +1,8 @@
-import { Icon, Input, Paper } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components'
+
+import { Icon, Input, Paper } from '@material-ui/core'
+import { Search } from '@material-ui/icons'
 
 interface Props {
   onSearch: React.ChangeEventHandler<HTMLInputElement>

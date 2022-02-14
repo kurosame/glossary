@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react'
-import { render, fireEvent, cleanup, RenderResult } from '@testing-library/react'
+
+import { cleanup, fireEvent, render, RenderResult } from '@testing-library/react'
+
 import SearchBar from '@/components/SearchBar'
 
 let onSearch: jest.Mock

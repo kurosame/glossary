@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import type { Dispatch } from 'redux'
+
 import Words from '@/components/Words'
-import type { States } from '@/modules/states'
 import { GET_WORDS, WordState } from '@/modules/word'
+
+import type { States } from '@/modules/states'
+import type { Dispatch } from 'redux'
 
 interface Props {
   match: { params: { category: string } }

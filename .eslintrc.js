@@ -6,6 +6,22 @@ module.exports = {
   settings: { react: { version: 'detect' }, 'import/resolver': 'webpack' },
   rules: {
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'unknown', 'type'],
+        pathGroups: [
+          {
+            pattern: '{@material-ui,@testing-library}/**',
+            group: 'external',
+            position: 'after'
+          }
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc' }
+      }
+    ],
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'react/function-component-definition': [
       'error',

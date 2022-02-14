@@ -1,13 +1,15 @@
 /**
  * @jest-environment jsdom
  */
-
 import React from 'react'
 import { Provider } from 'react-redux'
 import { MemoryRouter as Router } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
+
 import { cleanup, render, RenderResult } from '@testing-library/react'
+
 import Category from '@/containers/Category'
+
 import type { States } from '@/modules/states'
 
 let wrapper: (isLogin: boolean) => RenderResult

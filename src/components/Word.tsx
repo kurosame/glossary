@@ -1,10 +1,13 @@
-import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import styled from 'styled-components'
+
+import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
+
 import CodeBlock from '@/components/CodeBlock'
+
 import type { WordState } from '@/modules/word'
 
 interface Props {

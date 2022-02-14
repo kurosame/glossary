@@ -1,4 +1,5 @@
 import { fork } from 'redux-saga/effects'
+
 import rootSaga from '@/sagas/index'
 import { getWords } from '@/sagas/word'
 

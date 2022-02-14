@@ -1,8 +1,10 @@
-import type firebase from 'firebase'
 import { call, put, take } from 'redux-saga/effects'
+
 import firebaseApp from '@/firebase/index'
 import { GET_WORDS, SET_WORDS } from '@/modules/word'
 import { getFirestoreWords, getWords } from '@/sagas/word'
+
+import type firebase from 'firebase'
 
 let spyFirestore: (docs: Promise<firebase.firestore.QuerySnapshot>) => jest.SpyInstance
 let spyErr: jest.SpyInstance
