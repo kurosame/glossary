@@ -72,9 +72,15 @@
   },
   "license": "MIT",
   "lint-staged": {
-    "*.{ts,tsx}": "npm run lint:js",
-    "*.{css,tsx}": "npm run lint:style",
-    "*.{ts,tsx,css}": "npm run fmt"
+    "*.ts": [
+      "npm run lint:js",
+      "npm run fmt"
+    ],
+    "*.tsx": [
+      "npm run lint:js",
+      "npm run lint:style",
+      "npm run fmt"
+    ]
   },
   "private": true,
   "scripts": {
