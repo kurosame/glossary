@@ -6,16 +6,16 @@ import { createActions, handleActions } from 'redux-actions'
 export const GET_WORDS = 'GET_WORDS'
 export const SET_WORDS = 'SET_WORDS'
 
-export interface WordActions {
-  getWords: ActionFunctionAny<Action<{ words: WordState[] }>>
-  setWords: ActionFunctionAny<Action<{ words: WordState[] }>>
-}
-
 export interface WordState {
   id: string
   category: string
   titles: string[]
   description: string
+}
+
+export interface WordActions {
+  getWords: ActionFunctionAny<Action<{ words: WordState[] }>>
+  setWords: ActionFunctionAny<Action<{ words: WordState[] }>>
 }
 
 const initialState: WordState[] = []

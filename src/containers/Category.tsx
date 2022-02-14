@@ -43,9 +43,8 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
-const Category: React.FC<Props> = p => {
+const Category: React.FC<Props> = ({ location }) => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
-  const { location } = p
 
   if (!isLogin) return null
   return (

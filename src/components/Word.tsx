@@ -15,29 +15,26 @@ const TitlesSpan = styled.span`
   margin-right: 5px;
 `
 
-const Word: React.VFC<Props> = p => {
-  const { word } = p
-  return (
-    <Card>
-      <CardHeader title={<h3>{word.id}</h3>} data-testid="card-id" />
-      <CardContent data-testid="card-titles">
-        {word.titles.map(t => (
-          <TitlesSpan key={t}>
-            <Chip label={t} />
-          </TitlesSpan>
-        ))}
-      </CardContent>
-      <CardContent data-testid="card-description">
-        <ReactMarkdown
-          components={{ code: CodeBlock }}
-          remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
-          rehypePlugins={[rehypeRaw]}
-        >
-          {word.description}
-        </ReactMarkdown>
-      </CardContent>
-    </Card>
-  )
-}
+const Word: React.FC<Props> = ({ word }) => (
+  <Card>
+    <CardHeader title={<h3>{word.id}</h3>} data-testid="card-id" />
+    <CardContent data-testid="card-titles">
+      {word.titles.map(t => (
+        <TitlesSpan key={t}>
+          <Chip label={t} />
+        </TitlesSpan>
+      ))}
+    </CardContent>
+    <CardContent data-testid="card-description">
+      <ReactMarkdown
+        components={{ code: CodeBlock }}
+        remarkPlugins={[[remarkGfm, { singleTilde: false }]]}
+        rehypePlugins={[rehypeRaw]}
+      >
+        {word.description}
+      </ReactMarkdown>
+    </CardContent>
+  </Card>
+)
 
 export default Word

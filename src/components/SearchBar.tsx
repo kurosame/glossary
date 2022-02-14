@@ -20,16 +20,13 @@ const StyledIcon = styled(Icon)`
   margin: 10px;
 `
 
-const SearchBar: React.FC<Props> = p => {
-  const { onSearch } = p
-  return (
-    <StyledPaper>
-      <StyledInput placeholder="Search..." onChange={onSearch} inputProps={{ 'data-testid': 'search-bar-input' }} />
-      <StyledIcon>
-        <Search />
-      </StyledIcon>
-    </StyledPaper>
-  )
-}
+const SearchBar: React.FC<Props> = ({ onSearch }) => (
+  <StyledPaper>
+    <StyledInput placeholder="Search..." onChange={onSearch} inputProps={{ 'data-testid': 'search-bar-input' }} />
+    <StyledIcon>
+      <Search />
+    </StyledIcon>
+  </StyledPaper>
+)
 
 export default SearchBar

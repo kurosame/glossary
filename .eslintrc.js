@@ -5,10 +5,8 @@ module.exports = {
   parserOptions: { ecmaFeatures: { jsx: true } },
   settings: { react: { version: 'detect' }, 'import/resolver': 'webpack' },
   rules: {
-    'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
-    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-    'react/jsx-props-no-spreading': 'off',
+    'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'react/function-component-definition': [
       'error',
       {
@@ -16,13 +14,9 @@ module.exports = {
         unnamedComponents: 'arrow-function'
       }
     ],
-    // False positives in SFC?
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md#false-positives-sfc
-    'react/no-unused-prop-types': 'off',
-    // Rule conflict
-    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error']
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off' // This is not needed as it is checked by TypeScript
   },
   overrides: [
     {
