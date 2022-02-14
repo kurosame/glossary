@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = (_, argv) => ({
   entry: {
@@ -64,7 +65,8 @@ module.exports = (_, argv) => ({
     new WorkboxWebpackPlugin.InjectManifest({
       swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
       swDest: 'messaging-sw.js'
-    })
+    }),
+    ...(argv.analyze ? [new BundleAnalyzerPlugin()] : [])
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],

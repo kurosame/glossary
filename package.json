@@ -65,6 +65,7 @@
     "ts-loader": "9.2.6",
     "typescript": "4.4.4",
     "webpack": "5.64.3",
+    "webpack-bundle-analyzer": "4.5.0",
     "webpack-cli": "4.9.1",
     "webpack-dev-server": "4.5.0",
     "workbox-webpack-plugin": "6.4.1"
@@ -92,7 +93,8 @@
     "lint:style": "stylelint --ignore-path .gitignore '**/*.tsx'",
     "fmt": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx}'",
     "test": "jest --watchAll",
-    "test:ci": "jest --maxWorkers=2"
+    "test:ci": "jest --maxWorkers=2",
+    "analyze": "webpack --mode=development --analyze"
   },
   "volta": {
     "node": "16.13.0"
