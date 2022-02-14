@@ -20,7 +20,7 @@ const StyledIcon = styled(Icon)`
   margin: 10px;
 `
 
-const SearchBar: React.FC<Props> = ({ onSearch }) => (
+const SearchBar: React.VFC<Props> = ({ onSearch }) => (
   <StyledPaper>
     <StyledInput placeholder="Search..." onChange={onSearch} inputProps={{ 'data-testid': 'search-bar-input' }} />
     <StyledIcon>

@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import { requestPermission, isPermission } from '@/sw/fcm'
 
-const AllowPush: React.FC = () => {
+const AllowPush: React.VFC = () => {
   const [open, setOpen] = React.useState(isPermission() === 'default')
   const handleRequestPermission = (): void => requestPermission()
   const handleClose = (): void => setOpen(false)

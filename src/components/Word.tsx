@@ -15,7 +15,7 @@ const TitlesSpan = styled.span`
   margin-right: 5px;
 `
 
-const Word: React.FC<Props> = ({ word }) => (
+const Word: React.VFC<Props> = ({ word }) => (
   <Card>
     <CardHeader title={<h3>{word.id}</h3>} data-testid="card-id" />
     <CardContent data-testid="card-titles">

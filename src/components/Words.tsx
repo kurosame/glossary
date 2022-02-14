@@ -13,7 +13,7 @@ const WordDiv = styled.div`
   width: 100%;
 `
 
-const Words: React.FC<Props> = ({ words }) => {
+const Words: React.VFC<Props> = ({ words }) => {
   const [filterWords, setFilterWords] = useState<WordState[] | undefined>(undefined)
 
   const onSearchWords = useCallback(

@@ -16,7 +16,7 @@ const useGetWords = (ws: WordState[]): void => {
   }, [ws, dispatch])
 }
 
-const List: React.FC<Props> = ({ match }) => {
+const List: React.VFC<Props> = ({ match }) => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
   const words = useSelector<States, WordState[]>(s => s.words)
 
