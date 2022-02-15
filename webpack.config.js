@@ -25,6 +25,9 @@ module.exports = (_, argv) => ({
     },
     historyApiFallback: true
   },
+  watchOptions: {
+    ignored: /node_modules/
+  },
   module: {
     rules: [
       {
