@@ -1,33 +1,24 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import AllowPush from '@/containers/AllowPush'
-import Category from '@/containers/Category'
-import List from '@/containers/List'
-import Login from '@/containers/Login'
+import Loading from '@/components/Loading'
+
+const LoginPage = React.lazy(() => import('@/containers/Login'))
+const CategoryPage = React.lazy(() => import('@/containers/Category'))
+const ListPage = React.lazy(() => import('@/containers/List'))
+const AllowPushPage = React.lazy(() => import('@/containers/AllowPush'))
 
 const Router: React.VFC = () => (
   <Routes>
     <Route
-      path="/"
+      path="*"
       element={
-        <>
-          <Login />
-          <Category />
-          <List />
-          <AllowPush />
-        </>
-      }
-    />
-    <Route
-      path="/:category"
-      element={
-        <>
-          <Login />
-          <Category />
-          <List />
-          <AllowPush />
-        </>
+        <Suspense fallback={<Loading />}>
+          <LoginPage />
+          <CategoryPage />
+          <ListPage />
+          <AllowPushPage />
+        </Suspense>
       }
     />
   </Routes>

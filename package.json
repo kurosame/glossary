@@ -83,17 +83,17 @@
   },
   "private": true,
   "scripts": {
+    "start": "webpack-dev-server --port 8000 --mode=development",
     "build": "webpack --mode=development",
     "build:production": "webpack --mode=production",
-    "clean:cache": "rimraf ./node_modules/.cache/*",
-    "clean:dist": "rimraf ./dist/*",
-    "start": "webpack-dev-server --port 8000 --mode=development",
     "lint:js": "eslint --ignore-path .gitignore '**/*.{ts,tsx}'",
     "lint:style": "stylelint --ignore-path .gitignore '**/*.tsx'",
     "fmt": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx}'",
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2",
-    "analyze": "webpack --mode=development --analyze"
+    "analyze": "webpack --mode=development --analyze",
+    "clean:cache": "rimraf ./node_modules/.cache/*",
+    "clean:dist": "rimraf ./dist/*"
   },
   "volta": {
     "node": "16.13.0"

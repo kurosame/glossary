@@ -62,10 +62,14 @@ module.exports = (_, argv) => ({
       template: path.join(__dirname, 'src', 'index.html'),
       scriptLoading: 'defer'
     }),
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
-      swDest: 'messaging-sw.js'
-    }),
+    ...(argv.mode === 'production'
+      ? [
+          new WorkboxWebpackPlugin.InjectManifest({
+            swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
+            swDest: 'messaging-sw.js'
+          })
+        ]
+      : []),
     ...(argv.analyze ? [new BundleAnalyzerPlugin()] : [])
   ],
   resolve: {
