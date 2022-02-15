@@ -1,6 +1,5 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -30,20 +29,11 @@ module.exports = (_, argv) => ({
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true
-            }
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true
-            }
-          }
-        ],
+        loader: 'esbuild-loader',
+        options: {
+          target: 'esnext',
+          loader: 'tsx'
+        },
         exclude: /node_modules/
       }
     ]
@@ -57,7 +47,6 @@ module.exports = (_, argv) => ({
         }
       ]
     }),
-    new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
       scriptLoading: 'defer'

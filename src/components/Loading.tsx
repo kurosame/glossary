@@ -5,8 +5,8 @@ import { CircularProgress } from '@material-ui/core'
 
 const ProgressDiv = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
 `
 
