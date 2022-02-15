@@ -11,7 +11,18 @@ const AllowPushPage = React.lazy(() => import('@/containers/AllowPush'))
 const Router: React.VFC = () => (
   <Routes>
     <Route
-      path="*"
+      path="/"
+      element={
+        <Suspense fallback={<Loading />}>
+          <LoginPage />
+          <CategoryPage />
+          <ListPage />
+          <AllowPushPage />
+        </Suspense>
+      }
+    />
+    <Route
+      path="/:category"
       element={
         <Suspense fallback={<Loading />}>
           <LoginPage />

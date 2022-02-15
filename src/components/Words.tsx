@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { List, ListItem } from '@material-ui/core'
@@ -17,26 +17,28 @@ const WordDiv = styled.div`
 `
 
 const Words: React.VFC<Props> = ({ words }) => {
+  const [searchWord, setSearchWord] = useState('')
   const [filterWords, setFilterWords] = useState<WordState[] | undefined>(undefined)
 
-  const onSearchWords = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const str = e.target.value.toLowerCase()
-      const fWords = words.filter(
-        w =>
-          w.id.toLowerCase().includes(str) ||
-          w.titles.some(t => t.toLowerCase().includes(str)) ||
-          w.description.toLowerCase().includes(str)
-      )
-      setFilterWords(fWords)
-    },
-    [words]
-  )
+  useEffect(() => {
+    const str = searchWord.toLowerCase()
+    const fWords = words.filter(
+      w =>
+        w.id.toLowerCase().includes(str) ||
+        w.titles.some(t => t.toLowerCase().includes(str)) ||
+        w.description.toLowerCase().includes(str)
+    )
+    setFilterWords(fWords)
+  }, [words, searchWord])
+
+  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchWord(e.target.value)
+  }
 
   return (
     <List data-testid="words">
       <ListItem>
-        <SearchBar onSearch={onSearchWords} />
+        <SearchBar onSearch={onSearch} />
       </ListItem>
       {(filterWords || words).map(w => (
         <ListItem key={w.id}>
