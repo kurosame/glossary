@@ -6,6 +6,7 @@
     "jsx": "react",
     "sourceMap": true,
     "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
