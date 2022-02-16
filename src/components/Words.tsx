@@ -5,7 +5,6 @@ import { List, ListItem } from '@material-ui/core'
 
 import SearchBar from '@/components/SearchBar'
 import Word from '@/components/Word'
-
 import type { WordState } from '@/modules/word'
 
 interface Props {

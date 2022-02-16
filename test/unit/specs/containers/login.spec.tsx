@@ -10,7 +10,6 @@ import { cleanup, render, RenderResult } from '@testing-library/react'
 import Login from '@/containers/Login'
 import firebaseApp from '@/firebase/index'
 import { SET_IS_LOGIN } from '@/modules/login'
-
 import type { States } from '@/modules/states'
 
 let mockDispatch: jest.Mock

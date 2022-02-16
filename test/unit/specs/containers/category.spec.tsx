@@ -9,7 +9,6 @@ import configureStore from 'redux-mock-store'
 import { cleanup, render, RenderResult } from '@testing-library/react'
 
 import Category from '@/containers/Category'
-
 import type { States } from '@/modules/states'
 
 let wrapper: (isLogin: boolean) => RenderResult

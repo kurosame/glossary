@@ -1,6 +1,5 @@
-import { Action, ActionFunctionAny, createActions, handleActions } from 'redux-actions'
-
 import type { Reducer } from 'redux'
+import { Action, ActionFunctionAny, createActions, handleActions } from 'redux-actions'
 
 // Action types
 export const SET_IS_LOGIN = 'SET_IS_LOGIN'

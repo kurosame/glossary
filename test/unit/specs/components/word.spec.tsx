@@ -7,7 +7,6 @@ import '@testing-library/jest-dom'
 import { cleanup, render, RenderResult } from '@testing-library/react'
 
 import Word from '@/components/Word'
-
 import type { WordState } from '@/modules/word'
 
 let wrapper: RenderResult

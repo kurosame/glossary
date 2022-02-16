@@ -1,11 +1,10 @@
+import type { Action } from 'redux-actions'
+import type { CallEffect, PutEffect, TakeEffect } from 'redux-saga/effects'
 import { call, put, take } from 'redux-saga/effects'
 
 import firebase from '@/firebase/index'
-import { GET_WORDS, setWords } from '@/modules/word'
-
 import type { WordState } from '@/modules/word'
-import type { Action } from 'redux-actions'
-import type { CallEffect, PutEffect, TakeEffect } from 'redux-saga/effects'
+import { GET_WORDS, setWords } from '@/modules/word'
 
 export function getFirestoreWords(): Promise<WordState[]> {
   return firebase

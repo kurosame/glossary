@@ -10,9 +10,8 @@ import '@testing-library/jest-dom'
 import { cleanup, render, RenderResult } from '@testing-library/react'
 
 import List from '@/containers/List'
-import { GET_WORDS, WordState } from '@/modules/word'
-
 import type { States } from '@/modules/states'
+import { GET_WORDS, WordState } from '@/modules/word'
 
 let mockDispatch: jest.Mock
 let wrapper: (isLogin: boolean, words: WordState[], category?: string) => RenderResult

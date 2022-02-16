@@ -1,10 +1,9 @@
+import type { storage } from 'firebase-functions'
 /* eslint-disable-next-line import/no-extraneous-dependencies */
 import fTest from 'firebase-functions-test'
 
 /* eslint-disable-next-line import/no-unresolved,import/extensions */
 import { setWord } from '@/index'
-
-import type { storage } from 'firebase-functions'
 
 const download = jest
   .fn()
