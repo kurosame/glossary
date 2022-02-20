@@ -15,7 +15,6 @@ module.exports = (_, argv) => ({
   },
   optimization: {
     splitChunks: {
-      name: 'vendor',
       chunks: 'all'
     }
   },
