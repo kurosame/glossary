@@ -1,4 +1,4 @@
-# Glossary App
+# Glossary
 
 [Glossary](https://glossary-kurosame.firebaseapp.com)
 
