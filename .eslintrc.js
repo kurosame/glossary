@@ -40,6 +40,13 @@ module.exports = {
       rules: {
         'import/prefer-default-export': 'off'
       }
+    },
+    {
+      files: ['src/sw/fcm-bg.ts'],
+      rules: {
+        'no-restricted-globals': 'off',
+        'no-underscore-dangle': ['error', { allow: ['__WB_MANIFEST'] }]
+      }
     }
   ],
   ignorePatterns: ['webpack.config.js']

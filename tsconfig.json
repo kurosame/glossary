@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "es2015"],
+    "lib": ["es2015", "dom", "webworker"],
     "jsx": "react",
     "sourceMap": true,
     "importsNotUsedAsValues": "error",
