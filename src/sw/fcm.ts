@@ -9,7 +9,7 @@ export async function initialize(): Promise<void> {
   if ('serviceWorker' in navigator) {
     await navigator.serviceWorker
       .register('/messaging-sw.js')
-      .then(reg => firebase.messaging().useServiceWorker(reg))
+      .then(reg => (firebase.messaging() as any).useServiceWorker(reg))
       .catch((err: Error) => console.error(`SW register error: ${err.message}`))
   }
 
@@ -23,8 +23,7 @@ export async function initialize(): Promise<void> {
       )
       .catch((err: Error) => console.error(`SW activate error: ${err.message}`))
   )
-
-  firebase.messaging().onTokenRefresh((): void => {
+  ;(firebase.messaging() as any).onTokenRefresh((): void => {
     console.info('FCM token refreshed')
     firebase
       .messaging()

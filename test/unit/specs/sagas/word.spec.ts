@@ -1,4 +1,4 @@
-import type firebase from 'firebase'
+import type firebase from 'firebase/compat'
 import { call, put, take } from 'redux-saga/effects'
 
 import firebaseApp from '@/firebase/index'

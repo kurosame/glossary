@@ -1,4 +1,4 @@
-import type firebase from 'firebase'
+import type firebase from 'firebase/compat'
 import React, { SetStateAction, useEffect, useState } from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import { useDispatch, useSelector } from 'react-redux'

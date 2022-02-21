@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/compat/app'
 import { precacheAndRoute } from 'workbox-precaching'
 
 const worker = self as unknown as ServiceWorkerGlobalScope
