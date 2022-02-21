@@ -42,7 +42,7 @@ module.exports = {
       }
     },
     {
-      files: ['src/sw/fcm-bg.ts'],
+      files: ['src/sw/fcm-sw.ts'],
       rules: {
         'no-restricted-globals': 'off',
         'no-underscore-dangle': ['error', { allow: ['__WB_MANIFEST'] }]

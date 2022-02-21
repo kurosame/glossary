@@ -48,7 +48,6 @@ const get = jest
     })
   })
 
-// jest.mock runs at top level
 jest.mock('firebase-admin', () => ({
   initializeApp: jest.fn(),
   firestore: (): unknown => ({

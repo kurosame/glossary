@@ -56,8 +56,8 @@ module.exports = (_, argv) => ({
     ...(argv.mode === 'production'
       ? [
           new WorkboxWebpackPlugin.InjectManifest({
-            swSrc: path.join(__dirname, 'src', 'firebase', 'messaging-sw.js'),
-            swDest: 'messaging-sw.js'
+            swSrc: path.join(__dirname, 'src', 'sw', 'fcm-sw.ts'),
+            swDest: 'fcm-sw.js'
           })
         ]
       : []),

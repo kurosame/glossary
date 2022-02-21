@@ -1,50 +1,33 @@
-import firebase from '@/firebase/index'
+import { getToken, onMessage } from 'firebase/messaging'
 
-interface Message {
-  title: string
-  body: string
-}
+import { messaging } from '@/firebase/index'
 
-export async function initialize(): Promise<void> {
-  if ('serviceWorker' in navigator) {
-    await navigator.serviceWorker
-      .register('/messaging-sw.js')
-      .then(reg => (firebase.messaging() as any).useServiceWorker(reg))
-      .catch((err: Error) => console.error(`SW register error: ${err.message}`))
-  }
-
-  firebase.messaging().onMessage((payload: { data: Message }) =>
+export const initialize = () => {
+  onMessage(messaging(), p =>
     navigator.serviceWorker.ready
       .then(reg =>
-        reg.showNotification(`[Foreground] ${payload.data.title}`, {
-          body: payload.data.body,
+        reg.showNotification(`[Foreground] ${p.data?.title}`, {
+          body: p.data?.body,
           data: window.location.origin
         })
       )
       .catch((err: Error) => console.error(`SW activate error: ${err.message}`))
   )
-  ;(firebase.messaging() as any).onTokenRefresh((): void => {
-    console.info('FCM token refreshed')
-    firebase
-      .messaging()
-      .getToken()
-      .then(t => console.info(t))
-      .catch((err: Error) => console.error(`FCM token refresh error: ${err.message}`))
-  })
 }
 
-export function requestPermission(): void {
-  Notification.requestPermission().then(p => {
-    if (p === 'granted') {
-      firebase
-        .messaging()
-        .getToken()
-        .then(t => console.info(t))
-        .catch((err: Error) => console.error(`FCM get token error: ${err.message}`))
-    }
-  })
+export const requestPermission = () => {
+  navigator.serviceWorker.register('/fcm-sw.js').then(r =>
+    Notification.requestPermission().then(p => {
+      if (p === 'granted') {
+        getToken(messaging(), {
+          vapidKey: 'BO0BhCvhJu4c_NykrGf8hEBvE4NmyzFCvQNiTn_Z5CvYl1eoiTlz8A_8Wcx5LpsAa0PYWz6KwQ1JKhLOZFnToOw',
+          serviceWorkerRegistration: r
+        })
+          .then(t => console.info(t))
+          .catch((err: Error) => console.error(`FCM get token error: ${err.message}`))
+      }
+    })
+  )
 }
 
-export function isPermission(): string {
-  return Notification.permission
-}
+export const isPermission = () => Notification.permission

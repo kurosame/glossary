@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store'
 import { cleanup, render, RenderResult } from '@testing-library/react'
 
 import Login from '@/containers/Login'
-import firebaseApp from '@/firebase/index'
+import { auth } from '@/firebase/index'
 import { SET_IS_LOGIN } from '@/modules/login'
 import type { States } from '@/modules/states'
 
@@ -17,7 +17,7 @@ let spyFirebaseAuth: jest.SpyInstance
 let wrapper: (isLogin: boolean) => RenderResult
 beforeEach(() => {
   mockDispatch = jest.fn()
-  spyFirebaseAuth = jest.spyOn(firebaseApp.auth(), 'onAuthStateChanged')
+  spyFirebaseAuth = jest.spyOn(auth(), 'onAuthStateChanged')
   wrapper = (isLogin): RenderResult => {
     const store = configureStore<Pick<States, 'login'>>()({
       login: { isLogin }

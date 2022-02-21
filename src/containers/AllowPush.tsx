@@ -9,7 +9,7 @@ import { isPermission, requestPermission } from '@/sw/fcm'
 
 const AllowPush: React.VFC = () => {
   const [open, setOpen] = React.useState(isPermission() === 'default')
-  const handleRequestPermission = (): void => requestPermission()
+  const handleRequestPermission = () => requestPermission()
   const handleClose = (): void => setOpen(false)
 
   return (

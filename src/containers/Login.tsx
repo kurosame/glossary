@@ -1,18 +1,18 @@
-import type firebase from 'firebase/compat'
+import { onAuthStateChanged, User } from 'firebase/auth'
 import React, { SetStateAction, useEffect, useState } from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import { useDispatch, useSelector } from 'react-redux'
 import type { Dispatch } from 'redux'
 
-import firebaseApp from '@/firebase/index'
+import { auth } from '@/firebase/index'
 import uiConfig from '@/firebase/ui-config'
 import { SET_IS_LOGIN } from '@/modules/login'
 import type { States } from '@/modules/states'
 
-const useSetUser = (su: React.Dispatch<SetStateAction<firebase.User | null>>): void =>
-  useEffect(() => firebaseApp.auth().onAuthStateChanged(u => su(u)))
+const useSetUser = (su: React.Dispatch<SetStateAction<User | null>>): void =>
+  useEffect(() => onAuthStateChanged(auth(), u => su(u)))
 
-const useSetIsLogin = (u: firebase.User | null): void => {
+const useSetIsLogin = (u: User | null): void => {
   const dispatch = useDispatch<Dispatch>()
   useEffect(() => {
     dispatch({ type: SET_IS_LOGIN, payload: { isLogin: !!u } })
@@ -20,14 +20,14 @@ const useSetIsLogin = (u: firebase.User | null): void => {
 }
 
 const Login: React.VFC = () => {
-  const [user, setUser] = useState<firebase.User | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
 
   useSetUser(setUser)
   useSetIsLogin(user)
 
   if (isLogin) return null
-  return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()} />
+  return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth()} />
 }
 
 export default Login

@@ -1,10 +1,13 @@
-import firebase from 'firebase/compat/app'
+// import { initializeApp } from 'firebase/app'
+import { onBackgroundMessage } from 'firebase/messaging/sw'
 import { precacheAndRoute } from 'workbox-precaching'
+
+import { messaging } from '@/firebase/index'
 
 const worker = self as unknown as ServiceWorkerGlobalScope
 precacheAndRoute(worker.__WB_MANIFEST)
 
-firebase.initializeApp({ messagingSenderId: '167100381499' })
+// initializeApp({ messagingSenderId: '167100381499' })
 
 worker.addEventListener('notificationclick', e => {
   e.notification.close()
@@ -15,7 +18,7 @@ worker.addEventListener('notificationclick', e => {
   )
 })
 
-firebase.messaging().onBackgroundMessage(p => {
+onBackgroundMessage(messaging(), p => {
   worker.registration.showNotification(`[Background] ${p.data?.title}`, {
     body: p.data?.message,
     data: location.origin
