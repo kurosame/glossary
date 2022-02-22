@@ -16,18 +16,15 @@ export const initialize = () => {
 }
 
 export const requestPermission = () => {
-  navigator.serviceWorker.register('/fcm-sw.js').then(r =>
+  navigator.serviceWorker.register('/fcm-sw.js').then(sw => {
     Notification.requestPermission().then(p => {
       if (p === 'granted') {
-        getToken(messaging(), {
-          vapidKey: 'BO0BhCvhJu4c_NykrGf8hEBvE4NmyzFCvQNiTn_Z5CvYl1eoiTlz8A_8Wcx5LpsAa0PYWz6KwQ1JKhLOZFnToOw',
-          serviceWorkerRegistration: r
-        })
+        getToken(messaging(), { serviceWorkerRegistration: sw })
           .then(t => console.info(t))
           .catch((err: Error) => console.error(`FCM get token error: ${err.message}`))
       }
     })
-  )
+  })
 }
 
 export const isPermission = () => Notification.permission
