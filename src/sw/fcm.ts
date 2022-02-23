@@ -15,6 +15,8 @@ export const initialize = () => {
   )
 }
 
+const isSupported = () => 'Notification' in window // Safari on iOS does not support Notification
+
 export const requestPermission = () => {
   navigator.serviceWorker.register('/fcm-sw.js').then(sw => {
     Notification.requestPermission().then(p => {
@@ -27,4 +29,4 @@ export const requestPermission = () => {
   })
 }
 
-export const isPermission = () => Notification.permission
+export const isPermission = () => (isSupported() ? Notification.permission : 'denied')
