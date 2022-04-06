@@ -15,6 +15,8 @@ React
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2022/01/19/174253" target="_blank">React DnD v11（古いバージョン）の実装</a>
 
+<a href="https://zenn.dev/kurosame/scraps/9333baf5423339" target="_blank">React v18 概要</a>
+
 ### Component と Element
 
 ```js
