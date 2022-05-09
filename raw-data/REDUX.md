@@ -36,6 +36,18 @@ action が来るたびにすべての reducer に通知して、reducer は興�
 ある event-stream（observable）を別の event-stream に変換する  
 1 つの action が複数の action に変換されたり、middleware 内部で状態を持ったりする
 
+### 非同期処理について
+
+Redux は非同期処理をサポートしていないため、別途インストールする必要がある
+
+- redux-thunk
+  - Redux 開発チームが推奨している
+  - Redux Toolkit に標準で組み込まれている
+- redux-saga
+  - Generator 構文
+  - テストしやすい
+  - TypeScript のサポートが微妙
+
 ### useReducer との違い
 
 Redux の場合は State の管理をグローバルに行う  
