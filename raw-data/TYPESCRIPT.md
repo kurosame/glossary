@@ -14,6 +14,11 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 <a href="https://qiita.com/kurosame/items/3c28f45c8b2e65f5c69d" target="_blank">JS から TS への移行で悩んだ点の対応メモ</a>
 
+### tsc
+
+トランスパイルの対象は JS 構文のみ  
+Promise などの組み込みのオブジェクトは変換できないため、Babel などで Polyfill をバンドルする必要がある
+
 ### 型アノテーション
 
 `: 型名`で指定する
