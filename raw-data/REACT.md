@@ -299,7 +299,7 @@ useEvent は依存配列を受け取らない
 onClick 内で参照してる状態（text）は、onClick 実行時の状態で実行される
 
 useEvent の RFC は以下  
-https://github.com/reactjs/rfcs/pull/220
+<a href="https://github.com/reactjs/rfcs/pull/220" target="_blank">RFC: useEvent</a>
 
 - useEvent の名前が微妙（広義すぎる？）
 - useCallback を改良して、最新の状態を参照する機能を追加するのはどうか
@@ -411,14 +411,13 @@ https://github.com/reactjs/rfcs/pull/220
 ### React を書くときに考えること
 
 以下の日本語訳  
-https://github.com/mithi/react-philosophies
+<a href="https://github.com/mithi/react-philosophies" target="_blank">react-philosophies</a>
 
 1. 必要最低限
 
    1. コンピューターはあなたより賢いと理解する
 
       1. eslint-plugin-react-hooks のルールを入れる
-         - https://www.npmjs.com/package/eslint-plugin-react-hooks
       1. `'use strict';`の有効化
       1. eslint-plugin-react-hooks/exhaustive-deps の警告/エラーを有効化
       1. コンポーネントを map でループする時は key を指定する
@@ -427,7 +426,7 @@ https://github.com/mithi/react-philosophies
          - eslint-plugin-react-hooks/rules-of-hooks
       1. `Can't perform state update on unmounted component`という警告の理解
 
-         - https://github.com/facebook/react/pull/22114
+         - <a href="https://github.com/facebook/react/pull/22114" target="_blank">Remove the warning for setState on unmounted components</a>
 
            - マージされているから、現在、この警告は出ていない
            - 要約すると、アンマウントされたコンポーネントに setState などのアクセスをすると上記の警告を出していたが、以下のような誤検知の回避が難しいので警告を出ないようにしたいという提案
@@ -475,19 +474,19 @@ https://github.com/mithi/react-philosophies
            - big.js などの他の軽量なライブラリを検討する
          - Lodash / Underscore.js
            - ほとんどの機能は自分で実装できる
-             - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore
+             - <a href="https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore" target="_blank">You don't (may not) need Lodash/Underscore</a>
          - Moment.js
            - 使う必要ないかも
-             - https://github.com/you-dont-need/You-Dont-Need-Momentjs
+             - <a href="https://github.com/you-dont-need/You-Dont-Need-Momentjs" target="_blank">You don't (may not) need Moment.js</a>
          - React Context によるテーマ（ライトモード、ダークモード）の設定
            - ThemeProvider ではなく、テーマは CSS 変数を使っても実装できる
-             - https://epicreact.dev/css-variables
+             - <a href="https://epicreact.dev/css-variables" target="_blank">Use CSS Variables instead of React Context</a>
          - JavaScript
            - CSS で代替できるかも
-             - https://github.com/you-dont-need/You-Dont-Need-JavaScript
+             - <a href="https://github.com/you-dont-need/You-Dont-Need-JavaScript" target="_blank">You Don't Need JavaScript</a>
       1. コードの削減（React 関係なく JS を使って）
          - 複雑な条件をシンプルに書く方法を覚える
-           - https://github.com/sapegin/washingcode-book/blob/master/manuscript/Avoid_conditions.md
+           - <a href="https://github.com/sapegin/washingcode-book/blob/master/manuscript/Avoid_conditions.md" target="_blank">Avoid conditions</a>
          - map、filter、find、findIndex、some などの高階関数を利用する
       1. YAGNI
          - You ain't gonna need it（機能は必要になるまで実装しない）

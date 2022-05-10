@@ -14,7 +14,7 @@ MySQL
 テンポラリテーブルは最初メモリに作成されるが、ある条件を満たすとディスクに移行する
 
 上記のテンポラリテーブルを作成する条件とディスクテンポラリテーブルに移行する条件は以下を参照  
-https://dev.mysql.com/doc/refman/5.6/ja/internal-temporary-tables.html
+<a href="https://dev.mysql.com/doc/refman/5.6/ja/internal-temporary-tables.html" target="_blank">MySQL が内部一時テーブルを使用する仕組み</a>
 
 テンポラリテーブルが利用されるかどうかは、EXPLAIN を実行し、Extra カラムに Using temporary が含まれていたら、利用される
 
