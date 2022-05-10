@@ -247,6 +247,67 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+### useEvent
+
+2022/05/10 時点では RFC の提案段階の機能
+
+以下のイベントハンドラーは現在の text を読み取る必要がある
+
+```ts
+function Chat() {
+  const [text, setText] = useState('')
+
+  const onClick = () => {
+    sendMessage(text)
+  }
+
+  return <SendButton onClick={onClick} />
+}
+```
+
+SendButton を React.memo でメモ化する場合、onClick はレンダリングのたびに異なる関数識別子を持つため、メモ化は破綻する  
+この場合、onClick を useCallback でラップすることによりメモ化が機能する
+
+```ts
+function Chat() {
+  const [text, setText] = useState('')
+
+  const onClick = useCallback(() => {
+    sendMessage(text)
+  }, [text])
+
+  return <SendButton onClick={onClick} />
+}
+```
+
+ただし、上記は text が変更されるたびに再レンダリングされるため、不要なレンダリングが発生している  
+この問題を useEvent が解決する
+
+```ts
+function Chat() {
+  const [text, setText] = useState('')
+
+  const onClick = useEvent(() => {
+    sendMessage(text)
+  })
+
+  return <SendButton onClick={onClick} />
+}
+```
+
+useEvent は依存配列を受け取らない  
+onClick 内で参照してる状態（text）は、onClick 実行時の状態で実行される
+
+useEvent の RFC は以下  
+https://github.com/reactjs/rfcs/pull/220
+
+- useEvent の名前が微妙（広義すぎる？）
+- useCallback を改良して、最新の状態を参照する機能を追加するのはどうか
+- useRef を使うのが適しているのでは？
+- 既存の useCallback の 90%ぐらいを useEvent で置き換えられそう（Dan）
+- 長期的に見てすべてのイベントハンドラーを useEvent でラップするのは理にかなっている（Dan）
+- useEvent は依存配列がない分、useCallback よりメモリ消費が少ない（Dan）
+
 ### 良い設計方針
 
 - components
@@ -386,7 +447,7 @@ https://github.com/mithi/react-philosophies
              // にもかかわらず、POST中にアンマウントされると警告が出てしまう
              async function handleSubmit() {
                setPending(true)
-               await post('/someapi') // POST中にアンマウントされることがある
+               await post('/some_api') // POST中にアンマウントされることがある
                setPending(false)
              }
              ```
