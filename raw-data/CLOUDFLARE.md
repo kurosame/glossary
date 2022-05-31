@@ -10,6 +10,18 @@ Cloudflare
 
 <a href="https://zenn.dev/kurosame/articles/ebae865d729a38" target="_blank">Cloudflare Pages&Workers を使う（Vercel からの移行）</a>
 
+### Workers
+
+Edge コンピューティングサービス
+
+Workers の実行環境は V8 の JS エンジン  
+Node.js ではない
+
+zero cold starts について  
+Vercel や Netlify の Serverless Functions は Lambda をベースに動いており、ランタイムはコンテナー環境である  
+コンテナーでは実際の処理が開始されるまでに初期化や起動処理などが入り、これが原因でコールドスタートが発生する  
+Workers はコンテナーではなく、V8 でも使われている isolate を使っている
+
 ### Durable Objects
 
 ステートフルでサーバレスなアプローチを提供する
