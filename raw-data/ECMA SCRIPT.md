@@ -41,6 +41,18 @@ ECMAScript を策定してるグループ
 
 ### ES Modules, .mjs
 
+拡張子
+
+- `.js`,`.ts`
+  - package.json で`"type": "module"`があれば ESM、なければ CJS
+  - `.ts`は tsc で`"type": "module"`の値によって、ESM か CJS にコンパイルされる
+- `.mjs`,`.mts`
+  - ESM
+  - `.mts`は tsc で`.mjs`にコンパイルされる
+- `.cjs`,`.cts`
+  - CJS
+  - `.cts`は tsc で`.cjs`にコンパイルされる
+
 言語定義
 
 - CJS
@@ -53,14 +65,14 @@ ECMAScript を策定してるグループ
 - 擬似 ESM
   - ESM 形式で実装されたファイルを TypeScript や Babel で CJS に変換して、ブラウザや Node.js で実行する方式
 - Pure ESM
-
   - Native ESM のみで構成された NPM パッケージ
   - CJS の require で読み込み不可能
+    - 動的 import する必要がある
+    - よって、非同期に読み込むしかない
 
 Native ESM
 
 - ビルド時にバンドルしない
-
   - ブラウザが各ファイルの import と export をそのまま読み込む
   - 従来のやり方である webpack などはバンドルし、1 つの JS にする（設定でファイル分割も可能だが）
   - Native ESM をサポートし、ノーバンドルのビルドツールとして、Snowpack や Vite などがある
@@ -71,7 +83,6 @@ Native ESM
   - モダンブラウザは ESM をサポート済み
   - `<script type="module" src="main.js" />`のように`type="module"`を付与して、読み込む
 - Node.js
-
   - v12 から ESM をサポート
   - .mjs という拡張子
     - .js は従来の CommonJS 扱いなので、import 構文などはシンタックスエラーになる
@@ -79,9 +90,10 @@ Native ESM
 トランスパイラーの対応
 
 - TypeScript
-
   - v4.5 で ESM 対応を Nightly リリースした
-  - tsconfig.json で`module:node12`や`module:nodenext`を指定すると、CJS に変換せず、ESM のまま（Native ESM）出力できるようになった
+    - tsconfig.json で`module:node12`や`module:nodenext`を指定すると、CJS に変換せず、ESM のまま（Native ESM）出力できるようになった
+  - v4.7 で ESM 対応が安定版でリリースされた
+    - `module:node12`ではなく、`module:node16`になった
 
 CommonJS Modules との相互互換性について
 
