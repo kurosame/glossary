@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -32,4 +32,7 @@ class RootComponent extends React.Component {
   }
 }
 
-render(<RootComponent />, document.getElementById('root'))
+const container = document.getElementById('root')
+if (container) {
+  createRoot(container).render(<RootComponent />)
+}
