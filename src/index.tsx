@@ -3,7 +3,8 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { CssBaseline } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import '@/modules/states'
 import Router from '@/router'
@@ -21,9 +22,10 @@ class RootComponent extends React.Component {
     return (
       <BrowserRouter>
         <Provider store={store}>
-          <MuiThemeProvider theme={createMuiTheme()}>
+          <ThemeProvider theme={createTheme({ palette: { mode: 'dark' } })}>
+            <CssBaseline />
             <Router />
-          </MuiThemeProvider>
+          </ThemeProvider>
         </Provider>
       </BrowserRouter>
     )

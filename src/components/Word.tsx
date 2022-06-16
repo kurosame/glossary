@@ -2,9 +2,8 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import styled from 'styled-components'
 
-import { Card, CardContent, CardHeader, Chip } from '@material-ui/core'
+import { Box, Card, CardContent, CardHeader, Chip } from '@mui/material'
 
 import CodeBlock from '@/components/CodeBlock'
 import type { WordState } from '@/modules/word'
@@ -13,18 +12,14 @@ interface Props {
   word: WordState
 }
 
-const TitlesSpan = styled.span`
-  margin-right: 5px;
-`
-
 const Word: React.VFC<Props> = ({ word }) => (
   <Card>
     <CardHeader title={<h3>{word.id}</h3>} data-testid="card-id" />
     <CardContent data-testid="card-titles">
       {word.titles.map(t => (
-        <TitlesSpan key={t}>
+        <Box key={t} component="span" sx={{ mr: 1 }}>
           <Chip label={t} />
-        </TitlesSpan>
+        </Box>
       ))}
     </CardContent>
     <CardContent data-testid="card-description">

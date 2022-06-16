@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
-import { AppBar, Tab, Tabs } from '@material-ui/core'
+import { AppBar, Tab, Tabs } from '@mui/material'
 
 import type { States } from '@/modules/states'
 
@@ -48,7 +48,7 @@ const Category: React.VFC = () => {
   if (!isLogin) return null
   return (
     <AppBar position="static">
-      <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable" scrollButtons="off">
+      <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable">
         {tabItems.map(t => {
           const StaticLink = React.forwardRef<HTMLAnchorElement>((p, ref) => <Link ref={ref} to={t.to} {...p} />)
           StaticLink.displayName = 'StaticLink'

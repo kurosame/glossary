@@ -3,61 +3,57 @@
 exports[`Match the snapshot 1`] = `
 <DocumentFragment>
   <ul
-    class="MuiList-root MuiList-padding"
+    class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
     data-testid="words"
   >
     <li
-      class="MuiListItem-root MuiListItem-gutters"
+      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="MuiPaper-root sc-AxjAm hmMezx MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-11l9k5w-MuiPaper-root"
       >
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline sc-AxirZ dzevfP"
+          class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary css-168pjvi-MuiInputBase-root-MuiInput-root"
         >
           <input
-            class="MuiInputBase-input MuiInput-input"
+            class="MuiInput-input MuiInputBase-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
             data-testid="search-bar-input"
             placeholder="Search..."
             type="text"
             value=""
           />
         </div>
-        <span
+        <svg
           aria-hidden="true"
-          class="material-icons MuiIcon-root sc-AxiKw hhXvMk"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ddhjnx-MuiSvgIcon-root"
+          data-testid="SearchIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-            />
-          </svg>
-        </span>
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
       </div>
     </li>
     <li
-      class="MuiListItem-root MuiListItem-gutters"
+      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="sc-AxhUy dWeUmw"
+        class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"
         >
           <div
-            class="MuiCardHeader-root"
+            class="MuiCardHeader-root css-185gdzj-MuiCardHeader-root"
             data-testid="card-id"
           >
             <div
-              class="MuiCardHeader-content"
+              class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
             >
               <span
-                class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+                class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
               >
                 <h3>
                   Vue.js
@@ -66,30 +62,30 @@ exports[`Match the snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardContent-root"
+            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
             data-testid="card-titles"
           >
             <span
-              class="sc-AxhCb bqDdOh"
+              class="MuiBox-root css-12z0wuy"
             >
               <div
-                class="MuiChip-root"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
                   Vue
                 </span>
               </div>
             </span>
             <span
-              class="sc-AxhCb bqDdOh"
+              class="MuiBox-root css-12z0wuy"
             >
               <div
-                class="MuiChip-root"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
                   Vuex
                 </span>
@@ -97,7 +93,7 @@ exports[`Match the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiCardContent-root"
+            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
             data-testid="card-description"
           >
             <p>
@@ -108,23 +104,23 @@ exports[`Match the snapshot 1`] = `
       </div>
     </li>
     <li
-      class="MuiListItem-root MuiListItem-gutters"
+      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="sc-AxhUy dWeUmw"
+        class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"
         >
           <div
-            class="MuiCardHeader-root"
+            class="MuiCardHeader-root css-185gdzj-MuiCardHeader-root"
             data-testid="card-id"
           >
             <div
-              class="MuiCardHeader-content"
+              class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
             >
               <span
-                class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+                class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
               >
                 <h3>
                   React
@@ -133,17 +129,17 @@ exports[`Match the snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardContent-root"
+            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
             data-testid="card-titles"
           >
             <span
-              class="sc-AxhCb bqDdOh"
+              class="MuiBox-root css-12z0wuy"
             >
               <div
-                class="MuiChip-root"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
                   React
                 </span>
@@ -151,7 +147,7 @@ exports[`Match the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiCardContent-root"
+            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
             data-testid="card-description"
           >
             <p>

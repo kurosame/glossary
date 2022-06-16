@@ -12,7 +12,7 @@ module.exports = {
         groups: ['builtin', 'external', 'internal', 'unknown'],
         pathGroups: [
           {
-            pattern: '{@material-ui,@testing-library}/**',
+            pattern: '{@mui,@testing-library}/**',
             group: 'external',
             position: 'after'
           }

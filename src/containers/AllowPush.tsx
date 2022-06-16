@@ -1,9 +1,7 @@
 import React from 'react'
 
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
-import CloseIcon from '@material-ui/icons/Close'
+import { Close } from '@mui/icons-material'
+import { Button, IconButton, Snackbar } from '@mui/material'
 
 import { isPermission, requestPermission } from '@/sw/fcm'
 
@@ -14,7 +12,7 @@ const AllowPush: React.VFC = () => {
 
   return (
     <Snackbar
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       open={open}
       message="Can test push notifications"
       action={
@@ -30,7 +28,7 @@ const AllowPush: React.VFC = () => {
             OK
           </Button>
           <IconButton color="inherit" data-testid="allow-push-close" onClick={handleClose}>
-            <CloseIcon />
+            <Close />
           </IconButton>
         </>
       }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 interface Props {
   language?: string
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const CodeHighlighter: React.VFC<Props> = ({ language, children }) => (
-  <SyntaxHighlighter language={language} style={atomDark} showLineNumbers data-testid="code-highlighter">
+  <SyntaxHighlighter language={language} style={a11yDark} showLineNumbers data-testid="code-highlighter">
     {children}
   </SyntaxHighlighter>
 )

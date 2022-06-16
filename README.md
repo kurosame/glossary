@@ -11,8 +11,8 @@ Deploy to Firebase Hosting is done on CircleCI
 - Redux
 - Ducks(Design pattern)
 - TypeScript
-- styled-components
 - Material-UI
+- Emotion
 - Firebase
 - CircleCI
 

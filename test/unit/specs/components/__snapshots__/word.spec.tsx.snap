@@ -3,17 +3,17 @@
 exports[`Match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"
   >
     <div
-      class="MuiCardHeader-root"
+      class="MuiCardHeader-root css-185gdzj-MuiCardHeader-root"
       data-testid="card-id"
     >
       <div
-        class="MuiCardHeader-content"
+        class="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
       >
         <span
-          class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+          class="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
         >
           <h3>
             React
@@ -22,30 +22,30 @@ exports[`Match the snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiCardContent-root"
+      class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
       data-testid="card-titles"
     >
       <span
-        class="sc-AxjAm fppVTe"
+        class="MuiBox-root css-12z0wuy"
       >
         <div
-          class="MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
         >
           <span
-            class="MuiChip-label"
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
           >
             React
           </span>
         </div>
       </span>
       <span
-        class="sc-AxjAm fppVTe"
+        class="MuiBox-root css-12z0wuy"
       >
         <div
-          class="MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
         >
           <span
-            class="MuiChip-label"
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
           >
             React.js
           </span>
@@ -53,7 +53,7 @@ exports[`Match the snapshot 1`] = `
       </span>
     </div>
     <div
-      class="MuiCardContent-root"
+      class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
       data-testid="card-description"
     >
       <p>

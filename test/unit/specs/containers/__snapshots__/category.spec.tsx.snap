@@ -3,570 +3,410 @@
 exports[`Match the snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiTabs-root"
+      class="MuiTabs-root css-1ujnqem-MuiTabs-root"
     >
       <div
-        class="MuiTabs-scrollable"
+        class="MuiTabs-scrollableX MuiTabs-hideScrollbar css-agdkjh-MuiTabs-scrollbarSize"
         style="width: 99px; height: 99px; position: absolute; top: -9999px; overflow: scroll;"
       />
       <div
-        class="MuiTabs-scroller MuiTabs-scrollable"
+        class="MuiTabs-scroller MuiTabs-hideScrollbar MuiTabs-scrollableX css-69z67c-MuiTabs-scroller"
         style="margin-bottom: 0px;"
       >
         <div
-          class="MuiTabs-flexContainer"
+          class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
           role="tablist"
         >
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Summary
             <span
-              class="MuiTab-wrapper"
-            >
-              Summary
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/apache"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Apache
             <span
-              class="MuiTab-wrapper"
-            >
-              Apache
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/architecture"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Architecture
             <span
-              class="MuiTab-wrapper"
-            >
-              Architecture
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/aws"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            AWS
             <span
-              class="MuiTab-wrapper"
-            >
-              AWS
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/browser"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Browser
             <span
-              class="MuiTab-wrapper"
-            >
-              Browser
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/build"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Build
             <span
-              class="MuiTab-wrapper"
-            >
-              Build
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/ci"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            CI
             <span
-              class="MuiTab-wrapper"
-            >
-              CI
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/compiler"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Compiler
             <span
-              class="MuiTab-wrapper"
-            >
-              Compiler
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/css"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            CSS
             <span
-              class="MuiTab-wrapper"
-            >
-              CSS
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/db"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            DB
             <span
-              class="MuiTab-wrapper"
-            >
-              DB
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/design"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Design
             <span
-              class="MuiTab-wrapper"
-            >
-              Design
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/docker"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Docker
             <span
-              class="MuiTab-wrapper"
-            >
-              Docker
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/firebase"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Firebase
             <span
-              class="MuiTab-wrapper"
-            >
-              Firebase
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/go"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Go
             <span
-              class="MuiTab-wrapper"
-            >
-              Go
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/hardware"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Hardware
             <span
-              class="MuiTab-wrapper"
-            >
-              Hardware
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/html"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            HTML
             <span
-              class="MuiTab-wrapper"
-            >
-              HTML
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/js"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            JS
             <span
-              class="MuiTab-wrapper"
-            >
-              JS
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/language"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Language
             <span
-              class="MuiTab-wrapper"
-            >
-              Language
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/ml"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            ML
             <span
-              class="MuiTab-wrapper"
-            >
-              ML
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/mobile"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Mobile
             <span
-              class="MuiTab-wrapper"
-            >
-              Mobile
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/monitoring"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Monitoring
             <span
-              class="MuiTab-wrapper"
-            >
-              Monitoring
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/network"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Network
             <span
-              class="MuiTab-wrapper"
-            >
-              Network
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/package-manager"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Package Manager
             <span
-              class="MuiTab-wrapper"
-            >
-              Package Manager
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/programming"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Programming
             <span
-              class="MuiTab-wrapper"
-            >
-              Programming
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/python"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Python
             <span
-              class="MuiTab-wrapper"
-            >
-              Python
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/react"
             role="tab"
             tabindex="0"
           >
+            React
             <span
-              class="MuiTab-wrapper"
-            >
-              React
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/scala"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Scala
             <span
-              class="MuiTab-wrapper"
-            >
-              Scala
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/server"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Server
             <span
-              class="MuiTab-wrapper"
-            >
-              Server
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/swift"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Swift
             <span
-              class="MuiTab-wrapper"
-            >
-              Swift
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/vue"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Vue.js
             <span
-              class="MuiTab-wrapper"
-            >
-              Vue.js
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/words"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Words
             <span
-              class="MuiTab-wrapper"
-            >
-              Words
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <a
-            aria-disabled="false"
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/workflow-engine"
             role="tab"
-            tabindex="0"
+            tabindex="-1"
           >
+            Workflow Engine
             <span
-              class="MuiTab-wrapper"
-            >
-              Workflow Engine
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
         </div>
         <span
-          class="PrivateTabIndicator-root-5 PrivateTabIndicator-colorSecondary-7 MuiTabs-indicator"
+          class="MuiTabs-indicator css-1aquho2-MuiTabs-indicator"
           style="left: 0px; width: 0px;"
         />
       </div>
