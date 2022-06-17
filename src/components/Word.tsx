@@ -12,7 +12,7 @@ interface Props {
   word: WordState
 }
 
-const Word: React.VFC<Props> = ({ word }) => (
+const Word: React.FC<Props> = ({ word }) => (
   <Card>
     <CardHeader title={<h3>{word.id}</h3>} data-testid="card-id" />
     <CardContent data-testid="card-titles">

@@ -10,7 +10,7 @@ interface Props {
   words: WordState[]
 }
 
-const Words: React.VFC<Props> = ({ words }) => {
+const Words: React.FC<Props> = ({ words }) => {
   const [searchWord, setSearchWord] = useState('')
   const [filterWords, setFilterWords] = useState<WordState[] | undefined>(undefined)
 

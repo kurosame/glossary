@@ -14,7 +14,7 @@ const useGetWords = (ws: WordState[]): void => {
   }, [ws, dispatch])
 }
 
-const List: React.VFC = () => {
+const List: React.FC = () => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
   const words = useSelector<States, WordState[]>(s => s.words)
   const { category } = useParams()

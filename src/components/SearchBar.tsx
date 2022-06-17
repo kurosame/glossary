@@ -7,7 +7,7 @@ interface Props {
   onSearch: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const SearchBar: React.VFC<Props> = ({ onSearch }) => (
+const SearchBar: React.FC<Props> = ({ onSearch }) => (
   <Paper sx={{ display: 'flex', alignItems: 'center', width: 300 }}>
     <Input
       placeholder="Search..."

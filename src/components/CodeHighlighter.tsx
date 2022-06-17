@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode & React.ReactNode[]
 }
 
-const CodeHighlighter: React.VFC<Props> = ({ language, children }) => (
+const CodeHighlighter: React.FC<Props> = ({ language, children }) => (
   <SyntaxHighlighter language={language} style={a11yDark} showLineNumbers data-testid="code-highlighter">
     {children}
   </SyntaxHighlighter>

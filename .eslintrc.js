@@ -32,7 +32,8 @@ module.exports = {
     ],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
-    'react/prop-types': 'off' // This is not needed as it is checked by TypeScript
+    'react/prop-types': 'off', // This is not needed as it is checked by TypeScript
+    'react/require-default-props': 'off'
   },
   overrides: [
     {

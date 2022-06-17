@@ -8,7 +8,7 @@ const CategoryPage = React.lazy(() => import('@/containers/Category'))
 const ListPage = React.lazy(() => import('@/containers/List'))
 const AllowPushPage = React.lazy(() => import('@/containers/AllowPush'))
 
-const Router: React.VFC = () => (
+const Router: React.FC = () => (
   <Routes>
     <Route
       path="/"

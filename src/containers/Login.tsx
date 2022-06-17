@@ -19,7 +19,7 @@ const useSetIsLogin = (u: User | null): void => {
   }, [u, dispatch])
 }
 
-const Login: React.VFC = () => {
+const Login: React.FC = () => {
   const [user, setUser] = useState<User | null>(null)
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
 

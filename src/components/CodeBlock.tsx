@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode & React.ReactNode[]
 }
 
-const CodeBlock: React.VFC<Props> = ({ inline, className, children, ...props }) => {
+const CodeBlock: React.FC<Props> = ({ inline, className, children, ...props }) => {
   const match = /language-(\w+)/.exec(className || '')
   return !inline && match ? (
     <CodeHighlighter language={match[1]}>{children}</CodeHighlighter>

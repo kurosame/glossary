@@ -5,7 +5,7 @@ import { Button, IconButton, Snackbar } from '@mui/material'
 
 import { isPermission, requestPermission } from '@/sw/fcm'
 
-const AllowPush: React.VFC = () => {
+const AllowPush: React.FC = () => {
   const [open, setOpen] = React.useState(isPermission() === 'default')
   const handleRequestPermission = () => requestPermission()
   const handleClose = (): void => setOpen(false)
