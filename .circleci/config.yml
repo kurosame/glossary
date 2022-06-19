@@ -15,7 +15,7 @@ jobs:
       name: node/default
       tag: '16.13.0'
     docker:
-      - image: circleci/node:16.13.0
+      - image: circleci/node:16.13.1
     steps:
       - checkout
       - node/install-packages
@@ -31,7 +31,7 @@ jobs:
       name: node/default
       tag: '16.13.0'
     docker:
-      - image: circleci/node:16.13.0
+      - image: circleci/node:16.13.1
     steps:
       - checkout
       - node/install-packages:
@@ -70,7 +70,7 @@ jobs:
       name: node/default
       tag: '16.13.0'
     docker:
-      - image: circleci/node:16.13.0
+      - image: circleci/node:16.13.1
     steps:
       - checkout
       - node/install-packages
@@ -84,7 +84,7 @@ jobs:
       name: node/default
       tag: '16.13.0'
     docker:
-      - image: circleci/node:16.13.0
+      - image: circleci/node:16.13.1
     steps:
       - checkout
       - node/install-packages:
@@ -100,7 +100,7 @@ jobs:
       name: node/default
       tag: '16.13.0'
     docker:
-      - image: circleci/node:16.13.0-browsers
+      - image: circleci/node:16.13.1-browsers
     steps:
       - checkout
       - node/install-packages
