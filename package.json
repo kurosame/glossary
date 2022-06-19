@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "0.37.3",
-    "@testing-library/jest-dom": "5.5.0",
+    "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "10.0.6",
     "@types/jest": "27.0.3",
     "@types/react": "18.0.14",
