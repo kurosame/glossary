@@ -1,34 +1,24 @@
-references:
-  commands:
-    setup-docker-base: &setup-docker-base
-      docker:
-        - image: circleci/node:16.13.0
-    setup-docker-lighthouse: &setup-docker-lighthouse
-      docker:
-        - image: circleci/node:16.13.0-browsers
-    setup-docker-gcloud: &setup-docker-gcloud
-      docker:
-        - image: google/cloud-sdk
+version: 2.1
 
-version: 2
+orbs:
+  node: circleci/node@4.7.0
+  slack: circleci/slack@4.8.3
+
+parameters:
+  run-schedule:
+    type: boolean
+    default: false
+
 jobs:
   deploy:
-    <<: *setup-docker-base
+    executor:
+      name: node/default
+      tag: '16.13.0'
+    docker:
+      - image: circleci/node:16.13.0
     steps:
       - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
+      - node/install-packages
       - run:
           name: Build
           command: npm run build:production
@@ -37,23 +27,15 @@ jobs:
           # Firebase will automatically use the environment variable FIREBASE_TOKEN
           command: ./node_modules/.bin/firebase deploy --only hosting --project $FIREBASE_PROJECT
   deploy-functions:
-    <<: *setup-docker-base
+    executor:
+      name: node/default
+      tag: '16.13.0'
+    docker:
+      - image: circleci/node:16.13.0
     steps:
       - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          working_directory: ./functions
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+      - node/install-packages:
+          app-dir: ./functions
       - run:
           name: Build
           working_directory: ./functions
@@ -64,7 +46,8 @@ jobs:
           # Firebase will automatically use the environment variable FIREBASE_TOKEN
           command: ./node_modules/.bin/firebase deploy --only functions --project $FIREBASE_PROJECT
   deploy-raw-data:
-    <<: *setup-docker-gcloud
+    docker:
+      - image: google/cloud-sdk:390.0.0
     steps:
       - checkout
       - run:
@@ -83,45 +66,29 @@ jobs:
             done
             IFS=$IFS_BEFORE
   test:
-    <<: *setup-docker-base
+    executor:
+      name: node/default
+      tag: '16.13.0'
+    docker:
+      - image: circleci/node:16.13.0
     steps:
       - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
+      - node/install-packages
       - run:
           name: Test for CI
           command: npm run test:ci
       - store_artifacts:
           path: ./test/unit/coverage
   test-functions:
-    <<: *setup-docker-base
+    executor:
+      name: node/default
+      tag: '16.13.0'
+    docker:
+      - image: circleci/node:16.13.0
     steps:
       - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "./functions/package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          working_directory: ./functions
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "./functions/package-lock.json" }}
+      - node/install-packages:
+          app-dir: ./functions
       - run:
           name: Test for CI
           working_directory: ./functions
@@ -129,72 +96,70 @@ jobs:
       - store_artifacts:
           path: ./functions/test/unit/coverage
   lighthouse:
-    <<: *setup-docker-lighthouse
+    executor:
+      name: node/default
+      tag: '16.13.0'
+    docker:
+      - image: circleci/node:16.13.0-browsers
     steps:
       - checkout
-      - restore_cache:
-          name: Download and cache dependencies
-          keys:
-            - v2-dependencies-{{ checksum "package-lock.json" }}
-            - v2-dependencies-
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - save_cache:
-          name: Cache dependencies
-          paths:
-            - ~/.npm
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
+      - node/install-packages
       - run:
           name: Lighthouse
           command: ./node_modules/.bin/lighthouse --chrome-flags="--headless --no-sandbox" --output-path=./lighthouse-results.html $GLOSSARY_APP_URL
       - store_artifacts:
           path: ./lighthouse-results.html
-      - run:
-          name: Send to Slack
-          command: |
-            PAYLOAD=`cat << EOF
+      - slack/notify:
+          custom: |
             {
-              "attachments": [
+              "blocks": [
                 {
-                  "pretext": "glossary's Lighthouse",
-                  "text": "https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/lighthouse-results.html",
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "glossary's Lighthouse"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Open in browser"
+                      },
+                      "url": "https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/lighthouse-results.html"
+                    }
+                  ]
                 }
               ]
             }
-            EOF`
-            curl -X POST -d "payload=$PAYLOAD" $SLACK_WEBHOOK_URL
 
 workflows:
-  version: 2
   deploy:
+    when:
+      not: << pipeline.parameters.run-schedule >>
     jobs:
       - deploy:
           filters:
             branches:
-              only:
-                - master
+              only: master
       - deploy-functions:
           filters:
             branches:
-              only:
-                - master
+              only: master
       - deploy-raw-data:
           filters:
             branches:
-              only:
-                - master
+              only: master
   test:
+    when:
+      not: << pipeline.parameters.run-schedule >>
     jobs:
       - test
       - test-functions
   nightly:
-    triggers:
-      - schedule:
-          cron: '00 0 * * 1'
-          filters:
-            branches:
-              only:
-                - master
+    when: << pipeline.parameters.run-schedule >>
     jobs:
       - lighthouse

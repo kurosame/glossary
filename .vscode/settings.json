@@ -1,3 +1,15 @@
 {
-  "cSpell.words": ["deno", "nuxt", "runtimes", "testid", "vercel", "vite"]
+  "cSpell.words": [
+    "appspot",
+    "circleci",
+    "deno",
+    "gcloud",
+    "gsutil",
+    "kurosame",
+    "nuxt",
+    "runtimes",
+    "testid",
+    "vercel",
+    "vite"
+  ]
 }
