@@ -18,10 +18,14 @@ afterEach(() => {
   jest.restoreAllMocks()
 })
 
-test('Run `onChange`', () => {
-  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
-    target: { value: 'test' }
-  })
+test('Run `onBlur`', () => {
+  fireEvent.focusOut(wrapper.getByTestId('search-bar-input'))
+
+  expect(onSearch).toBeCalled()
+})
+
+test('Run `onKeyUp to Enter`', () => {
+  fireEvent.keyUp(wrapper.getByTestId('search-bar-input'), { key: 'Enter' })
 
   expect(onSearch).toBeCalled()
 })

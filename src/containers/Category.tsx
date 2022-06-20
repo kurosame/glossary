@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, To, useLocation } from 'react-router-dom'
 
 import { AppBar, Tab, Tabs } from '@mui/material'
 
@@ -41,6 +41,8 @@ const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Workflow Engine', to: '/workflow-engine' }
 ]
 
+const createLink = (to: To) => React.forwardRef<HTMLAnchorElement>((p, ref) => <Link ref={ref} to={to} {...p} />)
+
 const Category: React.FC = () => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
   const location = useLocation()
@@ -49,11 +51,9 @@ const Category: React.FC = () => {
   return (
     <AppBar position="static">
       <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable">
-        {tabItems.map(t => {
-          const StaticLink = React.forwardRef<HTMLAnchorElement>((p, ref) => <Link ref={ref} to={t.to} {...p} />)
-          StaticLink.displayName = 'StaticLink'
-          return <Tab key={t.label} label={t.label} component={StaticLink} />
-        })}
+        {tabItems.map(t => (
+          <Tab key={t.label} label={t.label} component={createLink(t.to)} />
+        ))}
       </Tabs>
     </AppBar>
   )

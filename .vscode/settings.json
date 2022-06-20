@@ -3,13 +3,19 @@
     "appspot",
     "circleci",
     "deno",
+    "esbuild",
+    "firebaseui",
     "gcloud",
     "gsutil",
     "kurosame",
     "nuxt",
+    "precaching",
+    "rehype",
     "runtimes",
+    "stylelint",
     "testid",
     "vercel",
-    "vite"
+    "vite",
+    "vuex"
   ]
 }

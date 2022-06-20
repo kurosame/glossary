@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Box, List, ListItem } from '@mui/material'
 
@@ -25,7 +25,7 @@ const Words: React.FC<Props> = ({ words }) => {
     setFilterWords(fWords)
   }, [words, searchWord])
 
-  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value)
   }
 

@@ -34,7 +34,7 @@ test('Output `props.words` when `filterWords` is undefined', () => {
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.id`', () => {
-  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+  fireEvent.focusOut(wrapper.getByTestId('search-bar-input'), {
     target: { value: 'Vue.js' }
   })
 
@@ -42,7 +42,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.id`', ()
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.titles`', () => {
-  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+  fireEvent.focusOut(wrapper.getByTestId('search-bar-input'), {
     target: { value: 'uex' }
   })
 
@@ -50,7 +50,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.titles`'
 })
 
 test('Filter and output `props.words` when `filterWords` matches `words.description`', () => {
-  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+  fireEvent.focusOut(wrapper.getByTestId('search-bar-input'), {
     target: { value: 'It ' }
   })
 
@@ -58,7 +58,7 @@ test('Filter and output `props.words` when `filterWords` matches `words.descript
 })
 
 test('Output empty when `filterWords` not match', () => {
-  fireEvent.change(wrapper.getByTestId('search-bar-input'), {
+  fireEvent.focusOut(wrapper.getByTestId('search-bar-input'), {
     target: { value: 'angular' }
   })
 

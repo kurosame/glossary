@@ -4,7 +4,7 @@ import { Search } from '@mui/icons-material'
 import { Input, Paper } from '@mui/material'
 
 interface Props {
-  onSearch: React.ChangeEventHandler<HTMLInputElement>
+  onSearch: React.ReactEventHandler
 }
 
 const SearchBar: React.FC<Props> = ({ onSearch }) => (
@@ -13,7 +13,10 @@ const SearchBar: React.FC<Props> = ({ onSearch }) => (
       placeholder="Search..."
       sx={{ flexGrow: 1, ml: 1 }}
       inputProps={{ 'data-testid': 'search-bar-input' }}
-      onChange={onSearch}
+      onBlur={onSearch}
+      onKeyUp={e => {
+        if (e.key === 'Enter') onSearch(e)
+      }}
     />
     <Search sx={{ m: 1 }} />
   </Paper>
