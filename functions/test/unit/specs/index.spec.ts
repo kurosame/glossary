@@ -61,7 +61,8 @@ let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => Promise<void>
 let spyErr: jest.SpyInstance
 beforeEach(() => {
   // offline mode
-  wrapper = async (o): Promise<void> => fTest().wrap(setWord)({ name: o.name })
+  const testData = fTest().storage.exampleObjectMetadata()
+  wrapper = async (o): Promise<void> => fTest().wrap(setWord)({ ...testData, name: o.name })
   jest.spyOn(console, 'info').mockImplementation(x => x)
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
