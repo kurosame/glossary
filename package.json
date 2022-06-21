@@ -23,7 +23,7 @@
     "workbox-precaching": "6.4.2"
   },
   "devDependencies": {
-    "@stylelint/postcss-css-in-js": "0.37.3",
+    "@stylelint/postcss-css-in-js": "0.38.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
     "@types/jest": "27.0.3",
