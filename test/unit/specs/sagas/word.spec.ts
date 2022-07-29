@@ -23,9 +23,9 @@ jest.mock('firebase/firestore', () => ({
     .mockRejectedValue(new Error('error'))
 }))
 
-let spyErr: jest.SpyInstance
+let spyErr: jest.SpyInstance<unknown, unknown[]>
 beforeEach(() => {
-  spyErr = jest.spyOn(console, 'error').mockImplementation(x => x)
+  spyErr = jest.spyOn(console, 'error').mockImplementation((x: unknown) => x)
 })
 afterEach(jest.restoreAllMocks)
 
@@ -51,7 +51,7 @@ describe('Run `getFirestoreWords`', () => {
   test('Output console.error when rejected', async () => {
     expect(await getFirestoreWords()).toEqual([])
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('GET_WORDS Firestore response error: error')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('GET_WORDS Firestore response error: error')
   })
 })
 

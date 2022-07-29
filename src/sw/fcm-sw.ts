@@ -12,12 +12,12 @@ self.addEventListener('notificationclick', e => {
   e.waitUntil(
     self.clients
       .matchAll({ type: 'window', includeUncontrolled: true })
-      .then(wc => (wc.length === 0 ? self.clients.openWindow(e.notification.data) : wc[0]?.focus()))
+      .then(wc => (wc.length === 0 ? self.clients.openWindow(e.notification.data as string) : wc[0]?.focus()))
   )
 })
 
-onBackgroundMessage(messagingSW(), p => {
-  self.registration.showNotification(`[Background] ${p.data?.title}`, {
+onBackgroundMessage(messagingSW(), async p => {
+  await self.registration.showNotification(`[Background] ${p.data?.title || ''}`, {
     body: p.data?.message,
     data: location.origin
   })

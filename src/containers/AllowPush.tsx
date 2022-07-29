@@ -20,8 +20,8 @@ const AllowPush: React.FC = () => {
           <Button
             color="primary"
             data-testid="allow-push-ok"
-            onClick={(): void => {
-              handleRequestPermission()
+            onClick={async () => {
+              await handleRequestPermission()
               handleClose()
             }}
           >

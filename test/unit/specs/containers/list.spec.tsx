@@ -4,6 +4,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import type { Dispatch } from 'redux'
 import configureStore from 'redux-mock-store'
 
 import '@testing-library/jest-dom'
@@ -13,16 +14,16 @@ import List from '@/containers/List'
 import type { States } from '@/modules/states'
 import { GET_WORDS, WordState } from '@/modules/word'
 
-let mockDispatch: jest.Mock
+let mockDispatch: jest.Mock<unknown, unknown[]>
 let wrapper: (isLogin: boolean, words: WordState[], category?: string) => RenderResult
 beforeEach(() => {
-  mockDispatch = jest.fn()
+  mockDispatch = jest.fn() as jest.Mock<unknown, unknown[]>
   wrapper = (isLogin, words, category): RenderResult => {
     const store = configureStore<States>()({
       login: { isLogin },
       words
     })
-    store.dispatch = mockDispatch
+    store.dispatch = mockDispatch as Dispatch
     return render(
       <Provider store={store}>
         {category ? (
@@ -47,7 +48,7 @@ test('Call `getWords` when `words` is empty', () => {
   wrapper(true, [])
 
   expect(mockDispatch).toBeCalled()
-  expect(mockDispatch.mock.calls[0][0]).toEqual({ type: GET_WORDS })
+  expect(mockDispatch.mock.calls[0]?.[0]).toEqual({ type: GET_WORDS })
   expect(mockDispatch.mock.calls[1]).toBeUndefined()
 })
 

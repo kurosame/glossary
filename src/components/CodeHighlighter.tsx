@@ -8,7 +8,7 @@ interface Props {
 }
 
 const CodeHighlighter: React.FC<Props> = ({ language, children }) => (
-  <SyntaxHighlighter language={language} style={a11yDark} showLineNumbers data-testid="code-highlighter">
+  <SyntaxHighlighter language={language} style={a11yDark as unknown} showLineNumbers data-testid="code-highlighter">
     {children}
   </SyntaxHighlighter>
 )

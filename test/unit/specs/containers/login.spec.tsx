@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import { Provider } from 'react-redux'
+import type { Dispatch } from 'redux'
 import configureStore from 'redux-mock-store'
 
 import { cleanup, render, RenderResult } from '@testing-library/react'
@@ -12,17 +13,17 @@ import { auth } from '@/firebase/index'
 import { SET_IS_LOGIN } from '@/modules/login'
 import type { States } from '@/modules/states'
 
-let mockDispatch: jest.Mock
+let mockDispatch: jest.Mock<unknown, unknown[]>
 let spyFirebaseAuth: jest.SpyInstance
 let wrapper: (isLogin: boolean) => RenderResult
 beforeEach(() => {
-  mockDispatch = jest.fn()
+  mockDispatch = jest.fn() as jest.Mock<unknown, unknown[]>
   spyFirebaseAuth = jest.spyOn(auth(), 'onAuthStateChanged')
   wrapper = (isLogin): RenderResult => {
     const store = configureStore<Pick<States, 'login'>>()({
       login: { isLogin }
     })
-    store.dispatch = mockDispatch
+    store.dispatch = mockDispatch as Dispatch
     return render(
       <Provider store={store}>
         <Login />
@@ -45,7 +46,7 @@ test('Call `useSetIsLogin`', () => {
   wrapper(true)
 
   expect(mockDispatch).toBeCalled()
-  expect(mockDispatch.mock.calls[0][0]).toEqual({
+  expect(mockDispatch.mock.calls[0]?.[0]).toEqual({
     type: SET_IS_LOGIN,
     payload: { isLogin: false }
   })

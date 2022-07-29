@@ -6,7 +6,7 @@ export const initialize = () => {
   onMessage(messaging(), p =>
     navigator.serviceWorker.ready
       .then(reg =>
-        reg.showNotification(`[Foreground] ${p.data?.title}`, {
+        reg.showNotification(`[Foreground] ${p.data?.title || ''}`, {
           body: p.data?.body,
           data: window.location.origin
         })
@@ -17,9 +17,9 @@ export const initialize = () => {
 
 const isSupported = () => 'Notification' in window // Safari on iOS does not support Notification
 
-export const requestPermission = () => {
-  navigator.serviceWorker.register('/fcm-sw.js').then(sw => {
-    Notification.requestPermission().then(p => {
+export const requestPermission = async () => {
+  await navigator.serviceWorker.register('/fcm-sw.js').then(async sw => {
+    await Notification.requestPermission().then(p => {
       if (p === 'granted') {
         getToken(messaging(), { serviceWorkerRegistration: sw })
           .then(t => console.info(t))

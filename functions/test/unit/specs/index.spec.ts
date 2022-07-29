@@ -1,5 +1,4 @@
 import type { storage } from 'firebase-functions'
-/* eslint-disable-next-line import/no-extraneous-dependencies */
 import fTest from 'firebase-functions-test'
 
 /* eslint-disable-next-line import/no-unresolved,import/extensions */
@@ -18,7 +17,10 @@ const file = jest
   .fn()
   .mockReturnValueOnce({ name: 'not slash' })
   .mockReturnValue({ name: 'path/to/NODE.JS.md', download })
-const set = jest.fn().mockRejectedValueOnce(Error('set error')).mockResolvedValue(Promise.resolve())
+const set = jest.fn().mockRejectedValueOnce(Error('set error')).mockResolvedValue(Promise.resolve()) as jest.Mock<
+  unknown,
+  unknown[]
+>
 const get = jest
   .fn()
   .mockResolvedValueOnce({ exists: false })
@@ -57,18 +59,22 @@ jest.mock('firebase-admin', () => ({
   storage: (): unknown => ({ bucket: (): unknown => ({ file }) })
 }))
 
-let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => Promise<void>
-let spyErr: jest.SpyInstance
+let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => Promise<unknown>
+let spyErr: jest.SpyInstance<unknown, unknown[]>
 beforeEach(() => {
   // offline mode
   const testData = fTest().storage.exampleObjectMetadata()
-  wrapper = async (o): Promise<void> => fTest().wrap(setWord)({ ...testData, name: o.name })
-  jest.spyOn(console, 'info').mockImplementation(x => x)
+  wrapper = async o => {
+    const wrap = (await fTest().wrap(setWord)({ ...testData, name: o.name })) as unknown
+    return wrap
+  }
+  jest.spyOn(console, 'info').mockImplementation((x: unknown) => x)
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
 })
 afterEach(() => {
-  wrapper = (): Promise<void> => Promise.resolve()
+  wrapper = () => Promise.resolve()
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-call */
   fTest().cleanup()
   jest.restoreAllMocks()
 })
@@ -79,7 +85,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File not found')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File not found')
   })
 
   test('Not found file.name', async () => {
@@ -87,7 +93,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File.name not found')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File.name not found')
   })
 
   test('File download error', async () => {
@@ -95,7 +101,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File download error fileName=NODE.JS err=download error')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File download error fileName=NODE.JS err=download error')
   })
 
   test('Document format error with category not found', async () => {
@@ -103,7 +109,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File download error fileName=NODE.JS err=Document format error')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File download error fileName=NODE.JS err=Document format error')
   })
 
   test('Document format error with titles not found', async () => {
@@ -111,7 +117,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File download error fileName=NODE.JS err=Document format error')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File download error fileName=NODE.JS err=Document format error')
   })
 
   test('Document format error with description not found', async () => {
@@ -119,7 +125,7 @@ describe('Output console.error', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('File download error fileName=NODE.JS err=Document format error')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('File download error fileName=NODE.JS err=Document format error')
   })
 })
 
@@ -138,7 +144,7 @@ describe('Set document', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('Document not updates fileName=NODE.JS')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('Document not updates fileName=NODE.JS')
   })
 
   test('Not updates document (2)', async () => {
@@ -152,7 +158,7 @@ describe('Set document', () => {
 
     expect(res).toBeNull()
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('Document not updates fileName=NODE.JS')
+    expect(spyErr.mock.calls[0]?.[0]).toEqual('Document not updates fileName=NODE.JS')
   })
 
   test('Set document to resolved', async () => {
@@ -160,7 +166,7 @@ describe('Set document', () => {
 
     expect(res).toBeNull()
     expect(set).toBeCalled()
-    expect(set.mock.calls[1][0]).toEqual({
+    expect(set.mock.calls[1]?.[0]).toEqual({
       category: 'js',
       titles: ['Node.js', 'Node'],
       description: 'Node.js は言語としての機能だけでなく、...\nNode.js も Nginx と同様に...',
