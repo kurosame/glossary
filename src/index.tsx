@@ -14,11 +14,11 @@ import { initialize } from '@/sw/fcm'
 initialize()
 
 class RootComponent extends React.Component {
-  public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  public override componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error({ 'error-boundary-error': error, errorInfo })
   }
 
-  public render() {
+  public override render() {
     return (
       <BrowserRouter>
         <Provider store={store}>

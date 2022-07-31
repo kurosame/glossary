@@ -11,7 +11,7 @@ let wrapper: (inline?: boolean, className?: string) => RenderResult
 beforeEach(() => {
   wrapper = (inline, className): RenderResult =>
     render(
-      <CodeBlock inline={inline} className={className}>
+      <CodeBlock inline={!!inline} className={className ?? ''}>
         {['']}
       </CodeBlock>
     )

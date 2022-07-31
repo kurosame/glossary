@@ -6,8 +6,8 @@ export const initialize = () => {
   onMessage(messaging(), p =>
     navigator.serviceWorker.ready
       .then(reg =>
-        reg.showNotification(`[Foreground] ${p.data?.title || ''}`, {
-          body: p.data?.body,
+        reg.showNotification(`[Foreground] ${p.data?.['title'] || ''}`, {
+          body: p.data?.['body'] ?? '',
           data: window.location.origin
         })
       )

@@ -17,8 +17,8 @@ self.addEventListener('notificationclick', e => {
 })
 
 onBackgroundMessage(messagingSW(), async p => {
-  await self.registration.showNotification(`[Background] ${p.data?.title || ''}`, {
-    body: p.data?.message,
+  await self.registration.showNotification(`[Background] ${p.data?.['title'] || ''}`, {
+    body: p.data?.['message'] ?? '',
     data: location.origin
   })
 })

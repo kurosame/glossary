@@ -14,7 +14,9 @@ module.exports = {
   },
   settings: { react: { version: 'detect' }, 'import/resolver': 'webpack' },
   rules: {
+    '@typescript-eslint/dot-notation': ['error'], // Compatible with TypeScript's noPropertyAccessFromIndexSignature option
     '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+    'dot-notation': 'off', // Incompatible with TypeScript's noPropertyAccessFromIndexSignature option
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.spec.ts', '**/*.spec.tsx'] }],
     'import/order': [

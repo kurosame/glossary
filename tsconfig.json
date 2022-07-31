@@ -1,24 +1,15 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "lib": ["es2015", "dom", "webworker"],
     "jsx": "react",
     "sourceMap": true,
-    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "paths": { "@/*": ["src/*"] },
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "paths": { "@/*": ["src/*"] }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "test/unit/specs/**/*.spec.ts", "test/unit/specs/**/*.spec.tsx"],
   "exclude": ["node_modules"]

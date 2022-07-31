@@ -10,7 +10,7 @@ import rootSaga from '@/sagas/index'
 
 const sagaMiddleware = saga()
 let enhancer: StoreEnhancer
-if (process.env.NODE_ENV === 'production') {
+if (process.env['NODE_ENV'] === 'production') {
   enhancer = applyMiddleware(sagaMiddleware)
 } else {
   enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
