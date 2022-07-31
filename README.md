@@ -35,7 +35,7 @@ curl -i -X POST \
     '{
       "data": {
         "title":"test",
-        "body":"testtest"
+        "message":"test message"
       },
       "to": "YOUR_DEVICE_TOKEN"
     }' \
