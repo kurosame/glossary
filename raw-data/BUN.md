@@ -16,6 +16,8 @@ Bun の特徴は以下
 
 - バンドラー、トランスパイラーが組み込まれている
   - TypeScript や JSX でも動く
+- NodeAPI と互換性を意識して作られている
+  - 現時点（2022/08）では互換性は微妙
 - JavaScriptCore エンジン（WebKit）で動いている
   - JavaScriptCore は、WebKit にビルトインされている JS エンジン
   - V8 などより起動と実行が若干速いらしい

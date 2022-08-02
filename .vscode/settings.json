@@ -13,6 +13,8 @@
     "nuxt",
     "precache",
     "precaching",
+    "proto",
+    "protobuf",
     "rehype",
     "runtimes",
     "stylelint",
