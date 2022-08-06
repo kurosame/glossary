@@ -32,7 +32,7 @@ module.exports = {
         ],
         pathGroupsExcludedImportTypes: ['builtin'],
         'newlines-between': 'always',
-        alphabetize: { order: 'asc' }
+        alphabetize: { order: 'asc', caseInsensitive: true }
       }
     ],
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],

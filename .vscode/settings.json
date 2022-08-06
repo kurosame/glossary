@@ -7,6 +7,7 @@
     "esbuild",
     "firebaseui",
     "firestore",
+    "fixpack",
     "gcloud",
     "gsutil",
     "kurosame",

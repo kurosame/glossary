@@ -85,6 +85,8 @@
     "test": "jest --watchAll",
     "test:ci": "jest --maxWorkers=2",
     "analyze": "webpack --mode=development --analyze",
+    "ts-prune": "npx ts-prune",
+    "fixpack": "npx fixpack",
     "clean:cache": "rimraf ./node_modules/.cache/*",
     "clean:dist": "rimraf ./dist/*"
   },
