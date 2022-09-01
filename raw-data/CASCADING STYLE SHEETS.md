@@ -61,10 +61,18 @@ BEM ルールをチームに徹底する必要がある
 JS の中に CSS を直接書く  
 テンプレートリテラル形式や JSX に組み込めるのとか色々書き方がある
 
+JS のスキルが必要なため、デザイナーが CSS を書く環境では不向き
+
 ### CSS Modules
 
 ローカルスコープ化された（グローバル上でユニークな）セレクター名を生成する  
 JS 側で CSS のファイルを import することによって、ビルド時にセレクター名をグローバル上でユニークな名前に変更している
+
+CSS Modules の仕様は 1 つだが、それが現状メンテナンスされていない  
+また、実装が css-loader や Vite などでバラバラとなっている
+
+css-loader のメンテナーが将来的に css-loader の CSS Modules モードを非推奨にする予定とも述べている  
+<a href="https://github.com/webpack-contrib/css-loader/issues/1050#issuecomment-592541379" target="_blank">css-loader の issue</a>
 
 ### ブラウザの速度改善のすすめ
 
