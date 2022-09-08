@@ -30,5 +30,12 @@ WebKit の開発方針で Apple と Google が揉めたためこうなった
 Chrome を Node.js から操作するライブラリ  
 Chrome の DevTool 開発チームがメンテナンスしている  
 Chrome 59 で headless モードが利用可能になって以降、Headless Chrome を直接操作するライブラリがいくつか出ている（chromy など）がその中の 1 つ  
-レイヤー的には上記の PhantomJS や NightmareJS と一緒と言えると思う  
-ただし、NightmareJS のように Electron を介さなくても、Headless Chrome であれば直接操作できる
+NightmareJS のように Electron を介さなくても、Headless Chrome であれば直接操作できる
+
+### Rendertron
+
+Puppeteer ベースのレンダラー
+
+1. Rendertron を起動し、レンダリングさせるサイトのパスをクエリパラメーターで渡す
+1. Rendertron で JS の実行とレンダリング
+1. 静的 HTML がレスポンスとして返却される

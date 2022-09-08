@@ -51,12 +51,7 @@ function __webpack_require__(moduleId) {
 
   // 関数を実行する
   // modulesには全てのモジュールが入っている
-  modules[moduleId].call(
-    module.exports,
-    module,
-    module.exports,
-    __webpack_require__
-  )
+  modules[moduleId].call(module.exports, module, module.exports, __webpack_require__)
 
   // loadedフラグをtrue
   module.l = true
@@ -105,6 +100,12 @@ webpack v4 からエントリーポイントに`.mjs`と`.wasm`を指定でき�
 1. WebSocket 経由で webpack-dev-server から webpack-dev-server/client へコンパイル結果と HashID を送る
 1. webpack/hot/dev-server のランタイムで HashID を基に新しい ChunkJS と ManifestJSON を webpack-dev-server から取得する
 1. 既存コードと新規コードを差し替える
+
+### Jetpack
+
+webpack のラッパーで任意の設定で拡張も可能  
+webpack のデフォルト設定を提供し、webpack 設定の属人化を避ける目的もある  
+webpack、webpack-cli、webpack-dev-server を構成を記述することなく使える
 
 ### パフォーマンス改善
 

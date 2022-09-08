@@ -10,19 +10,23 @@
     "fixpack",
     "gcloud",
     "gsutil",
+    "jetpack",
     "kurosame",
     "nuxt",
     "precache",
     "precaching",
+    "prerender",
     "proto",
     "protobuf",
     "rehype",
     "runtimes",
     "stylelint",
+    "supabase",
     "testid",
     "vercel",
     "vite",
     "vuejs",
-    "vuex"
+    "vuex",
+    "wasi"
   ]
 }
