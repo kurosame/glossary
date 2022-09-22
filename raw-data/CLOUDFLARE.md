@@ -20,7 +20,7 @@ Node.js ではない
 zero cold starts について  
 Vercel や Netlify の Serverless Functions は Lambda をベースに動いており、ランタイムはコンテナー環境である  
 コンテナーでは実際の処理が開始されるまでに初期化や起動処理などが入り、これが原因でコールドスタートが発生する  
-Workers はコンテナーではなく、V8 でも使われている isolate を使っている
+Workers はコンテナーではなく、V8 でも使われている isolate 機能を使って動いている
 
 ### Service bindings
 
