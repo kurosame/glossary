@@ -22,6 +22,11 @@ Vercel や Netlify の Serverless Functions は Lambda をベースに動いて�
 コンテナーでは実際の処理が開始されるまでに初期化や起動処理などが入り、これが原因でコールドスタートが発生する  
 Workers はコンテナーではなく、V8 でも使われている isolate 機能を使って動いている
 
+- workerd
+  - Workers のランタイム
+  - Workers をローカル環境でエミュレートできる
+  - Miniflare の代替になりそう
+
 ### Service bindings
 
 Workers 間の通信を容易にする API  

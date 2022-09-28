@@ -9,6 +9,8 @@ CSS
 
 ## description
 
+<a href="https://zenn.dev/kurosame/articles/8d87c4257713dd" target="_blank">CSS Grid Layout を使って複雑なレイアウトを綺麗に書きたい</a>
+
 ### 策定の流れ
 
 以下の流れで策定している

@@ -14,6 +14,8 @@ tsc コマンドでコンパイルすると JavaScript に変換できる
 
 <a href="https://qiita.com/kurosame/items/3c28f45c8b2e65f5c69d" target="_blank">JS から TS への移行で悩んだ点の対応メモ</a>
 
+<a href="https://gist.github.com/kurosame/1da106ea75625329bae7b783ee4d14c3" target="_blank">Type Challenges</a>
+
 ### tsc
 
 トランスパイルの対象は JS 構文のみ  
