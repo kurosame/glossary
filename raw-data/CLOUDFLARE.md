@@ -12,7 +12,8 @@ Cloudflare
 
 ### Workers
 
-Edge コンピューティングサービス
+Edge コンピューティングサービス  
+JavaScript/WebAssembly のランタイム
 
 Workers の実行環境は V8 の JS エンジン  
 Node.js ではない
@@ -22,8 +23,10 @@ Vercel や Netlify の Serverless Functions は Lambda をベースに動いて�
 コンテナーでは実際の処理が開始されるまでに初期化や起動処理などが入り、これが原因でコールドスタートが発生する  
 Workers はコンテナーではなく、V8 でも使われている isolate 機能を使って動いている
 
-- workerd
-  - Workers のランタイム
+- workerd（ワーカーディー）
+  - Workers のコアランタイム部分
+  - OSS で公開されている
+    - <a href="https://github.com/cloudflare/workerd" target="_blank">workerd</a>
   - Workers をローカル環境でエミュレートできる
   - Miniflare の代替になりそう
 
