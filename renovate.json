@@ -1,15 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":automergePatch", ":timezone(Asia/Tokyo)", "schedule:daily"],
-  "automergeType": "branch",
+  "extends": ["config:base", ":timezone(Asia/Tokyo)", "schedule:daily"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 3,
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["patch"],
-      "groupName": "all patch dependencies",
-      "groupSlug": "all-patch"
+      "enabled": false
     }
   ]
 }
