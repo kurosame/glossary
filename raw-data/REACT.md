@@ -251,7 +251,9 @@ class ErrorBoundary extends React.Component {
 
 ### useEvent
 
-2022/05/10 時点では RFC の提案段階の機能
+2022/05/10 時点では RFC の提案段階の機能  
+⇒ この提案はクローズされた  
+⇒ 再検討・ブラッシュアップされる
 
 以下のイベントハンドラーは現在の text を読み取る必要がある
 
@@ -309,6 +311,37 @@ useEvent の RFC は以下
 - 既存の useCallback の 90%ぐらいを useEvent で置き換えられそう（Dan）
 - 長期的に見てすべてのイベントハンドラーを useEvent でラップするのは理にかなっている（Dan）
 - useEvent は依存配列がない分、useCallback よりメモリ消費が少ない（Dan）
+
+### use(`Promise`)
+
+2022/10/19 時点では RFC の提案段階の機能
+
+以下のように使用する
+
+```js
+function Note({ id, shouldIncludeAuthor }) {
+  const note = use(fetchNote(id))
+  let byline = null
+  if (shouldIncludeAuthor) {
+    const author = use(fetchNoteAuthor(note.authorId))
+    byline = <h2>{author.displayName}</h2>
+  }
+  return (
+    <div>
+      <h1>{note.title}</h1>
+      {byline}
+      <section>{note.body}</section>
+    </div>
+  )
+}
+```
+
+- use には Promise が渡せ、その戻り値は Promise の中身になる
+- 既存の hook と違い、条件分岐内で使用できる
+  - use(`Promise`)は実行されても、されなくても良い
+- Promise のエラーは Error Boundary でキャッチする想定
+- コンポーネントがレンダリングされるたびに use(`Promise`)が呼ばれると思う
+  - Promise の結果をキャッシュできる必要がある
 
 ### 良い設計方針
 
