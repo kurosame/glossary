@@ -18,6 +18,7 @@
     "prerender",
     "proto",
     "protobuf",
+    "qwik",
     "rehype",
     "runtimes",
     "stylelint",

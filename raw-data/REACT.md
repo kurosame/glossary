@@ -135,11 +135,14 @@ function App() {
 
 ### ReactDOM.hydrate
 
-SSR された DOM をクライアント側で再利用する場合に  
-ReactDOM.render の代わりに ReactDOM.hydrate を使う  
-v16 から明示的な API として追加された  
-ハイドレーションとは足りない DOM を補う的な意味らしい
+SSR された DOM をクライアント側で再利用する場合に ReactDOM.render の代わりに ReactDOM.hydrate を使う  
+つまり、クライアント側でのレンダリングをスキップできる
 
+クライアント側の仮想 DOM と SSR された DOM を検証し、不一致の場合は Hydration を中止する  
+この場合、DOM を破棄し、最初からレンダリングを行う  
+（この際、ブラウザのコンソールには警告が表示される）
+
+v16 から明示的な API として追加された  
 SPA のみならば、今まで通り ReactDOM.render を使う
 
 ### Context API

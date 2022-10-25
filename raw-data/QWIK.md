@@ -5,12 +5,30 @@ js
 ## titles
 
 Qwik
+Qwik City
 
 ## description
 
-JS の Web フレームワーク
+### Qwik
 
-- Next.js、Nuxt.js、Remix と同じレイヤー
+- JS フレームワーク
+- JSX で書ける
+- SSR がデフォルト
 - ページロードの速度が速い
   - JS のダウンロードと実行を可能な限り遅延させることで、ページロードに関して高いパフォーマンスを提供する
-  - Qwik は DOM のハイドレーションを行わないため、速い
+  - Qwik は DOM の Hydration を行わないため、速い
+  - Hydration の代わりに Resumable という概念を採用している
+
+### Qwik City
+
+- Web フレームワーク
+- Next.js、Nuxt.js、Remix と同じレイヤー
+- SSG をサポート
+
+### Hydration と Resumable の違い
+
+- Hydration
+  - ページを構成するすべての JS をダウンロード/パース/実行する
+- Resumable
+  - ユーザーの操作が行われたタイミングで JS をダウンロード/パース/実行する
+  - よって、ページのロードが速い
