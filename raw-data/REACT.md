@@ -138,6 +138,8 @@ function App() {
 SSR された DOM をクライアント側で再利用する場合に ReactDOM.render の代わりに ReactDOM.hydrate を使う  
 つまり、クライアント側でのレンダリングをスキップできる
 
+Hydration はページ内のすべての JS をダウンロード・実行し、onClick などで渡されたイベントリスナーを DOM に登録する
+
 クライアント側の仮想 DOM と SSR された DOM を検証し、不一致の場合は Hydration を中止する  
 この場合、DOM を破棄し、最初からレンダリングを行う  
 （この際、ブラウザのコンソールには警告が表示される）
