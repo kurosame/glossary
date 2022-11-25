@@ -179,6 +179,18 @@ exports[`Match the snapshot 1`] = `
           <a
             aria-selected="false"
             class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+            href="/gcp"
+            role="tab"
+            tabindex="-1"
+          >
+            GCP
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </a>
+          <a
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/go"
             role="tab"
             tabindex="-1"
