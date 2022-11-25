@@ -13,3 +13,5 @@ ReactNative の Dart 版みたいな
 （ちなみに ReactNative の場合は、ネイティブ依存）
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2020/03/18/203259" target="_blank">Flutter の環境構築</a>
+
+<a href="https://gist.github.com/kurosame/857f01201ef6934348000bde926a4692" target="_blank">Flutter/Dart コードメモ</a>
