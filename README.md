@@ -23,6 +23,13 @@ git clone https://github.com/kurosame/glossary.git
 npm install
 ```
 
+To run, create .env file then set the following
+
+```sh
+LOCAL_FIREBASE_API_KEY # Firebase api key for local
+LOCAL_FIREBASE_APP_ID  # Firebase app id for local
+```
+
 ## Testing to push notification
 
 After allowing push notifications, request like the following

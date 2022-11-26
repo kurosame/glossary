@@ -2,7 +2,7 @@ import { getToken, onMessage } from 'firebase/messaging'
 
 import { messaging } from '@/firebase/index'
 
-export const initialize = () => {
+export const initializeSW = () => {
   onMessage(messaging(), p =>
     navigator.serviceWorker.ready
       .then(reg =>

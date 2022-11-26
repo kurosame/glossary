@@ -6,6 +6,7 @@ functions/lib
 functions/test/unit/coverage/**/*
 node_modules
 test/unit/coverage/**/*
+.env
 .firebase
 .firebaserc
 

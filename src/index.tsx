@@ -9,9 +9,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import '@/modules/states'
 import Router from '@/router'
 import store from '@/store'
-import { initialize } from '@/sw/fcm'
+import { initializeSW } from '@/sw/fcm'
 
-initialize()
+initializeSW()
 
 class RootComponent extends React.Component {
   public override componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
