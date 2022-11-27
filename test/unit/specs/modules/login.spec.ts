@@ -1,4 +1,13 @@
-import { SET_IS_LOGIN, login } from '@/modules/login'
+import { login, setIsLogin, SET_IS_LOGIN } from '@/modules/login'
+
+describe('Get the associated action type', () => {
+  test('setIsLogin', () => {
+    expect(setIsLogin && setIsLogin('setIsLogin')).toEqual({
+      type: SET_IS_LOGIN,
+      payload: 'setIsLogin'
+    })
+  })
+})
 
 test('Run when ActionType is SET_IS_LOGIN', () => {
   expect(

@@ -1,7 +1,8 @@
 module.exports = {
   moduleFileExtensions: ['js', 'ts', 'tsx'],
   testMatch: ['<rootDir>/test/unit/specs/**/*.ts', '<rootDir>/test/unit/specs/**/*.tsx'],
-  transform: { '^.+\\.tsx?$': 'ts-jest' },
+  transform: { '^.+\\.(t|j)sx?$': '@swc/jest' },
+  transformIgnorePatterns: ['/node_modules/(?!firebase|@firebase)'],
   moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   collectCoverage: true,
   collectCoverageFrom: [
