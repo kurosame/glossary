@@ -2,7 +2,8 @@
   "name": "glossary-functions",
   "dependencies": {
     "firebase-admin": "11.3.0",
-    "firebase-functions": "4.1.0"
+    "firebase-functions": "4.1.0",
+    "googleapis": "109.0.1"
   },
   "devDependencies": {
     "@types/jest": "29.2.3",

@@ -59,6 +59,11 @@ jest.mock('firebase-admin', () => ({
   storage: (): unknown => ({ bucket: (): unknown => ({ file }) })
 }))
 
+jest.mock('firebase-functions', () => ({
+  ...jest.requireActual<Record<string, unknown>>('firebase-functions'),
+  config: () => ({ pubsub: { topic: 'test_topic' } })
+}))
+
 let wrapper: (o: Pick<storage.ObjectMetadata, 'name'>) => Promise<unknown>
 let spyErr: jest.SpyInstance<unknown, unknown[]>
 beforeEach(() => {

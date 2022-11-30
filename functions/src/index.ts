@@ -1,5 +1,6 @@
 import admin, { AppOptions } from 'firebase-admin'
 import * as functions from 'firebase-functions'
+import { google } from 'googleapis'
 
 admin.initializeApp(functions.config().firebase as AppOptions)
 admin.firestore().settings({ timestampsInSnapshots: true })
@@ -74,5 +75,32 @@ export const setWord = functions
         return null
       })
       .catch((err: Error) => console.error(`File download error fileName=${fileName} err=${err.message}`))
+
+    return null
+  })
+
+export const disableApp = functions.pubsub
+  .topic((functions.config() as { pubsub: { topic: string } }).pubsub.topic)
+  .onPublish(async m => {
+    const data = JSON.parse(Buffer.from(m.data, 'base64').toString()) as { costAmount: number; budgetAmount: number }
+    if (data.costAmount <= data.budgetAmount) {
+      console.info(`No action necessary. (Current cost: ${data.costAmount})`)
+      return null
+    }
+
+    const auth = new google.auth.GoogleAuth({
+      scopes: ['https://www.googleapis.com/auth/cloud-platform']
+    })
+    const authClient = await auth.getClient()
+    const projectId = await auth.getProjectId()
+
+    await google.appengine('v1').apps.patch({
+      auth: authClient,
+      appsId: projectId,
+      updateMask: 'serving_status',
+      requestBody: { servingStatus: 'USER_DISABLED' }
+    })
+    console.info(`App ${projectId} disabled`)
+
     return null
   })
