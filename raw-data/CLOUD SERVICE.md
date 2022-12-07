@@ -21,7 +21,7 @@ Firebase
 
 ### DaaS ダース Desktop as a Service
 
-デスクトップ環境（アイコン・フォルダ・ウィンドウなどの GUI）をインターネット経由で共有すること  
+デスクトップ環境（アイコン・フォルダー・ウィンドウなどの GUI）をインターネット経由で共有すること  
 ユーザはディスプレイやマウスなどのハードウェアを用意するだけで利用できるようになる  
 Microsoft Virtual Desktop, IBM Smart Business Desktop
 
