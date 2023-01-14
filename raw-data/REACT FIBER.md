@@ -9,27 +9,16 @@ react-fiber
 
 ## description
 
-Begin, Complete, Commit のフェーズがある
+DOM を Fiber でラップすることで、React コンポーネントに対して優先順位など React 独自の概念を付与して管理できるようになる  
+Fiber 自体はレンダリング工程の作業単位である
 
-### Begin, Complete
+レンダリングには Render と Commit のフェーズがある
 
-Component 単位で実行される  
-componentWillMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate  
-非同期レンダリングでは中断・再開により、複数回ライフサイクル関数が呼ばれる可能性がある
-
-### Commit
-
-全ての Fiber が完了した時に実行される  
-DOM 更新などの副作用が発生する処理はここでまとめて反映される  
-componentDidMount, componentDidUpdate, componentWillUnmount
-
-### Time Slicing
-
-Fiber により画面のレンダリングが非同期になると、Fiber 単位で処理の優先度を付けることができる  
-例えばユーザ操作の優先度を高くすることで、画面がレンダリング中でもユーザ操作を優先して処理することが可能となる
-
-### Suspense
-
-非同期通信をしている間、画面のレンダリングを中断できる  
-非同期通信が完了した後に、画面をレンダリングすることが可能  
-render に Promise を投げて、その Promise が完了した後に render するみたいな？
+- Render フェーズ
+  - stateNode を作成する（作成のみ）
+    - stateNode は Fiber のプロパティで、自分と自分の子要素すべての DOM をマージしたものを保持している
+  - 作業の中断・再開が可能
+    - React v18 時点で作業の中断が行われるのは、startTransition か Suspense を使用した場合のみ
+- Commit フェーズ
+  - stateNode を使って DOM を書き換える
+  - 作業の中断・再開は不可能
