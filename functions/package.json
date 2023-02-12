@@ -1,7 +1,7 @@
 {
   "name": "glossary-functions",
   "dependencies": {
-    "firebase-admin": "11.3.0",
+    "firebase-admin": "11.4.1",
     "firebase-functions": "4.1.0",
     "googleapis": "109.0.1"
   },
