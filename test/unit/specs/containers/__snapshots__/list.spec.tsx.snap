@@ -10,13 +10,13 @@ exports[`Match the snapshot 1`] = `
       class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-11l9k5w-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1nl30dm-MuiPaper-root"
       >
         <div
-          class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary css-168pjvi-MuiInputBase-root-MuiInput-root"
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary css-188s9t7-MuiInputBase-root-MuiInput-root"
         >
           <input
-            class="MuiInput-input MuiInputBase-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+            class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
             data-testid="search-bar-input"
             placeholder="Search..."
             type="text"
@@ -40,7 +40,7 @@ exports[`Match the snapshot 1`] = `
       class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-1dswlej"
       >
         <div
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"
@@ -94,7 +94,7 @@ exports[`Match the snapshot 1`] = `
       class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-1dswlej"
       >
         <div
           class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"

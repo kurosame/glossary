@@ -1,9 +1,17 @@
 import React from 'react'
 
-import { Box, CircularProgress } from '@mui/material'
+import { Box as MBox, CircularProgress } from '@mui/material'
+import { styled } from '@mui/system'
+
+const Box = styled(MBox)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
 
 const Loading: React.FC = () => (
-  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+  <Box>
     <CircularProgress />
   </Box>
 )

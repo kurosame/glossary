@@ -50,7 +50,7 @@ const Category: React.FC = () => {
 
   if (!isLogin) return null
   return (
-    <AppBar position="sticky" sx={{ top: 0, zIndex: 999 }}>
+    <AppBar position="sticky">
       <Tabs value={tabItems.findIndex(o => o.to === location.pathname)} variant="scrollable">
         {tabItems.map(t => (
           <Tab key={t.label} label={t.label} component={createLink(t.to)} />

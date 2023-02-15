@@ -21,7 +21,7 @@ exports[`Match the snapshot 1`] = `
         class="MuiSnackbarContent-action css-1kr9x0n-MuiSnackbarContent-action"
       >
         <button
-          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium  css-1e6y48t-MuiButtonBase-root-MuiButton-root"
           data-testid="allow-push-ok"
           tabindex="0"
           type="button"

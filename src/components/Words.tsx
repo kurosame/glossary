@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import { Box, List, ListItem } from '@mui/material'
+import { Box as MBox, List, ListItem } from '@mui/material'
+import { styled } from '@mui/system'
 
 import SearchBar from '@/components/SearchBar'
 import Word from '@/components/Word'
@@ -9,6 +10,10 @@ import type { WordState } from '@/modules/word'
 interface Props {
   words: WordState[]
 }
+
+const Box = styled(MBox)`
+  width: 100%;
+`
 
 const Words: React.FC<Props> = ({ words }) => {
   const [searchWord, setSearchWord] = useState('')
@@ -36,7 +41,7 @@ const Words: React.FC<Props> = ({ words }) => {
       </ListItem>
       {(filterWords || words).map(w => (
         <ListItem key={w.id}>
-          <Box sx={{ width: '100%' }}>
+          <Box>
             <Word word={w} />
           </Box>
         </ListItem>
