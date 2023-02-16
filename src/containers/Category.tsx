@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, To, useLocation } from 'react-router-dom'
 
@@ -47,6 +47,10 @@ const createLink = (to: To) => React.forwardRef<HTMLAnchorElement>((p, ref) => <
 const Category: React.FC = () => {
   const isLogin = useSelector<States, boolean>(s => s.login.isLogin)
   const location = useLocation()
+
+  useEffect(() => {
+    window.scroll({ top: 0 })
+  }, [location.pathname])
 
   if (!isLogin) return null
   return (
