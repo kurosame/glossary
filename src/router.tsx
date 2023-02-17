@@ -7,6 +7,7 @@ const LoginPage = React.lazy(() => import('@/containers/Login'))
 const CategoryPage = React.lazy(() => import('@/containers/Category'))
 const ListPage = React.lazy(() => import('@/containers/List'))
 const AllowPushPage = React.lazy(() => import('@/containers/AllowPush'))
+const ToTop = React.lazy(() => import('@/containers/ToTop'))
 
 const Router: React.FC = () => (
   <Routes>
@@ -18,6 +19,7 @@ const Router: React.FC = () => (
           <CategoryPage />
           <ListPage />
           <AllowPushPage />
+          <ToTop />
         </Suspense>
       }
     />
@@ -29,6 +31,7 @@ const Router: React.FC = () => (
           <CategoryPage />
           <ListPage />
           <AllowPushPage />
+          <ToTop />
         </Suspense>
       }
     />

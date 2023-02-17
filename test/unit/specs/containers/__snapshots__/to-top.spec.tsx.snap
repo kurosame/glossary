@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1jfyc7e"
+    style="transform: scale(0); visibility: hidden;"
+  >
+    <button
+      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-1dm1o0z-MuiButtonBase-root-MuiFab-root"
+      data-testid="to-top"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="KeyboardArrowUpIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Match the snapshot when click 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1jfyc7e"
+    style="transform: scale(0); visibility: hidden;"
+  >
+    <button
+      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-1dm1o0z-MuiButtonBase-root-MuiFab-root"
+      data-testid="to-top"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="KeyboardArrowUpIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;

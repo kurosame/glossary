@@ -12,7 +12,7 @@ const AllowPush: React.FC = () => {
 
   return (
     <Snackbar
-      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={open}
       message="Can test push notifications"
       action={
