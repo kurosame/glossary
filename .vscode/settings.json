@@ -24,6 +24,7 @@
     "qwik",
     "rehype",
     "runtimes",
+    "sandpack",
     "stylelint",
     "supabase",
     "testid",
