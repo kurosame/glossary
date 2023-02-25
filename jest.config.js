@@ -14,7 +14,8 @@ module.exports = {
   coveragePathIgnorePatterns: [
     // FirebaseUI for React is not supported by Jest(jsdom)
     // https://github.com/firebase/firebaseui-web/issues/636
-    '<rootDir>/src/containers/Login.tsx'
+    '<rootDir>/src/containers/Login.tsx',
+    '<rootDir>/src/components/FirebaseAuth.tsx'
   ],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   coverageReporters: ['html', 'text-summary'],
