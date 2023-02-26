@@ -76,7 +76,9 @@ jobs:
       - node/install-packages
       - run:
           name: Test for CI
-          command: npm run test:ci
+          command: |
+            node --version
+            npm run test:ci
       - store_artifacts:
           path: ./test/unit/coverage
   test-functions:
