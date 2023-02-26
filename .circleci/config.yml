@@ -66,11 +66,11 @@ jobs:
             done
             IFS=$IFS_BEFORE
   test:
-    executor:
-      name: node/default
-      tag: '16.13.0'
-    docker:
-      - image: circleci/node:16.13.1
+    # executor:
+    #   name: node/default
+    #   tag: '16.13.0'
+    # docker:
+    #   - image: circleci/node:16.13.1
     steps:
       - checkout
       - node/install-packages
