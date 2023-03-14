@@ -23,6 +23,7 @@
     "protobuf",
     "qwik",
     "rehype",
+    "rspack",
     "runtimes",
     "sandpack",
     "stylelint",
