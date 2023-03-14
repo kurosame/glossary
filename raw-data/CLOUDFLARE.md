@@ -8,6 +8,8 @@ Cloudflare
 
 ## description
 
+Cloudflare では、ユーザーがリージョンを選択するという概念がない
+
 <a href="https://zenn.dev/kurosame/articles/ebae865d729a38" target="_blank">Cloudflare Pages&Workers を使う（Vercel からの移行）</a>
 
 ### Workers
@@ -21,7 +23,8 @@ Node.js ではない
 zero cold starts について  
 Vercel や Netlify の Serverless Functions は Lambda をベースに動いており、ランタイムはコンテナー環境である  
 コンテナーでは実際の処理が開始されるまでに初期化や起動処理などが入り、これが原因でコールドスタートが発生する  
-Workers はコンテナーではなく、V8 でも使われている isolate 機能を使って動いている
+Workers はコンテナーではなく、V8 でも使われている isolate 機能を使って動いている  
+（Cloudflare の人がコンテナーを常時起動して、その上で V8 が動いていると言っていたので、上記は違うかも）
 
 - workerd（ワーカーディー）
   - Workers のコアランタイム部分
