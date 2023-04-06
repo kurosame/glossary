@@ -16,7 +16,7 @@ Node.js、Go、Python などをサポート
 
 ### Edge Functions
 
-ランタイムは V8 の JS エンジン  
+ランタイムは V8 の JS エンジン（Cloudflare Workers で動いている）  
 よって、Node.js の API はサポートされていない  
 コールドスタート問題は軽減され、高速なコールドブートを実現できる
 
