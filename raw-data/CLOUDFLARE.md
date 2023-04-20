@@ -18,7 +18,8 @@ Edge コンピューティングサービス
 JavaScript/WebAssembly のランタイム
 
 Workers の実行環境は V8 の JS エンジン  
-Node.js ではない
+Node.js ではない  
+⇒ 2023/04 に Node.js の API をサポートすると発表（エンジンは Node ではないが、NodeAPI が使える状態）
 
 zero cold starts について  
 Vercel や Netlify の Serverless Functions は Lambda をベースに動いており、ランタイムはコンテナー環境である  
