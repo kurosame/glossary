@@ -357,7 +357,7 @@ type Props<T> = {
 
 export const Button = <T>({ onClick }: Props<T>): JSX.Element => {}
 
-// 呼び出し元は以下でT型の実態を指定できる
+// 呼び出し元は以下の書き方でT型の実態を指定できる
 // <Radio<OriginalType> onClick={setText} />
 ```
 
