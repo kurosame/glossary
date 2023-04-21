@@ -348,6 +348,19 @@ function Note({ id, shouldIncludeAuthor }) {
 - コンポーネントがレンダリングされるたびに use(`Promise`)が呼ばれると思う
   - Promise の結果をキャッシュできる必要がある
 
+### コンポーネントの Props で T 型を使いたい
+
+```ts
+type Props<T> = {
+  onChange: (v: T) => void
+}
+
+export const Button = <T>({ onClick }: Props<T>): JSX.Element => {}
+
+// 呼び出し元は以下でT型の実態を指定できる
+// <Radio<OriginalType> onClick={setText} />
+```
+
 ### 良い設計方針
 
 - components
