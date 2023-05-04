@@ -43,3 +43,19 @@ Web 標準の API（fetch など）は Edge Runtime 上でも公開される
 KVS（Key-Value Store）  
 Environment Variables（環境変数）の代替としても使える  
 Vercel の環境変数は、適用させるのにデプロイが必要だが、Edge Config は不要
+
+Read は速いが、Write は遅い  
+よって、更新頻度が低く、参照頻度が高いデータ向き
+
+### Storage
+
+- Vercel KV
+  - Redis 互換
+  - Edge Config より、Read は遅く、Write は速い
+- Vercel Postgres
+  - サーバーレスの PostgreSQL データベース
+  - Edge Functions や Next.js、Nuxt.js、SvelteKit などのフレームワークでシームレスに実装できるように設計されている
+- Vercel Blob
+  - 画像や動画などのファイル用ストレージ
+- Edge Config
+  - 上記参照
