@@ -66,6 +66,9 @@ jobs:
             done
             IFS=$IFS_BEFORE
   test:
+    parameters:
+      shard:
+        type: string
     executor:
       name: node/default
       tag: '16.13.0'
@@ -76,7 +79,7 @@ jobs:
       - node/install-packages
       - run:
           name: Test for CI
-          command: npm run test:ci
+          command: ./node_modules/.bin/jest --shard=<< parameters.shard >>
       - store_artifacts:
           path: ./test/unit/coverage
   test-functions:
@@ -92,7 +95,7 @@ jobs:
       - run:
           name: Test for CI
           working_directory: ./functions
-          command: npm run test:ci
+          command: ./node_modules/.bin/jest
       - store_artifacts:
           path: ./functions/test/unit/coverage
   lighthouse:
@@ -157,7 +160,10 @@ workflows:
     when:
       not: << pipeline.parameters.run-schedule >>
     jobs:
-      - test
+      - test:
+          matrix:
+            parameters:
+              shard: ['1/4', '2/4', '3/4', '4/4']
       - test-functions
   nightly:
     when: << pipeline.parameters.run-schedule >>
