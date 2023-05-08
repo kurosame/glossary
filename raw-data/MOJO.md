@@ -13,5 +13,5 @@ Python のエコシステムと互換性がある
 将来的には、Python のスーパーセットを目指している  
 Python の 35000 倍速いらしい
 
-Swift の作者の 1 人が Modular 社を創設し、その社内で Mojo を開発中  
+LLVM や Swift を開発した Chris Lattner が CEO をやっている Modular 社内で Mojo を開発中  
 プログラムは順次 OSS 化していくとのこと
