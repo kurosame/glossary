@@ -17,8 +17,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "test": "jest --watchAll",
-    "test:ci": "jest"
+    "test": "jest --watchAll"
   },
   "volta": {
     "node": "16.13.2"

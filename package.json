@@ -87,7 +87,6 @@
     "lint:style": "stylelint --ignore-path .gitignore '**/*.tsx'",
     "fmt": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx}'",
     "test": "jest --watchAll",
-    "test:ci": "jest --maxWorkers=2",
     "analyze": "webpack --mode=development --analyze",
     "ts-prune": "npx ts-prune",
     "fixpack": "npx fixpack",
