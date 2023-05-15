@@ -50,12 +50,17 @@ Read は速いが、Write は遅い
 ### Storage
 
 - Vercel KV
-  - Redis 互換
+  - Redis 互換の KVS
+  - 技術的には Upstash が使われている
+    - Upstash はサーバレスな Redis を提供するサービス
   - Edge Config より、Read は遅く、Write は速い
 - Vercel Postgres
   - サーバーレスの PostgreSQL データベース
+  - 技術的には Neon が使われている
+    - Neon はフルマネージドかつサーバーレスな PostgreSQL を提供するサービス
   - Edge Functions や Next.js、Nuxt.js、SvelteKit などのフレームワークでシームレスに実装できるように設計されている
 - Vercel Blob
   - 画像や動画などのファイル用ストレージ
+  - 技術的には Cloudflare R2 が使われている
 - Edge Config
   - 上記参照
