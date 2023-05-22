@@ -26,3 +26,17 @@ OpenID Connect
    - code（認可コード）、client_id、client_secret などを渡す
 1. Provider は有効な認可コードであることを確認し、自社システムに ID トークン（JWT 形式）を返す
 1. 自社システムは ID トークンを検証する
+
+### ID トークンの検証について
+
+認証プロバイダーから取得したアクセストークンの aud(Audience)や exp(Expiration Time)を検証  
+トークンから不要な情報を除外し、公開鍵で暗号化  
+トークンを Cookie に付与し、レスポンス
+
+暗号キー管理は AWS Key Management Service (AWS KMS)を使うと良い  
+AWS KMS でできること
+
+- トークンの暗号化
+- トークンの暗号化キーの定期的なローテーション
+
+すでに認証済み（リクエストヘッダーの Authorization にトークンが存在する）の場合は、KWS を使って、秘密鍵で復号し検証

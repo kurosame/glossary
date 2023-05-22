@@ -8,6 +8,7 @@ import type { States } from '@/modules/states'
 
 const tabItems: Array<{ label: string; to: string }> = [
   { label: 'Summary', to: '/' },
+  { label: 'Ad', to: '/ad' },
   { label: 'Apache', to: '/apache' },
   { label: 'Architecture', to: '/architecture' },
   { label: 'AWS', to: '/aws' },

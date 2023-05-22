@@ -35,6 +35,18 @@ exports[`Match the snapshot 1`] = `
           <a
             aria-selected="false"
             class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+            href="/ad"
+            role="tab"
+            tabindex="-1"
+          >
+            Ad
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </a>
+          <a
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
             href="/apache"
             role="tab"
             tabindex="-1"
