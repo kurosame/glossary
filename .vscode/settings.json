@@ -16,6 +16,7 @@
     "jetpack",
     "kurosame",
     "nuxt",
+    "oidc",
     "preact",
     "precache",
     "precaching",

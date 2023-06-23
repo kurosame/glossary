@@ -5,6 +5,7 @@ server
 ## titles
 
 OpenID Connect
+OIDC
 
 ## description
 
