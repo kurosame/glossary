@@ -19,6 +19,8 @@ React
 
 <a href="https://zenn.dev/kurosame/articles/78b7b154b90ac7" target="_blank">React のチャートライブラリ選定</a>
 
+<a href="https://zenn.dev/kurosame/scraps/333ce89c557fb3" target="_blank">Atomic Design と Bulletproof React を考察</a>
+
 ### Component と Element
 
 ```js
@@ -360,6 +362,19 @@ export const Button = <T>({ onClick }: Props<T>): JSX.Element => {}
 // 呼び出し元は以下の書き方でT型の実態を指定できる
 // <Radio<OriginalType> onClick={setText} />
 ```
+
+### Data fetch 観点での useEffect と Suspense について
+
+useEffect に渡された関数は画面レンダリング後に実行される  
+たとえば Data fetch を渡すと画面レンダリング後に実行されることになる  
+（画面レンダリング前に関数を実行することができる useLayoutEffect という Hook はある）
+
+Suspense は Promise（Data fetch など）が解決されるまでは fallback の内容を表示し、Promise が解決されると画面レンダリングする
+
+よって、Suspense 内のコンポーネントで Data fetch を行う useEffect を書いた場合、Suspense が機能しない（画面レンダリング後に Data fetch を行うので Suspense を使う意味がない）
+
+ただし、これは useEffect を使って Data fetch を行う場合のみであり、useEffect と Suspense が共存できないということではない  
+React.lazy などの非同期コンポーネントをロードする際には、Suspense と useEffect が共存して問題なく機能する
 
 ### 良い設計方針
 
