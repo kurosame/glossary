@@ -19,7 +19,7 @@ React
 
 <a href="https://zenn.dev/kurosame/articles/78b7b154b90ac7" target="_blank">React のチャートライブラリ選定</a>
 
-<a href="https://zenn.dev/kurosame/scraps/333ce89c557fb3" target="_blank">Atomic Design と Bulletproof React を考察</a>
+<a href="https://zenn.dev/kurosame/scraps/333ce89c557fb3" target="_blank">フロントエンドのディレクトリ構成を考察</a>
 
 ### Component と Element
 

@@ -25,9 +25,19 @@ Nuxt.js 自体も内部的には、vue-server-renderer を使っているらし�
 ### SSR する理由
 
 - OGP（Open Graph Protocol）の考慮  
-  SNS 上で OGP を設定しておくと、予め設定された画像・タイトル・説明文が表示され、ユーザへの訴求力アップに繋がる  
+  SNS 上で OGP を設定しておくと、事前に設定された画像・タイトル・説明文が表示され、ユーザへの訴求力アップに繋がる  
   meta タグに設定するため、最低限 meta タグのみを SSR するのもあり
 
   将来的に SEO の検索順位の決定は、Googlebot が行うことになるだろう  
   Google の Crawler は JavaScript も解釈すると言われている  
   つまり SPA で空の Body となっていても問題ないということ
+
+### Streaming SSR
+
+SSR のレンダリング結果を Streaming にブラウザに返し、表示する  
+従来はすべてレンダリングされた後に結果を渡していた
+
+- React
+  - React 18 で追加された
+  - Suspense の機能が前提となる
+    - サスペンドされたら、そこまでのレンダリング結果を出力し、サスペンドが解除されたら Streaming SSR を再開する

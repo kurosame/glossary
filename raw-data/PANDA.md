@@ -27,4 +27,4 @@ Chakra UI と開発元が同じ
   - Emotion や styled-components など
 - ゼロランタイム CSS in JS
   - ランタイム時のパフォーマンスが良い
-  - Panda や Stitches など
+  - Panda や Stitches や Kuma UI など
