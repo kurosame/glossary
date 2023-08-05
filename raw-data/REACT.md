@@ -365,7 +365,7 @@ export const Button = <T>({ onClick }: Props<T>): JSX.Element => {}
 
 ### Data fetch 観点での useEffect と Suspense について
 
-useEffect に渡された関数は画面レンダリング後に実行される  
+useEffect に渡された関数は画面レンダリング後に実行される（Fetch-on-render パターン）  
 たとえば Data fetch を渡すと画面レンダリング後に実行されることになる  
 （画面レンダリング前に関数を実行することができる useLayoutEffect という Hook はある）
 
@@ -375,6 +375,10 @@ Suspense は Promise（Data fetch など）が解決されるまでは fallback 
 
 ただし、これは useEffect を使って Data fetch を行う場合のみであり、useEffect と Suspense が共存できないということではない  
 React.lazy などの非同期コンポーネントをロードする際には、Suspense と useEffect が共存して問題なく機能する
+
+waterfall 問題  
+親子関係のコンポーネントが両方 Data fetch を行っている場合、親の Data fetch 完了後に子の Data fetch が行われるため、処理が直列になってしまう（waterfall 問題）  
+⇒ 本来並列に処理できるものが直列になってしまう
 
 ### 良い設計方針
 
