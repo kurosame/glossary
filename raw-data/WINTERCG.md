@@ -16,3 +16,10 @@ WinterCG は Node.js、Deno、Cloudflare、Vercel、Shopify などのコアコ�
 
 Cloudflare や Vercel が持つサーバーレス環境や Node.js、Deno のランタイム環境など非ブラウザ環境で発生する問題などを議論する場となるとのこと  
 また、WinterCG 独自で API の標準化を行うのではなく、WHATWG や W3C と連携しながら問題解決を行っていく予定
+
+### WinterJS
+
+WinterCG に準拠したサーバーサイド JS のランタイム（ServiceWorker）  
+Rust で開発されており、JS エンジンは Firefox の SpiderMonkey を採用している
+
+<a href="https://github.com/wasmerio/winterjs" target="_blank">WinterJS のコード</a>
