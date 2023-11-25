@@ -350,6 +350,17 @@ function Note({ id, shouldIncludeAuthor }) {
 - コンポーネントがレンダリングされるたびに use(`Promise`)が呼ばれると思う
   - Promise の結果をキャッシュできる必要がある
 
+### Server Actions
+
+Server Actions はサーバーコンポーネントとクライアントコンポーネントのどちらでも機能する
+
+クライアントコンポーネント内では、Server Actions は定義できないが、別ファイルに定義した Server Actions を import することはできる  
+import した Server Actions はフォームアクション（`<form action={serverActions}>`）などを利用して、ユーザーのインタラクションに応じて実行することが可能
+
+ハイドレーションが完了する前にフォームがインタラクティブになるので、ユーザーが操作できる  
+JS が読み込まれていない、また JS が無効な環境でもインタラクティブになる
+
+
 ### コンポーネントの Props で T 型を使いたい
 
 ```ts

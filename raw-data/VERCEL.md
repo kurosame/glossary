@@ -8,6 +8,8 @@ Vercel
 
 ## description
 
+<a href="https://zenn.dev/kurosame/scraps/4049934aa634fe" target="_blank">Vercel 移行メモ</a>
+
 ### Serverless Functions
 
 バックエンドは AWS Lambda  

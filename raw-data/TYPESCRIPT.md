@@ -192,3 +192,20 @@ interface Example {
 type K1 = keyof Example // "name" | "value"
 type K2 = readonly [P in keyof T]: T[P] // readonly "name" | readonly "value"
 ```
+
+### `as const`と`satisfies`
+
+```ts
+const a = ['a', 'b', 'c'] // 型はstring[]となる
+a[0] = 'd' // 値の変更も可能
+
+const b = ['a', 'b', 'c'] as const // 型はreadonly ['a', 'b', 'c']となる
+b[0] = 'd' // 値の変更はできないためエラーになる
+
+// 上記のas constで型が厳格になるのは、宣言後のみ
+// 以下のように宣言時は自由に値を設定できる
+const c = ['a', 'b', 'c', 1] as const // 型はreadonly ['a', 'b', 'c', 1]となる
+
+// satisfiesを使うことで宣言時も型を厳格にできる
+const d = ['a', 'b', 'c', 1] as const satisfies readonly string[] // 1はstringでないのでエラーになる
+```

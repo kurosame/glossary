@@ -18,13 +18,6 @@ Next.js
   - 標準の fetch にパッチを当てて拡張している
   - 取得したデータを自動でキャッシュし、任意のタイミングで Revalidate（データ再取得・キャッシュ更新）が可能
 
-### Server Actions
-
-Server Actions はサーバーコンポーネントとクライアントコンポーネントのどちらでも機能する
-
-クライアントコンポーネント内では、Server Actions は定義できないが、別ファイルに定義した Server Actions を import することはできる  
-import した Server Actions はフォームアクション（`<form action={serverActions}>`）などを利用して、ユーザーのインタラクションに応じて実行することが可能
-
 ### Cache
 
 Next.js には 4 種類のキャッシュがある
