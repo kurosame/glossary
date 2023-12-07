@@ -54,3 +54,10 @@ Node.js との互換性を重視した実装を今後は行っていくらしい
   await db.get(['my-key'], { consistency: 'strong' })
   ```
 - トランザクションをサポート
+
+### Deno Cron
+
+Deno Deploy 上で、Cron ジョブを登録・実行できる  
+指定した時間になると、isolate が立ち上がり、ジョブが実行される
+
+V8 の isolate は VM やコンテナーより軽量な分離技術でプロセス内に独立した空間・イベントループを定義できる
