@@ -22,3 +22,5 @@ webpack や ESLint や Prettier などがそれぞれパーサーを持つため
 - Node.js 上で動作する
 - ~~他パッケージとの依存がなく、Rome のみで動作する~~
   - zero dependency を目指したのは JS での話（安定性やパフォーマンス面の懸念を回避する目的）で、現在は Rust で再実装されたので、zero dependency を考慮する必要はなくなったとのこと
+
+現在、Rome は開発が終了し、Rome をフォークして作られた Biome に開発が引き継がれている
