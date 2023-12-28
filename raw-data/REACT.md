@@ -43,6 +43,96 @@ const element = React.createElement('div', { id: 'sample' }, 'hello')
 - Element  
   ReactComponent から createElement によって生成された仮想 DOM 構造体
 
+### レンダリングの流れ
+
+- 初回レンダリング時
+  1. JSX のトランスパイル
+  1. 初回レンダリング
+     - createRoot と render をコンポーネントに対して呼び出す
+       ```ts
+       const domNode = document.getElementById('root')
+       const root = createRoot(domNode)
+       root.render(<App />)
+       ```
+  1. スナップショット（React Element）の取得
+     - UI のスナップショットを取得する（実態は以下のようなオブジェクト）
+       ```json
+       {
+         type: "button",
+         key: null,
+         ref: null,
+         props: {
+           onClick: () => setCount(1 + 1),
+           children: 1,
+         },
+       }
+       ```
+  1. DOM にコミット
+  1. ブラウザレンダリング
+     - ブラウザが UI をペイントする
+  1. エフェクトを実行
+     - useEffect を実行
+     - UI ペイント後に useEffect は実行されるので、ここで data fetch などを行うとパフォーマンス上の懸念がある
+- 再レンダリング時
+
+  - 関数の実行などによる状態更新で再レンダリングが行われる
+
+  1. 再レンダリング
+  1. スナップショット（React Element）の取得
+     ```json
+     {
+       type: "button",
+       key: null,
+       ref: null,
+       props: {
+         onClick: () => setCount(2 + 1),
+         children: 2,
+       },
+     }
+     ```
+  1. 前回のスナップショットと新しいスナップショットを比較
+     - メモリ上のスナップショットの差分を Reconciler が検出する
+  1. DOM にコミット
+     - 差分があった箇所のみ最小限に更新する
+  1. ブラウザレンダリング
+  1. エフェクトの依存配列をチェック
+
+     - useEffect の依存配列内の値が更新された場合
+
+       1. エフェクトのクリーンアップ処理
+
+          - これは前回のエフェクトで起きた変化を打ち消すために行われる
+          - 前回の useEffect の return で定義した関数を実行
+
+            ```ts
+            useEffect(() => {
+              // 以下は前回（状態更新前）のエフェクトの状態
+              const t = setTimeout(() => {
+                console.log(1)
+              }, [1 * 1000])
+
+              // 以下を実行する
+              return () => clearTimeout(t)
+            }, [1])
+            ```
+
+       1. 状態更新後のエフェクトを実行
+
+          ```ts
+          useEffect(() => {
+            // 以下は最新の状態のエフェクト
+            // 以下を実行する
+            const t = setTimeout(() => {
+              console.log(2)
+            }, [2 * 1000])
+
+            return () => clearTimeout(t)
+          }, [2])
+          ```
+
+     - useEffect の依存配列内の値が更新されていない場合
+       1. 処理をスキップ
+
 ### ライフサイクル
 
 - Mounting
