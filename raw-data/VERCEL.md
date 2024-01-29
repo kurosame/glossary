@@ -66,3 +66,9 @@ Read は速いが、Write は遅い
   - 技術的には Cloudflare R2 が使われている
 - Edge Config
   - 上記参照
+
+### v0
+
+対話型 AI を使った UI 生成ツール  
+v0 に指示（会話）しながら、目的の UI を構築できる  
+shadcn/ui と Tailwind CSS ベースの React コードを生成する（コピペ可能）

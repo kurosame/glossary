@@ -76,6 +76,13 @@ CSS Modules の仕様は 1 つだが、それが現状メンテナンスされ�
 css-loader のメンテナーが将来的に css-loader の CSS Modules モードを非推奨にする予定とも述べている  
 <a href="https://github.com/webpack-contrib/css-loader/issues/1050#issuecomment-592541379" target="_blank">css-loader の issue</a>
 
+### Headless UI
+
+スタイルを持たない UI コンポーネントを提供するライブラリのこと  
+（Radix UI など）
+
+機能とアクセシビリティのみをカプセル化したコンポーネントを提供し、スタイルは自由に自作できる
+
 ### ブラウザの速度改善のすすめ
 
 ファーストビューで必要な CSS を抜き出し、HTML にインライン化する  
