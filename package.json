@@ -94,6 +94,6 @@
     "clean:dist": "rimraf ./dist/*"
   },
   "volta": {
-    "node": "16.13.2"
+    "node": "16.20.2"
   }
 }
