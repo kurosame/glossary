@@ -5,6 +5,7 @@ ad
 ## titles
 
 Google Ad
+Google 広告
 
 ## description
 
