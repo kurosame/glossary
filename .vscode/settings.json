@@ -36,6 +36,7 @@
     "vite",
     "vuejs",
     "vuex",
-    "wasi"
+    "wasi",
+    "whatwg"
   ]
 }

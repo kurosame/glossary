@@ -209,3 +209,29 @@ const c = ['a', 'b', 'c', 1] as const // 型はreadonly ['a', 'b', 'c', 1]とな
 // satisfiesを使うことで宣言時も型を厳格にできる
 const d = ['a', 'b', 'c', 1] as const satisfies readonly string[] // 1はstringでないのでエラーになる
 ```
+
+satisfies と型アノテーションの違い
+
+```ts
+type A = {
+  [key in 'a' | 'b']: unknown
+}
+
+// satisfiesの場合
+const l = {
+  a: 'a',
+  b: ['b', 'b']
+} satisfies A
+
+// bはstring[]型と推論され、以下はエラーにならない
+l.b.map(v => v)
+
+// 型アノテーションの場合
+const ll: A = {
+  a: 'a',
+  b: ['b', 'b']
+}
+
+// bは型推論されず、unknown型のため、以下はエラーになる
+ll.b.map(v => v)
+```

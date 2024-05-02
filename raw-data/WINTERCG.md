@@ -20,6 +20,10 @@ Cloudflare や Vercel が持つサーバーレス環境や Node.js、Deno のラ
 ### WinterJS
 
 WinterCG に準拠したサーバーサイド JS のランタイム（ServiceWorker）  
-Rust で開発されており、JS エンジンは Firefox の SpiderMonkey を採用している
+2024/03 に正式版となる v1.0 がリリースされた
+
+- Rust で開発
+- JS エンジンは Firefox の SpiderMonkey を採用
+- WinterJS は WebAssembly バイナリにコンパイルすることが可能
 
 <a href="https://github.com/wasmerio/winterjs" target="_blank">WinterJS のコード</a>

@@ -12,7 +12,7 @@ Vue.js
 
 <a href="https://qiita.com/kurosame/items/183a93bcc39d4c8c27d5" target="_blank">Vue.js とその周辺技術を学ぶ勉強会</a>
 
-<a href="https://qiita.com/kurosame/items/1e8754fceeba9b9bfcd1" target="_blank">Vue.js を最速でビルドして、無料で公開するぞ！[ハンズオン形式]</a>
+<a href="https://qiita.com/kurosame/items/1e8754fceeba9b9bfcd1" target="_blank">Vue.js を最速でビルドして、無料で公開するぞ！【ハンズオン形式】</a>
 
 <a href="https://kurosame-th.hatenadiary.com/entry/2020/07/28/125041" target="_blank">Vue3 の事前調査まとめ</a>
 
@@ -61,6 +61,14 @@ CSS モジュールを使える
 ### Server Side Rendering
 
 <a href="https://qiita.com/kurosame/items/9815a28820e5e63d1a55" target="_blank">Vue.js でサーバサイドレンダリングしたい</a>
+
+### Vapor
+
+- 仮想 DOM を使わない Vue のレンダリングのモード
+- Vapor モードと非 Vapor モードでコンパイル結果が変わる
+  - Vapor モードはバンドル結果のコード量が減る
+- Vapor モードのコンポーネントと非 Vapor モードのコンポーネントは混在可能
+  - 段階的に移行が可能
 
 ### 更新時に不要なコンポーネントのレンダリングを防ぐには
 
