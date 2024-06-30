@@ -723,3 +723,44 @@ waterfall 問題
       - テストは生産性を上げるために存在する
       - テストの維持に執着すると、開発速度が遅くなる
    1. Jest、React Testing Library、Cypress、Mock Service Worker(MSW)を使うのが良い
+
+### React v19 の新機能
+
+- useTransition の startTransition に非同期関数を渡せるようになり、非同期処理のトランジション化が可能になった
+- useActionState の追加
+  ```ts
+  const [count, increment, isPending] = useActionState(async currentCount => {
+    await fetch('https://api.example.com/increment', {
+      method: 'POST'
+    })
+    return currentCount + 1
+  }, 0) // initialState
+  ```
+  - `count`は現在の State
+  - `increment`は useReducer で言う dispatch
+  - `isPending`は非同期関数を useActionState に渡すので、そのための isPending
+- form タグの action 属性に非同期関数を渡せるようになり、フォームの送信時に非同期関数を実行することができる
+  - useActionState と併用すると良い
+    ```html
+    <form action="{increment}">...</form>
+    ```
+  - Server Actions を action 属性に渡すこともできる
+    - useActionState との切り分けは、DB へのクエリなどサーバーで実行した方が良ければ、Server Actions を使うのが良さそう
+    - useActionState と Server Actions の併用も可能
+      ```ts
+      const [count, increment, isPending] = useActionState(serverActions, 0)
+      ```
+  - Server Actions と useActionState と SWR
+    - サーバーで実行すべきなら、Server Actions
+      - Server Actions はクライアント側の State を参照できない縛りがある
+      - Server Actions が form の actions 属性に指定されていると、ハイドレーション前にフォームを送信することが可能なので、JS を介さず、フォームを送信でき、useActionState と組み合わせれば、State 更新も可能
+    - 更新処理を行い、その更新後の値もセットで管理したい場合、useActionState
+    - ただの更新処理は、SWR？
+- useOptimistic の追加
+  - アクションの最中に楽観的更新を行う
+    - たとえば useActionState の非同期関数が完了するより前に更新（楽観的更新）後の値を表示することが可能
+      - ただし、エラーの場合は値を元に戻す必要がある
+- use(`Promise`)の追加
+  - 引数の Promise 関数の中身を取得できる
+- props で ref が渡せるようになった
+  - forwardRef は非推奨になる
