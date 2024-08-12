@@ -14,9 +14,46 @@ Next.js
 
 ### App Router
 
-- fetch
-  - 標準の fetch にパッチを当てて拡張している
-  - 取得したデータを自動でキャッシュし、任意のタイミングで Revalidate（データ再取得・キャッシュ更新）が可能
+fetch について
+
+- 標準の fetch にパッチを当てて拡張している
+- 取得したデータを自動でキャッシュし、任意のタイミングで Revalidate（データ再取得・キャッシュ更新）が可能
+
+レンダリングについて
+
+- Static Rendering
+  - Next.js のデフォルト
+  - revalidate なしは SSG 相当
+  - revalidate ありは ISR 相当
+- Dynamic Rendering
+  - SSR 相当
+
+### Streaming SSR
+
+SSR のレンダリング結果を Streaming にブラウザに返し、表示する  
+（レンダリング中に data fetch できるということ）  
+従来はすべてレンダリングされた後に結果を渡していた
+
+- React
+  - React 18 で追加された
+  - Suspense の機能が前提となる
+    - サスペンドされたら、そこまでのレンダリング結果を出力し、サスペンドが解除されたら Streaming SSR を再開する
+
+レンダリング中に data fetch するので、data fetch 周りのロジックがサーバーとクライアントの両方に必要になった  
+⇒ リクエストの重複などの懸念がある
+
+- React
+  - React Server Components により data fetch の責務をサーバーに集約できる
+    - クライアントは data fetch を伴わないレンダリングになるため、リクエストの重複が発生しない
+
+### Partial Pre Rendering（PPR）
+
+Static Rendering されたページ内の一部を Dynamic Rendering にすることが可能になる  
+ページ内で部分的に静的レンダリング・動的レンダリングの切り替えが可能
+
+SSG/ISR されたページの一部を SSR にしたり、Streaming SSR 実行中の Suspense が fallback している UI 部分を SSG/ISR にするイメージ
+
+PPR 登場以前は、ページ単位での静的レンダリング・動的レンダリングのみが可能だった
 
 ### Cache
 

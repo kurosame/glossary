@@ -31,21 +31,3 @@ Nuxt.js 自体も内部的には、vue-server-renderer を使っているらし�
   将来的に SEO の検索順位の決定は、Googlebot が行うことになるだろう  
   Google の Crawler は JavaScript も解釈すると言われている  
   つまり SPA で空の Body となっていても問題ないということ
-
-### Streaming SSR
-
-SSR のレンダリング結果を Streaming にブラウザに返し、表示する  
-（レンダリング中に data fetch できるということ）  
-従来はすべてレンダリングされた後に結果を渡していた
-
-- React
-  - React 18 で追加された
-  - Suspense の機能が前提となる
-    - サスペンドされたら、そこまでのレンダリング結果を出力し、サスペンドが解除されたら Streaming SSR を再開する
-
-レンダリング中に data fetch するので、data fetch 周りのロジックがサーバーとクライアントの両方に必要になった  
-⇒ リクエストの重複などの懸念がある
-
-- React
-  - React Server Components により data fetch の責務をサーバーに集約できる
-    - クライアントは data fetch を伴わないレンダリングになるため、リクエストの重複が発生しない
