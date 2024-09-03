@@ -62,3 +62,8 @@ npm-check-updates -u // package.jsonのパッケージを全て最新にして�
 npm update // package.jsonに記載してあるバージョンに更新する
 npm install
 ```
+
+### package-lock.json のコンフリクト
+
+`npm install`でコンフリクトは解決するが、package.json のバージョンに合わせて、package-lock.json が更新される  
+たとえば、`"next": "^14.0.0"`という指定であれば、package-lock.json のコンフリクト前は`14.0.0`で lock されていたとしても、コンフリクト解決後は、マイナーバージョンの最新がインストールされる
