@@ -28,6 +28,23 @@ fetch について
 - Dynamic Rendering
   - SSR 相当
 
+### page,layout,template について
+
+App Router で導入された固有の規約を持ったファイル
+
+- page
+  - Server Component もしくは、Client Component で構成された page コンポーネント
+- layout
+  - 複数のページ間で共有されるコンポーネント
+  - 同階層にある page コンポーネントをラップする
+  - ページ間のナビゲーション時に状態を保持し、layout コンポーネントは再レンダリングを行わない
+    - page コンポーネントのみが再レンダリングされる
+  - ルートの layout コンポーネントは必須で、html と body を含む必要がある
+- template
+  - layout と同じ用途で使うが、以下の違いがある
+    - template コンポーネントは、ページ間のナビゲーション時に状態を保持せず、新しい状態を生成する
+    - よって、ページ間を移動するたびに再レンダリングが行われる
+
 ### Streaming SSR
 
 SSR のレンダリング結果を Streaming にブラウザに返し、表示する  
