@@ -451,6 +451,8 @@ import した Server Actions はフォームアクション（`<form action={ser
 JS が読み込まれていない、また JS が無効な環境でもインタラクティブになる  
 （Server Actions は、JS ではなく HTML の機能でサーバーにデータを送信することが可能なため）
 
+Server Actions は仕様上、並列実行ができないため、常に直列で実行される
+
 ### コンポーネントの Props で T 型を使いたい
 
 ```ts
@@ -481,10 +483,15 @@ waterfall 問題
 親子関係のコンポーネントが両方 Data fetch を行っている場合、親の Data fetch 完了後に子の Data fetch が行われるため、処理が直列になってしまう（waterfall 問題）  
 ⇒ 本来並列に処理できるものが直列になってしまう
 
-### 良い設計方針
+### 良い設計方針（Container/Presentational パターン）
 
+- containers
+  - Container components
+  - ロジック（振る舞い）への関心を持つ
+  - DOM マークアップとスタイルは持たない
+  - ステートフルで状態とロジックを持ち、それを Presentational components に渡す
+  - React Redux の connect 関数などの上位コンポーネントから生成される
 - components
-
   - Presentational components
   - 見た目への関心を持つ
   - 独自の DOM マークアップとスタイルを持つ
@@ -492,23 +499,22 @@ waterfall 問題
   - Flux のアクションやストアに依存しない
   - 独自以外の状態とロジックを持たない
   - props 経由で独自以外の状態とロジック（コールバック）を受け取る
-
-- containers
-
-  - Container Components
-  - ロジック（振る舞い）への関心を持つ
-  - DOM マークアップとスタイルは持たない
-  - ステートフルで状態とロジックを持ち、それを Presentational components に渡す
-  - React Redux の connect 関数などの上位コンポーネントから生成される
-
 - メリット
-
   - 見た目のロジックの分離ができる
   - Presentational components の再利用性が高い
   - Presentational components で Storybook が導入しやすい
-
 - デメリット
   - レンダリングされるコンポーネントが増えるので、memo 化が必須
+
+React Server Components における Container/Presentational パターン
+
+- Container components
+  - Server Component（SC）
+  - 現状（2024/09）、SC はテストライブラリや Storybook のサポートがほぼない
+    - テストライブラリを使わず、SC 内の関数を実行するテストは問題なく書ける
+- Presentational components
+  - Client Component（CC）
+  - 従来通り、CC はテストライブラリや Storybook のサポートがある
 
 ### パフォーマンスチューニング
 

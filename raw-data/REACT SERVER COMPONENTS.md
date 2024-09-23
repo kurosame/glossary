@@ -104,7 +104,7 @@ RSC と SSR を組み合わせて使うことも可能
 
 - `SC1 -> CC1 -> SC2 -> CC2`のケースで`SC2`が async コンポーネントの場合、エラー
   - SC2 は CC1 から呼ばれているため、CC となり、CC は async コンポーネントをサポートしていないため
-  - 解決法は、SC2 を SC1 で import し、CC1 へ props もしくは children として渡す
+  - 解決法は、SC2 を SC1 で import し、CC1 へ props もしくは children として渡す（Composition パターン）
 
 ### PHP の再来？
 

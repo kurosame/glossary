@@ -90,9 +90,11 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
     fetch(url, { signal })
     ```
 - Data Cache（サーバー機能）
-  - Next.js は fetchAPI を拡張し、各リクエスト独自のキャッシュを保持できる
+  - Next.js は fetchAPI を拡張し、各リクエストの結果をキャッシュできる
     - メモリが生きている間のみ有効
-    - リクエストのキャッシュ化は、Next.js の機能
+      - ここで言うメモリはサーバー上のメモリなので、明示的にキャッシュをクリアしたり、サーバーを再起動しない限り、キャッシュは永続化される
+      - また、異なるユーザーに対してもキャッシュは共有される
+    - リクエストの結果のキャッシュ化は、Next.js の機能
   - キャッシュ有効化手順
     - fetch ごとに個別に有効化する場合
       ```ts
@@ -112,6 +114,9 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
       ```ts
       export const dynamic = 'force-dynamic'
       ```
+  - ベストプラクティス
+    - キャッシュは無効化しない方がパフォーマンス的には良い
+    - アクセストークンを使ったユーザー個別のデータ取得などは、Dynamic Rendering にせざるを得ないが、`force-dynamic`で Route 全体を Dynamic Rendering にするのではなく、PPR で部分的に Dynamic Rendering へ切り替えるのが良い
 - Full Route Cache（サーバー機能）
   - Next.js はビルド時にルートを自動的にレンダリングし、キャッシュする（静的サイトレンダリング）
     - これにより、サーバー上で毎回レンダリングする代わりにキャッシュされたルートを返すため、ページの読み込みが高速化される
@@ -122,6 +127,9 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
     // or
     export const revalidate = 0
     ```
+  - ベストプラクティス
+    - キャッシュは無効化せず、Static Rendering を使うのが良い
+    - `cookies`など Dynamic Functions を呼んでいる箇所は、Dynamic Rendering にせざるを得ないが、`force-dynamic`で Route 全体を Dynamic Rendering にするのではなく、PPR で部分的に Dynamic Rendering へ切り替えるのが良い
 - Router Cache（クライアント機能）
   - Next.js は RSC Payload（RSC のレンダリング結果と RSC からクライアントへの Props）を個別のルートごとにキャッシュする
     - ユーザーがルート間を移動する際、訪れたルートセグメントをキャッシュし、ユーザーが移動する可能性があるルートを事前に fetch する
@@ -133,13 +141,23 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
     const nextConfig = {
       experimental: {
         staleTimes: {
-          dynamic: 30
+          dynamic: 10, // default: 30
+          static: 150 // default: 300
         }
       }
     }
     ```
   - キャッシュ無効化手順
     - 明示的なオプションによる無効化は不可能なため、以下の方法でキャッシュをクリアできる
-      ```ts
-      router.refresh()
-      ```
+      - クライアント（Client Component）
+        ```ts
+        router.refresh()
+        ```
+      - サーバー（Server Actions）
+        ```ts
+        revalidatePath('/blog/post')
+        revalidateTag('post')
+        cookies().set('name', 'value')
+        cookies().delete('name')
+        ```
+        - Router Cache はクライアント側のキャッシュのため、あるユーザーがサーバー側で revalidatePath を実行しても別のユーザーのキャッシュが削除されるわけではない
