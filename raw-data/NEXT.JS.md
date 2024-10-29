@@ -161,3 +161,61 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
         cookies().delete('name')
         ```
         - Router Cache はクライアント側のキャッシュのため、あるユーザーがサーバー側で revalidatePath を実行しても別のユーザーのキャッシュが削除されるわけではない
+
+### Next.js v15 まとめ
+
+Pages Router 周りの変更は除外
+
+- `@next/codemod`CLI によるアップグレードが推奨
+- `next/headers`の cookies や headers など（他にもある）が非同期関数化
+  - 次のバージョンアップまでは一時的に同期的にアクセス可能
+  - 同期的にアクセスした場合、開発環境と本番環境に警告を出す
+- Data Cache と Router Cache をデフォルトで無効化
+  - Router Cache のデフォルト無効化は`router.refresh()`が不要になる？
+    - ただし、Router Cache は手動で有効化しておいた方がいい気がする
+- React v19 を使用
+  - React v19 のアップグレード内容も把握する必要あり
+- React Compiler（Experimental）を利用可能
+  - 2024/10 現在、React Compiler は Babel プラグインのみで動作するため、有効化するとビルド時間が遅くなるなどの影響が出る
+- Hydration のエラー内容が詳細にわかるようになった
+- Turbopack が安定版になった
+- 開発中に Static Route Indicator が表示されるようになった
+  - ルート単位で静的レンダリングか動的レンダリングかが判別できる
+  - `next build`実行時にすべてのルートのレンダリング戦略が表示される
+  - 専用の開発者ツールも開発中
+- `next/server`に unstable_after（Experimental）を追加
+  - サーバー側でクライアントへのレスポンスには不要な処理（ロギングや分析など）をレスポンス後に実行できるコールバック関数
+    - クライアントはこれらの処理の終了を待つことなく、レスポンスを取得できる
+- `instrumentation.(ts|js)`が安定版になった
+  - このファイル内の関数は Next.js のサーバー起動時に 1 回だけ実行される
+  - 利用用途はロギングの設定、監視、DI など
+- `<Form>`コンポーネントが追加
+  - form タグの拡張
+- `next.config.ts`をサポート
+  - 設定ファイルが TS で書ける
+- アプリケーションをセルフホスティングしている場合の改善
+  - `stale-while-revalidate`の改善
+  - 画像最適化で`sharp`のインストールが不要になる
+- Server Actions のセキュリティ周りを強化
+  - import されていない Server Action の関数はバンドルから排除
+    - 関数が意図せず公開されることを防ぐ
+  - クライアントから Server Action を呼び出す際に、推測不可能な ID を生成して呼び出すように修正
+    - また、この ID はビルド時に定期的に再生成される
+    - 公開された関数が意図せず実行されることを防ぐ
+- 外部パッケージのバンドル関連の変更
+  - App Router ではデフォルトですべての外部パッケージをバンドルする
+    - Pages Router はデフォルトでは外部パッケージをバンドルしない
+    - Pages Router の場合は、`bundlePagesRouterDependencies: true`を指定すると、外部パッケージをバンドルできる
+  - `serverExternalPackages`に除外するパッケージ名を指定
+- ESLint v9 をサポート
+- Server Component の HMR を改善
+  - 開発時のコード保存時に Server Component が再実行され、fetch が実行された際に、以前のレンダリング結果の fetch のレスポンスを再利用するようになった
+    - 開発時のパフォーマンス改善と fetch 実行による潜在的なコストを削減している
+- App Router のビルド時の静的サイトレンダリングを高速化
+- 静的サイトレンダリング周りのオプション（Experimental）を追加
+  - staticGenerationRetryCount
+    - ビルド失敗時のリトライ回数
+  - staticGenerationMaxConcurrency
+    - Worker1 つあたりのページ生成の並列処理数
+  - staticGenerationMinPagesPerWorker
+    - 新しい Worker を起動するために必要な最小ページ数
