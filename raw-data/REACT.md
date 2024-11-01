@@ -519,48 +519,42 @@ React Server Components における Container/Presentational パターン
 ### パフォーマンスチューニング
 
 - 子コンポーネントの再レンダリングを防ぐ
-
   - React はコンポーネントの更新が発生した場合、そのコンポーネントをルートとするサブツリー上のすべてのコンポーネントを再レンダリングしようとする
   - ルートとなる親コンポーネントは当然再レンダリングが発生しているが、その子コンポーネントの再レンダリング有無は制御可能
   - 子コンポーネントの再レンダリングが発生する条件として、以下のいずれかを満たせば再レンダリングが発生する
-
     - props の更新
       - useCallback, useMemo で抑制できる
     - state の更新
       - これは再レンダリングされてよい
     - 親コンポーネントの再レンダリング
       - React.memo で抑制できる
-
-  - useCallback  
-    親コンポーネントから子コンポーネントに props でコールバック関数を渡している場合、そのコールバック関数に適用できる  
-    useCallback はコールバック関数をメモ化する
-
-  - useMemo  
-    関数および関数の結果をメモ化する  
-    ただし、関数の場合は`useMemo(() => func, [])`のように関数を返す関数を第 1 引数に渡す必要があり複雑  
-    よって、関数の場合は`useCallback(func, [])`のほうがよい
-
+  - useCallback
+    - コールバック関数をメモ化する
+      - 親コンポーネントから子コンポーネントに props でコールバック関数を渡している場合、そのコールバック関数に適用できる
+    - useCallback は関数を実行するわけではない
+      - 関数自体をメモ化しており、関数の結果をメモ化するわけでない
+        - つまり、useCallback した関数を呼び出せば、毎回評価される
+  - useMemo
+    - 関数および関数の結果をメモ化する
+      - ただし、関数の場合は`useMemo(() => func, [])`のように関数を返す関数を第 1 引数に渡す必要があり複雑
+      - よって、関数の場合は`useCallback(func, [])`のほうがよい
   - PureComponent, React.memo
-
-    - クラス型コンポーネントの場合は PureComponent  
-      shouldComponentUpdate のデフォルトの挙動を現在の props と新 props を shallow な比較をして true か false を返すように変更できる
-      - shouldComponentUpdate  
-        prevProps と prevState を受け取り、現在の props と state を比較して、更新する必要があれば true を返す（比較ロジックは自分で実装する）  
-        デフォルトは true なので props と state が変更されて更新する必要がなくても再レンダリングされる  
-        props と state の値が同じでもオブジェクトが異なる場合、再レンダリングが走る
-    - 関数型コンポーネントの場合は React.memo  
-      子コンポーネント全体を React.memo で囲む  
-      PureComponent とやっていることは同じ  
-      なお、React.memo はクラス型コンポーネントにも使用できる
-
-  - まとめ  
-    React.memo, PureComponent, shouldComponentUpdate の目的は一緒  
-    子コンポーネント自体をメモ化するので、子コンポーネントの props と state の更新がなければ再レンダリングしない  
-    useCallback はコールバック関数自体をメモ化する  
-    親コンポーネントが再レンダリングされた際はコールバック関数も再生成されるため、コールバック関数を子コンポーネントに渡していた場合、React.memo だけだと毎回 props が変更されているとみなされ、再レンダリングが行われてしまう  
-    React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる  
-    useMemo は useCallback と同様に props が値の場合に React.memo と組み合わせて使うのがよい
-
+    - クラス型コンポーネントの場合は PureComponent
+      - shouldComponentUpdate のデフォルトの挙動を現在の props と新 props を shallow な比較をして true か false を返すように変更できる
+        - shouldComponentUpdate
+          - prevProps と prevState を受け取り、現在の props と state を比較して、更新する必要があれば true を返す（比較ロジックは自分で実装する）
+          - デフォルトは true なので props と state が変更されて更新する必要がなくても再レンダリングされる
+          - props と state の値が同じでもオブジェクトが異なる場合、再レンダリングが走る
+    - 関数型コンポーネントの場合は React.memo
+      - 子コンポーネント全体を React.memo で囲む
+      - PureComponent とやっていることは同じ
+      - なお、React.memo はクラス型コンポーネントにも使用できる
+  - まとめ
+    - React.memo, PureComponent, shouldComponentUpdate の目的は一緒
+      - 子コンポーネント自体をメモ化するので、子コンポーネントの props と state の更新がなければ再レンダリングしない
+    - useCallback はコールバック関数自体をメモ化する
+      - 親コンポーネントが再レンダリングされた際はコールバック関数も再生成されるため、コールバック関数を子コンポーネントに渡していた場合、React.memo だけだと毎回 props が変更されているとみなされ、再レンダリングが行われてしまう
+    - React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる
 - ループ内の要素に key 属性を付ける
   - 静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
   - ループの index を key に使うのは NG
