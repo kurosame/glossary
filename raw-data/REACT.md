@@ -537,7 +537,8 @@ React Server Components における Container/Presentational パターン
   - useMemo
     - 関数および関数の結果をメモ化する
       - ただし、関数の場合は`useMemo(() => func, [])`のように関数を返す関数を第 1 引数に渡す必要があり複雑
-      - よって、関数の場合は`useCallback(func, [])`のほうがよい
+        - よって、関数の場合は`useCallback(func, [])`のほうがよい
+        - `useMemo(() => func, [])`と`useCallback(func, [])`は書き方が違うだけでまったく同じ動きをする
   - PureComponent, React.memo
     - クラス型コンポーネントの場合は PureComponent
       - shouldComponentUpdate のデフォルトの挙動を現在の props と新 props を shallow な比較をして true か false を返すように変更できる
@@ -555,6 +556,7 @@ React Server Components における Container/Presentational パターン
     - useCallback はコールバック関数自体をメモ化する
       - 親コンポーネントが再レンダリングされた際はコールバック関数も再生成されるため、コールバック関数を子コンポーネントに渡していた場合、React.memo だけだと毎回 props が変更されているとみなされ、再レンダリングが行われてしまう
     - React.memo と useCallback を組み合わせて使用することで再レンダリングを抑制できる
+    - useMemo は結果をメモ化するので、単体でパフォーマンス的に効果がある
 - ループ内の要素に key 属性を付ける
   - 静的解析で防げる場合が多いが、適切な一意の key を付けないと、ループ内の要素全体をレンダリングしてしまう
   - ループの index を key に使うのは NG
