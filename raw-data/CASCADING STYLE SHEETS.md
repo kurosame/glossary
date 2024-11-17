@@ -58,13 +58,6 @@ CSS ファイルを import している場合、webpack で css-loader や style
 ネストが深いと命名から把握が困難  
 BEM ルールをチームに徹底する必要がある
 
-### CSS in JS
-
-JS の中に CSS を直接書く  
-テンプレートリテラル形式や JSX に組み込めるのとか色々書き方がある
-
-JS のスキルが必要なため、デザイナーが CSS を書く環境では不向き
-
 ### CSS Modules
 
 ローカルスコープ化された（グローバル上でユニークな）セレクター名を生成する  
@@ -75,6 +68,31 @@ CSS Modules の仕様は 1 つだが、それが現状メンテナンスされ�
 
 css-loader のメンテナーが将来的に css-loader の CSS Modules モードを非推奨にする予定とも述べている  
 <a href="https://github.com/webpack-contrib/css-loader/issues/1050#issuecomment-592541379" target="_blank">css-loader の issue</a>
+
+### CSS in JS
+
+JS の中に CSS を直接書く  
+テンプレートリテラル形式や JSX に組み込めるのとか色々書き方がある  
+JS の値によって CSS を動的に変えるといった実装が可能になる（CSS Modules だと不可能）
+
+JS のスキルが必要なため、デザイナーが CSS を書く環境では不向き
+
+JS でレンダリングするので、CSS in JS をサポートしているライブラリは内部的にクライアント側でしか動作しないカスタムフックや Context API などを使っていることが多く、React Server Components と相性が悪い
+
+### ゼロランタイム CSS in JS
+
+ランタイム CSS in JS は、コンポーネントのレンダリング時に CSS を解析する  
+ゼロランタイム CSS in JS は、ビルド時に CSS を解析し、`.css`ファイルを生成する  
+その`.css`ファイルをランタイム時にブラウザが読み込む（従来の）やり方
+
+どちらもスタイルを書くときの構文は CSS in JS 形式で書く
+
+- ランタイム CSS in JS
+  - ランタイム時のパフォーマンスが悪い
+  - Emotion や styled-components など
+- ゼロランタイム CSS in JS
+  - ランタイム時のパフォーマンスが良い
+  - Panda や Stitches や Kuma UI など
 
 ### Headless UI
 
