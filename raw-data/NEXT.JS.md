@@ -162,6 +162,12 @@ Next.js v15 以降は、Data Cache と Router Cache に関しては、デフォ�
         ```
         - Router Cache はクライアント側のキャッシュのため、あるユーザーがサーバー側で revalidatePath を実行しても別のユーザーのキャッシュが削除されるわけではない
 
+dynamicIO オプションについて  
+Next.js の dynamicIO オプションを true にすることで、キャッシュするか動的に処理するかを選ばせる実装にすることができる  
+キャッシュする場合は、`use cache`ディレクティブを使い、動的に処理する場合は、`<Suspense>`を使う  
+dynamicIO が ON の状態で、`use cache`と`<Suspense>`のどちらも指定されていない場合はエラーになる  
+`use cache`をページ全体に反映したい場合は、`layout.tsx`か`page.tsx`に指定し、個別にキャッシュしたい場合は、コンポーネントや関数ごとに指定する
+
 ### Next.js v15 まとめ
 
 Pages Router 周りの変更は除外
